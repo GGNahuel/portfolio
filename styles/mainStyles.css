@@ -1,0 +1,45 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    background-color: rgb(221, 238, 234);
+    height: 100vh;
+}
+
+#mainHeader {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+#mainHeader > nav {
+    box-sizing: border-box;
+    border: 4rem solid rgb(13,29,0);
+    aspect-ratio: 1;
+    border-radius: 100%;
+    transform-origin: center;
+    position: relative;
+}
+
+.navItem_Container {
+    position: absolute;
+    top: 0;
+    width: 50%;
+    aspect-ratio: 1;
+    transform-origin: bottom right;
+}
+
+.navItem {
+    display: block;
+    margin: .5rem;
+    height: 4rem;
+    aspect-ratio: 1;
+    border-radius: 100%;
+   
+    background: linear-gradient(15deg, rgba(20,118,161,1) 0%, rgba(118,163,16,1) 100%);
+}
