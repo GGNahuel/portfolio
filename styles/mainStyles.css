@@ -8,38 +8,46 @@ body {
     height: 100vh;
 }
 
-#mainHeader {
-    height: 100%;
-    width: 100%;
+#root {
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 100%;
+    width: 100%;
     overflow: hidden;
 }
 
-#mainHeader > nav {
+#mainHeader {
+    position: fixed;
+    top: 0;
     box-sizing: border-box;
     border: 4rem solid rgb(13,29,0);
     aspect-ratio: 1;
     border-radius: 100%;
     transform-origin: center;
+}
+
+#mainHeader > nav {
+    width: 100%;
+    height: 100%;
     position: relative;
+    display: flex;
+    justify-content: center;
 }
 
 .navItem_Container {
     position: absolute;
-    top: 0;
-    width: 50%;
-    aspect-ratio: 1;
-    transform-origin: bottom right;
+    top: -5rem;
+    height: calc(50% + 5rem);
+    transform-origin: 50% 100%;
 }
 
 .navItem {
-    display: block;
-    margin: .5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     height: 4rem;
     aspect-ratio: 1;
     border-radius: 100%;
-   
     background: linear-gradient(15deg, rgba(20,118,161,1) 0%, rgba(118,163,16,1) 100%);
 }
