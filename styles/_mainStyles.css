@@ -1,0 +1,18 @@
+main {
+    display: none;
+    align-self: flex-start;
+    max-width: 900px;
+    border: 2px solid black;
+    padding: 1rem;
+}
+
+main > section {
+    min-height: 100vh;
+}
+
+#presentation_section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}

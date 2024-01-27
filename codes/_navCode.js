@@ -1,5 +1,8 @@
+const $root = document.querySelector("#root")
 const $ring = document.querySelector("#mainHeader")
 const $navItems_Container = $ring.querySelectorAll(".navItem_Container")
+
+const widthInScreen_$ring = window.innerWidth / 2
 
 const $KEYFRAME_ring = [{
     transform: window.innerWidth > 719 ? "translateX(calc((100vw / -2) - 25%))" : "translateY(-100vh)",
@@ -26,4 +29,8 @@ else {
 }
 
 $ring.animate($KEYFRAME_ring, _ringAnimationProperties)
-    .finished.then(() => { console.log("overflow del root scroll") })
+    .finished.then(() => {
+        const $main = document.querySelector("main")
+        $root.style.overflow = "visible"
+        $main.style.display = "block"
+    })
