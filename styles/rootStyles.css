@@ -1,0 +1,47 @@
+@import "_navStyles.css";
+@import "_mainStyles.css";
+
+:root {
+    --main-color: rgb(73, 143, 20) ;
+    --secondary-color: rgb(215, 136, 0);
+    --third-color: rgb(85, 221, 224);
+    --bg-color: rgb(221, 238, 234);
+    --bg-contrast-color: /* rgb(92, 87, 62); */rgb(13,29,0);
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    scroll-behavior: smooth;
+}
+
+*::-webkit-scrollbar {
+    width: 17px;
+}
+*::-webkit-scrollbar-thumb {
+    background-color: var(--bg-contrast-color);
+    border-radius: 8px;
+}
+
+body {
+    background-color: var(--bg-color);
+    height: 100vh;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+#root {
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+h1 {font-size: 4.5rem; color: var(--main-color); text-shadow: 5px 5px var(--bg-contrast-color);}
+h2 {font-size: 3rem;}
+
+a{
+    text-decoration: none;
+}

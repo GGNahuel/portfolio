@@ -2,7 +2,8 @@
     align-self: center;
     position: fixed;
     box-sizing: border-box;
-    border: 4rem solid rgb(13,29,0);
+    border: 4rem solid;
+    border-color: var(--bg-contrast-color);
     aspect-ratio: 1;
     border-radius: 100%;
     transform-origin: center;
@@ -30,5 +31,10 @@
     height: 4rem;
     aspect-ratio: 1;
     border-radius: 100%;
-    background: linear-gradient(15deg, rgba(20,118,161,1) 0%, rgba(118,163,16,1) 100%);
+    background: linear-gradient(15deg, var(--third-color) 0%, var(--main-color) 80%);
+}
+.navItem_Container.current .navItem{
+    background: linear-gradient(15deg, var(--secondary-color) 25%, var(--main-color) 80%);
+    outline: 4px solid black;
+    transition: outline 300ms;
 }
