@@ -35,6 +35,6 @@
 }
 .navItem_Container.current .navItem{
     background: linear-gradient(15deg, var(--secondary-color) 25%, var(--main-color) 80%);
-    outline: 4px solid black;
-    transition: outline 300ms;
+    scale: 1.2;
+    transition: scale 300ms;
 }
