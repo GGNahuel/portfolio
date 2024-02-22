@@ -1,7 +1,9 @@
-const finalRingPosition = window.innerWidth > 719 ? "calc((100vw / -2) - 25%)" : "0 -100vh"
+/* Definición de constantes y funciones */
+
+const finalRingPosition = () => window.innerWidth > 719 ? "calc((100vw / -2) - 25%)" : "0 -100vh"
 
 const $KEYFRAME_ring = [{
-  translate: finalRingPosition,
+  translate: finalRingPosition(),
   offset: 1
 }]
 const $KEYFRAME_ringItems = (angle) => [
@@ -14,6 +16,10 @@ function calcularAnguloSegunItem (anguloInicial, anguloRelativoFinal, multiplica
   return (
     anguloInicial + multiplicador * (anguloRelativoFinal / ($navItems_Container.length -1))
   )
+}
+
+function devolverAnguloActual (prop) {
+  return Number (prop.match(/(\d*\.?\d{0,3})/)[0])
 }
 
 function definirStylesSegunVW () {
@@ -36,6 +42,8 @@ function definirStylesSegunVW () {
 const defaultAngles = []
 let startAnimationFinished = false
 
+/* Setear animaciones y estilos al cargar la página o al cambiar el tamaño de la pantalla */
+
 window.addEventListener("load", () => {
   let anguloDistribucionItems = window.innerWidth > 719 ? 135 : 0
 
@@ -43,7 +51,7 @@ window.addEventListener("load", () => {
 
   $ring.animate($KEYFRAME_ring, _ringAnimationProperties)
   .finished.then(() => {
-    $ring.style.translate = finalRingPosition
+    $ring.style.translate = finalRingPosition()
     $navItems_Container[0].classList.add("current")
     $root.style.overflowY = "visible"
     $main.style.display = "flex"
@@ -62,9 +70,8 @@ window.addEventListener("load", () => {
   })
 })
 window.addEventListener("resize", () => {
-  const newFinalRingPosition = window.innerWidth > 719 ? "calc((100vw / -2) - 25%)" : "0 -100vh"
   if (startAnimationFinished) {
-    $ring.style.translate = newFinalRingPosition
+    $ring.style.translate = finalRingPosition()
     let anguloDistribucionItems = window.innerWidth > 719 ? 135 : 0
     $navItems_Container.forEach(($element, index) => {
       $element.style.rotate = `${calcularAnguloSegunItem(405, anguloDistribucionItems, index)}deg`
@@ -73,22 +80,36 @@ window.addEventListener("resize", () => {
   definirStylesSegunVW()
 })
 
+
+/* Evento de scroll, "gira" de los navItems e indicación del que está activo */
+
 let pixelsForScroll = 0
 let lastScrollTopPosition = 0
+let anglesBackup = []
+let isRingHovered = false
 $root.addEventListener("scroll", () => {
   pixelsForScroll = $root.scrollTop - lastScrollTopPosition
   lastScrollTopPosition = $root.scrollTop
 
   const ringRadius = $ring.offsetHeight / 2
-  const newAngle = truncWithDecimals(((pixelsForScroll / ringRadius) * (180 / Math.PI)), 3) * 90 / 360 * -1
+  const newAngle_Relative = truncWithDecimals(((pixelsForScroll / ringRadius) * (180 / Math.PI)), 3) * 90 / 360 * -1
 
   let actualSectionInScreenIndex = -1
+  let temp_actualAngles = anglesBackup
   for (let index = 0; index < $mainSections.length; index++) {
     const $section = $mainSections[index]
     const $navItem = $navItems_Container[index]
 
-    const actualAngle = Number (window.getComputedStyle($navItem).rotate.match(/(\d*\.?\d{0,3})/)[0])
-    $navItem.style.rotate = `${lastScrollTopPosition !== 0 ? actualAngle + newAngle : defaultAngles[index]}deg`
+    const actualAngle = devolverAnguloActual($navItem.style.rotate)
+    const newAngle_Final = (!isRingHovered ? actualAngle : temp_actualAngles[index]) + newAngle_Relative
+
+    if (!isRingHovered) {
+      $navItem.style.rotate = `${lastScrollTopPosition !== 0 ? newAngle_Final : defaultAngles[index]}deg`
+    }
+    else {
+      if (index === 0) anglesBackup = []
+      anglesBackup.push(newAngle_Final)
+    }
 
     const eqSectionProps = {
       posYstart: $section.offsetTop,
@@ -107,4 +128,22 @@ $root.addEventListener("scroll", () => {
     }
     else $navItem.classList.toggle("current", false)
   }
+})
+
+/* Animación del hover en la nav */
+
+$ring.addEventListener("mouseenter", () => {
+  isRingHovered = true
+  anglesBackup = []
+  $navItems_Container.forEach(($navItem, index) => {
+    anglesBackup.push(devolverAnguloActual($navItem.style.rotate))
+    const angulo = calcularAnguloSegunItem(405, 90, index)
+    $navItem.style.rotate = `${angulo}deg`
+  })
+})
+$ring.addEventListener("mouseleave", () => {
+  isRingHovered = false
+  $navItems_Container.forEach(($navItem, index) => {
+    $navItem.style.rotate = `${anglesBackup[index]}deg`
+  })
 })

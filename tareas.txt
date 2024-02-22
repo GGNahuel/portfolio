@@ -1,0 +1,16 @@
+toDo:
+  reubicar los eventos de scroll y windows load y resize a través de callbacks
+
+Animaciones
+  animación de carga
+  animación de inicio
+    aparición del logo y los navs items
+    desaparición del logo y ✅traslado del anillo mientras giran los items
+    aparición de las secciones
+
+Navegación
+  ver tema de la "nav" responsive (en modo celular que se haga boton desplegable)
+  ✅ en modo desktop al hacer hover que muestre todos los items en pantalla
+
+Secciones
+  agregar imagenes, vectores, transiciones (decoraciones)

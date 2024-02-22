@@ -6,7 +6,7 @@ main {
     box-sizing: border-box;
     
     & > section {
-        min-height: 100vh;
+        min-height: 80vh;
         width: 100%;
         max-width: 900px;
         box-sizing: border-box;
@@ -17,6 +17,7 @@ main {
     /* background-image: url("../imgs/santafe-dia.png");
     background-size: cover;
     background-attachment: fixed; */
+    min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -94,5 +95,8 @@ main {
         &:hover {
             color: var(--main-color);
         }
+    }
+    & > h2 {
+        text-align: center;
     }
 }
