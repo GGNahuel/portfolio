@@ -15,3 +15,9 @@ Navegación
 
 Secciones
   agregar imagenes, vectores, transiciones (decoraciones)
+
+  Sección de proyectos
+    ajustar el tamaño del video para que en todas las cards sea el mismo
+    Hacer que se genere el modal con la info adicional del proyecto clickeado
+      Info de la card (nombre, descripción, caracteristicas, skills usadas, video-demo, links)
+      Comentarios del proceso, dificultades y resoluciones, nuevos aprendizajes, Conclusión

@@ -1,5 +1,5 @@
 class ProyectElement {
-  constructor (name = "a", description = "lorem", features = [], links, skillsList = [], videoSrc, isPortfolioCard = false) {
+  constructor ({name, description, features = [], links, skillsList = [], videoSrc, isPortfolioCard = false}) {
     this.name = name
     this.description = description
     this.features = features
@@ -23,6 +23,7 @@ class ProyectElement {
 
     const element = document.createElement("article")
     element.classList.add("proyectCard")
+    element.classList.add("card")
     element.id = this.isPortfolioCard ? 'id="portfolio_ProyectCard"' : ""
 
     element.innerHTML = `
@@ -53,18 +54,34 @@ class ProyectElement {
   }
 }
 
-const Eccomerce_proyect = new ProyectElement("Eccomerce", "", ["a","b","c"], "", ["react","java","js"], "")
+const Eccomerce_proyect = new ProyectElement({
+  name: "Eccomerce",
+  description: "",
+  features: ["a","b","c"],
+  links: "",
+  skillsList: ["react","java","js"],
+  videoSrc: ""
+})
 
-const PokeApi_proyect = new ProyectElement("Pokedex & team creator", `!Este no es cualquier proyecto con la pokeApi!. En él tendrás un 
-  sistema de búsqueda avanzado a tráves de distintos filtros para que puedas encontrar justo al pokemon que estás buscando para tu equipo 
-  ... (continuar y reescribir xd)`, ["Trabajo con múltiples APIs", "Exposición de contenido", "Aplicación de búsqueda y múltiples filtros",
-  "Guardado de favoritos", "(seguir)"], "", ["React", "html", "css", "sass", "js"], "demos/demo1EJ.mp4")
+const PokeApi_proyect = new ProyectElement({
+  name: "Pokedex & team creator", 
+  description:`!Este no es cualquier proyecto con la pokeApi!. En él tendrás un sistema de búsqueda avanzado a tráves de 
+  distintos filtros para que puedas encontrar justo al pokemon que estás buscando para tu equipo ... (continuar y reescribir xd)`, 
+  features: ["Trabajo con múltiples APIs", "Exposición de contenido", "Aplicación de búsqueda y múltiples filtros", "Guardado de favoritos", "(seguir)"], 
+  links: "", 
+  skillsList: ["React", "html", "css", "sass", "js"], 
+  videoSrc: "demos/demo1EJ.mp4"
+})
 
-const Colaborative_proyect = new ProyectElement("Página con los panas de egg", "Trabajo en equipo desarrollado con colegas del bootcamp de egg",
-  ["Trabajo cooperativo", "Organización de proyecto", "Presentación de ideas y toma de desiciones", "dasdas"], "", 
-  ["Git", "github", "html", "..."], "")
+const Colaborative_proyect = new ProyectElement({
+  name: "Página con los panas de egg", 
+  description: "Trabajo en equipo desarrollado con colegas del bootcamp de egg",
+  features: ["Trabajo cooperativo", "Organización de proyecto", "Presentación de ideas y toma de desiciones", "dasdas"], 
+  links: "", 
+  skillsList: ["Git", "github", "html", "..."], 
+  videoSrc: ""
+})
 
-/*  */
 const proyects = [Eccomerce_proyect, PokeApi_proyect, Colaborative_proyect]
 
 const $proyectsContainer = document.querySelector(".proyectCards_container")
