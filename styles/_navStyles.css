@@ -7,6 +7,7 @@
     aspect-ratio: 1;
     border-radius: 100%;
     transform-origin: center;
+    z-index: 15;
     
     &:hover .navItem_Container{
         transition: rotate 500ms;

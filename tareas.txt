@@ -1,4 +1,5 @@
 toDo:
+  la rotacion de la nav no coincide con el largo del scroll
   reubicar los eventos de scroll y windows load y resize a través de callbacks
 
 Animaciones
@@ -10,7 +11,7 @@ Animaciones
 
 Navegación
   ver tema de la "nav" responsive (en modo celular que se haga boton desplegable)
-  ✅ en modo desktop al hacer hover que muestre todos los items en pantalla
+  ✅ en modo desktop al hacer hover que muestre todos los items en pantalla, 🔄ver que esto no se haga en la startAnimation
 
 Secciones
   agregar imagenes, vectores, transiciones (decoraciones)

@@ -92,6 +92,7 @@ $root.addEventListener("scroll", () => {
   lastScrollTopPosition = $root.scrollTop
 
   const ringRadius = $ring.offsetHeight / 2
+  // si al total del largo de la pantala le corresponen 90°, cuántos le corresponden al pixelsForScroll
   const newAngle_Relative = truncWithDecimals(((pixelsForScroll / ringRadius) * (180 / Math.PI)), 3) * 90 / 360 * -1
 
   let actualSectionInScreenIndex = -1

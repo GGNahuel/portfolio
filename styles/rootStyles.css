@@ -41,7 +41,8 @@ body {
 
 h1 {font-size: 4.5rem; color: var(--main-color); text-shadow: 5px 5px var(--bg-contrast-color);}
 h2 {font-size: 3rem;}
+h3 { font-size: 2rem; }
 
-a{
-    text-decoration: none;
-}
+a { text-decoration: none; }
+
+ul { list-style-type: none; }
