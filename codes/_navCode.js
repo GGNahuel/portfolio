@@ -93,9 +93,8 @@ window.addEventListener("load", () => {
 
     $navItem_button.animate(
       $KEYFRAME_opening({destinationObject: "navItems"}), 
-      _openingAnimationProps({duration: 500, delay: 250 * index, fill: "forwards"})
-    )
-    $navItem_button.addEventListener("animationend", () => {
+      _openingAnimationProps({duration: 500, delay: 250 * index, fill: "none"})
+    ).finished.then(() => {
       $navItem_button.classList.add("enabled")
     })
     $element.animate($KEYFRAME_moveRingItems(anguloFinal), _ringMoveAnimationProps).finished.then(() => {
