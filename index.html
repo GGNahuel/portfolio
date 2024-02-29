@@ -11,6 +11,7 @@
 </head>
 
 <body>
+  <div id="loadingScreen"><div></div></div>
   <div id="root">
     <dialog id="selectedProyect">
       <section>intro</section>
@@ -19,6 +20,7 @@
       <section>objetivos</section>
     </dialog>
     <header id="mainHeader">
+      <img src="imgs/logo.png" alt="" id="logoInRing">
       <nav>
         <div class="navItem_Container"><a href="#presentation_section" class="navItem">
             <span class="material-symbols-outlined">account_box</span>
@@ -83,23 +85,25 @@
       </section>
       <section id="expAndFormation_section">
         <h2>Formación</h2>
-        <article class="card">
-          <p>Enero - febrero 2023, curso "Desarrollo web, primeros pasos en el frontEnd" por Argentina programa 4.0</p>
-        </article>
-        <article class="card">
-          <p>Abril 2023 - Marzo 2024, bootcamp para desarrollador fullstack por parte de EggCooperation</p>
-          <p class="comment">En este bootcamp además de aprender y formarme sobre programación, también tuve la oportunidad
-            de desarrollar habilidades blandas a traves del trabajo en equipo y la cooperación que en el mismo se requiere.
-            Por ejemplo: el explicar o preguntar algo relacionado al contenido; la toma de desiciones; el presentar, escuchar y poner en 
-            común ideas o posibles soluciones a los distintos retos que se nos iban presentando. 
-          </p>
-        </article>
-        <article class="card">
-          <p>Además de estos espacios de aprendizaje también aproveché los que hay en la red de forma gratuita para así
-            completar y sumar a mis conocimientos de forma autodidacta.
-            Tanto de canales de youtube (por ejemplo: [], entre tantos otros), blogs, páginas web.
-          </p>
-        </article>
+        <div>
+          <article class="card">
+            <p>Enero - febrero 2023, curso "Desarrollo web, primeros pasos en el frontEnd" por Argentina programa 4.0</p>
+          </article>
+          <article class="card">
+            <p>Abril 2023 - Marzo 2024, bootcamp para desarrollador fullstack por parte de EggCooperation</p>
+            <p class="comment">En este bootcamp además de aprender y formarme sobre programación, también tuve la oportunidad
+              de desarrollar habilidades blandas a traves del trabajo en equipo y la cooperación que en el mismo se requiere.
+              Por ejemplo: el explicar o preguntar algo relacionado al contenido; la toma de desiciones; el presentar, escuchar y poner en 
+              común ideas o posibles soluciones a los distintos retos que se nos iban presentando. 
+            </p>
+          </article>
+          <article class="card">
+            <p>Además de estos espacios de aprendizaje también aproveché los que hay en la red de forma gratuita para así
+              completar y sumar a mis conocimientos de forma autodidacta.
+              Tanto de canales de youtube (por ejemplo: [], entre tantos otros), blogs, páginas web.
+            </p>
+          </article>
+        </div>
       </section>
       <section id="skills_section">
         <h2>Tecnologías aprendidas</h2>

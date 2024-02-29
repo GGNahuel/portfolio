@@ -111,15 +111,10 @@
     }
 }
 
-.proyectCard:hover {
-    scale: 1.01;
-    box-shadow: 10px 5px var(--bg-contrast-color);
-
-    .pC_seeMore {
-        outline: 5px solid var(--bg-contrast-color);
-        padding: .5rem;
-        transition: 300ms;
-    }
+.proyectCard:hover .pC_seeMore {
+    outline: 5px solid var(--bg-contrast-color);
+    padding: .5rem;
+    transition: 300ms;
 }
 
 @media screen and (max-width: 719px) {
@@ -129,6 +124,19 @@
         >.proyectCard_info,
         >.proyectCard_demo {
             grid-column: 1;
+        }
+
+        &:nth-child(even) {
+            grid-template-columns: auto;
+            
+            >.proyectCard_info,
+            >.proyectCard_demo {
+                grid-column: 1;
+            }
+        }
+
+        .pC_seeMore {
+            right: -0.5rem;
         }
     }
 }

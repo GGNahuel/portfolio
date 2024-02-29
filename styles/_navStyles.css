@@ -8,10 +8,15 @@
     border-radius: 100%;
     transform-origin: center;
     z-index: 15;
-    
-    &:hover .navItem_Container{
-        transition: rotate 500ms;
-    }
+}
+
+#logoInRing {
+    height: 100%;
+    aspect-ratio: 1;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    border-radius: 100%;
 }
 
 #mainHeader > nav {
@@ -37,13 +42,15 @@
     aspect-ratio: 1;
     border-radius: 100%;
     background: linear-gradient(15deg, var(--third-color) 0%, var(--main-color) 80%);
-    transition: scale 300ms;
-
+    scale: 0;
     &:hover {
-        scale: 1.3;
+        scale: 1.3 !important;
     }
+}
+.enabled {
+    transition: scale 300ms;
 }
 .navItem_Container.current .navItem{
     background: linear-gradient(15deg, var(--secondary-color) 25%, var(--main-color) 80%);
-    scale: 1.2;
+    scale: 1.2 !important;
 }

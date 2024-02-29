@@ -1,17 +1,18 @@
 toDo:
-  la rotacion de la nav no coincide con el largo del scroll
+  ✅la rotacion de la nav no coincide con el largo del scroll
+  ver que los angulos de los navItems tambien se adapten al resize del window
   reubicar los eventos de scroll y windows load y resize a través de callbacks
 
 Animaciones
-  animación de carga
+  ✅animación de carga
   animación de inicio
-    aparición del logo y los navs items
-    desaparición del logo y ✅traslado del anillo mientras giran los items
+    ✅aparición del logo y los navs items
+    ✅desaparición del logo y ✅traslado del anillo mientras giran los items
     aparición de las secciones
 
 Navegación
   ver tema de la "nav" responsive (en modo celular que se haga boton desplegable)
-  ✅ en modo desktop al hacer hover que muestre todos los items en pantalla, 🔄ver que esto no se haga en la startAnimation
+  ✅ en modo desktop al hacer hover que muestre todos los items en pantalla, ver que esto no se haga en la startAnimation
 
 Secciones
   agregar imagenes, vectores, transiciones (decoraciones)
@@ -20,4 +21,5 @@ Secciones
     ajustar el tamaño del video para que en todas las cards sea el mismo
     Hacer que se genere el modal con la info adicional del proyecto clickeado
       Info de la card (nombre, descripción, caracteristicas, skills usadas, video-demo, links)
+      Porqué ese proyecto / objetivos del mismo
       Comentarios del proceso, dificultades y resoluciones, nuevos aprendizajes, Conclusión
