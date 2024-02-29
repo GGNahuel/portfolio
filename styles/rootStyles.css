@@ -64,9 +64,13 @@ body {
     scroll-behavior: smooth;
 }
 
-h1 {font-size: 4.5rem; color: var(--main-color); text-shadow: 5px 5px var(--bg-contrast-color);}
+h1 {
+    font-size: 4.5rem; color: var(--main-color); text-shadow: 5px 5px var(--bg-contrast-color);
+    line-height: 5rem; max-width: 18ch; margin-bottom: 1rem;
+}
 h2 {font-size: 3rem;}
 h3 { font-size: 2rem; }
+.important {color: var(--secondary-color);}
 
 a { text-decoration: none; }
 

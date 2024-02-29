@@ -73,6 +73,9 @@ window.addEventListener("load", () => {
       $navItems_Container[0].classList.add("current")
       $root.style.overflowY = "visible"
       $main.style.display = "flex"
+      window.setTimeout(() => {
+        $main.style.opacity = 1
+      }, 10);
       startAnimationFinished = true
       ajustarAncho()
     })
@@ -83,6 +86,7 @@ window.addEventListener("load", () => {
     $logoInRing.animate($KEYFRAME_opening({destinationObject: "logo"}), _openingAnimationProps({duration: 300, delay: 1400, direction:"reverse"}))
     .finished.then(() => {
       $logoInRing.style.opacity = 0
+      $logoInRing.style.display = "none"
     })
   })
 
@@ -93,7 +97,7 @@ window.addEventListener("load", () => {
 
     $navItem_button.animate(
       $KEYFRAME_opening({destinationObject: "navItems"}), 
-      _openingAnimationProps({duration: 500, delay: 250 * index, fill: "none"})
+      _openingAnimationProps({duration: 500, delay: 250 * index})
     ).finished.then(() => {
       $navItem_button.classList.add("enabled")
     })
@@ -109,7 +113,9 @@ window.addEventListener("resize", () => {
     $ring.style.translate = finalRingPosition()
     let anguloDistribucionItems = window.innerWidth > 719 ? 135 : 0
     $navItems_Container.forEach(($element, index) => {
-      $element.style.rotate = `${calcularAnguloSegunItem(405, anguloDistribucionItems, index)}deg`
+      $element.style.rotate = `${
+        calcularAnguloSegunItem(405, anguloDistribucionItems, index) + ($root.scrollTop * 135 / $root.scrollHeight * -1)
+      }deg`
       // sumar la cantidad de lo que seria el newAngle_relative segun lo que se desplazaría con el scroll
     })
   }
@@ -135,6 +141,7 @@ $root.addEventListener("scroll", () => {
 
   let actualSectionInScreenIndex = -1
   let temp_actualAngles = anglesBackup
+
   for (let index = 0; index < $mainSections.length; index++) {
     const $section = $mainSections[index]
     const $navItem = $navItems_Container[index]

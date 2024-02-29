@@ -8,34 +8,32 @@
 
   &:hover figcaption {opacity: 1;}
 
-  h1 {text-align: center; line-height: 5rem;}
-  
   & > section {
-      flex-shrink: 1;
-      max-width: 100%;
-      margin-top: 1rem;
-      padding: 2rem 1rem;
-      border-radius: 20px;
-      box-sizing: border-box;
-      background-color: rgba(13,29,0,0.7);
-      backdrop-filter: blur(3px);
+    flex-shrink: 1;
+    max-width: 100%;
+    margin-top: 1rem;
+    padding: 2rem 1rem;
+    border-radius: 20px;
+    box-sizing: border-box;
+    background-color: rgba(13,29,0,0.7);
+    backdrop-filter: blur(3px);
   }
   
   & .profileObjects_container {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      justify-items: center;    
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    justify-items: center;    
   }
 
   figcaption {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      padding: 10px;
-      color: var(--bg-color);
-      background-color: var(--bg-contrast-color);
-      opacity: 0;
-      transition: opacity 0.2s;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding: 10px;
+    color: var(--bg-color);
+    background-color: var(--bg-contrast-color);
+    opacity: 0;
+    transition: opacity 0.2s;
   }
 }
 
@@ -60,26 +58,26 @@
   color: var(--bg-color);
   
   & > ul {
-      align-self: flex-end;
-      display: flex;
-      justify-content: space-around;
-      align-items: center;
-      padding: 0.5em 1em 0.2em;
-      background-color: var(--secondary-color);
-      border-radius: 10px;
-      margin-bottom: 1em;
-      color: var(--bg-contrast-color);
+    align-self: flex-end;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0.5em 1em 0.2em;
+    background-color: var(--secondary-color);
+    border-radius: 10px;
+    margin-bottom: 1em;
+    color: var(--bg-contrast-color);
   }
   li {
-      list-style: none;
-      margin: 0 10px;
-      cursor: pointer;
+    list-style: none;
+    margin: 0 10px;
+    cursor: pointer;
   
-      &:hover {
-          color: var(--main-color);
-      }
+    &:hover {
+      color: var(--main-color);
+    }
   }
-  & > h2 {
-      text-align: center;
+  h2,h3 {
+    text-align: center;
   }
 }
