@@ -2,7 +2,7 @@
     align-self: center;
     position: fixed;
     box-sizing: border-box;
-    border: 64px solid;
+    border: 56px solid;
     border-color: var(--bg-contrast-color);
     aspect-ratio: 1;
     border-radius: 100%;

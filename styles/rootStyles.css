@@ -72,6 +72,6 @@ h2 {font-size: 3rem;}
 h3 { font-size: 2rem; }
 .important {color: var(--secondary-color);}
 
-a { text-decoration: none; }
+a { text-decoration: none; color: initial; }
 
 ul { list-style-type: none; }

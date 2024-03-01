@@ -84,7 +84,14 @@ const Colaborative_proyect = new ProyectElement({
   videoSrc: ""
 })
 
-const proyects = [Eccomerce_proyect, PokeApi_proyect, Colaborative_proyect]
+const AppMiembrosActivos_proyect = new ProyectElement({
+  name: "App de gestión",
+  description: "asdasdsa",
+  features: ["Gestión de cuotas de miembros", "Inventario de grupo", "Datos de miembros"],
+  videoSrc: ""
+})
+
+const proyects = [Eccomerce_proyect, PokeApi_proyect, Colaborative_proyect, AppMiembrosActivos_proyect]
 const $proyectsContainer = document.querySelector(".proyectCards_container")
 proyects.forEach(proyect => {
   $proyectsContainer.appendChild(proyect.getElement())

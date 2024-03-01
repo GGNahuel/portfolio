@@ -4,7 +4,7 @@ const finalRingPosition = () => window.innerWidth > 719 ? "calc((100vw / -2) - 2
 
 const $KEYFRAME_opening = ({ destinationObject }) => {
   return destinationObject == "ring" ? [
-  {offset: 0, borderWidth: "0px"}, {offset: 1, borderWidth: "64px"}
+  {offset: 0, borderWidth: "0px"}, {offset: 1, borderWidth: "56px"}
   ] :
     destinationObject == "logo" ? [
       {offset: 0, opacity: 0}, {offset: 1, opacity: 1}
@@ -75,8 +75,8 @@ window.addEventListener("load", () => {
       $main.style.display = "flex"
       window.setTimeout(() => {
         $main.style.opacity = 1
-      }, 10);
-      startAnimationFinished = true
+        startAnimationFinished = true
+      }, 100);
       ajustarAncho()
     })
   })

@@ -1,7 +1,4 @@
 #presentation_section {
-  /* background-image: url("../imgs/santafe-dia.png");
-  background-size: cover;
-  background-attachment: fixed; */
   min-height: 100vh;
   flex-direction: row;
   justify-content: center;
@@ -9,12 +6,15 @@
 
   & > section {
     max-width: 100%;
-    margin-top: 1rem;
+    /* margin-top: 0.5rem; */
     padding: 1rem;
     border-radius: 20px;
     box-sizing: border-box;
     background-color: rgba(13,29,0,0.7);
-    backdrop-filter: blur(3px);
+
+    &:hover .frontface{
+      background-color: var(--bg-contrast-color);
+    }
   }
   
   & .profileObjects_container {
@@ -31,13 +31,43 @@
 .profilePicture_container {
   width: 75%;
   aspect-ratio: 1;
-  border-radius: 60% 25%;
-  background-color: var(--main-color);
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  position: relative;
+  
+  >div {
+    aspect-ratio: 1;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backface-visibility: hidden;
+    perspective: 10px;
+    transition: rotate 888ms;
+  }
+  
+  >.frontface {
+    border-radius: 60% 25%;
+    background-color: var(--main-color);
+    rotate: y 0deg;
+  }
+  >.backface {
+    border-radius: 25% 60%;
+    background-color: var(--third-color);
+    rotate: y 180deg;
+  }
 
-  img {width: 80%; aspect-ratio: 1; border-radius: inherit;}
+  img {
+    width: 80%; 
+    aspect-ratio: 1; 
+    border-radius: inherit;
+  }
+}
+.profilePicture_container:hover {
+  >.frontface {
+    rotate: y 180deg;
+  }
+  >.backface {
+    rotate: y 0deg;
+  }
 }
 
 .profileInfo_container {

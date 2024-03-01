@@ -1,6 +1,6 @@
 toDo:
   ✅la rotacion de la nav no coincide con el largo del scroll
-  🔄ver que los angulos de los navItems tambien se adapten al resize del window, segun la distancia desplazada (cuano cambia de dispositivo)
+  ✅ver que los angulos de los navItems tambien se adapten al resize del window, segun la distancia desplazada
   reubicar los eventos de scroll y windows load y resize a través de callbacks
 
 Animaciones
@@ -9,17 +9,23 @@ Animaciones
     aparición del logo y los navs items
     desaparición del logo y traslado del anillo mientras giran los items
     aparición de las secciones
+  ⚠️pasar toda la animacion de inicio a una sola por elemento y en css (a ver si así se soluciona el bug de los navItems)
 
 Navegación
   ver tema de la "nav" responsive (en modo celular que se haga boton desplegable)
+  ⚠️ver por qué se buguea cuando se hace el hover antes de terminar la animación de inicio
   ✅ en modo desktop al hacer hover que muestre todos los items en pantalla, ver que esto no se haga en la startAnimation
 
 Secciones
   agregar imagenes, vectores, transiciones (decoraciones)
 
+  Seccion de presentación
+    ver que la transicion de la foto al logo se haga en mobile con animacion
+
   Sección de proyectos
+    poner un toggle para cambiar la vista de las proyectCards, lista o grilla
     ✅ajustar el tamaño del video para que en todas las cards sea el mismo
     Hacer que se genere el modal con la info adicional del proyecto clickeado
       Info de la card (nombre, descripción, caracteristicas, skills usadas, video-demo, links)
-      Porqué ese proyecto / objetivos del mismo
+      Por qué de ese proyecto / objetivos del mismo
       Comentarios del proceso, dificultades y resoluciones, nuevos aprendizajes, Conclusión
