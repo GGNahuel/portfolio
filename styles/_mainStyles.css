@@ -1,5 +1,6 @@
 @import "sections_styles/_presentationSection.css";
 @import "sections_styles/_proyectsSection.css";
+@import "sections_styles/_skillsSection.css";
 
 main {
     align-self: flex-start;

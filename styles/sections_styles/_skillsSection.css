@@ -1,0 +1,14 @@
+#skills_section{
+  display: block;
+  > div {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    align-items: baseline;
+    width: 100%;
+    gap: 1rem;
+  }
+}
+
+.skillsCard {
+  height: 100%;
+}

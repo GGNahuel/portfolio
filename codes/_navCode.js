@@ -116,7 +116,6 @@ window.addEventListener("resize", () => {
       $element.style.rotate = `${
         calcularAnguloSegunItem(405, anguloDistribucionItems, index) + ($root.scrollTop * 135 / $root.scrollHeight * -1)
       }deg`
-      // sumar la cantidad de lo que seria el newAngle_relative segun lo que se desplazaría con el scroll
     })
   }
   definirStylesSegunVW()

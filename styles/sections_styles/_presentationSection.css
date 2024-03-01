@@ -3,16 +3,14 @@
   background-size: cover;
   background-attachment: fixed; */
   min-height: 100vh;
+  flex-direction: row;
   justify-content: center;
   position: relative;
 
-  &:hover figcaption {opacity: 1;}
-
   & > section {
-    flex-shrink: 1;
     max-width: 100%;
     margin-top: 1rem;
-    padding: 2rem 1rem;
+    padding: 1rem;
     border-radius: 20px;
     box-sizing: border-box;
     background-color: rgba(13,29,0,0.7);
@@ -20,27 +18,19 @@
   }
   
   & .profileObjects_container {
-    display: grid;
+    /* display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    justify-items: center;    
-  }
-
-  figcaption {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    padding: 10px;
-    color: var(--bg-color);
-    background-color: var(--bg-contrast-color);
-    opacity: 0;
-    transition: opacity 0.2s;
+    justify-items: center;  */   
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
 }
 
 .profilePicture_container {
-  width: 80%;
+  width: 75%;
   aspect-ratio: 1;
-  margin-top: 1rem;
   border-radius: 60% 25%;
   background-color: var(--main-color);
   display: flex;
@@ -53,19 +43,17 @@
 .profileInfo_container {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 2rem;
   font-size: 1.2rem;
   color: var(--bg-color);
   
-  & > ul {
-    align-self: flex-end;
+  .contactMe {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    padding: 0.5em 1em 0.2em;
+    padding: 0.5em 0.5em 0.2em;
     background-color: var(--secondary-color);
     border-radius: 10px;
-    margin-bottom: 1em;
     color: var(--bg-contrast-color);
   }
   li {
@@ -79,5 +67,19 @@
   }
   h2,h3 {
     text-align: center;
+  }
+}
+.buttonZone {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  gap: 15px;
+}
+
+@media (max-width: 719px){
+  #presentation_section {
+    margin-top: 3rem;
+    flex-direction: column;
   }
 }
