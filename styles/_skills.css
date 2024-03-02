@@ -1,0 +1,79 @@
+.skillLogo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding-top: 8px;
+
+  &::before {
+    content: "";
+    display: block;
+    width: 32px;
+    aspect-ratio: 1;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+}
+
+#skills_section .skillLogo{
+  justify-content: flex-start;
+  flex-direction: row;
+  gap: 8px;
+
+  &::before {
+    width: 40px;
+  }
+}
+
+.html::before {
+  background-image: url("https://clipartcraft.com/images/html5-logo-vector-4.png");
+}
+
+.css::before {
+  background-image: url("https://cdn3.iconfinder.com/data/icons/social-media-special/256/css3-256.png");
+}
+
+.javascript::before {
+  background-image: url("https://th.bing.com/th/id/R.f7bf4b61c5727e25fb4ea64a93564202?rik=Kmz8Apfi9Pk5hQ&pid=ImgRaw&r=0");
+}
+
+.react::before {
+  background-image: url("https://cdn.icon-icons.com/icons2/2699/PNG/512/reactjs_logo_icon_168875.png");
+}
+
+.sass::before {
+  background-image: url("https://www.seekpng.com/png/full/377-3772047_sass-logo.png");
+}
+
+.bootstrap::before {
+  background-image: url("https://getbootstrap.com/docs/5.3/assets/brand/bootstrap-logo-shadow.png");
+}
+
+.figma::before {
+  background-image: url("https://cdn.iconscout.com/icon/free/png-512/figma-2296071-1912030.png");
+}
+
+.java::before {
+  background-image: url("https://usemobile.com.br/wp-content/uploads/2022/05/PikPng.com_java-logo-transparent-png_1469146.png");
+}
+
+.mysql::before {
+  background-image: url("https://logodownload.org/wp-content/uploads/2016/10/mysql-logo-599x408.png");
+}
+
+.spring::before {
+  background-image: url("https://pracowniabalonowa.pl/wp-content/uploads/2021/04/balony-z-helem-biodegradowalne-600x600.png");
+}
+
+.git::before {
+  background-image: url("https://th.bing.com/th/id/R.59863c6180caa67a7d0c00e13727a828?rik=sXRAIrjwtmaJqA&pid=ImgRaw&r=0");
+}
+
+.github::before {
+  background-image: url("https://cdn.icon-icons.com/icons2/730/PNG/512/github_icon-icons.com_62793.png");
+}
+
+.vscode::before {
+  background-image: url("https://static-00.iconduck.com/assets.00/file-type-vscode-icon-512x508-376y62ux.png");
+}

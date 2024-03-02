@@ -28,4 +28,5 @@ Secciones
     Hacer que se genere el modal con la info adicional del proyecto clickeado
       Info de la card (nombre, descripción, caracteristicas, skills usadas, video-demo, links)
       Por qué de ese proyecto / objetivos del mismo
+      Funciones (caracteristicas técnicas)
       Comentarios del proceso, dificultades y resoluciones, nuevos aprendizajes, Conclusión

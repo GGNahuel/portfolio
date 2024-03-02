@@ -13,11 +13,7 @@
 <body>
   <div id="loadingScreen"><div></div></div>
   <div id="root">
-    <dialog id="selectedProyect">
-      <section>intro</section>
-      <section>funciones</section>
-      <section>comentarios del proceso</section>
-      <section>objetivos</section>
+    <dialog id="selectedCard">
     </dialog>
     <header id="mainHeader">
       <img src="imgs/logo.png" alt="" id="logoInRing">
@@ -42,7 +38,9 @@
     <main>
       <section id="presentation_section">
         <h1>Lo que necesitas para que tu proyecto <span class="important">llegue alto</span></h1>
-        <section>
+        <section class="card">
+          <span class="material-symbols-outlined seeMore">expand_content</span>
+          <span class="material-symbols-outlined arrow">switch_access_shortcut</span>
           <div class="profileObjects_container">
             <header class="profilePicture_container">
               <div class="frontface"><img src="imgs/perfil.jpeg" alt="Foto de la persona"></div>
@@ -84,6 +82,7 @@
       <section id="proyects_section">
         <h2>Proyectos</h2>
         <h3>Flexibilidad de estilos para lo que tu empresa o proyecto requiera</h3>
+        <h4>Actualmente me estoy formando en las herramientas de BackEnd, por lo que algunas características están aún en proceso</h4>
         <div class="proyectCards_container">
         </div>
         <div class="portfolioCard_zone">
@@ -120,30 +119,29 @@
           <article class="card skillsCard">
             <h3>FrontEnd</h3>
             <ul>
-              <li><img src="" alt="" class="skillIcon">HTML<div></div></li>
-              <li><img src="" alt="" class="skillIcon">CSS<div></div></li>
-              <li><img src="" alt="" class="skillIcon">JavaScript<div></div></li>
-              <li><img src="" alt="" class="skillIcon">React.js<div></div></li>
-              <li><img src="" alt="" class="skillIcon">Sass<div></div></li>
-              <li><img src="" alt="" class="skillIcon">Bootstrap / Tailwind css<div></div></li>
-              <li><img src="" alt="" class="skillIcon">Figma<div></div></li>
+              <li class="skillLogo html">HTML</li>
+              <li class="skillLogo css">CSS</li>
+              <li class="skillLogo javascript">JavaScript</li>
+              <li class="skillLogo react">React.js</li>
+              <li class="skillLogo sass">Sass</li>
+              <li class="skillLogo bootstrap">Bootstrap / Tailwind css</li>
+              <li class="skillLogo figma">Figma</li>
             </ul>
           </article>
           <article class="card skillsCard">
             <h3>BackEnd</h3>
             <ul>
-              <li><img src="" alt="" class="skillIcon">Java<div></div></li>
-              <li><img src="" alt="" class="skillIcon">MySQL<div></div></li>
-              <li><img src="" alt="" class="skillIcon">Spring<div></div></li>
+              <li class="skillLogo java">Java</li>
+              <li class="skillLogo mysql">MySQL</li>
+              <li class="skillLogo spring">Spring Boot</li>
             </ul>
           </article>
           <article class="card skillsCard">
             <h3>Otros</h3>
             <ul>
-              <li><img src="" alt="" class="skillIcon">Git<div></div></li>
-              <li><img src="" alt="" class="skillIcon">Github<div></div></li>
-              <li><img src="" alt="" class="skillIcon">vsCode<div></div></li>
-              <li><img src="" alt="" class="skillIcon">npm<div></div></li>
+              <li class="skillLogo git">Git</li>
+              <li class="skillLogo github">Github</li>
+              <li class="skillLogo vscode">vsCode</li>
             </ul>
           </article>
         </div>

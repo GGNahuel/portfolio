@@ -27,20 +27,6 @@
 .proyectCard {
     display: grid;
     grid-template-columns: auto 320px;
-    position: relative;
-
-    .pC_seeMore {
-        position: absolute;
-        right: -1rem;
-        top: -1rem;
-        font-size: 32px;
-        display: block;
-        background-color: var(--secondary-color);
-        border-radius: 100%;
-        padding: .2rem;
-        cursor: pointer;
-        z-index: 10;
-    }
 
     &>.proyectCard_info {
         grid-column: 1;
@@ -63,11 +49,11 @@
         }
 
         .pC_body {
-            margin: 1.5rem 0;
+            margin: 1rem 0 1.5rem;
             max-width: 70ch;
 
             &>* {
-                margin: 0.8rem 0;
+                margin: 0.7rem 0;
             }
 
             .pC_features {
@@ -81,7 +67,6 @@
             align-items: center;
             gap: 15px;
             width: 100%;
-            height: 2rem;
         }
     }
 
@@ -128,12 +113,6 @@
     }
 }
 
-.proyectCard:hover .pC_seeMore {
-    outline: 5px solid var(--bg-contrast-color);
-    padding: .5rem;
-    transition: 300ms;
-}
-
 @media screen and (max-width: 719px) {
     .proyectCard {
         grid-template-columns: auto !important;
@@ -143,7 +122,7 @@
             grid-column: 1 !important;
         }
         
-        .pC_seeMore {
+        .seeMore {
             right: 0;
         }
 

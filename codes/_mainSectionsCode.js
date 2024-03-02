@@ -18,11 +18,11 @@ class ProyectElement {
       return `<li>${feature}</li>`
     }).join("")
     const skills = this.skillsList.map(skill => {
-      return `<li>${skill}</li>`
+      return `<li class="skillLogo ${skill.toLowerCase()}">${skill}</li>`
     }).join("")
 
     const notPortfolioProyectElements = {
-      expand_button: `<span class="material-symbols-outlined pC_seeMore">expand_content</span>`,
+      expand_button: `<span class="material-symbols-outlined seeMore">expand_content</span>`,
       features_section: `<div><p>Características:</p><ul class="pC_features">${featuresList}</ul></div>`,
       link_element: `<a class="pC_link" href="${this.links}">(ENLACE)</a>`,
       demo_zone: `<div class="proyectCard_demo"><video src="demos/demo1EJ.mp4" autoplay muted loop title="Demo del sitio en video"></div>`
@@ -61,7 +61,7 @@ const Eccomerce_proyect = new ProyectElement({
   description: "",
   features: ["a", "b", "c"],
   links: "",
-  skillsList: ["react", "java", "js"],
+  skillsList: ["react", "java", "JavaScript"],
   videoSrc: ""
 })
 
@@ -71,7 +71,7 @@ const PokeApi_proyect = new ProyectElement({
   distintos filtros para que puedas encontrar justo al pokemon que estás buscando para tu equipo ... (continuar y reescribir xd)`,
   features: ["Trabajo con múltiples APIs", "Exposición de contenido", "Aplicación de búsqueda y múltiples filtros", "Guardado de favoritos", "(seguir)"],
   links: "",
-  skillsList: ["React", "html", "css", "sass", "js"],
+  skillsList: ["React", "HTML", "CSS", "sass", "JavaScript"],
   videoSrc: "demos/demo1EJ.mp4"
 })
 
@@ -80,7 +80,7 @@ const Colaborative_proyect = new ProyectElement({
   description: "Trabajo en equipo desarrollado con colegas del bootcamp de egg",
   features: ["Trabajo cooperativo", "Organización de proyecto", "Presentación de ideas y toma de desiciones", "dasdas"],
   links: "",
-  skillsList: ["Git", "github", "html", "..."],
+  skillsList: ["Git", "github", "HTML", "..."],
   videoSrc: ""
 })
 
@@ -88,6 +88,7 @@ const AppMiembrosActivos_proyect = new ProyectElement({
   name: "App de gestión",
   description: "asdasdsa",
   features: ["Gestión de cuotas de miembros", "Inventario de grupo", "Datos de miembros"],
+  skillsList: ["Figma", "HTML", "React", "Bootstrap", "Java", "MySQL", "Spring"],
   videoSrc: ""
 })
 
@@ -99,8 +100,8 @@ proyects.forEach(proyect => {
 
 const Portfolio_proyect = new ProyectElement({
   name: "Acerca de esta página",
-  description: `Tomé como desafío el hacer mi portafolio usando solamente las 3 herramientas básicas para el desarrollo web.
-    ¡Todo lo que ves aquí está hecho con HTML, CSS y JavaScript puro!`,
+  description: `Tomé como desafío el hacer mi portafolio usando solamente los 3 pilares para el desarrollo web.
+    ¡Todo lo que ves en esta página está hecho con HTML, CSS y JavaScript puro!`,
   skillsList: ["HTML", "CSS", "JavaScript"],
   isPortfolioCard: true
 })
