@@ -5,10 +5,12 @@
 :root {
     --main-color: rgb(73, 143, 20) ;
     --secondary-color: rgb(215, 136, 0);
-    --third-color: rgb(61, 168, 170);
+    --third-color: rgb(0, 62, 63);
     /* --bg-color: rgb(35, 112, 95); */
     --bg-color: rgb(221, 238, 234);
     --bg-contrast-color: /* rgb(92, 87, 62); */rgb(13,29,0);
+    --page-bg-color: rgb(201, 205, 226);
+    --page-bg-color2: rgb(19, 56, 112);
 }
 
 * {
@@ -25,7 +27,7 @@
 }
 
 body {
-    background: linear-gradient(60deg, var(--bg-color) 20%, var(--third-color) 80%);;
+    background: linear-gradient(60deg, var(--page-bg-color) 20%, var(--page-bg-color2) 150%);;
     height: 100vh;
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }

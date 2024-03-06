@@ -16,16 +16,6 @@
   }
 }
 
-#skills_section .skillLogo{
-  justify-content: flex-start;
-  flex-direction: row;
-  gap: 8px;
-
-  &::before {
-    width: 40px;
-  }
-}
-
 .html::before {
   background-image: url("https://clipartcraft.com/images/html5-logo-vector-4.png");
 }

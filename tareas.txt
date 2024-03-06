@@ -21,6 +21,10 @@ Secciones
 
   Seccion de presentación
     ver que la transicion de la foto al logo se haga en mobile con animacion
+    los demás datos no estarán en un modal
+
+  Seccion de skills
+    al entrar con el mouse en una ul los items se agrandaran según la distancia con el mouse
 
   Sección de proyectos
     poner un toggle para cambiar la vista de las proyectCards, lista o grilla
