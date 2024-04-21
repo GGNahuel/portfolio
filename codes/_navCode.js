@@ -43,7 +43,8 @@ function definirStylesSegunVW () {
     $ring.style.top = "0.5rem"
 
     const ringWidth = $ring.offsetWidth
-    $main.style.marginLeft = `${ringWidth * 0.25}px`
+    $main.style.alignItems = window.innerWidth < 1401 ? 'flex-start' : 'center'
+    $main.style.marginLeft = window.innerWidth < 1401 ? `${ringWidth * 0.25}px` : "0"
     $main.style.width = `calc(100vw - ${ringWidth * 0.25}px - ${ancho$scrollbar})`
   }
   else {
