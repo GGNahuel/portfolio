@@ -28,6 +28,10 @@
   background-image: url("https://th.bing.com/th/id/R.f7bf4b61c5727e25fb4ea64a93564202?rik=Kmz8Apfi9Pk5hQ&pid=ImgRaw&r=0");
 }
 
+.typescript::before {
+  background-image: url("https://essenceofchaos.github.io/images/typescript.png");
+}
+
 .react::before {
   background-image: url("https://cdn.icon-icons.com/icons2/2699/PNG/512/reactjs_logo_icon_168875.png");
 }
