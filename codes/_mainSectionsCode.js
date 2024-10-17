@@ -21,7 +21,7 @@ class ProyectElement {
       return `<li class="skillLogo ${skill.toLowerCase()}">${skill}</li>`
     }).join("")
 
-    const notPortfolioProyectElements = {
+    const mainProyectsElements = {
       expand_button: `<span class="material-symbols-outlined seeMore">expand_content</span>`,
       features_section: `<div><p>Características:</p><ul class="pC_features">${featuresList}</ul></div>`,
       link_element: `<a class="pC_link" href="${this.links}">(ENLACE)</a>`,
@@ -34,15 +34,15 @@ class ProyectElement {
     element.id = this.isPortfolioCard ? 'portfolio_proyectCard' : ''
 
     element.innerHTML = `
-      ${!this.isPortfolioCard ? notPortfolioProyectElements.expand_button : ""}
+      ${!this.isPortfolioCard ? mainProyectsElements.expand_button : ""}
       <div class="proyectCard_info">
         <header class="pC_header">
           <h3>${this.name}</h3>
         </header>
         <section class="pC_body">
           <p>${this.description}</p>
-          ${!this.isPortfolioCard ? notPortfolioProyectElements.features_section : ""}
-          ${!this.isPortfolioCard ? notPortfolioProyectElements.link_element : ""}
+          ${!this.isPortfolioCard ? mainProyectsElements.features_section : ""}
+          ${!this.isPortfolioCard ? mainProyectsElements.link_element : ""}
         </section>
         <footer class="pC_footer">
           <ul class="pC_skillsList">
@@ -50,11 +50,23 @@ class ProyectElement {
           </ul>
         </footer>  
       </div>
-      ${!this.isPortfolioCard ? notPortfolioProyectElements.demo_zone : ""}
+      ${!this.isPortfolioCard ? mainProyectsElements.demo_zone : ""}
     `
     return element
   }
 }
+
+const HealthCenterTurnAdministrator = new ProyectElement({
+  name: "Administrador de turnos para centro de salud",
+  description: "Aplicación de interfaz sencilla pensada para poder gestionar datos en un centro de salud." + 
+    "\nCuenta con una base de datos en donde los turnos se relacionan con los datos de pacientes, profesionales de salud, " +
+    "áreas de servicio e incluso consultorios. Todas estas entidades se pueden crear, modificar o eliminar a traves de una interfaz simple y accesible. " +
+    "Las acciones que se pueden realizar dependen del usuario que haya iniciado sesión y los permisos que éste tenga.",
+  features: ["Base de datos relacional", "Desarrollo back-end y front-end", "Seguridad web", "Sesiones de usuario y roles", "Búsquedas dinámicas"],
+  links: "https://github.com/GGNahuel/08-AdministracionTurnosClinica",
+  skillsList: ["Java", "TypeScript", "Spring boot", "Spring boot Security", "React", "CSS", "HTML"],
+  videoSrc: ""
+})
 
 const Eccomerce_proyect = new ProyectElement({
   name: "Eccomerce",
@@ -92,7 +104,7 @@ const AppMiembrosActivos_proyect = new ProyectElement({
   videoSrc: ""
 })
 
-const proyects = [Eccomerce_proyect, PokeApi_proyect, Colaborative_proyect, AppMiembrosActivos_proyect]
+const proyects = [HealthCenterTurnAdministrator, Eccomerce_proyect, PokeApi_proyect, Colaborative_proyect, AppMiembrosActivos_proyect]
 const $proyectsContainer = document.querySelector(".proyectCards_container")
 proyects.forEach(proyect => {
   $proyectsContainer.appendChild(proyect.getElement())
@@ -101,7 +113,7 @@ proyects.forEach(proyect => {
 const Portfolio_proyect = new ProyectElement({
   name: "Acerca de esta página",
   description: `Tomé como desafío el hacer mi portafolio usando solamente los 3 pilares para el desarrollo web.
-    ¡Todo lo que ves en esta página está hecho con HTML, CSS y JavaScript puro!`,
+    ¡Todo lo que ves en esta página está hecho solamente con HTML, CSS y JavaScript!`,
   skillsList: ["HTML", "CSS", "JavaScript"],
   isPortfolioCard: true
 })
