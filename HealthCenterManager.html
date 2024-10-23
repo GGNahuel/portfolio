@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Administrador de centro de salud - Nahuel Gómez Gahn Portafolio</title>
+  <link rel="stylesheet" href="styles/rootStyles.css">
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+</head>
+
+<body>
+  <main class="notIndex">
+    <header>
+      <h1>Administrador de turnos para centro de salud</h1>
+      <ul>
+        <li><a class="skillLogo github" href="https://github.com/GGNahuel/08-AdministracionTurnosClinica"></a></li>
+      </ul>
+      enlaces
+    </header>
+    <section>
+      <p>La página está pensada como una aplicación que permite crear y gestionar turnos. Además de registrar, pacientes, 
+        profesionales de salud y areas de servicio. Herramientas necesarias para cualquier centro de salud, dispuestas de una forma práctica y sencilla.</p>
+      <p>Permite acceder a los datos de forma sencilla a traves de búsquedas personalizadas y visualizarlos en tablas sencillas. Datos que se registran
+        a traves de formularios, o herramientas prácticas como un calendario en donde se muestran los turnos ya ocupados según el día y horario</p>
+      <p>La página cuenta con varias opciones de seguridad. Una de ellas, de las más útiles en el uso diario que pueda tener, es la protección de datos a 
+        traves de la sesión del usuario. Es decir, según la cuenta que inicia sesión son los datos que se pueden agregar, modificar, o eliminar.</p>
+      <!-- objetivos y función de la página/app (para qué sirve) -->
+    </section>
+    <section>
+      casos de uso/ formas de uso
+      <ul>
+        <li>Hay 3 roles para los usuarios que se registren: Administrador, General y Profesional.</li>
+        <li>El Administrador puede crear, modificar o dar de baja cualquier dato que este presente en la base de datos de la aplicación.</li>
+        <li>El rol "General" es el que usaría quien este a cargo de registrar los turnos y pacientes, contando también con la posibilidad de modificarlos</li>
+        <li>Los usuarios con rol "Profesional" están destinados a los profesionales de salud, permitiendoles visualizar y manejar sus turnos de forma más 
+          directa. Así como sus propios datos</li>
+        <li>Cualquier usuario, o incluso sin iniciar sesión, podrá visualizar los datos que quiera. Pero modificarlos, o crear nuevos, depende del rol.</li>
+        <li>Para que la navegación sea más práctica, solo aparecerán los enlaces en el menú a los que el usuario en sesión puede acceder.</li>
+        <li>La búsqueda de cada tipo de dato (datos de paciente, de profesional, de area de servicio, de los consultorios disponibles, y turnos) cuenta
+          con filtros y búsquedas personalizadas para cada uno.</li>
+        <li>La sección principal muestra los turnos del día para cada área, o para las áreas en que un profesional esté registrado si el usuario en sesión
+          tiene el rol "Profesional".</li>
+        <li>El registro o modificación de cada dato cuenta con verificaciones que comprueban que no se sobrepongan datos. Mostrando mensajes de error si
+          algún dato en específico causaría este problema.</li>
+        <li>En caso de que haya errores se mostrarán en pantalla.</li>
+        <li>Tanto la creación como la modificación de turnos muestra un calendario en el que puedes seleccionar el horario y la fecha de forma más sencilla. 
+          A su vez que muestra los turnos ya ocupados para el área seleccionada y profesional.</li>
+        <li>Si quien crea un turno es un profesional, solo podrá hacerlo para las áreas en las que él se encuentre registrado. Y en cuánto a la modificación, 
+          solo aquellos turnos que ya tenga asignados, y también solo para las áreas mencionadas.</li>
+        <li>Un profesional de salud puede estar registrado en más de un área de servicio si se requiere.</li>
+        <li>Los consultorios solo pueden tener un profesional asignado.</li>
+        <li>Entre los datos de pacientes está el de obra social. Este dato se incluye automáticamente cuando se asigna uno en un turno.</li>
+        <li>Los turnos se pueden clasificar según su estado de abono, siendo: Pagado, Debe documentación, Debe, o A Reiterar.</li>
+      </ul>
+    </section>
+    <section>
+      <h2>Características técnicas</h2>
+      <ul>
+        <li>Base de datos relacional</li>
+        <li>Api con protección CORS específica</li>
+        <li>Sesión de usuario, registro y roles con diferentes permisos. Tanto para la api como para la página</li>
+        <li>Generación y utilización de token CSRF para proteger ante posibles ataques de seguridad a la base de datos</li>
+        <li>Verificaciones tanto en el backend como en el frontend</li>
+        <li>Aplicación de principios SOLID</li>
+        <li>Componentes reutilizables</li>
+        <li>Visualizaciones en tablas, y registros en formularios</li>
+        <li>Diseño responsivo</li>
+        <li>Desarrollo de pruebas unitarias</li>
+      </ul>
+      <article class="card">
+        <h3>Tecnologías aplicadas</h3>
+        <ul>
+          <li class="skillLogo html">HTML</li>
+          <li class="skillLogo css">CSS</li>
+          <li class="skillLogo typescript">TypeScript</li>
+          <li class="skillLogo react">React.js</li>
+          <li class="skillLogo java">Java</li>
+          <li class="skillLogo mysql">MySQL</li>
+          <li class="skillLogo spring">Spring Boot y Spring security</li>
+        </ul>
+      </article>
+    </section>
+    <section>
+      <h2>Comentarios del proceso</h2>
+      <p></p>
+    </section>
+  </main>
+</body>
+
+</html>
