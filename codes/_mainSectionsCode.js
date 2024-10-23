@@ -1,12 +1,13 @@
 class ProyectElement {
-  constructor({ name, description, features = [], links = "", skillsList = [], videoSrc, isPortfolioCard = false }) {
+  constructor({ name, description, features = [], links = "", skillsList = [], videoSrc, isPortfolioCard = false, expand_link }) {
     this.name = name
     this.description = description
     this.features = features
     this.links = links
     this.skillsList = skillsList
     this.videoSrc = videoSrc
-    this.isPortfolioCard = isPortfolioCard
+    this.isPortfolioCard = isPortfolioCard,
+    this.expand_link = expand_link
   }
 
   #createModal() {
@@ -22,7 +23,7 @@ class ProyectElement {
     }).join("")
 
     const mainProyectsElements = {
-      expand_button: `<span class="material-symbols-outlined seeMore">expand_content</span>`,
+      expand_button: `<a class="material-symbols-outlined seeMore" href="HealthCenterManager.html" >expand_content</a>`,
       features_section: `<div><p>Características:</p><ul class="pC_features">${featuresList}</ul></div>`,
       link_element: `<a class="pC_link" href="${this.links}">(ENLACE)</a>`,
       demo_zone: `<div class="proyectCard_demo"><video src="demos/demo1EJ.mp4" autoplay muted loop title="Demo del sitio en video"></div>`
