@@ -11,16 +11,6 @@ main {
     box-sizing: border-box;
     transition: opacity 200ms ease-out;
 
-    &.notIndex {
-        display: flex;
-        align-items: center;
-        opacity: 1;
-        height: 100%;
-        width: 100%;
-        overflow-y: scroll;
-        scroll-behavior: smooth;
-    }
-
     & > section {
         min-height: 80vh;
         width: 100%;

@@ -1,0 +1,73 @@
+#proyectRoot {
+  height: 100%;
+  width: 100%;
+  overflow-y: scroll;
+}
+
+.proyectsNavbar {
+  display: flex;
+  padding: 1.2rem;
+  gap: .2rem;
+  align-items: center;
+  background-color: var(--bg-contrast-color);
+  color: var(--bg-color);
+
+  a {
+    color: var(--bg-color);
+    margin-left: 8px;
+  }
+}
+
+main.notIndex {
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+  padding: 1rem;
+  opacity: 1;
+  scroll-behavior: smooth;
+
+  p, li {
+    font-size: 1.2rem;
+    margin-bottom: .8rem;
+  }
+
+  section {
+    min-height: auto;
+    max-width: 1148px;
+    margin-bottom: 0;
+  }
+
+  > header {
+    padding: 1rem 2rem;
+    background-color: var(--bg-contrast-color);
+    border-radius: 8px;
+    
+    > ul {
+      display: flex;
+    }
+
+    .card {
+      padding: 0;
+      width: auto;
+      
+      a {
+        padding: .3rem;
+      }
+    }
+  }
+
+  .proyectPresentation {
+    align-items: flex-start;
+    flex-wrap: wrap;
+
+    div:nth-child(1) {
+      max-width: 640px;
+    }
+
+    div:nth-child(2) {
+      width: 100%;
+      height: 20px;
+      background-color: red;
+    }
+  }
+}

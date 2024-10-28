@@ -1,6 +1,7 @@
 @import "_navStyles.css";
 @import "_skills.css";
 @import "_mainStyles.css";
+@import "_proyectPageStyles.css";
 
 :root {
     --main-color: rgb(73, 143, 20) ;
