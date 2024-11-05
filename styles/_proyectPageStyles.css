@@ -116,8 +116,16 @@ main.notIndex {
     column-gap: 1.5rem;
 
     li {
+      display: flex;
+      align-items: center;
       font-size: 1.3rem;
-      padding-left: 1.2rem;
+      gap: 8px;
+
+      span {
+        font-weight: 800;
+        font-size: 2rem;
+        color: var(--main-color);
+      }
     }
   }
 }
