@@ -28,16 +28,20 @@
         <li class="card"><a class="skillLogo github" href="https://github.com/GGNahuel/08-AdministracionTurnosClinica"></a></li>
       </ul>
     </header>
-    <section class="proyectPresentation">
+    <section id="proyectPresentation">
       <div>
-        <p>El proyecto está pensado como una aplicación que permite crear y gestionar turnos. Además de registrar, pacientes, 
-          profesionales de salud y areas de servicio. Herramientas necesarias para cualquier centro de salud, dispuestas de una forma práctica y sencilla.</p>
-        <p>Permite acceder a la información de forma sencilla a traves de búsquedas personalizadas y visualizar los resultados en tablas. La información se registra
-          a traves de formularios, o herramientas prácticas como un calendario en donde se muestran los turnos ya ocupados según el día y horario.</p>
-        <p>La página cuenta con varias opciones de seguridad. Una de ellas, de las más útiles en el uso diario que pueda tener, es la protección de datos a 
-          traves de la sesión del usuario. Es decir, según la cuenta que inicia sesión son los datos que se pueden agregar, modificar, o eliminar.</p>
+        <div>
+          <p>El proyecto está pensado como una aplicación que <strong>permite crear y gestionar turnos. Además de manejar datos de, pacientes, 
+            profesionales de salud y areas de servicio.</strong> Herramientas necesarias para cualquier centro de salud, dispuestas de una forma práctica y sencilla.</p>
+          <p>Permite acceder a la información de forma sencilla a traves de <strong>búsquedas personalizadas y visualizaciones en tablas.</strong> La información se registra
+            a traves de <strong>formularios claros</strong>, o herramientas prácticas como un calendario en donde se muestran los turnos ya ocupados según el día y horario.</p>
+          <p>La página cuenta con varias opciones de seguridad. Una de ellas, de las más útiles en el uso diario que pueda tener, es la protección de datos a 
+            traves de la <strong>sesión del usuario</strong>. Es decir, según la cuenta que inicia sesión son los datos que se pueden agregar, modificar, o eliminar.</p>
+        </div>
+          <img src="imgs/healthCenter/devices demo.png" alt="Demostración de la vista principal en distintos dispositivos">
+        <div>
+        </div>
       </div>
-      <div></div>
       <!-- objetivos y función de la página/app (para qué sirve) -->
     </section>
     <section>
@@ -45,18 +49,18 @@
       <ul>
         <li>Hay 3 roles para los usuarios que se registren: Administrador, General y Profesional.</li>
         <li>El Administrador puede crear, modificar o dar de baja cualquier dato que este presente en la base de datos de la aplicación.</li>
-        <li>El rol "General" es el que usaría quien este a cargo de registrar los turnos y pacientes, contando también con la posibilidad de modificarlos</li>
-        <li>Los usuarios con rol "Profesional" están destinados a los profesionales de salud, permitiendoles visualizar y manejar sus turnos de forma más 
-          directa. Así como sus propios datos</li>
+        <li>El <strong>rol "General" es el que usaría quien este a cargo de registrar los turnos y pacientes</strong>, contando también con la posibilidad de modificarlos</li>
+        <li>Los usuarios con <strong>rol "Profesional"</strong> están destinados a los profesionales de salud, <strong>permitiéndoles visualizar y manejar sus turnos de forma más 
+          directa.</strong> Así como sus propios datos.</li>
         <li>Cualquier usuario, o incluso sin iniciar sesión, podrá visualizar los datos que quiera. Pero modificarlos, o crear nuevos, depende del rol.</li>
         <li>Para que la navegación sea más práctica, solo aparecerán los enlaces en el menú a los que el usuario en sesión puede acceder.</li>
         <li>La búsqueda de cada tipo de dato (datos de paciente, de profesional, de area de servicio, de los consultorios disponibles, y turnos) cuenta
           con filtros y búsquedas personalizadas para cada uno.</li>
         <li>La sección principal muestra los turnos del día para cada área, o para las áreas en que un profesional esté registrado si el usuario en sesión
           tiene el rol "Profesional".</li>
-        <li>El registro o modificación de cada dato cuenta con verificaciones que comprueban que no se sobrepongan datos. Mostrando mensajes de error si
+        <li><strong>El registro o modificación de datos cuenta con verificaciones</strong> que comprueban que no se sobreponga con otros, entre otras <strong>validaciones</strong>. Mostrando mensajes de error si
           algún dato en específico causaría este problema.</li>
-        <li>En caso de que haya errores se mostrarán en pantalla.</li>
+        <li><strong>En caso de que haya errores se mostrarán en pantalla.</strong></li>
         <li>Tanto la creación como la modificación de turnos muestra un calendario en el que puedes seleccionar el horario y la fecha de forma más sencilla. 
           A su vez que muestra los turnos ya ocupados para el área seleccionada y profesional.</li>
         <li>Si quien crea un turno es un profesional, solo podrá hacerlo para las áreas en las que él se encuentre registrado. Y en cuánto a la modificación, 
@@ -65,7 +69,7 @@
         <li>Los consultorios solo pueden tener un profesional asignado.</li>
         <li>Entre los datos de pacientes está el de obra social. Este dato se incluye automáticamente cuando se asigna uno en un turno.</li>
         <li>Los turnos se pueden clasificar según su estado de abono, siendo: Pagado, Debe documentación, Debe, o A Reiterar.</li>
-        <li>Cuando se da de baja un area de servicio o profesional se puede elegir qué hacer con los turnos que esten asociados. Pudiendo darlos de baja también.</li>
+        <li>Cuando se da de baja un area de servicio o profesional se puede elegir qué hacer con los turnos que estén asociados. Pudiendo darlos de baja también.</li>
       </ul>
     </section>
     <section>
