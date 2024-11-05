@@ -13,7 +13,7 @@
 <body>
   <div id="proyectRoot">
   <nav class="proyectsNavbar">
-    <span class="material-symbols-outlined homeIcon">home</span>
+    <a href="/index.html"><span class="material-symbols-outlined homeIcon">home</span></a>
     <div>
       <a href="#proyectPresentation">Presentación del proyecto</a>
       <a href="#featuresUses">Características y casos de uso</a>
@@ -44,37 +44,47 @@
       </div>
       <!-- objetivos y función de la página/app (para qué sirve) -->
     </section>
-    <section>
-      casos de uso/ formas de uso
+    <section id="proyectUses">
+      <h2>Características generales</h2>
+      <div class="usesList">
+        <h3>Acerca de los usuarios...</h3>
+        <ul>
+          <li>Hay 3 roles para los usuarios que se registren: Administrador, General y Profesional.</li>
+          <li>El Administrador puede crear, modificar o dar de baja cualquier dato que este presente en la base de datos de la aplicación.</li>
+          <li>El <strong>rol "General" es el que usaría quien este a cargo de registrar los turnos y pacientes</strong>, contando también con la posibilidad de modificarlos</li>
+          <li>Los usuarios con <strong>rol "Profesional"</strong> están destinados a los profesionales de salud, <strong>permitiéndoles visualizar y manejar sus turnos de forma más 
+            directa.</strong> Así como sus propios datos.</li>
+          <li>Cualquier usuario, o incluso sin iniciar sesión, podrá visualizar los datos que quiera. Pero modificarlos, o crear nuevos, depende del rol.</li>
+          <li>Para que la navegación sea más práctica, solo aparecerán los enlaces en el menú a los que el usuario en sesión puede acceder.</li>  
+        </ul>
+      </div>
+      <div class="usesList">
+        <h3>Acerca del manejo de datos...</h3>
+        <ul>
+          <li>La búsqueda de cada tipo de dato (datos de paciente, de profesional, de area de servicio, de los consultorios disponibles, y turnos) cuenta
+            con filtros y búsquedas personalizadas para cada uno.</li>
+          <li><strong>El registro o modificación de datos cuenta con verificaciones</strong> que comprueban que no se sobreponga con otros, entre otras <strong>validaciones</strong>. Mostrando mensajes de error si
+            algún dato en específico causaría este problema.</li>
+          <li><strong>En caso de que haya errores se mostrarán en pantalla.</strong></li>
+          <li>Tanto la creación como la modificación de turnos muestra un calendario en el que puedes seleccionar el horario y la fecha de forma más sencilla. 
+            A su vez que muestra los turnos ya ocupados para el área seleccionada y profesional.</li>
+          <li>Si quien crea un turno es un profesional, solo podrá hacerlo para las áreas en las que él se encuentre registrado. Y en cuánto a la modificación, 
+            solo aquellos turnos que ya tenga asignados, y también solo para las áreas mencionadas.</li>
+          <li>Cuando se da de baja un area de servicio o profesional se puede elegir qué hacer con los turnos que estén asociados. Pudiendo darlos de baja también.</li>
+        </ul>
+      </div>
       <ul>
-        <li>Hay 3 roles para los usuarios que se registren: Administrador, General y Profesional.</li>
-        <li>El Administrador puede crear, modificar o dar de baja cualquier dato que este presente en la base de datos de la aplicación.</li>
-        <li>El <strong>rol "General" es el que usaría quien este a cargo de registrar los turnos y pacientes</strong>, contando también con la posibilidad de modificarlos</li>
-        <li>Los usuarios con <strong>rol "Profesional"</strong> están destinados a los profesionales de salud, <strong>permitiéndoles visualizar y manejar sus turnos de forma más 
-          directa.</strong> Así como sus propios datos.</li>
-        <li>Cualquier usuario, o incluso sin iniciar sesión, podrá visualizar los datos que quiera. Pero modificarlos, o crear nuevos, depende del rol.</li>
-        <li>Para que la navegación sea más práctica, solo aparecerán los enlaces en el menú a los que el usuario en sesión puede acceder.</li>
-        <li>La búsqueda de cada tipo de dato (datos de paciente, de profesional, de area de servicio, de los consultorios disponibles, y turnos) cuenta
-          con filtros y búsquedas personalizadas para cada uno.</li>
         <li>La sección principal muestra los turnos del día para cada área, o para las áreas en que un profesional esté registrado si el usuario en sesión
           tiene el rol "Profesional".</li>
-        <li><strong>El registro o modificación de datos cuenta con verificaciones</strong> que comprueban que no se sobreponga con otros, entre otras <strong>validaciones</strong>. Mostrando mensajes de error si
-          algún dato en específico causaría este problema.</li>
-        <li><strong>En caso de que haya errores se mostrarán en pantalla.</strong></li>
-        <li>Tanto la creación como la modificación de turnos muestra un calendario en el que puedes seleccionar el horario y la fecha de forma más sencilla. 
-          A su vez que muestra los turnos ya ocupados para el área seleccionada y profesional.</li>
-        <li>Si quien crea un turno es un profesional, solo podrá hacerlo para las áreas en las que él se encuentre registrado. Y en cuánto a la modificación, 
-          solo aquellos turnos que ya tenga asignados, y también solo para las áreas mencionadas.</li>
         <li>Un profesional de salud puede estar registrado en más de un área de servicio si se requiere.</li>
         <li>Los consultorios solo pueden tener un profesional asignado.</li>
         <li>Entre los datos de pacientes está el de obra social. Este dato se incluye automáticamente cuando se asigna uno en un turno.</li>
         <li>Los turnos se pueden clasificar según su estado de abono, siendo: Pagado, Debe documentación, Debe, o A Reiterar.</li>
-        <li>Cuando se da de baja un area de servicio o profesional se puede elegir qué hacer con los turnos que estén asociados. Pudiendo darlos de baja también.</li>
       </ul>
     </section>
-    <section>
+    <section id="proyectTechFeatures">
       <h2>Características técnicas</h2>
-      <ul>
+      <ul class="card">
         <li>Base de datos relacional SQL</li>
         <li>Api con protección CORS específica</li>
         <li>Sesión de usuario, registro y roles con diferentes permisos. Tanto para la api como para la página</li>
@@ -86,7 +96,7 @@
         <li>Diseño responsivo</li>
         <li>Desarrollo de pruebas unitarias</li>
       </ul>
-      <article class="card">
+      <article class="card skillCard">
         <h3>Tecnologías aplicadas</h3>
         <ul>
           <li class="skillLogo html">HTML</li>
@@ -95,7 +105,8 @@
           <li class="skillLogo react">React.js</li>
           <li class="skillLogo java">Java</li>
           <li class="skillLogo mysql">MySQL</li>
-          <li class="skillLogo spring">Spring Boot y Spring security</li>
+          <li class="skillLogo spring">Spring Boot</li>
+          <li class="skillLogo spring">Spring Security</li>
         </ul>
       </article>
     </section>

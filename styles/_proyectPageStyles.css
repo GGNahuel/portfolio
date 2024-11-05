@@ -33,13 +33,15 @@ main.notIndex {
   }
 
   section {
-    min-height: auto;
+    min-height: initial;
     max-width: 1148px;
     margin-bottom: 0;
+    gap: 1rem;
   }
 
   >header {
     padding: 1rem 2rem;
+    box-sizing: border-box;
     background-color: var(--bg-contrast-color);
     border-radius: 8px;
 
@@ -56,37 +58,66 @@ main.notIndex {
       }
     }
   }
+}
 
-  #proyectPresentation {
-    background-color: rgba(105, 105, 105, 0.3);
-    padding: 64px .5rem;
-    max-width: initial;
+#proyectPresentation {
+  background-color: rgba(105, 105, 105, 0.3);
+  padding: 64px .5rem;
+  max-width: initial;
 
-    >div {
-      display: flex;
-      flex-flow: row wrap;
-      justify-content: space-between;
-      align-items: center;
+  >div {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 1148px;
+
+    div:nth-child(1) {
+      max-width: 640px;
+    }
+
+    video, img {
+      width: 450px;
+    }
+
+    img {
+      filter: drop-shadow(5px 5px 5px);
+    }
+
+    div:nth-child(2) {
       width: 100%;
-      max-width: 1148px;
+      height: 20px;
+      background-color: red;
+    }
+  }
+}
 
-      div:nth-child(1) {
-        max-width: 640px;
-      }
+#proyectUses {
+  .usesList {
+    display: flex;
+    align-items: center;
+  }
 
-      video, img {
-        width: 450px;
-      }
+  .usesList:nth-child(odd) {
+    flex-direction: row-reverse;
+  }
 
-      img {
-        filter: drop-shadow(5px 5px 5px);
-      }
+  > ul, .usesList > ul {
+    padding-left: 2rem;
+    list-style: disc;
+  }
+}
 
-      div:nth-child(2) {
-        width: 100%;
-        height: 20px;
-        background-color: red;
-      }
+#proyectTechFeatures {
+  > ul {
+    display: grid;
+    grid-template-columns: auto auto;
+    column-gap: 1.5rem;
+
+    li {
+      font-size: 1.3rem;
+      padding-left: 1.2rem;
     }
   }
 }
