@@ -1,11 +1,11 @@
-#proyectRoot {
+#projectRoot {
   height: 100%;
   width: 100%;
   overflow-y: scroll;
   scroll-behavior: smooth;
 }
 
-.proyectsNavbar {
+.projectsNavbar {
   display: flex;
   padding: 1.2rem;
   gap: .2rem;
@@ -60,7 +60,7 @@ main.notIndex {
   }
 }
 
-#proyectPresentation {
+#projectPresentation {
   background-color: rgba(105, 105, 105, 0.3);
   padding: 64px .5rem;
   max-width: initial;
@@ -93,9 +93,9 @@ main.notIndex {
   }
 }
 
-#proyectUses {
+#projectUses {
   gap: 2rem;
-  
+
   .usesList {
     display: grid;
     align-items: center;
@@ -108,7 +108,7 @@ main.notIndex {
   }
 }
 
-#proyectTechFeatures {
+#projectTechFeatures {
   > ul {
     display: grid;
     grid-template-columns: auto auto;
