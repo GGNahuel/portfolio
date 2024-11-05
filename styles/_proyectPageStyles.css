@@ -94,13 +94,12 @@ main.notIndex {
 }
 
 #proyectUses {
+  gap: 2rem;
+  
   .usesList {
-    display: flex;
+    display: grid;
     align-items: center;
-  }
-
-  .usesList:nth-child(odd) {
-    flex-direction: row-reverse;
+    grid-template-columns: 300px auto;
   }
 
   > ul, .usesList > ul {

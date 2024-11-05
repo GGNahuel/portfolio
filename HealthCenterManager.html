@@ -16,9 +16,9 @@
     <a href="/index.html"><span class="material-symbols-outlined homeIcon">home</span></a>
     <div>
       <a href="#proyectPresentation">Presentación del proyecto</a>
-      <a href="#featuresUses">Características y casos de uso</a>
-      <a href="#techSpecifications">Características técnicas</a>
-      <a href="#processComments">Comentarios del proceso</a>
+      <a href="#proyectUses">Características y casos de uso</a>
+      <a href="#proyectTechFeatures">Características técnicas</a>
+      <a href="#proyectComments">Comentarios del proceso</a>
     </div>
   </nav>
   <main class="notIndex">
@@ -61,8 +61,7 @@
       <div class="usesList">
         <h3>Acerca del manejo de datos...</h3>
         <ul>
-          <li>La búsqueda de cada tipo de dato (datos de paciente, de profesional, de area de servicio, de los consultorios disponibles, y turnos) cuenta
-            con filtros y búsquedas personalizadas para cada uno.</li>
+          <li>La búsqueda de cada tipo de dato cuenta con filtros y búsquedas personalizadas para cada uno.</li>
           <li><strong>El registro o modificación de datos cuenta con verificaciones</strong> que comprueban que no se sobreponga con otros, entre otras <strong>validaciones</strong>. Mostrando mensajes de error si
             algún dato en específico causaría este problema.</li>
           <li><strong>En caso de que haya errores se mostrarán en pantalla.</strong></li>
@@ -73,14 +72,19 @@
           <li>Cuando se da de baja un area de servicio o profesional se puede elegir qué hacer con los turnos que estén asociados. Pudiendo darlos de baja también.</li>
         </ul>
       </div>
-      <ul>
-        <li>La sección principal muestra los turnos del día para cada área, o para las áreas en que un profesional esté registrado si el usuario en sesión
-          tiene el rol "Profesional".</li>
-        <li>Un profesional de salud puede estar registrado en más de un área de servicio si se requiere.</li>
-        <li>Los consultorios solo pueden tener un profesional asignado.</li>
-        <li>Entre los datos de pacientes está el de obra social. Este dato se incluye automáticamente cuando se asigna uno en un turno.</li>
-        <li>Los turnos se pueden clasificar según su estado de abono, siendo: Pagado, Debe documentación, Debe, o A Reiterar.</li>
-      </ul>
+      <div class="usesList">
+        <h3>Acerca de los datos...</h3>
+        <ul>
+          <li>Los tipo de datos principales de la página son: pacientes, profesionales, areas de servicio, consultorios, y turnos. <strong>Estos se relacionan 
+            según cómo está pensada la base de datos.</strong></li>
+          <li>La sección principal muestra los turnos del día para cada área, o para las áreas en que un profesional esté registrado si el usuario en sesión
+            tiene el rol "Profesional".</li>
+          <li>Un profesional de salud puede estar registrado en más de un área de servicio si se requiere.</li>
+          <li>Los consultorios solo pueden tener un profesional asignado.</li>
+          <li>Entre los datos de pacientes está el de obra social. Este dato se incluye automáticamente cuando se asigna uno en un turno.</li>
+          <li>Los turnos se pueden clasificar según su estado de abono, siendo: Pagado, Debe documentación, Debe, o A Reiterar.</li>
+        </ul>
+      </div>
     </section>
     <section id="proyectTechFeatures">
       <h2>Características técnicas</h2>
