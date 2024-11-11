@@ -128,3 +128,80 @@ main.notIndex {
     }
   }
 }
+
+#carrousel {
+  max-width: initial;
+  width: 100%;
+  background-color: var(--third-color);
+  padding: 2rem 0;
+}
+
+.carrouselContainer {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  width: 100%;
+  max-width: 1148px;
+}
+
+.imageCarrouselContainer {
+  flex: 0 0 100%;
+  display: flex;
+  position: relative;
+  scroll-snap-align: start;
+
+  img {
+    width: 100%;
+    max-width: 1148px;
+  }
+
+  span {
+    opacity: 0;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 2.5rem;
+    background-color: rgba(0, 0, 0, 0.6);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    color: white;
+
+    transition: opacity 300ms;
+  }
+
+  &:hover {
+    span {
+      opacity: 1;
+    }
+  }
+}
+
+.carrouselButtons {
+  display: flex;
+  gap: 1rem;
+
+  > span {
+    aspect-ratio: 1;
+    padding: 1rem;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 10;
+    cursor: pointer;
+    color: white;
+    font-size: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+
+    &.left {
+      left: 0;
+    }
+
+    &.right {
+      right: 0;
+    }
+  }
+}
