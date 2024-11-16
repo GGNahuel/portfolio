@@ -155,7 +155,7 @@
   padding: 128px 0;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  justify-items: center;
+  align-items: center;
   border: 10px solid var(--bg-color);
   outline: 7px solid var(--bg-contrast-color);
   box-sizing: border-box;
@@ -163,6 +163,15 @@
   article {
     max-width: 400px;
     padding: 1rem;
+
+    p + p {
+      margin-top: 8px;
+    }
+  }
+
+  img {
+    width: 100%;
+    filter: drop-shadow(3px 5px 2px);
   }
 
   h3 {
