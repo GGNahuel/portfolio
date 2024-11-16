@@ -136,10 +136,10 @@ $root.addEventListener("scroll", () => {
   // si al total del largo de la pantala le corresponen 135°, cuántos le corresponden al pixelsForScroll
   // 135°(angulo de distribución) ___ $root.offsetHeight
   // newAngle_Relative ___ pixelsForScroll
-
+  
   const newAngle_Relative = pixelsForScroll * 135 / $root.scrollHeight * -1
-
-  let actualSectionInScreenIndex = -1
+  
+  let actualSectionInScreenIndex = 0
   let temp_actualAngles = anglesBackup
 
   for (let index = 0; index < $mainSections.length; index++) {
@@ -159,17 +159,18 @@ $root.addEventListener("scroll", () => {
       anglesBackup.push(newAngle_Final)
     }
 
-    const eqSectionProps = {
-      posYstart: $section.offsetTop,
-      posYfinish: $section.offsetTop + $section.offsetHeight,
-      posYhalf: $section.offsetTop + $section.offsetHeight / 2
-    }
+    const eqSectionProps = (section = $section) => ({
+      posYstart: section.offsetTop,
+      posYfinish: section.offsetTop + section.offsetHeight,
+      posYprevious: section.offsetTop - document.documentElement.clientHeight / 2
+    })
+
     const isSectionInScreen = lastScrollTopPosition >= eqSectionProps.posYstart && lastScrollTopPosition < eqSectionProps.posYfinish
-    if (isSectionInScreen) {
-      actualSectionInScreenIndex = index
-    }
-    if (lastScrollTopPosition >= eqSectionProps.posYhalf && index < $navItems_Container.length - 1) {
+    if (index < $navItems_Container.length - 1 && lastScrollTopPosition >= eqSectionProps($mainSections[index + 1]).posYprevious) {
       actualSectionInScreenIndex = index + 1
+    } 
+    else if (isSectionInScreen) {
+      actualSectionInScreenIndex = index
     }
     if (actualSectionInScreenIndex == index) {
       $navItem.classList.toggle("current", true)
