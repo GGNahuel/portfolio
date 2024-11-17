@@ -37,6 +37,15 @@ class ProjectElement {
     element.classList.add("card")
     element.id = this.isPortfolioCard ? 'portfolio_projectCard' : ''
 
+    const newDescription = () => {
+      if (this.description instanceof Array) {
+        let paragraphElements = ""
+        this.description.forEach(paragraph => paragraphElements += `<p>${paragraph}</p>`)
+
+        return paragraphElements
+      } else return this.description
+    }
+
     element.innerHTML = `
       ${!this.isPortfolioCard ? mainProjectsElements.expand_button : ""}
       <div class="projectCard_info">
@@ -44,7 +53,7 @@ class ProjectElement {
           <h3>${this.name}</h3>
         </header>
         <section class="pC_body">
-          <p>${this.description}</p>
+          ${newDescription()}
           ${!this.isPortfolioCard ? mainProjectsElements.features_section : ""}
           ${!this.isPortfolioCard ? mainProjectsElements.link_element : ""}
         </section>
@@ -62,15 +71,15 @@ class ProjectElement {
 
 const HealthCenterTurnAdministrator = new ProjectElement({
   name: "Administrador de turnos para centro de salud",
-  description: "Aplicación de interfaz sencilla pensada para poder gestionar datos en un centro de salud." + 
-    "\nCuenta con una base de datos en donde los turnos se relacionan con los datos de pacientes, profesionales de salud, " +
-    "áreas de servicio e incluso consultorios. Todas estas entidades se pueden crear, modificar o eliminar a traves de una interfaz simple y accesible. " +
-    "Las acciones que se pueden realizar dependen del usuario que haya iniciado sesión y los permisos que éste tenga.",
-  features: ["Base de datos relacional", "Desarrollo back-end y front-end", "Seguridad web", "Sesiones de usuario y roles", "Búsquedas dinámicas"],
+  description: ["Aplicación de interfaz sencilla pensada para poder gestionar datos en un centro de salud.", 
+    "Cuenta con una base de datos relacional en donde  se registran los turnos, pacientes, profesionales de salud, " +
+    "áreas de servicio, e incluso consultorios. Todas estas entidades se pueden crear, modificar o eliminar a traves de una interfaz simple y accesible. ",
+    "Las acciones que se pueden realizar dependen del usuario que haya iniciado sesión y los permisos que éste tenga."],
+  features: ["Base de datos relacional", "Arquitectura cliente-servidor", "Desarrollo de API", "Seguridad web", "Sesiones de usuario y roles", "Búsquedas dinámicas"],
   links: "https://github.com/GGNahuel/08-AdministracionTurnosClinica",
-  skillsList: ["Java", "TypeScript", "Spring boot", "Spring boot Security", "React", "CSS", "HTML"],
+  skillsList: ["Java", "TypeScript", "Spring boot", "Spring Security", "React", "CSS", "HTML", "React router"],
   videoSrc: "demos/HealthCenter/demoGeneral.mp4",
-  videoTitle: "Demostración de la vista principal"
+  videoTitle: "Demostración general del proyecto"
 })
 
 const projects = [HealthCenterTurnAdministrator]
