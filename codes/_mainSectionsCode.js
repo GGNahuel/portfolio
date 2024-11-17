@@ -1,5 +1,5 @@
-class ProyectElement {
-  constructor({ name, description, features = [], links = "", skillsList = [], videoSrc, isPortfolioCard = false, expand_link }) {
+class ProjectElement {
+  constructor({ name, description, features = [], links = "", skillsList = [], videoSrc, videoTitle = "", isPortfolioCard = false, expand_link }) {
     this.name = name
     this.description = description
     this.features = features
@@ -7,7 +7,8 @@ class ProyectElement {
     this.skillsList = skillsList
     this.videoSrc = videoSrc
     this.isPortfolioCard = isPortfolioCard,
-    this.expand_link = expand_link
+    this.expand_link = expand_link,
+    this.videoTitle = videoTitle
   }
 
   #createModal() {
@@ -22,28 +23,30 @@ class ProyectElement {
       return `<li class="skillLogo ${skill.toLowerCase()}">${skill}</li>`
     }).join("")
 
-    const mainProyectsElements = {
-      expand_button: `<a class="material-symbols-outlined seeMore" href="HealthCenterManager.html" >expand_content</a>`,
+    const mainProjectsElements = {
+      expand_button: `<a class="seeMore" href="HealthCenterManager.html" target="_blank"><svg viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg" mirror-in-rtl="true"` +
+      `fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>` + 
+      `<g id="SVGRepo_iconCarrier"><path fill="#000000" d="M12.1.6a.944.944 0 0 0 .2 1.04l1.352 1.353L10.28 6.37a.956.956 0 0 0 1.35 1.35l3.382-3.38 1.352 1.352a.944.944 0 0 0 1.04.2.958.958 0 0 0 .596-.875V.96a.964.964 0 0 0-.96-.96h-4.057a.958.958 0 0 0-.883.6z"></path> <path fill="#000000" d="M14 11v5a2.006 2.006 0 0 1-2 2H2a2.006 2.006 0 0 1-2-2V6a2.006 2.006 0 0 1 2-2h5a1 1 0 0 1 0 2H2v10h10v-5a1 1 0 0 1 2 0z"></path> </g></svg></a>`,
       features_section: `<div><p>Características:</p><ul class="pC_features">${featuresList}</ul></div>`,
       link_element: `<a class="pC_link" href="${this.links}">(ENLACE)</a>`,
-      demo_zone: `<div class="proyectCard_demo"><video src="demos/demo1EJ.mp4" autoplay muted loop title="Demo del sitio en video"></div>`
+      demo_zone: this.videoSrc && `<div class="projectCard_demo"><video src=${this.videoSrc} autoplay muted loop title="${this.videoTitle}"></div>`
     }
 
     const element = document.createElement("article")
-    element.classList.add("proyectCard")
+    element.classList.add("projectCard")
     element.classList.add("card")
-    element.id = this.isPortfolioCard ? 'portfolio_proyectCard' : ''
+    element.id = this.isPortfolioCard ? 'portfolio_projectCard' : ''
 
     element.innerHTML = `
-      ${!this.isPortfolioCard ? mainProyectsElements.expand_button : ""}
-      <div class="proyectCard_info">
+      ${!this.isPortfolioCard ? mainProjectsElements.expand_button : ""}
+      <div class="projectCard_info">
         <header class="pC_header">
           <h3>${this.name}</h3>
         </header>
         <section class="pC_body">
           <p>${this.description}</p>
-          ${!this.isPortfolioCard ? mainProyectsElements.features_section : ""}
-          ${!this.isPortfolioCard ? mainProyectsElements.link_element : ""}
+          ${!this.isPortfolioCard ? mainProjectsElements.features_section : ""}
+          ${!this.isPortfolioCard ? mainProjectsElements.link_element : ""}
         </section>
         <footer class="pC_footer">
           <ul class="pC_skillsList">
@@ -51,13 +54,13 @@ class ProyectElement {
           </ul>
         </footer>  
       </div>
-      ${!this.isPortfolioCard ? mainProyectsElements.demo_zone : ""}
+      ${!this.isPortfolioCard ? mainProjectsElements.demo_zone : ""}
     `
     return element
   }
 }
 
-const HealthCenterTurnAdministrator = new ProyectElement({
+const HealthCenterTurnAdministrator = new ProjectElement({
   name: "Administrador de turnos para centro de salud",
   description: "Aplicación de interfaz sencilla pensada para poder gestionar datos en un centro de salud." + 
     "\nCuenta con una base de datos en donde los turnos se relacionan con los datos de pacientes, profesionales de salud, " +
@@ -66,52 +69,17 @@ const HealthCenterTurnAdministrator = new ProyectElement({
   features: ["Base de datos relacional", "Desarrollo back-end y front-end", "Seguridad web", "Sesiones de usuario y roles", "Búsquedas dinámicas"],
   links: "https://github.com/GGNahuel/08-AdministracionTurnosClinica",
   skillsList: ["Java", "TypeScript", "Spring boot", "Spring boot Security", "React", "CSS", "HTML"],
-  videoSrc: ""
+  videoSrc: "demos/HealthCenter/demoGeneral.mp4",
+  videoTitle: "Demostración de la vista principal"
 })
 
-const Eccomerce_proyect = new ProyectElement({
-  name: "Eccomerce",
-  description: "",
-  features: ["a", "b", "c"],
-  links: "",
-  skillsList: ["react", "java", "JavaScript"],
-  videoSrc: ""
+const projects = [HealthCenterTurnAdministrator]
+const $projectsContainer = document.querySelector(".projectCards_container")
+projects.forEach(project => {
+  $projectsContainer.appendChild(project.getElement())
 })
 
-const PokeApi_proyect = new ProyectElement({
-  name: "Pokedex & team creator",
-  description: `!Este no es cualquier proyecto con la pokeApi!. En él tendrás un sistema de búsqueda avanzado a tráves de 
-  distintos filtros para que puedas encontrar justo al pokemon que estás buscando para tu equipo ... (continuar y reescribir xd)`,
-  features: ["Trabajo con múltiples APIs", "Exposición de contenido", "Aplicación de búsqueda y múltiples filtros", "Guardado de favoritos", "(seguir)"],
-  links: "",
-  skillsList: ["React", "HTML", "CSS", "sass", "JavaScript"],
-  videoSrc: "demos/demo1EJ.mp4"
-})
-
-const Colaborative_proyect = new ProyectElement({
-  name: "Página con los panas de egg",
-  description: "Trabajo en equipo desarrollado con colegas del bootcamp de egg",
-  features: ["Trabajo cooperativo", "Organización de proyecto", "Presentación de ideas y toma de desiciones", "dasdas"],
-  links: "",
-  skillsList: ["Git", "github", "HTML", "..."],
-  videoSrc: ""
-})
-
-const AppMiembrosActivos_proyect = new ProyectElement({
-  name: "App de gestión",
-  description: "asdasdsa",
-  features: ["Gestión de cuotas de miembros", "Inventario de grupo", "Datos de miembros"],
-  skillsList: ["Figma", "HTML", "React", "Bootstrap", "Java", "MySQL", "Spring"],
-  videoSrc: ""
-})
-
-const proyects = [HealthCenterTurnAdministrator, Eccomerce_proyect, PokeApi_proyect, Colaborative_proyect, AppMiembrosActivos_proyect]
-const $proyectsContainer = document.querySelector(".proyectCards_container")
-proyects.forEach(proyect => {
-  $proyectsContainer.appendChild(proyect.getElement())
-})
-
-const Portfolio_proyect = new ProyectElement({
+const Portfolio_project = new ProjectElement({
   name: "Acerca de esta página",
   description: `Tomé como desafío el hacer mi portafolio usando solamente los 3 pilares para el desarrollo web.
     ¡Todo lo que ves en esta página está hecho solamente con HTML, CSS y JavaScript!`,
@@ -119,4 +87,4 @@ const Portfolio_proyect = new ProyectElement({
   isPortfolioCard: true
 })
 const $portfolioCard_zone = document.querySelector(".portfolioCard_zone")
-$portfolioCard_zone.appendChild(Portfolio_proyect.getElement())
+$portfolioCard_zone.appendChild(Portfolio_project.getElement())

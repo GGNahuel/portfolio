@@ -1,5 +1,5 @@
 @import "sections_styles/_presentationSection.css";
-@import "sections_styles/_proyectsSection.css";
+@import "sections_styles/_projectsSection.css";
 @import "sections_styles/_skillsSection.css";
 
 main {
@@ -55,7 +55,8 @@ main {
 
         .seeMore {
             outline: 5px solid var(--bg-contrast-color);
-            padding: .5rem;
+            padding: .8rem;
+            padding-bottom: .5rem;
             transition: 300ms;
         }
     }
@@ -68,9 +69,14 @@ main {
         display: block;
         background-color: var(--secondary-color);
         border-radius: 100%;
-        padding: .2rem;
+        padding: .5rem;
+        padding-bottom: .2rem;
         cursor: pointer;
         z-index: 10;
+
+        svg {
+            width: 32px;
+        }
     }
 }
 
