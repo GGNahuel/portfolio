@@ -1,7 +1,10 @@
 #skills_section {
-  display: block;
   text-align: center;
   font-weight: bold;
+
+  > div {
+    width: 100%;
+  }
 
   .skillLogo {
     gap: 8px;
