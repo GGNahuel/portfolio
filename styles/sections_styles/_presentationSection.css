@@ -17,7 +17,14 @@
       scale: initial;
 
       .frontface{
-        background-color: var(--bg-contrast-color);
+        rotate: y 180deg;
+      }
+      .backface {
+        rotate: y 0deg;
+      }
+
+      .seeMore {
+        padding-bottom: .8rem;
       }
     }
 
@@ -27,6 +34,10 @@
       font-size: 3rem;
       z-index: 9;
       animation: arrowPresentationCard 1500ms infinite;
+    }
+
+    .seeMore {
+      padding-bottom: .5rem;
     }
   }
 }
@@ -79,14 +90,6 @@
     border-radius: inherit;
   }
 }
-.profilePicture_container:hover {
-  >.frontface {
-    rotate: y 180deg;
-  }
-  >.backface {
-    rotate: y 0deg;
-  }
-}
 
 .profileInfo_container {
   display: flex;
@@ -110,6 +113,11 @@
   
     &:hover {
       color: var(--main-color);
+    }
+
+    svg {
+      width: 28px;
+      height: 28px;
     }
   }
   h2,h3 {
