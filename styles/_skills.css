@@ -68,6 +68,14 @@
   background-image: url("https://cdn.icon-icons.com/icons2/730/PNG/512/github_icon-icons.com_62793.png");
 }
 
-.vscode::before {
-  background-image: url("https://static-00.iconduck.com/assets.00/file-type-vscode-icon-512x508-376y62ux.png");
+.docker::before {
+  background-image: url("https://static-00.iconduck.com/assets.00/docker-icon-1024x1024-mv7uzno8.png");
+}
+
+.react.router::before {
+  background-image: url("https://hushen.in/assets/react-route.png");
+}
+
+.thymeleaf::before {
+  background-image: url("https://svglogos.net/wp-content/uploads/thymeleaf-icon.svg");
 }
