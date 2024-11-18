@@ -101,38 +101,45 @@ window.addEventListener("load", () => {
 
   if (!lastVisit || currentTime - lastVisit > minutesWithoutAnimationInMS) {
     localStorage.setItem('lastAnimationTime', currentTime);
-  }
-
-  $ring.animate($KEYFRAME_opening({destinationObject: "ring"}), _openingAnimationProps({duration: 600})).ready.then(() => {
-    $ring.animate($KEYFRAME_moveRing, _ringMoveAnimationProps)
-    .finished.then(() => {
-      finalAnimationStyles.ring_root()
+    
+    $ring.animate($KEYFRAME_opening({destinationObject: "ring"}), _openingAnimationProps({duration: 600})).ready.then(() => {
+      $ring.animate($KEYFRAME_moveRing, _ringMoveAnimationProps)
+      .finished.then(() => {
+        finalAnimationStyles.ring_root()
+      })
     })
-  })
-
-  $logoInRing.animate($KEYFRAME_opening({destinationObject: "logo"}), _openingAnimationProps({duration: 600})).finished.then(() => {
-    $logoInRing.style.opacity = 1
-    $logoInRing.animate($KEYFRAME_opening({destinationObject: "logo"}), _openingAnimationProps({duration: 300, delay: 1400, direction:"reverse"}))
-    .finished.then(() => {
-      finalAnimationStyles.logo()
+    
+    $logoInRing.animate($KEYFRAME_opening({destinationObject: "logo"}), _openingAnimationProps({duration: 600})).finished.then(() => {
+      $logoInRing.style.opacity = 1
+      $logoInRing.animate($KEYFRAME_opening({destinationObject: "logo"}), _openingAnimationProps({duration: 300, delay: 1400, direction:"reverse"}))
+      .finished.then(() => {
+        finalAnimationStyles.logo()
+      })
     })
-  })
-
-  $navItems_Container.forEach(($element, index) => {
-    const $navItem_button = $element.querySelector(".navItem")
-    $element.style.rotate = `${calcularAnguloSegunItem(135, 90, index)}deg`
-    const anguloFinal = calcularAnguloSegunItem(405, anguloDistribucionItems, index)
-
-    $navItem_button.animate(
-      $KEYFRAME_opening({destinationObject: "navItems"}), 
-      _openingAnimationProps({duration: 500, delay: 250 * index})
-    ).finished.then(() => {
+    
+    $navItems_Container.forEach(($element, index) => {
+      const $navItem_button = $element.querySelector(".navItem")
+      $element.style.rotate = `${calcularAnguloSegunItem(135, 90, index)}deg`
+      const anguloFinal = calcularAnguloSegunItem(405, anguloDistribucionItems, index)
+      
+      $navItem_button.animate(
+        $KEYFRAME_opening({destinationObject: "navItems"}), 
+        _openingAnimationProps({duration: 500, delay: 250 * index})
+      ).finished.then(() => {
+        finalAnimationStyles.navItems($element, index).button()
+      })
+      $element.animate($KEYFRAME_moveRingItems(anguloFinal), _ringMoveAnimationProps).finished.then(() => {
+        finalAnimationStyles.navItems($element, index).item()
+      })
+    })
+  } else {
+    finalAnimationStyles.ring_root()
+    finalAnimationStyles.logo()
+    $navItems_Container.forEach(($element, index) => {
       finalAnimationStyles.navItems($element, index).button()
-    })
-    $element.animate($KEYFRAME_moveRingItems(anguloFinal), _ringMoveAnimationProps).finished.then(() => {
       finalAnimationStyles.navItems($element, index).item()
     })
-  })
+  }
 })
 
 window.addEventListener("resize", () => {

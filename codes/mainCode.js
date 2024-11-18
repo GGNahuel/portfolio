@@ -16,6 +16,23 @@ function ajustarAncho() {
 
 document.addEventListener('DOMContentLoaded', () => {
   $loadingScreen.style.display = "flex"
+
+  const lastVisit = localStorage.getItem('lastAnimationTime');
+  const currentTime = Date.now();
+  const minutesWithoutAnimationInMS = 5 * 60 * 1000
+  if (lastVisit && (currentTime - lastVisit) < minutesWithoutAnimationInMS) {
+    $root.style.overflowY = "visible"
+    $main.style.display = "flex"
+
+    setTimeout(() => {
+      const hash = window.location.hash.slice(1);
+      const element = document.getElementById(hash);
+      if (element) {
+        console.log(element)
+        element.scrollIntoView({behavior: "instant"});
+      }
+    }, 50)
+  }
 })
 window.addEventListener('load', () => {
   ajustarAncho()
