@@ -47,6 +47,13 @@ main.notIndex {
 
     >ul {
       display: flex;
+      justify-content: center;
+      gap: 8px;
+
+      button {
+        padding: 12px;
+        border-radius: 50%;
+      }
     }
 
     .card {
@@ -129,10 +136,16 @@ main.notIndex {
   }
 }
 
+#projectComments {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+}
+
 #carrousel {
   max-width: initial;
   width: 100%;
-  background-color: var(--third-color);
+  background-color: var(--presentationCard-color);
   padding: 2rem 0;
 }
 

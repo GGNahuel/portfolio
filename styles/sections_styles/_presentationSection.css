@@ -170,6 +170,7 @@
   border: 10px solid var(--bg-color);
   outline: 7px solid var(--bg-contrast-color);
   box-sizing: border-box;
+  border-radius: 4px;
 
   article {
     max-width: 400px;
