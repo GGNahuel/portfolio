@@ -57,7 +57,6 @@ function definirStylesSegunVW () {
 
 const defaultAngles = []
 let startAnimationFinished = false
-const minutesWithoutAnimationInMS = 5 * 60 * 1000
 
 let anguloDistribucionItems = window.innerWidth > 719 ? 135 : 0
 const finalAnimationStyles = {

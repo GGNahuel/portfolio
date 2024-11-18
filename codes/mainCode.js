@@ -8,6 +8,8 @@ const $main = document.querySelector("#root main")
 const $mainSections = document.querySelectorAll("main > section")
 
 
+const minutesWithoutAnimationInMS = 10 * 60 * 1000
+
 const ancho$scrollbar = '17px'
 function ajustarAncho() {
   var tieneScroll = $root.scrollHeight > window.innerHeight
@@ -19,7 +21,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const lastVisit = localStorage.getItem('lastAnimationTime');
   const currentTime = Date.now();
-  const minutesWithoutAnimationInMS = 5 * 60 * 1000
   if (lastVisit && (currentTime - lastVisit) < minutesWithoutAnimationInMS) {
     $root.style.overflowY = "visible"
     $main.style.display = "flex"
