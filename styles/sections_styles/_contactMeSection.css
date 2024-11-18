@@ -13,6 +13,7 @@
     margin-top: 1rem;
     display: flex;
     flex-direction: column;
+    align-items: center;
     gap: 1rem;
     box-sizing: border-box;
     width: 100%;
@@ -37,13 +38,23 @@
       font-weight: bolder;
       border-radius: 8px;
       color: var(--bg-contrast-color);
-      
+      cursor: pointer;
+
+      &:hover {
+        background-color: var(--secondary-color-dark);
+      }
     }
+  }
+
+  a {
+    color: var(--third-color);
   }
 }
 
 .subForm {
   padding: 1rem;
+  box-sizing: border-box;
+  width: 100%;
   border: 1px solid rgba(255, 255, 255, 0.4);
   border-radius: 8px;
 

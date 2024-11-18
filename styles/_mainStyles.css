@@ -26,6 +26,10 @@ main {
         h2 {
             margin-bottom: 16px;
         }
+
+        > img {
+            max-width: 750px;
+        }
     }
 }
 
