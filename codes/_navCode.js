@@ -57,6 +57,39 @@ function definirStylesSegunVW () {
 
 const defaultAngles = []
 let startAnimationFinished = false
+const minutesWithoutAnimationInMS = 5 * 60 * 1000
+
+const finalAnimationStyles = {
+  ring_root: () => {
+    $ring.style.translate = finalRingPosition()
+    $navItems_Container[0].classList.add("current")
+    $root.style.overflowY = "visible"
+    $main.style.display = "flex"
+    window.setTimeout(() => {
+      $main.style.opacity = 1
+      startAnimationFinished = true
+    }, 100);
+    ajustarAncho()
+  },
+  logo: () => {
+    $logoInRing.style.opacity = 0
+    $logoInRing.style.display = "none"
+  },
+  navItems: ($element, index) => {
+    const $navItem_button = $element.querySelector(".navItem")
+    const anguloFinal = calcularAnguloSegunItem(405, anguloDistribucionItems, index)
+
+    return ({
+      button: () => {
+        $navItem_button.classList.add("enabled")
+      },
+      item: () => {
+        $element.style.rotate = `${anguloFinal}deg`
+        defaultAngles.push(calcularAnguloSegunItem(405, 135, index))
+      }
+    })
+  }
+}
 
 // -----------------------------------------------------------------------------------------
 /* Setear animaciones y estilos al cargar la página o al cambiar el tamaño de la pantalla */
@@ -66,6 +99,13 @@ window.addEventListener("load", () => {
   let anguloDistribucionItems = window.innerWidth > 719 ? 135 : 0
 
   definirStylesSegunVW()
+
+  const lastVisit = localStorage.getItem('lastAnimationTime');
+  const currentTime = Date.now();
+
+  if (!lastVisit || currentTime - lastVisit > minutesWithoutAnimationInMS) {
+    localStorage.setItem('lastAnimationTime', currentTime);
+  }
 
   $ring.animate($KEYFRAME_opening({destinationObject: "ring"}), _openingAnimationProps({duration: 600})).ready.then(() => {
     $ring.animate($KEYFRAME_moveRing, _ringMoveAnimationProps)
