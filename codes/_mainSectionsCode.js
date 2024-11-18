@@ -1,3 +1,6 @@
+// _________________________
+// Project Section
+//
 class ProjectElement {
   constructor({ name, description, features = [], links = "", skillsList = [], videoSrc, videoTitle = "", isPortfolioCard = false, expand_link }) {
     this.name = name
@@ -97,3 +100,47 @@ const Portfolio_project = new ProjectElement({
 })
 const $portfolioCard_zone = document.querySelector(".portfolioCard_zone")
 $portfolioCard_zone.appendChild(Portfolio_project.getElement())
+
+// _________________
+// Contact Section
+//
+const $contactForm = document.getElementById("contact_form")
+const setLoading = (value = false) => {
+  $contactForm.querySelector("& > svg").style.display = value ? "inline-block" : "none"
+}
+$contactForm.addEventListener("submit", (e) => {
+  e.preventDefault()
+
+  setLoading(true)
+
+  const dataToApi = {
+    name: $contactForm.name.value,
+    email: $contactForm.email.value,
+    _subject: "Nuevo contacto desde portafolio",
+    _template: "table",
+    message: 
+      `${$contactForm.prs_about.value != "" ? "Se dedica a: " + $contactForm.prs_about.value : ""}.` +
+      `${$contactForm.prs_service.value != "" ? "\nRequiere: " + $contactForm.prs_service.value : ""}.` +
+      `${$contactForm.prs_expected.value != "" ? "\nEspera que: " + $contactForm.prs_service.value : ""}.` +
+      "\n" + $contactForm.message.value
+  }
+  console.log(dataToApi)
+
+  fetch("https://formsubmit.co/ajax/673c0ae6dba1f926ce72b1c3aa010c4a", { 
+    method: "POST", 
+    headers: { "Content-Type": "application/json", "Accept": "application/json" }, 
+    body: JSON.stringify(dataToApi) 
+  }) 
+  .then(response => response.json()) 
+  .then(data => { 
+    setLoading(false)
+    if (data.success === "true") { 
+    alert("Se ha enviado un mail con los campos del formulario. ¡Muchas gracias por contactarse! 😄")
+    } else { 
+      alert("Hubo un problema al enviar el formulario.")
+    } 
+  }) 
+  .catch(error => { 
+    alert("Error: " + error.message)
+  })
+})

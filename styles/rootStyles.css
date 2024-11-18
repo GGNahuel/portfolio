@@ -12,6 +12,7 @@
     --bg-contrast-color: /* rgb(92, 87, 62); */rgb(13,29,0);
     --page-bg-color: rgb(201, 205, 226);
     --page-bg-color2: rgb(19, 56, 112);
+    --presentationCard-color: rgb(49, 64, 35);
 }
 
 * {

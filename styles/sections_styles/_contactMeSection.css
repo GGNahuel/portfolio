@@ -1,0 +1,73 @@
+#contact_section {
+  > div {
+    text-align: center;
+  }
+
+  svg {
+    display: none;
+    width: 64px;
+    animation: miniLoading 3s infinite;
+  }
+
+  > form {
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 1rem;
+    background-color: var(--presentationCard-color);
+    color: white;
+    border-radius: 16px;
+    font-size: 1.2rem;
+
+    textarea {
+      resize: none;
+    }
+
+    input, textarea {
+      padding: .3rem;
+    }
+
+    button {
+      background-color: var(--secondary-color);
+      padding: 1rem;
+      font-size: 1.1em;
+      font-weight: bolder;
+      border-radius: 8px;
+      color: var(--bg-contrast-color);
+      
+    }
+  }
+}
+
+.subForm {
+  padding: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 8px;
+
+  > label {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(50%, 1fr));
+  }
+
+  > label + label {
+    margin-top: 8px;
+  }
+}
+
+@keyframes miniLoading {
+  15% {
+    rotate: 0deg;
+  }
+  50% {
+    rotate: 180deg;
+  }
+  65% {
+    rotate: 180deg;
+  }
+  100% {
+    rotate: 0deg;
+  }
+}

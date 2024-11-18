@@ -10,7 +10,7 @@
     padding: 1rem;
     border-radius: 20px;
     box-sizing: border-box;
-    background-color: rgba(13,29,0,0.7);
+    background-color: var(--presentationCard-color);
     color: var(--bg-color);
 
     &:hover {

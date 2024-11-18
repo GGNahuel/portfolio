@@ -1,6 +1,7 @@
 @import "sections_styles/_presentationSection.css";
 @import "sections_styles/_projectsSection.css";
 @import "sections_styles/_skillsSection.css";
+@import "sections_styles/_contactMeSection.css";
 
 main {
     align-self: flex-start;
@@ -22,7 +23,7 @@ main {
         align-items: center;
         flex-direction: column;
 
-        > h2 {
+        h2 {
             margin-bottom: 16px;
         }
     }
