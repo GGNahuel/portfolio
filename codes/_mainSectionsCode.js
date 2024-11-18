@@ -93,7 +93,7 @@ projects.forEach(project => {
 
 const Portfolio_project = new ProjectElement({
   name: "Acerca de esta página",
-  description: `Tomé como desafío el hacer mi portafolio usando solamente los 3 pilares para el desarrollo web.
+  description: `Decidí hacer mi portafolio usando solamente los 3 pilares para el desarrollo web front-end.
     ¡Todo lo que ves en esta página está hecho solamente con HTML, CSS y JavaScript!`,
   skillsList: ["HTML", "CSS", "JavaScript"],
   isPortfolioCard: true
