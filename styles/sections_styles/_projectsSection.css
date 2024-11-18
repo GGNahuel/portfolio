@@ -30,10 +30,10 @@
 
 .projectCard {
   display: grid;
-  grid-template-columns: auto 320px;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 
   &>.projectCard_info {
-    grid-column: 1;
+    /* grid-column: 1; */
 
     .pC_header,
     .pC_footer {
@@ -76,8 +76,8 @@
   }
 
   >.projectCard_demo {
-    grid-column: 2;
-    grid-row: 1;
+    /* grid-column: 2; */
+    /* grid-row: 1; */
     width: 100%;
     display: flex;
     justify-content: center;
@@ -87,10 +87,12 @@
     video,
     img {
       perspective: 1px;
-      rotate: y -2deg;
+      rotate: y -1.5deg;
       width: 100%;
+      min-width: 300px;
       aspect-ratio: 16/9;
       object-fit: cover;
+      filter: drop-shadow(0 4px 2px grey);
     }
   }
 }
