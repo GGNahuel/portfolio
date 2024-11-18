@@ -124,7 +124,7 @@
             </ul>
           </article>
           <article class="card skillCard">
-            <h3>Herramientas de marcado y estilos</h3>
+            <h3>Herramientas de marcado, estilos y plantillas</h3>
             <ul>
               <li class="skillLogo html">HTML</li>
               <li class="skillLogo css">CSS</li>
@@ -199,16 +199,32 @@
       <section id="contact_section">
         <div>
           <h2>Contacto</h2>
-          <h3>aca habría dos opciones de contaco:</h3>
-          <ul>
-            <li>una sería a traves de preguntas guía para quien quiera contactarse, como 
-              "Quién sos/a qué empresa o grupo perteneces?"
-              "Qué te interesó de mi perfil?"
-              "..."
-            </li>
-            <li>un modal para enviar un mail totalmente personalizado</li>
-          </ul>
+          <h3>Responda las preguntas o bien arme su propio mensaje directamente</h3>
         </div>
+        <form id="contact_form">
+          <div class="subForm">
+            <label>Ingrese su nombre<input type="text" name="name" required></label>
+            <label>Ingrese su e-mail<input type="email" name="email" required></label>
+          </div>
+          <div class="subForm">
+            <label>¿A qué se dedica usted o la empresa a la que pertenece?<textarea name="prs_about" rows="2"></textarea></label>
+            <label>¿Qué tipo de aplicación, página web, servicio, o personal está buscando?<textarea name="prs_service" rows="2"></textarea></label>
+            <label>¿Qué es lo que espera de mí al trabajar con usted/es?<textarea name="prs_expected" rows="2"></textarea></label>
+          </div>
+          <div class="subForm">
+            <label>Mensaje, comentarios extra<textarea name="message" rows="5"></textarea></label>
+          </div>
+          <button type="submit">Contactarse</button>
+          <svg fill="#000000" viewBox="-2.4 -2.4 28.80 28.80" id="loading" data-name="Flat Color" xmlns="http://www.w3.org/2000/svg" class="icon flat-color">
+            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round" stroke="#CCCCCC" stroke-width="0.048"></g>
+            <g id="SVGRepo_iconCarrier">
+              <path id="primary" d="M17,6V3a1,1,0,0,0-1-1H8A1,1,0,0,0,7,3V6a7,7,0,0,0,2.8,5.6l.53.4-.53.4A7,7,0,0,0,7,18v3a1,1,0,0,0,1,1h8a1,1,0,0,0,1-1V18a7,7,0,0,0-2.8-5.6l-.53-.4.53-.4A7.05,7.05,0,0,0,17,6Z" 
+              style="fill: #000000;"></path>
+              <path id="secondary" d="M18,22H6a1,1,0,0,1,0-2H18a1,1,0,0,1,0,2ZM18,4H6A1,1,0,0,1,6,2H18a1,1,0,0,1,0,2Z" style="fill: #498f14;"></path>
+            </g>
+          </svg>
+        </form>
       </section>
     </main>
   </div>
