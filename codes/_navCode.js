@@ -59,6 +59,7 @@ const defaultAngles = []
 let startAnimationFinished = false
 const minutesWithoutAnimationInMS = 5 * 60 * 1000
 
+let anguloDistribucionItems = window.innerWidth > 719 ? 135 : 0
 const finalAnimationStyles = {
   ring_root: () => {
     $ring.style.translate = finalRingPosition()
@@ -75,20 +76,17 @@ const finalAnimationStyles = {
     $logoInRing.style.opacity = 0
     $logoInRing.style.display = "none"
   },
-  navItems: ($element, index) => {
-    const $navItem_button = $element.querySelector(".navItem")
-    const anguloFinal = calcularAnguloSegunItem(405, anguloDistribucionItems, index)
-
-    return ({
-      button: () => {
-        $navItem_button.classList.add("enabled")
-      },
-      item: () => {
-        $element.style.rotate = `${anguloFinal}deg`
-        defaultAngles.push(calcularAnguloSegunItem(405, 135, index))
-      }
-    })
-  }
+  navItems: ($element, index) => ({
+    button: () => {
+      const $navItem_button = $element.querySelector(".navItem")
+      $navItem_button.classList.add("enabled")
+    },
+    item: () => {
+      const anguloFinal = calcularAnguloSegunItem(405, anguloDistribucionItems, index)
+      $element.style.rotate = `${anguloFinal}deg`
+      defaultAngles.push(calcularAnguloSegunItem(405, 135, index))
+    }
+  })
 }
 
 // -----------------------------------------------------------------------------------------
@@ -96,8 +94,6 @@ const finalAnimationStyles = {
 const $logoInRing = $ring.querySelector("#logoInRing")
 
 window.addEventListener("load", () => {
-  let anguloDistribucionItems = window.innerWidth > 719 ? 135 : 0
-
   definirStylesSegunVW()
 
   const lastVisit = localStorage.getItem('lastAnimationTime');
@@ -110,15 +106,7 @@ window.addEventListener("load", () => {
   $ring.animate($KEYFRAME_opening({destinationObject: "ring"}), _openingAnimationProps({duration: 600})).ready.then(() => {
     $ring.animate($KEYFRAME_moveRing, _ringMoveAnimationProps)
     .finished.then(() => {
-      $ring.style.translate = finalRingPosition()
-      $navItems_Container[0].classList.add("current")
-      $root.style.overflowY = "visible"
-      $main.style.display = "flex"
-      window.setTimeout(() => {
-        $main.style.opacity = 1
-        startAnimationFinished = true
-      }, 100);
-      ajustarAncho()
+      finalAnimationStyles.ring_root()
     })
   })
 
@@ -126,8 +114,7 @@ window.addEventListener("load", () => {
     $logoInRing.style.opacity = 1
     $logoInRing.animate($KEYFRAME_opening({destinationObject: "logo"}), _openingAnimationProps({duration: 300, delay: 1400, direction:"reverse"}))
     .finished.then(() => {
-      $logoInRing.style.opacity = 0
-      $logoInRing.style.display = "none"
+      finalAnimationStyles.logo()
     })
   })
 
@@ -140,11 +127,10 @@ window.addEventListener("load", () => {
       $KEYFRAME_opening({destinationObject: "navItems"}), 
       _openingAnimationProps({duration: 500, delay: 250 * index})
     ).finished.then(() => {
-      $navItem_button.classList.add("enabled")
+      finalAnimationStyles.navItems($element, index).button()
     })
     $element.animate($KEYFRAME_moveRingItems(anguloFinal), _ringMoveAnimationProps).finished.then(() => {
-      $element.style.rotate = `${anguloFinal}deg`
-      defaultAngles.push(calcularAnguloSegunItem(405, 135, index))
+      finalAnimationStyles.navItems($element, index).item()
     })
   })
 })
@@ -152,7 +138,6 @@ window.addEventListener("load", () => {
 window.addEventListener("resize", () => {
   if (startAnimationFinished) {
     $ring.style.translate = finalRingPosition()
-    let anguloDistribucionItems = window.innerWidth > 719 ? 135 : 0
     $navItems_Container.forEach(($element, index) => {
       $element.style.rotate = `${
         calcularAnguloSegunItem(405, anguloDistribucionItems, index) + ($root.scrollTop * 135 / $root.scrollHeight * -1)
