@@ -30,20 +30,6 @@
     input, textarea {
       padding: .3rem;
     }
-
-    button {
-      background-color: var(--secondary-color);
-      padding: 1rem;
-      font-size: 1.1em;
-      font-weight: bolder;
-      border-radius: 8px;
-      color: var(--bg-contrast-color);
-      cursor: pointer;
-
-      &:hover {
-        background-color: var(--secondary-color-dark);
-      }
-    }
   }
 
   a {
