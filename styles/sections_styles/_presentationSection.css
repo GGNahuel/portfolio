@@ -30,9 +30,11 @@
 
     .arrow {
       position: absolute;
-      right: 1.3rem;
+      right: 0.5rem;
+      bottom: 0.5rem;
       font-size: 3rem;
-      z-index: 9;
+      rotate: 240deg;
+      z-index: 1;
       animation: arrowPresentationCard 1500ms infinite;
     }
 
@@ -107,6 +109,7 @@
     color: var(--bg-contrast-color);
   }
   li {
+    z-index: 2;
     list-style: none;
     margin: 0 10px;
     cursor: pointer;
@@ -189,11 +192,11 @@
 
 @keyframes arrowPresentationCard {
   50% {
-    rotate: 15deg;
+    rotate: 260deg;
     transform: translateY(-5px);
   }
   100% {
-    rotate: 0deg;
+    rotate: 240deg;
     transform: translateY(0px);
   }
 }
