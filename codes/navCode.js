@@ -77,13 +77,13 @@ const finalAnimationStyles = {
     } else {
       $ring.style.translate = finalRingPosition()
     }
-    $navItems_Container[0].classList.add("current")
     $root.style.overflowY = "visible"
     $main.style.display = "flex"
-    window.setTimeout(() => {
-      $main.style.opacity = 1
-      startAnimationFinished = true
-    }, 100);
+    if (!startAnimationFinished)
+      window.setTimeout(() => {
+        $main.style.opacity = 1
+        startAnimationFinished = true
+      }, 100)
     ajustarAncho()
   },
   logo: () => {
@@ -95,7 +95,7 @@ const finalAnimationStyles = {
       const $navItem_button = $element.querySelector(".navItem")
       $navItem_button.classList.add("enabled")
     },
-    item: () => {
+    item: (isResizingWindow = false) => {
       if (window.innerWidth < 720) {
         $element.style.position = "static"
         $element.style.rotate = "0deg"
@@ -103,9 +103,16 @@ const finalAnimationStyles = {
         $navItem_button.style.height = "initial"
         $navItem_button.style.padding = "8px"
       } else if (window.innerHeight < 720) {
-        const angulo = calcularAnguloSegunItem(405, 90, index)
+        const angulo = calcularAnguloSegunItem(405, 90, index) // angulo en el que se ven todos los items
         $element.style.rotate = `${angulo}deg`
       } else {
+        if (isResizingWindow) {
+          $element.style.rotate = `${
+            calcularAnguloSegunItem(405, anguloDistribucionItems, index) + ($root.scrollTop * 135 / $root.scrollHeight * -1)
+          }deg`
+          return
+        }
+
         const anguloFinal = calcularAnguloSegunItem(405, anguloDistribucionItems, index)
         $element.style.rotate = `${anguloFinal}deg`
         defaultAngles.push(calcularAnguloSegunItem(405, 135, index))
@@ -124,7 +131,7 @@ window.addEventListener("load", () => {
   const lastVisit = localStorage.getItem('lastAnimationTime');
   const currentTime = Date.now();
 
-  // if (!lastVisit || currentTime - lastVisit > minutesWithoutAnimationInMS) {
+  if (!lastVisit || currentTime - lastVisit > minutesWithoutAnimationInMS) {
     localStorage.setItem('lastAnimationTime', currentTime);
     
     $ring.animate($KEYFRAME_opening({destinationObject: "ring"}), _openingAnimationProps({duration: 600})).ready.then(() => {
@@ -155,37 +162,27 @@ window.addEventListener("load", () => {
       })
       $element.animate($KEYFRAME_moveRingItems(anguloFinal), _ringMoveAnimationProps).finished.then(() => {
         finalAnimationStyles.navItems($element, index).item()
+        $navItems_Container[0].classList.add("current")
       })
     })
-  /* } else {
+  } else {
     finalAnimationStyles.ring_root()
     finalAnimationStyles.logo()
+    $navItems_Container[0].classList.add("current")
     $navItems_Container.forEach(($element, index) => {
       finalAnimationStyles.navItems($element, index).button()
       finalAnimationStyles.navItems($element, index).item()
     })
-  } */
+  }
 })
 
 window.addEventListener("resize", () => {
   if (!startAnimationFinished) {
     definirStylesSegunVWPreAnimation()
-  }
-
-  if (window.innerWidth > 719) {
-    $ring.style.translate = finalRingPosition()
-  }
-
-  $navItems_Container.forEach(($element, index) => {
-    if (window.innerHeight < 720) {
-      const angulo = calcularAnguloSegunItem(405, 90, index)
-      $navItem.style.rotate = `${angulo}deg`
-    } else {
-      $element.style.rotate = `${
-        calcularAnguloSegunItem(405, anguloDistribucionItems, index) + ($root.scrollTop * 135 / $root.scrollHeight * -1)
-      }deg`
-    }
-  })
+    return
+  } 
+  finalAnimationStyles.ring_root()
+  $navItems_Container.forEach(($element, index) => {finalAnimationStyles.navItems($element, index).item(true)})
 })
 
 
