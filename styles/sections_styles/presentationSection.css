@@ -202,7 +202,7 @@
   }
 }
 
-@media (max-width: 719px){
+@media (max-width: 719px) or (max-height: 719px) {
   .mainPresentation {
     margin-top: 1rem;
     flex-direction: column;

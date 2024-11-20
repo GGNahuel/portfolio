@@ -37,7 +37,7 @@ function devolverAnguloActual (prop) {
   return Number (prop.match(/(\d*\.?\d{0,3})/)[0])
 }
 
-function definirStylesSegunVW () {
+function definirStylesSegunVWPreAnimation () {
   if (window.innerWidth > 719) {
     $ring.style.width = "calc(100vh - 1rem)"
     $ring.style.top = "0.5rem"
@@ -61,7 +61,22 @@ let startAnimationFinished = false
 let anguloDistribucionItems = window.innerWidth > 719 ? 135 : 0
 const finalAnimationStyles = {
   ring_root: () => {
-    $ring.style.translate = finalRingPosition()
+    if (window.innerWidth < 720) {
+      $root.style.flexDirection = "column"
+      $root.style.justifyContent = "flex-start"
+      Object.assign($ring.style, {
+        position: "sticky",
+        top: 0,
+        borderRadius: 0,
+        border: 0,
+        width: "100%",
+        aspectRatio: "inherit",
+        backgroundColor: "var(--bg-contrast-color)",
+        padding: "8px"
+      })
+    } else {
+      $ring.style.translate = finalRingPosition()
+    }
     $navItems_Container[0].classList.add("current")
     $root.style.overflowY = "visible"
     $main.style.display = "flex"
@@ -81,9 +96,20 @@ const finalAnimationStyles = {
       $navItem_button.classList.add("enabled")
     },
     item: () => {
-      const anguloFinal = calcularAnguloSegunItem(405, anguloDistribucionItems, index)
-      $element.style.rotate = `${anguloFinal}deg`
-      defaultAngles.push(calcularAnguloSegunItem(405, 135, index))
+      if (window.innerWidth < 720) {
+        $element.style.position = "static"
+        $element.style.rotate = "0deg"
+        const $navItem_button = $element.querySelector(".navItem")
+        $navItem_button.style.height = "initial"
+        $navItem_button.style.padding = "8px"
+      } else if (window.innerHeight < 720) {
+        const angulo = calcularAnguloSegunItem(405, 90, index)
+        $element.style.rotate = `${angulo}deg`
+      } else {
+        const anguloFinal = calcularAnguloSegunItem(405, anguloDistribucionItems, index)
+        $element.style.rotate = `${anguloFinal}deg`
+        defaultAngles.push(calcularAnguloSegunItem(405, 135, index))
+      }
     }
   })
 }
@@ -93,12 +119,12 @@ const finalAnimationStyles = {
 const $logoInRing = $ring.querySelector("#logoInRing")
 
 window.addEventListener("load", () => {
-  definirStylesSegunVW()
+  definirStylesSegunVWPreAnimation()
 
   const lastVisit = localStorage.getItem('lastAnimationTime');
   const currentTime = Date.now();
 
-  if (!lastVisit || currentTime - lastVisit > minutesWithoutAnimationInMS) {
+  // if (!lastVisit || currentTime - lastVisit > minutesWithoutAnimationInMS) {
     localStorage.setItem('lastAnimationTime', currentTime);
     
     $ring.animate($KEYFRAME_opening({destinationObject: "ring"}), _openingAnimationProps({duration: 600})).ready.then(() => {
@@ -131,26 +157,35 @@ window.addEventListener("load", () => {
         finalAnimationStyles.navItems($element, index).item()
       })
     })
-  } else {
+  /* } else {
     finalAnimationStyles.ring_root()
     finalAnimationStyles.logo()
     $navItems_Container.forEach(($element, index) => {
       finalAnimationStyles.navItems($element, index).button()
       finalAnimationStyles.navItems($element, index).item()
     })
-  }
+  } */
 })
 
 window.addEventListener("resize", () => {
-  if (startAnimationFinished) {
+  if (!startAnimationFinished) {
+    definirStylesSegunVWPreAnimation()
+  }
+
+  if (window.innerWidth > 719) {
     $ring.style.translate = finalRingPosition()
-    $navItems_Container.forEach(($element, index) => {
+  }
+
+  $navItems_Container.forEach(($element, index) => {
+    if (window.innerHeight < 720) {
+      const angulo = calcularAnguloSegunItem(405, 90, index)
+      $navItem.style.rotate = `${angulo}deg`
+    } else {
       $element.style.rotate = `${
         calcularAnguloSegunItem(405, anguloDistribucionItems, index) + ($root.scrollTop * 135 / $root.scrollHeight * -1)
       }deg`
-    })
-  }
-  definirStylesSegunVW()
+    }
+  })
 })
 
 
@@ -179,15 +214,17 @@ $root.addEventListener("scroll", () => {
 
     $navItem.style.transition = "initial"
 
-    const actualAngle = devolverAnguloActual($navItem.style.rotate)
-    const newAngle_Final = (!isRingHovered ? actualAngle : temp_actualAngles[index]) + newAngle_Relative
-
-    if (!isRingHovered) {
-      $navItem.style.rotate = `${lastScrollTopPosition !== 0 ? newAngle_Final : defaultAngles[index]}deg`
-    }
-    else {
-      if (index === 0) anglesBackup = []
-      anglesBackup.push(newAngle_Final)
+    if (window.innerWidth > 719) {
+      const actualAngle = devolverAnguloActual($navItem.style.rotate)
+      const newAngle_Final = (!isRingHovered ? actualAngle : temp_actualAngles[index]) + newAngle_Relative
+  
+      if (!isRingHovered && window.innerHeight > 719) {
+        $navItem.style.rotate = `${lastScrollTopPosition !== 0 ? newAngle_Final : defaultAngles[index]}deg`
+      }
+      else {
+        if (index === 0) anglesBackup = []
+        anglesBackup.push(newAngle_Final)
+      }
     }
 
     const eqSectionProps = (section = $section) => ({
@@ -213,7 +250,8 @@ $root.addEventListener("scroll", () => {
 /* Animación del hover en la nav */
 
 $ring.addEventListener("mouseenter", () => {
-  if (!startAnimationFinished) return
+  if (!startAnimationFinished || window.innerWidth < 720) return
+
   isRingHovered = true
   anglesBackup = []
   $navItems_Container.forEach(($navItem, index) => {
@@ -224,6 +262,8 @@ $ring.addEventListener("mouseenter", () => {
   })
 })
 $ring.addEventListener("mouseleave", () => {
+  if (window.innerHeight < 720) return
+
   isRingHovered = false
   $navItems_Container.forEach(($navItem, index) => {
     $navItem.style.rotate = `${anglesBackup[index]}deg`

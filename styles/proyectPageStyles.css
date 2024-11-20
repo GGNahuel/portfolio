@@ -90,6 +90,7 @@ main.notIndex {
 
     video, img {
       width: 450px;
+      max-width: 100%;
     }
 
     img {
@@ -122,7 +123,7 @@ main.notIndex {
 #projectTechFeatures {
   > ul {
     display: grid;
-    grid-template-columns: auto auto;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));;
     column-gap: 1.5rem;
 
     li {
@@ -236,11 +237,7 @@ main.notIndex {
   }
 }
 
-@media (max-width: 600px) {
-  h1 {
-    font-size: 3.6rem !important;
-  }
-
+@media (max-width: 719px) or (max-height: 719px) {
   #projectUses .usesList {
     grid-template-columns: auto;
     gap: 16px;
