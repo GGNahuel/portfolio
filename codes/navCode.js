@@ -43,8 +43,8 @@ function definirStylesSegunVWPreAnimation () {
     $ring.style.top = "0.5rem"
 
     const ringWidth = $ring.offsetWidth
-    $main.style.alignItems = window.innerWidth < 1401 ? 'flex-start' : 'center'
-    $main.style.marginLeft = window.innerWidth < 1401 ? `${ringWidth * 0.25}px` : "0"
+    $main.style.alignItems = window.innerWidth < 1280 ? 'flex-start' : 'center'
+    $main.style.marginLeft = window.innerWidth < 1280 ? `${ringWidth * 0.25}px` : "0"
     $main.style.width = `calc(100vw - ${ringWidth * 0.25}px - ${ancho$scrollbar})`
   }
   else {
@@ -72,14 +72,24 @@ const finalAnimationStyles = {
         width: "100%",
         aspectRatio: "inherit",
         backgroundColor: "var(--bg-contrast-color)",
-        padding: "8px"
+        padding: "8px",
+        translate: "0 0"
       })
     } else {
-      $ring.style.translate = finalRingPosition()
+      $root.style.flexDirection = "row"
+      $root.style.justifyContent = "center"
+      Object.assign($ring.style, {
+        position: "fixed",
+        borderRadius: "100%",
+        border: "56px solid var(--bg-contrast-color)",
+        aspectRatio: "1",
+        backgroundColor: "initial",
+        padding: 0,
+        translate: finalRingPosition()
+      })
     }
     $root.style.overflowY = "visible"
     $main.style.display = "flex"
-    if (!startAnimationFinished)
       window.setTimeout(() => {
         $main.style.opacity = 1
         startAnimationFinished = true
@@ -96,26 +106,32 @@ const finalAnimationStyles = {
       $navItem_button.classList.add("enabled")
     },
     item: (isResizingWindow = false) => {
+      if (!isResizingWindow) defaultAngles.push(calcularAnguloSegunItem(405, 135, index))
+
+      const $navItem_button = $element.querySelector(".navItem")
+      $element.style.transition = "rotate 0ms"
       if (window.innerWidth < 720) {
         $element.style.position = "static"
         $element.style.rotate = "0deg"
-        const $navItem_button = $element.querySelector(".navItem")
         $navItem_button.style.height = "initial"
         $navItem_button.style.padding = "8px"
       } else if (window.innerHeight < 720) {
         const angulo = calcularAnguloSegunItem(405, 90, index) // angulo en el que se ven todos los items
+        $navItem_button.style.height = "initial"
+        $navItem_button.style.padding = "8px"
         $element.style.rotate = `${angulo}deg`
       } else {
         if (isResizingWindow) {
+          $element.style.position = "absolute"
           $element.style.rotate = `${
             calcularAnguloSegunItem(405, anguloDistribucionItems, index) + ($root.scrollTop * 135 / $root.scrollHeight * -1)
           }deg`
-          return
+          $navItem_button.style.padding = 0
+          $navItem_button.style.height = "4rem"
+        } else { 
+          const anguloFinal = calcularAnguloSegunItem(405, anguloDistribucionItems, index)
+          $element.style.rotate = `${anguloFinal}deg`
         }
-
-        const anguloFinal = calcularAnguloSegunItem(405, anguloDistribucionItems, index)
-        $element.style.rotate = `${anguloFinal}deg`
-        defaultAngles.push(calcularAnguloSegunItem(405, 135, index))
       }
     }
   })
@@ -177,12 +193,11 @@ window.addEventListener("load", () => {
 })
 
 window.addEventListener("resize", () => {
-  if (!startAnimationFinished) {
-    definirStylesSegunVWPreAnimation()
-    return
+  definirStylesSegunVWPreAnimation()
+  if (startAnimationFinished) { 
+    finalAnimationStyles.ring_root()
+    $navItems_Container.forEach(($element, index) => {finalAnimationStyles.navItems($element, index).item(true)})
   } 
-  finalAnimationStyles.ring_root()
-  $navItems_Container.forEach(($element, index) => {finalAnimationStyles.navItems($element, index).item(true)})
 })
 
 
@@ -196,7 +211,7 @@ $root.addEventListener("scroll", () => {
   pixelsForScroll = $root.scrollTop - lastScrollTopPosition
   lastScrollTopPosition = $root.scrollTop
 
-  // si al total del largo de la pantala le corresponen 135°, cuántos le corresponden al pixelsForScroll
+  // si al total del largo de la pantalla le corresponden 135°, cuántos le corresponden al pixelsForScroll
   // 135°(angulo de distribución) ___ $root.offsetHeight
   // newAngle_Relative ___ pixelsForScroll
   
@@ -215,7 +230,7 @@ $root.addEventListener("scroll", () => {
       const actualAngle = devolverAnguloActual($navItem.style.rotate)
       const newAngle_Final = (!isRingHovered ? actualAngle : temp_actualAngles[index]) + newAngle_Relative
   
-      if (!isRingHovered && window.innerHeight > 719) {
+      if (!isRingHovered) {
         $navItem.style.rotate = `${lastScrollTopPosition !== 0 ? newAngle_Final : defaultAngles[index]}deg`
       }
       else {
@@ -225,13 +240,13 @@ $root.addEventListener("scroll", () => {
     }
 
     const eqSectionProps = (section = $section) => ({
-      posYstart: section.offsetTop,
-      posYfinish: section.offsetTop + section.offsetHeight,
-      posYprevious: section.offsetTop - document.documentElement.clientHeight / 2
+      yPosStart: section.offsetTop,
+      yPosFinish: section.offsetTop + section.offsetHeight,
+      yPosPrevious: section.offsetTop - document.documentElement.clientHeight / 2
     })
 
-    const isSectionInScreen = lastScrollTopPosition >= eqSectionProps.posYstart && lastScrollTopPosition < eqSectionProps.posYfinish
-    if (index < $navItems_Container.length - 1 && lastScrollTopPosition >= eqSectionProps($mainSections[index + 1]).posYprevious) {
+    const isSectionInScreen = lastScrollTopPosition >= eqSectionProps.yPosStart && lastScrollTopPosition < eqSectionProps.yPosFinish
+    if (index < $navItems_Container.length - 1 && lastScrollTopPosition >= eqSectionProps($mainSections[index + 1]).yPosPrevious) {
       actualSectionInScreenIndex = index + 1
     } 
     else if (isSectionInScreen) {
@@ -259,7 +274,7 @@ $ring.addEventListener("mouseenter", () => {
   })
 })
 $ring.addEventListener("mouseleave", () => {
-  if (window.innerHeight < 720) return
+  if (window.innerHeight < 720 || window.innerWidth < 720) return
 
   isRingHovered = false
   $navItems_Container.forEach(($navItem, index) => {
