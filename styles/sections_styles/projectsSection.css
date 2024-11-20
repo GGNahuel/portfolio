@@ -67,10 +67,10 @@
     }
 
     .pC_skillsList {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: 15px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(9ch, 1fr));
+      align-items: start;
+      gap: 8px;
       width: 100%;
     }
   }
