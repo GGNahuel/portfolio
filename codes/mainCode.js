@@ -12,7 +12,7 @@ const minutesWithoutAnimationInMS = 10 * 60 * 1000
 
 const ancho$scrollbar = '17px'
 function ajustarAncho() {
-  if (window.innerWidth > 600) {
+  if (window.innerWidth > 719) {
     var tieneScroll = $root.scrollHeight > window.innerHeight
     $root.style.paddingRight = tieneScroll ? '0' : ancho$scrollbar
   } else {

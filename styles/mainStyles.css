@@ -93,3 +93,9 @@ main {
 .comment {
     padding-left: 2rem;
 }
+
+@media (max-width: 719px) or (max-height: 719px) {
+    main > section > img {
+        width: 400px;
+    }
+}

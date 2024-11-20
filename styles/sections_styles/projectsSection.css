@@ -120,7 +120,7 @@
   }
 }
 
-@media screen and (max-width: 719px) {
+@media (max-width: 719px) or (max-height: 719px) {
   .projectCard {
     grid-template-columns: auto !important;
 
@@ -135,7 +135,7 @@
 
     >.projectCard_demo video {
       perspective: 1px;
-      rotate: x 2deg !important;
+      rotate: x 0.8deg !important;
     }
   }
 

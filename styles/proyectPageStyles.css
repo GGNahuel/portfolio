@@ -237,7 +237,7 @@ main.notIndex {
   }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 719px) or (max-height: 719px) {
   #projectUses .usesList {
     grid-template-columns: auto;
     gap: 16px;
