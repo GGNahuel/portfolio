@@ -12,8 +12,12 @@ const minutesWithoutAnimationInMS = 10 * 60 * 1000
 
 const ancho$scrollbar = '17px'
 function ajustarAncho() {
-  var tieneScroll = $root.scrollHeight > window.innerHeight
-  $root.style.paddingRight = tieneScroll ? '0' : ancho$scrollbar
+  if (window.innerWidth > 600) {
+    var tieneScroll = $root.scrollHeight > window.innerHeight
+    $root.style.paddingRight = tieneScroll ? '0' : ancho$scrollbar
+  } else {
+    $root.style.paddingRight = 0
+  }
 }
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -32,7 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log(element)
         element.scrollIntoView({behavior: "instant"});
       }
-    }, 50)
+    }, 100)
   }
 })
 window.addEventListener('load', () => {

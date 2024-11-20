@@ -95,7 +95,7 @@ h1 {
     font-size: 4.5rem; color: var(--main-color);
     line-height: 5rem; margin-bottom: 1rem;
 }
-h2 {font-size: 3rem;}
+h2 { font-size: 3rem; }
 h3 { font-size: 2rem; }
 h4 { font-size: 1.5rem;}
 .important {color: var(--secondary-color);}
@@ -103,3 +103,9 @@ h4 { font-size: 1.5rem;}
 a { text-decoration: none; color: initial; }
 
 ul { list-style-type: none; }
+
+@media (max-width: 600px) {
+    h1 { font-size: 3.6rem !important; }
+    h2 { font-size: 2.8rem !important; }
+    *::-webkit-scrollbar { width: 0; }
+}

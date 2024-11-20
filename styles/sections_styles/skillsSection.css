@@ -25,11 +25,11 @@
 
   > ul{
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(48px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(9ch, 1fr));
     align-items: center;
     min-width: 40%;
     max-width: 100%;
-    gap: 8px;
+    gap: 4px;
     height: 100%;
   }
 }
