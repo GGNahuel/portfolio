@@ -55,3 +55,11 @@
     background: linear-gradient(15deg, var(--secondary-color) 25%, var(--main-color) 80%);
     scale: 1.2 !important;
 }
+
+@media (max-width: 719px) or (max-height: 719px) {
+    #mainHeader {
+        nav {
+            justify-content: space-around;
+        }
+    }
+}
