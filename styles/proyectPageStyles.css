@@ -12,6 +12,9 @@
   align-items: center;
   background-color: var(--bg-contrast-color);
   color: var(--bg-color);
+  position: sticky;
+  top: 0;
+  z-index: 2;
 
   a {
     color: var(--bg-color);
@@ -206,7 +209,7 @@ main.notIndex {
     aspect-ratio: 1;
     padding: 1rem;
     background-color: rgba(0, 0, 0, 0.6);
-    z-index: 10;
+    z-index: 1;
     cursor: pointer;
     color: white;
     font-size: 32px;
