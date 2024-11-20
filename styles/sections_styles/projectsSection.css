@@ -9,7 +9,7 @@
   >.portfolioCard_zone {
     display: grid;
     gap: 1rem;
-    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     align-items: center;
     margin: 3rem 0;
 
@@ -67,10 +67,10 @@
     }
 
     .pC_skillsList {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: 15px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(9ch, 1fr));
+      align-items: start;
+      gap: 8px;
       width: 100%;
     }
   }
@@ -120,7 +120,7 @@
   }
 }
 
-@media screen and (max-width: 719px) {
+@media (max-width: 719px) or (max-height: 719px) {
   .projectCard {
     grid-template-columns: auto !important;
 
@@ -135,7 +135,7 @@
 
     >.projectCard_demo video {
       perspective: 1px;
-      rotate: x 2deg !important;
+      rotate: x 0.8deg !important;
     }
   }
 
