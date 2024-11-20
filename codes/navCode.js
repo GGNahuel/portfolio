@@ -81,9 +81,14 @@ const finalAnimationStyles = {
       $navItem_button.classList.add("enabled")
     },
     item: () => {
-      const anguloFinal = calcularAnguloSegunItem(405, anguloDistribucionItems, index)
-      $element.style.rotate = `${anguloFinal}deg`
-      defaultAngles.push(calcularAnguloSegunItem(405, 135, index))
+      if (window.innerHeight < 720) {
+        const angulo = calcularAnguloSegunItem(405, 90, index)
+        $element.style.rotate = `${angulo}deg`
+      } else {
+        const anguloFinal = calcularAnguloSegunItem(405, anguloDistribucionItems, index)
+        $element.style.rotate = `${anguloFinal}deg`
+        defaultAngles.push(calcularAnguloSegunItem(405, 135, index))
+      }
     }
   })
 }
@@ -145,9 +150,14 @@ window.addEventListener("resize", () => {
   if (startAnimationFinished) {
     $ring.style.translate = finalRingPosition()
     $navItems_Container.forEach(($element, index) => {
-      $element.style.rotate = `${
-        calcularAnguloSegunItem(405, anguloDistribucionItems, index) + ($root.scrollTop * 135 / $root.scrollHeight * -1)
-      }deg`
+      if (window.innerHeight < 720) {
+        const angulo = calcularAnguloSegunItem(405, 90, index)
+        $navItem.style.rotate = `${angulo}deg`
+      } else {
+        $element.style.rotate = `${
+          calcularAnguloSegunItem(405, anguloDistribucionItems, index) + ($root.scrollTop * 135 / $root.scrollHeight * -1)
+        }deg`
+      }
     })
   }
   definirStylesSegunVW()
@@ -182,7 +192,7 @@ $root.addEventListener("scroll", () => {
     const actualAngle = devolverAnguloActual($navItem.style.rotate)
     const newAngle_Final = (!isRingHovered ? actualAngle : temp_actualAngles[index]) + newAngle_Relative
 
-    if (!isRingHovered) {
+    if (!isRingHovered && window.innerHeight > 719) {
       $navItem.style.rotate = `${lastScrollTopPosition !== 0 ? newAngle_Final : defaultAngles[index]}deg`
     }
     else {
@@ -224,9 +234,11 @@ $ring.addEventListener("mouseenter", () => {
   })
 })
 $ring.addEventListener("mouseleave", () => {
-  isRingHovered = false
-  $navItems_Container.forEach(($navItem, index) => {
-    $navItem.style.rotate = `${anglesBackup[index]}deg`
-    $navItem.style.transition = "rotate 200ms ease"
-  })
+  if (window.innerHeight > 719) {
+    isRingHovered = false
+    $navItems_Container.forEach(($navItem, index) => {
+      $navItem.style.rotate = `${anglesBackup[index]}deg`
+      $navItem.style.transition = "rotate 200ms ease"
+    })
+  }
 })
