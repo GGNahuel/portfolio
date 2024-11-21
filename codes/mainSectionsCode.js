@@ -2,7 +2,7 @@
 // Project Section
 //
 class ProjectElement {
-  constructor({ name, description, features = [], links = "", skillsList = [], videoSrc, videoTitle = "", isPortfolioCard = false, expand_link }) {
+  constructor({ name, description, features = [], links = "", skillsList = [], videoSrc, videoTitle = "", isPortfolioCard = false, expand_link="" }) {
     this.name = name
     this.description = description
     this.features = features
@@ -14,10 +14,6 @@ class ProjectElement {
     this.videoTitle = videoTitle
   }
 
-  #createModal() {
-    $root.innerHtml += ``
-  }
-
   getElement() {
     const featuresList = this.features.map(feature => {
       return `<li>${feature}</li>`
@@ -27,11 +23,11 @@ class ProjectElement {
     }).join("")
 
     const mainProjectsElements = {
-      expand_button: `<a class="seeMore" href="HealthCenterManager.html" target="_blank"><svg viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg" mirror-in-rtl="true"` +
+      expand_button: `<a class="seeMore" href="${this.expand_link}"><svg viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg" mirror-in-rtl="true"` +
       `fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>` + 
       `<g id="SVGRepo_iconCarrier"><path fill="#000000" d="M12.1.6a.944.944 0 0 0 .2 1.04l1.352 1.353L10.28 6.37a.956.956 0 0 0 1.35 1.35l3.382-3.38 1.352 1.352a.944.944 0 0 0 1.04.2.958.958 0 0 0 .596-.875V.96a.964.964 0 0 0-.96-.96h-4.057a.958.958 0 0 0-.883.6z"></path> <path fill="#000000" d="M14 11v5a2.006 2.006 0 0 1-2 2H2a2.006 2.006 0 0 1-2-2V6a2.006 2.006 0 0 1 2-2h5a1 1 0 0 1 0 2H2v10h10v-5a1 1 0 0 1 2 0z"></path> </g></svg></a>`,
       features_section: `<div><p>Características:</p><ul class="pC_features">${featuresList}</ul></div>`,
-      link_element: `<a class="pC_link" href="${this.links}">(ENLACE)</a>`,
+      link_element: `<a class="pC_link" href="${this.links}">Enlace al repositorio</a>`,
       demo_zone: this.videoSrc && `<div class="projectCard_demo"><video src=${this.videoSrc} autoplay muted loop title="${this.videoTitle}"></div>`
     }
 
@@ -80,9 +76,10 @@ const HealthCenterTurnAdministrator = new ProjectElement({
     "Las acciones que se pueden realizar dependen del usuario que haya iniciado sesión y los permisos que éste tenga."],
   features: ["Base de datos relacional", "Arquitectura cliente-servidor", "Desarrollo de API", "Seguridad web", "Sesiones de usuario y roles", "Búsquedas dinámicas"],
   links: "https://github.com/GGNahuel/08-AdministracionTurnosClinica",
-  skillsList: ["Java", "TypeScript", "Spring boot", "Spring Security", "React", "CSS", "HTML", "React router"],
+  skillsList: ["Java", "TypeScript", "Spring boot", "Spring Security", "React", "React router", "CSS", "HTML"],
   videoSrc: "demos/HealthCenter/demoGeneral.mp4",
-  videoTitle: "Demostración general del proyecto"
+  videoTitle: "Demostración general del proyecto",
+  expand_link: "HealthCenterManager.html"
 })
 
 const projects = [HealthCenterTurnAdministrator]
