@@ -108,17 +108,27 @@ const finalAnimationStyles = {
       if (!isResizingWindow) defaultAngles.push(calcularAnguloSegunItem(405, 135, index))
 
       const $navItem_button = $element.querySelector(".navItem")
+      const $title = $element.querySelector(".title")
       $element.style.transition = "rotate 0ms"
+
       if (window.innerWidth < 720) {
-        $element.style.position = "static"
-        $element.style.rotate = "0deg"
-        $navItem_button.style.height = "initial"
+        Object.assign($element.style, {
+          rotate: "0deg",
+          position: "static",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          gap: "8px"
+        })
+        $navItem_button.style.width = "min-content"
         $navItem_button.style.padding = "8px"
-      } else if (window.innerHeight < 720) {
+      } else 
+      if (window.innerHeight < 720) {
         const angulo = calcularAnguloSegunItem(405, 90, index) // angulo en el que se ven todos los items
-        $navItem_button.style.height = "initial"
+        $navItem_button.style.width = "min-content"
         $navItem_button.style.padding = "8px"
         $element.style.rotate = `${angulo}deg`
+        $element.style.display = "block"
       } else {
         if (isResizingWindow) {
           $element.style.position = "absolute"
@@ -126,7 +136,7 @@ const finalAnimationStyles = {
             calcularAnguloSegunItem(405, 135, index) + ($root.scrollTop * 135 / $root.scrollHeight * -1)
           }deg`
           $navItem_button.style.padding = 0
-          $navItem_button.style.height = "4rem"
+          $navItem_button.style.width = "4rem"
         } else { 
           const anguloFinal = calcularAnguloSegunItem(405, 135, index)
           $element.style.rotate = `${anguloFinal}deg`
