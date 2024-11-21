@@ -27,9 +27,9 @@ const $KEYFRAME_moveRingItems = (angle) => [
 ]
 const _ringMoveAnimationProps = { duration: 1500, delay: 2000,easing: "ease"}
 
-function calcularAnguloSegunItem (anguloInicial, anguloRelativoFinal, multiplicador) {
+function calcularAnguloSegunItem (anguloInicial, anguloDeDistribucion, multiplicador) {
   return (
-    anguloInicial + multiplicador * (anguloRelativoFinal / ($navItems_Container.length -1))
+    anguloInicial + multiplicador * (anguloDeDistribucion / ($navItems_Container.length -1))
   )
 }
 
@@ -58,7 +58,6 @@ function definirStylesSegunVWPreAnimation () {
 const defaultAngles = []
 let startAnimationFinished = false
 
-let anguloDistribucionItems = window.innerWidth > 719 ? 135 : 0
 const finalAnimationStyles = {
   ring_root: () => {
     if (window.innerWidth < 720) {
@@ -72,7 +71,7 @@ const finalAnimationStyles = {
         width: "100%",
         aspectRatio: "inherit",
         backgroundColor: "var(--bg-contrast-color)",
-        padding: "8px",
+        padding: "16px",
         translate: "0 0"
       })
     } else {
@@ -124,12 +123,12 @@ const finalAnimationStyles = {
         if (isResizingWindow) {
           $element.style.position = "absolute"
           $element.style.rotate = `${
-            calcularAnguloSegunItem(405, anguloDistribucionItems, index) + ($root.scrollTop * 135 / $root.scrollHeight * -1)
+            calcularAnguloSegunItem(405, 135, index) + ($root.scrollTop * 135 / $root.scrollHeight * -1)
           }deg`
           $navItem_button.style.padding = 0
           $navItem_button.style.height = "4rem"
         } else { 
-          const anguloFinal = calcularAnguloSegunItem(405, anguloDistribucionItems, index)
+          const anguloFinal = calcularAnguloSegunItem(405, 135, index)
           $element.style.rotate = `${anguloFinal}deg`
         }
       }
@@ -168,7 +167,7 @@ window.addEventListener("load", () => {
     $navItems_Container.forEach(($element, index) => {
       const $navItem_button = $element.querySelector(".navItem")
       $element.style.rotate = `${calcularAnguloSegunItem(135, 90, index)}deg`
-      const anguloFinal = calcularAnguloSegunItem(405, anguloDistribucionItems, index)
+      const anguloFinal = calcularAnguloSegunItem(405, 135, index)
       
       $navItem_button.animate(
         $KEYFRAME_opening({destinationObject: "navItems"}), 
