@@ -8,7 +8,7 @@ const $main = document.querySelector("#root main")
 const $mainSections = document.querySelectorAll("main > section")
 
 
-const minutesWithoutAnimationInMS = 10 * 60 * 1000
+const minutesWithoutAnimationInMS = 5 * 60 * 1000
 
 const ancho$scrollbar = '17px'
 function ajustarAncho() {

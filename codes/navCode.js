@@ -60,9 +60,12 @@ let startAnimationFinished = false
 
 const finalAnimationStyles = {
   ring_root: () => {
+    const $nav = $ring.querySelector("nav")
     if (window.innerWidth < 720) {
-      $root.style.flexDirection = "column"
-      $root.style.justifyContent = "flex-start"
+      Object.assign($root.style, {
+        flexDirection: "column",
+        justifyContent: "flex-start"
+      })
       Object.assign($ring.style, {
         position: "sticky",
         top: 0,
@@ -71,12 +74,17 @@ const finalAnimationStyles = {
         width: "100%",
         aspectRatio: "inherit",
         backgroundColor: "var(--bg-contrast-color)",
-        padding: "16px",
+        padding: "8px",
         translate: "0 0"
       })
+      Object.assign($nav.style, {
+        display: "grid"
+      })
     } else {
-      $root.style.flexDirection = "row"
-      $root.style.justifyContent = "center"
+      Object.assign($root.style, {
+        flexDirection: "row",
+        justifyContent: "center"
+      })
       Object.assign($ring.style, {
         position: "fixed",
         borderRadius: "100%",
@@ -85,6 +93,9 @@ const finalAnimationStyles = {
         backgroundColor: "initial",
         padding: 0,
         translate: finalRingPosition()
+      })
+      Object.assign($nav.style, {
+        display: "flex"
       })
     }
     $root.style.overflowY = "visible"
@@ -122,6 +133,7 @@ const finalAnimationStyles = {
         })
         $navItem_button.style.width = "min-content"
         $navItem_button.style.padding = "8px"
+        $title.style.display = "block"
       } else 
       if (window.innerHeight < 720) {
         const angulo = calcularAnguloSegunItem(405, 90, index) // angulo en el que se ven todos los items
@@ -129,7 +141,10 @@ const finalAnimationStyles = {
         $navItem_button.style.padding = "8px"
         $element.style.rotate = `${angulo}deg`
         $element.style.display = "block"
+        $element.style.position = "absolute"
+        $title.style.display = "none"
       } else {
+        $title.style.display = "none"
         if (isResizingWindow) {
           $element.style.position = "absolute"
           $element.style.rotate = `${
@@ -235,7 +250,7 @@ $root.addEventListener("scroll", () => {
 
     $navItem.style.transition = "initial"
 
-    if (window.innerWidth > 719) {
+    if (window.innerWidth > 719 && window.innerHeight > 719) {
       const actualAngle = devolverAnguloActual($navItem.style.rotate)
       const newAngle_Final = (!isRingHovered ? actualAngle : temp_actualAngles[index]) + newAngle_Relative
   
