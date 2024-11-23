@@ -24,6 +24,7 @@
     height: 100%;
     position: relative;
     display: flex;
+    grid-template-columns: repeat(auto-fit, minmax(3rem, 5fr));
     justify-content: center;
 }
 
@@ -62,14 +63,8 @@
 }
 
 @media (max-width: 719px) or (max-height: 719px) {
-    #mainHeader {
-        nav {
-            justify-content: space-around;
-            gap: 8px;
-        }
-        
-        .title {
-            display: block;
-        }
+    #mainHeader nav {
+        gap: 4px;
+        font-size: 0.8rem;
     }
 }
