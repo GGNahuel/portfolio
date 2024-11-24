@@ -44,6 +44,10 @@ main.notIndex {
     max-width: 1148px;
     margin-bottom: 0;
     gap: 1rem;
+
+    > video {
+      max-width: 100%;
+    }
   }
 
   >header {
@@ -115,6 +119,7 @@ main.notIndex {
     display: grid;
     align-items: center;
     grid-template-columns: 300px auto;
+    width: 100%;
   }
 
   > ul, .usesList > ul {
