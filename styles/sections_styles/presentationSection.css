@@ -31,9 +31,9 @@
     .arrow {
       position: absolute;
       right: 0.5rem;
-      bottom: 0.5rem;
-      font-size: 3rem;
-      rotate: 240deg;
+      bottom: 1rem;
+      width: 3rem;
+      rotate: 170deg;
       z-index: 1;
       animation: arrowPresentationCard 1500ms infinite;
     }
@@ -193,12 +193,12 @@
 
 @keyframes arrowPresentationCard {
   50% {
-    rotate: 260deg;
-    transform: translateY(-5px);
+    rotate: 200deg;
+    transform: translate(5px, -10px);
   }
   100% {
-    rotate: 240deg;
-    transform: translateY(0px);
+    rotate: 170deg;
+    transform: translate(0px, 0px);
   }
 }
 
