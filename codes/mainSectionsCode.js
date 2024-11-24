@@ -78,7 +78,7 @@ const HealthCenterTurnAdministrator = new ProjectElement({
   features: ["Base de datos relacional", "Arquitectura cliente-servidor", "Desarrollo de API", "Seguridad web", "Sesiones de usuario y roles", "Búsquedas dinámicas"],
   links: "https://github.com/GGNahuel/08-AdministracionTurnosClinica",
   skillsList: ["Java", "TypeScript", "Spring boot", "Spring Security", "React", "React router", "CSS", "HTML"],
-  videoSrc: "demos/HealthCenter/demoGeneral.mp4",
+  videoSrc: "demos/HealthCenter/demoGeneral.webm",
   videoTitle: "Demostración general del proyecto",
   expand_link: "HealthCenterManager.html"
 })
