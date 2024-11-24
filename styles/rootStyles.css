@@ -46,14 +46,19 @@ button {
     display: flex;
     align-items: center;
     gap: 8px;
+
+    &:hover {
+        background-color: rgb(207, 207, 207);
+        transition: 300ms;
+    }
     
     &.outstanding {
         background-color: var(--secondary-color);
         color: var(--bg-contrast-color);
-    }
-
-    &:hover {
-      background-color: var(--secondary-color-dark);
+        
+        &:hover {
+          background-color: var(--secondary-color-dark);
+        }
     }
 }
 
