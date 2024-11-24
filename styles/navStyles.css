@@ -53,6 +53,10 @@
     &:hover {
         scale: 1.3 !important;
     }
+
+    svg {
+        width: 32px;
+    }
 }
 .enabled {
     scale: 1 !important;
@@ -66,5 +70,9 @@
     #mainHeader nav {
         gap: 4px;
         font-size: 0.8rem;
+
+        svg {
+            width: 24px;
+        }
     }
 }
