@@ -89,17 +89,17 @@ const translation = {
     profileSection: {
       profileCard: {
         role: "FullStack web Developer",
-        text: "Ready to give the 101% to the work. Always looking for that 1% extra that can help to make the projects to reach the best quality."
+        text: "Ready to give 101% to my work. Always looking for that 1% extra to help projects achieve the best quality."
       },
-      features: ["Cooperative", "Attention to details", "Database development", "Web security", "Multi-platform design", "UX/UI"],
+      features: ["Cooperative", "Attention to detail", "Database development", "Web security", "Multi-platform design", "UX/UI"],
       aboutMe: {
         title: "Hello!. Here you can know more about me.",
         formattedText: `<p>I'm 25 years old and live in Argentina at the moment, to be more specific in the province of Santa Fe, place where I was born.</p>
-            <br><p>I enjoy activities like reading book, spending time outdoors and hanging out with my friends. My hobbies are archery and photography.
-              Activities that I like to dedicate time and make improvements.
+            <br><p>I enjoy activities like reading books, spending time outdoors and hanging out with my friends. My hobbies are archery and photography.
+              Activities I like to dedicate time and continually improve.
             </p>
             <br><p>My journey in programming begun when I was a teenager and wanted to know more about the process of making video-games. 
-              Later I choose to study more of this area, and by finding in it enjoyment and passion, I decided start training myself as a developer.
+              Later I chose to study more of this area, and after finding enjoyment and passion for it, I decided to train professionally as a developer.
             </p>
             <p>I like this activity because there is always room to improve the skills or knowledge someone already have. 
               I feel motivated when I try to find the best possible solution to the different upcoming challenges.
@@ -108,7 +108,7 @@ const translation = {
     },
     skillsSection: {
       title: "Technical skills",
-      categories: ["Programming languages", "Frameworks and extensions", "Markup tools, styles and templates",
+      categories: ["Programming languages", "Frameworks and extensions", "Markup, styles and templating tools",
         "Databases", "Other development tools"
       ]
     },
@@ -118,17 +118,17 @@ const translation = {
     studiesSection: {
       title: "Studies",
       unl: `February 2019 - December 2021. <strong>Technician</strong> in computer sciences with a management focus, Universidad Nacional del Litoral (UNL).
-        Incomplete.`,
-      firstStepsFront: `January - March 2023. "First steps in frontend development, Argentina Programa 4.0`,
+        Studies incomplete.`,
+      firstStepsFront: `January - March 2023. "First steps in frontend development, Argentina Programa 4.0 initiative`,
       fullStackBootcamp: `March 2023 - June 2024. <strong>Fullstack web developer</strong> bootcamp, Egg Cooperation</p>
         <p class="comment">In this bootcamp, in addition to learning about programming technologies, I had the opportunity
         to develop and improve my <strong>soft skills</strong> by teamwork and cooperation. For example: 
-        explain or ask about the content of something related; the decision-making process; and give, listen and pool ideas
+        explaining or asking about related content; the decision-making process; and give, listen and pool ideas
         or possible solution to the different upcoming challenges.</p>
-        <p class="comment">The work in this bootcamp was by online classes and group activities. At the end, in a group of 4 study partners, we have to 
+        <p class="comment">The work in this bootcamp was by online classes and group activities. At the end, in a group of 4 study partners, we had to 
         develop a full-stack web application.</p>
         <p class="comment">This project was using <strong>agile methodologies</strong>, and in this case I was not only
-        in the backend team, but also I was designed as a <strong>tech leader</strong>. Managing the remote repository in github and git issues.</p>
+        in the backend team, but also I was designated as a <strong>tech leader</strong>. Managing the remote repository in github and git issues.</p>
         `,
         codigoFacilitoCourses: `April - May 2024. Different courses and training from <a href="https://codigofacilito.com/">Código facilito</a>.</p>
         <ul>
@@ -138,7 +138,7 @@ const translation = {
           <li>GitHub course</li>
           <li>Course about deploy</li>
         </ul>`,
-        others: `Also, I don't want to ignore that I learn more in an autodidact form. By official documentations, forums, audiovisual media, and people that
+        others: `Also, I don't want to ignore that I learned more independently and self-taught. By official documentations, forums, audiovisual media, and people that
         I had the chance to talk and learn from them.`
     },
     contactSection: {
@@ -147,13 +147,13 @@ const translation = {
       formLabels: {
         name: "Name",
         email: "Email",
-        about: "What do you, or the company you work for, do?",
+        about: "What is your or your company's area of expertise?",
         service: "What kind of project, service or role you are looking for?",
         expected: "What do you expect from me while working with you?",
         message: "Message, extra comments"
       },
       button: "Send",
-      alsoMessage: `Also you can contact me in <a href="https://www.linkedin.com/in/nahuel-gomez-gahn/" target="_blank">Linkedin</a> or sending an email to nahuelg8799@gmail.com`
+      alsoMessage: `Also, you can contact me in <a href="https://www.linkedin.com/in/nahuel-gomez-gahn/" target="_blank">Linkedin</a> or sending an email to nahuelg8799@gmail.com`
     }
   }
 }
