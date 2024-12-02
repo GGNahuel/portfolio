@@ -69,10 +69,10 @@ const translation = {
       formLabels: {
         name: "Ingrese su nombre",
         email: "Ingrese su email",
-        about: "¿A qué se dedica usted o la empresa a la que pertenece?",
-        service: "¿Qué tipo de proyecto, servicio o personal está buscando?",
+        about: "¿Cuál es su área de trabajo o la de su empresa?",
+        service: "¿Qué tipo de proyecto o colaboración está buscando?",
         expected: "¿Qué es lo que espera de mí al trabajar con usted/es?",
-        message: "Mensaje, comentarios extra"
+        message: "¿Algo más que quiera agregar o contarme?. Mensaje:"
       },
       button: "Contactarse",
       alsoMessage: `También puede buscarme en <a href="https://www.linkedin.com/in/nahuel-gomez-gahn/" target="_blank">Linkedin</a> o escribiéndome al e-mail nahuelg8799@gmail.com`
@@ -148,9 +148,9 @@ const translation = {
         name: "Name",
         email: "Email",
         about: "What is your or your company's area of expertise?",
-        service: "What kind of project, service or role you are looking for?",
+        service: "What type of project or collaboration you are looking for?",
         expected: "What do you expect from me while working with you?",
-        message: "Message, extra comments"
+        message: "Anything else you'd like to add or share?. Message:"
       },
       button: "Send",
       alsoMessage: `Also, you can contact me in <a href="https://www.linkedin.com/in/nahuel-gomez-gahn/" target="_blank">Linkedin</a> or sending an email to nahuelg8799@gmail.com`
