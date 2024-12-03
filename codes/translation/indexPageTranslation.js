@@ -1,7 +1,7 @@
 const translation = {
   spanish: {
     navbar: ["Presentación", "Habilidades", "Proyectos", "Estudios", "Contacto"],
-    title: "Lo que necesitas para que tu proyecto <span class='important'>llegue alto</span>",
+    title: "Lo que necesitaas para que tu proyecto <span class='important'>llegue alto</span>",
     buttons: {
       resume: "Curriculum",
       toContact: "Hablemos de lo que necesita"
@@ -14,7 +14,7 @@ const translation = {
       features: ["Cooperación", "Prolijidad", "Desarrollo de base de datos", "Seguridad web", "Diseño para múltiples dispositivos", "UX/UI"],
       aboutMe: {
         title: "¡Hola!. Aquí podrás conocer más de mí.",
-        formattedText: `<p>Actualmente tengo 25 años y vivo en Argentina, más específicamente en la provincia de Santa Fe, lugar donde nací.</p>
+        formattedText: `Actualmente tengo 25 años y vivo en Argentina, más específicamente en la provincia de Santa Fe, lugar donde nací.</p>
           <br><p>Disfruto de actividades como leer, disfrutar del aire libre y salidas con amigos. Mis hobbies son el tiro con arco y la fotografía.
             Actividades a las que me gusta ponerle esfuerzo e ir mejorando con el tiempo.
           </p>
@@ -67,11 +67,12 @@ const translation = {
       title: "Formulario de contacto",
       subtitle: "Responda las preguntas para saber más de lo que necesita, o bien arme su propio mensaje",
       formLabels: {
-        name: "Ingrese su nombre",
-        email: "Ingrese su email",
-        about: "¿Cuál es su área de trabajo o la de su empresa?",
-        service: "¿Qué tipo de proyecto o colaboración está buscando?",
-        expected: "¿Qué es lo que espera de mí al trabajar con usted/es?",
+        data: ["Ingrese su nombre", "Ingrese su email"],
+        questions: [
+          "¿Cuál es su área de trabajo o la de su empresa?",
+          "¿Qué tipo de proyecto o colaboración está buscando?",
+          "¿Qué es lo que espera de mí al trabajar con usted/es?"
+        ],
         message: "¿Algo más que quiera agregar o contarme?. Mensaje:"
       },
       button: "Contactarse",
@@ -86,7 +87,7 @@ const translation = {
       resume: "Resume",
       toContact: "Let's talk about what you need"
     },
-    profileSection: {
+    presentationSection: {
       profileCard: {
         role: "FullStack web Developer",
         text: "Ready to give 101% to my work. Always looking for that 1% extra to help projects achieve the best quality."
@@ -94,7 +95,7 @@ const translation = {
       features: ["Cooperative", "Attention to detail", "Database development", "Web security", "Multi-platform design", "UX/UI"],
       aboutMe: {
         title: "Hello!. Here you can know more about me.",
-        formattedText: `<p>I'm 25 years old and live in Argentina at the moment, to be more specific in the province of Santa Fe, place where I was born.</p>
+        formattedText: `I'm 25 years old and live in Argentina at the moment, to be more specific in the province of Santa Fe, place where I was born.</p>
             <br><p>I enjoy activities like reading books, spending time outdoors and hanging out with my friends. My hobbies are archery and photography.
               Activities I like to dedicate time and continually improve.
             </p>
@@ -145,11 +146,12 @@ const translation = {
       title: "Contact form",
       subtitle: "Answer the questions to know more about what you need, or write your own message below",
       formLabels: {
-        name: "Name",
-        email: "Email",
-        about: "What is your or your company's area of expertise?",
-        service: "What type of project or collaboration you are looking for?",
-        expected: "What do you expect from me while working with you?",
+        data: ["Name", "Email"],
+        questions: [
+          "What is your or your company's area of expertise?",
+          "What type of project or collaboration you are looking for?",
+          "What do you expect from me while working with you?",
+        ],
         message: "Anything else you'd like to add or share?. Message:"
       },
       button: "Send",
@@ -157,3 +159,68 @@ const translation = {
     }
   }
 }
+
+const defaultLanguage = navigator.language.substring(0, 2) == "es" ? "spanish" : "english"
+const selectedTranslation = translation[defaultLanguage]
+const addInnerHtmlTextBeforeCurrent = (element, value) => {
+  const currentText = element.innerHTML
+  element.innerHTML = value + currentText
+}
+
+//// Navbar
+document.querySelectorAll("div.navItemContainer").forEach((element, index) => {
+  element.querySelector(".navItem").setAttribute("title", selectedTranslation.navbar[index])
+  element.querySelector("span.title").innerHTML = selectedTranslation.navbar[index]
+})
+
+//// Presentation section
+const presentationSection = document.getElementById("presentation_section")
+presentationSection.querySelector("h1").innerHTML = selectedTranslation.title
+
+presentationSection.querySelector(".profileInfo_container h3").innerHTML = selectedTranslation.presentationSection.profileCard.role
+presentationSection.querySelector(".profileInfo_container > p").innerHTML = selectedTranslation.presentationSection.profileCard.text
+presentationSection.querySelector(".buttonZone > a > button").innerHTML = selectedTranslation.buttons.resume
+
+presentationSection.querySelectorAll(".features > li").forEach((element, index) => {
+  element.innerHTML = selectedTranslation.presentationSection.features[index]
+})
+
+presentationSection.querySelector(".aboutMe h3").innerHTML = selectedTranslation.presentationSection.aboutMe.title
+presentationSection.querySelector(".aboutMe p").innerHTML = selectedTranslation.presentationSection.aboutMe.formattedText
+
+//// Skills section
+const skillsSection = document.getElementById("skills_section")
+skillsSection.querySelector("& > h2").innerHTML = selectedTranslation.skillsSection.title
+skillsSection.querySelectorAll(".card.skillCard > h3").forEach((element, index) => {
+  element.innerHTML = selectedTranslation.skillsSection.categories[index]
+})
+
+//// Project section
+const projectSection = document.getElementById("projects_section")
+projectSection.querySelector("& > h2").innerHTML = selectedTranslation.projectsSection.title
+addInnerHtmlTextBeforeCurrent(projectSection.querySelector("a > button.outstanding"), selectedTranslation.buttons.toContact)
+
+//// Studies section
+const studiesSection = document.getElementById("expAndFormation_section")
+studiesSection.querySelector("& > h2").innerHTML = selectedTranslation.studiesSection.title
+studiesSection.querySelector(".unl > p").innerHTML = selectedTranslation.studiesSection.unl
+studiesSection.querySelector(".firstSteps > p").innerHTML = selectedTranslation.studiesSection.firstStepsFront
+studiesSection.querySelector(".bootcamp > p").innerHTML = selectedTranslation.studiesSection.fullStackBootcamp
+studiesSection.querySelector(".courses > p").innerHTML = selectedTranslation.studiesSection.codigoFacilitoCourses
+studiesSection.querySelector(".others > p").innerHTML = selectedTranslation.studiesSection.others
+
+//// Contact section
+const contactSection = document.getElementById("contact_section")
+contactSection.querySelector("& > h2").innerHTML = selectedTranslation.contactSection.title
+contactSection.querySelector("& > h4").innerHTML = selectedTranslation.contactSection.subtitle
+
+contactSection.querySelectorAll(".subForm:nth-child(1) > label").forEach((element, index) => {
+  addInnerHtmlTextBeforeCurrent(element, selectedTranslation.contactSection.formLabels.data[index])
+})
+contactSection.querySelectorAll(".subForm:nth-child(2) > label").forEach((element, index) => {
+  addInnerHtmlTextBeforeCurrent(element, selectedTranslation.contactSection.formLabels.questions[index])
+})
+addInnerHtmlTextBeforeCurrent(contactSection.querySelector(".subForma:nth-child(3) > label"), selectedTranslation.contactSection.formLabels.message)
+
+contactSection.querySelector("button.outstanding").innerHTML = selectedTranslation.contactSection.button
+contactSection.querySelector("& > div > h4").innerHTML = selectedTranslation.contactSection.alsoMessage
