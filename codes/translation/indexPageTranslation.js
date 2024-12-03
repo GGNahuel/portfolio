@@ -1,10 +1,11 @@
 const translation = {
   spanish: {
-    navbar: ["Presentación", "Habilidades", "Proyectos", "Estudios", "Contacto"],
-    title: "Lo que necesitaas para que tu proyecto <span class='important'>llegue alto</span>",
+    navbar: ["Presentación", "Tecnologías", "Proyectos", "Estudios", "Contacto"],
+    title: "Lo que necesitas para que tu proyecto <span class='important'>llegue alto</span>",
     buttons: {
       resume: "Curriculum",
-      toContact: "Hablemos de lo que necesita"
+      toContact: "Hablemos de lo que necesita",
+      certificates: "Puede ver más sobre mis certificados aquí"
     },
     presentationSection: {
       profileCard: {
@@ -85,7 +86,8 @@ const translation = {
     title: "What you need to make your projects <span class='important'>grow</span>",
     buttons: {
       resume: "Resume",
-      toContact: "Let's talk about what you need"
+      toContact: "Let's talk about what you need",
+      certificates: "You can see more about my certificates here"
     },
     presentationSection: {
       profileCard: {
@@ -168,7 +170,7 @@ const addInnerHtmlTextBeforeCurrent = (element, value) => {
 }
 
 //// Navbar
-document.querySelectorAll("div.navItemContainer").forEach((element, index) => {
+document.querySelectorAll("div.navItem_Container").forEach((element, index) => {
   element.querySelector(".navItem").setAttribute("title", selectedTranslation.navbar[index])
   element.querySelector("span.title").innerHTML = selectedTranslation.navbar[index]
 })
@@ -209,6 +211,8 @@ studiesSection.querySelector(".bootcamp > p").innerHTML = selectedTranslation.st
 studiesSection.querySelector(".courses > p").innerHTML = selectedTranslation.studiesSection.codigoFacilitoCourses
 studiesSection.querySelector(".others > p").innerHTML = selectedTranslation.studiesSection.others
 
+studiesSection.querySelector("& > a > button").innerHTML = selectedTranslation.buttons.certificates
+
 //// Contact section
 const contactSection = document.getElementById("contact_section")
 contactSection.querySelector("& > h2").innerHTML = selectedTranslation.contactSection.title
@@ -220,7 +224,7 @@ contactSection.querySelectorAll(".subForm:nth-child(1) > label").forEach((elemen
 contactSection.querySelectorAll(".subForm:nth-child(2) > label").forEach((element, index) => {
   addInnerHtmlTextBeforeCurrent(element, selectedTranslation.contactSection.formLabels.questions[index])
 })
-addInnerHtmlTextBeforeCurrent(contactSection.querySelector(".subForma:nth-child(3) > label"), selectedTranslation.contactSection.formLabels.message)
+addInnerHtmlTextBeforeCurrent(contactSection.querySelector(".subForm:nth-child(3) > label"), selectedTranslation.contactSection.formLabels.message)
 
 contactSection.querySelector("button.outstanding").innerHTML = selectedTranslation.contactSection.button
 contactSection.querySelector("& > div > h4").innerHTML = selectedTranslation.contactSection.alsoMessage
