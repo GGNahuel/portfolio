@@ -126,7 +126,7 @@
 
 @media (max-width: 719px) or (max-height: 719px) {
   .projectCard {
-    grid-template-columns: auto !important;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)) !important;
 
     >.projectCard_info,
     >.projectCard_demo {
@@ -142,9 +142,5 @@
       perspective: 1px;
       rotate: x 0.8deg !important;
     }
-  }
-
-  #portfolio_projectCard {
-    width: 100%;
   }
 }

@@ -111,6 +111,10 @@ a { text-decoration: none; color: initial; }
 
 ul { list-style-type: none; }
 
+#changeLanguage_button {
+    margin-top: 1rem;
+}
+
 @media (max-width: 719px) or (max-height: 719px) {
     h1 { font-size: 3.2rem; }
     h2 { font-size: 2.6rem; }
