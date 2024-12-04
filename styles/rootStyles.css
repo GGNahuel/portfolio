@@ -112,7 +112,40 @@ a { text-decoration: none; color: initial; }
 ul { list-style-type: none; }
 
 #changeLanguage_button {
+    align-self: center;
     margin-top: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 1.2rem;
+    font-weight: 700;
+
+    > input {
+        appearance: none;
+        width: 80px;
+        height: 32px;
+        border-radius: 16px;
+        background-color: aliceblue;
+        position: relative;
+
+        &::before {
+            content: "";
+            display: block;
+            width: 32px;
+            height: 32px;
+            border-radius: 16px;
+            background-color: var(--third-color);
+            position: absolute;
+            left: 0;
+            transition: 300ms all;
+        }
+
+        &:checked {
+            &::before {
+                left: 48px;
+            }
+        }
+    }
 }
 
 @media (max-width: 719px) or (max-height: 719px) {
