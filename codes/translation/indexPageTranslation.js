@@ -162,10 +162,13 @@ const translation = {
   }
 }
 
-const selectedLanguage = localStorage.getItem("webLanguage") || undefined
-let selectedTranslation = translation[selectedLanguage || defaultLanguage]
+let selectedTranslation = null
 
-const changeLanguageButton = document.getElementById("changeLanguage_button")
+window.addEventListener("load", () => {
+  selectedTranslation = translation[selectedLanguage || defaultLanguage]
+  setPageTexts()
+})
+
 changeLanguageButton.addEventListener("change", () => {
   const newLanguage = localStorage.getItem("webLanguage") == "spanish" ? "english" : "spanish"
   localStorage.setItem("webLanguage", newLanguage)
@@ -211,7 +214,7 @@ const setSkillsSectionTexts = () => {
 const setProjectSectionTexts = () => {
   const projectSection = document.getElementById("projects_section")
   projectSection.querySelector("& > h2").innerHTML = selectedTranslation.projectsSection.title
-  addInnerHtmlTextBeforeCurrent(projectSection.querySelector("a > button.outstanding"), selectedTranslation.buttons.toContact)
+  projectSection.querySelector("a > button.outstanding > text").innerHTML = selectedTranslation.buttons.toContact
 }
 
 //// Studies section
@@ -234,12 +237,12 @@ const setContactSectionTexts = () => {
   contactSection.querySelector("& > h4").innerHTML = selectedTranslation.contactSection.subtitle
 
   contactSection.querySelectorAll(".subForm:nth-child(1) > label").forEach((element, index) => {
-    addInnerHtmlTextBeforeCurrent(element, selectedTranslation.contactSection.formLabels.data[index])
+    element.querySelector("text").innerHTML = selectedTranslation.contactSection.formLabels.data[index]
   })
   contactSection.querySelectorAll(".subForm:nth-child(2) > label").forEach((element, index) => {
-    addInnerHtmlTextBeforeCurrent(element, selectedTranslation.contactSection.formLabels.questions[index])
+    element.querySelector("text").innerHTML = selectedTranslation.contactSection.formLabels.questions[index]
   })
-  addInnerHtmlTextBeforeCurrent(contactSection.querySelector(".subForm:nth-child(3) > label"), selectedTranslation.contactSection.formLabels.message)
+  contactSection.querySelector(".subForm:nth-child(3) > label text").innerHTML = selectedTranslation.contactSection.formLabels.message
 
   contactSection.querySelector("button.outstanding").innerHTML = selectedTranslation.contactSection.button
   contactSection.querySelector("& > div > h4").innerHTML = selectedTranslation.contactSection.alsoMessage
@@ -253,4 +256,3 @@ const setPageTexts = () => {
   setStudiesSectionTexts()
   setContactSectionTexts()
 }
-setPageTexts()
