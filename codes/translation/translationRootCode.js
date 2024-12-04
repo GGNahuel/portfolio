@@ -1,10 +1,11 @@
 const defaultLanguage = navigator.language.substring(0, 2) == "es" ? "spanish" : "english"
-
-const addInnerHtmlTextBeforeCurrent = (element, value) => {
-  const currentText = element.innerHTML
-  element.innerHTML = value + currentText
-}
+let selectedLanguage = null
+const changeLanguageButton = document.getElementById("changeLanguage_button")
 
 window.addEventListener("load", () => {
-  localStorage.setItem("webLanguage", defaultLanguage)
+  if (!localStorage.getItem("webLanguage")) {
+    localStorage.setItem("webLanguage", defaultLanguage)
+  }
+  selectedLanguage = localStorage.getItem("webLanguage")
+  changeLanguageButton.querySelector("input").checked = localStorage.getItem("webLanguage") == "english"
 })
