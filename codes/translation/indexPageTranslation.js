@@ -170,9 +170,9 @@ window.addEventListener("load", () => {
 })
 
 changeLanguageButton.addEventListener("change", () => {
-  const newLanguage = localStorage.getItem("webLanguage") == "spanish" ? "english" : "spanish"
-  localStorage.setItem("webLanguage", newLanguage)
-  selectedTranslation = translation[newLanguage]
+  selectedLanguage = localStorage.getItem("webLanguage") == "spanish" ? "english" : "spanish"
+  localStorage.setItem("webLanguage", selectedLanguage)
+  selectedTranslation = translation[selectedLanguage]
   setPageTexts()
 })
 
