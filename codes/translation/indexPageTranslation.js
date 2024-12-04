@@ -166,11 +166,9 @@ const selectedLanguage = localStorage.getItem("webLanguage") || undefined
 let selectedTranslation = translation[selectedLanguage || defaultLanguage]
 
 const changeLanguageButton = document.getElementById("changeLanguage_button")
-changeLanguageButton.innerText = localStorage.getItem("webLanguage") == "spanish" ? "Change to english version" : "Cambiar a versión en español"
-changeLanguageButton.addEventListener("click", () => {
+changeLanguageButton.addEventListener("change", () => {
   const newLanguage = localStorage.getItem("webLanguage") == "spanish" ? "english" : "spanish"
   localStorage.setItem("webLanguage", newLanguage)
-  changeLanguageButton.innerText = localStorage.getItem("webLanguage") == "spanish" ? "Change to english version" : "Cambiar a versión en español"
   selectedTranslation = translation[newLanguage]
   setPageTexts()
 })
