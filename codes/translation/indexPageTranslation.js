@@ -162,69 +162,95 @@ const translation = {
   }
 }
 
-const defaultLanguage = navigator.language.substring(0, 2) == "es" ? "spanish" : "english"
-const selectedTranslation = translation[defaultLanguage]
-const addInnerHtmlTextBeforeCurrent = (element, value) => {
-  const currentText = element.innerHTML
-  element.innerHTML = value + currentText
-}
+const selectedLanguage = localStorage.getItem("webLanguage") || undefined
+let selectedTranslation = translation[selectedLanguage || defaultLanguage]
+
+const changeLanguageButton = document.getElementById("changeLanguage_button")
+changeLanguageButton.addEventListener("click", () => {
+  const newLanguage = localStorage.getItem("webLanguage") == "spanish" ? "english" : "spanish"
+  localStorage.setItem("webLanguage", newLanguage)
+  selectedTranslation = translation[newLanguage]
+  setPageTexts()
+})
 
 //// Navbar
-document.querySelectorAll("div.navItem_Container").forEach((element, index) => {
-  element.querySelector(".navItem").setAttribute("title", selectedTranslation.navbar[index])
-  element.querySelector("span.title").innerHTML = selectedTranslation.navbar[index]
-})
+const setNavbarTexts = () => {
+  document.querySelectorAll("div.navItem_Container").forEach((element, index) => {
+    element.querySelector(".navItem").setAttribute("title", selectedTranslation.navbar[index])
+    element.querySelector("span.title").innerHTML = selectedTranslation.navbar[index]
+  })
+}
 
 //// Presentation section
-const presentationSection = document.getElementById("presentation_section")
-presentationSection.querySelector("h1").innerHTML = selectedTranslation.title
+const setPresentationSectionTexts = () => {
+  const presentationSection = document.getElementById("presentation_section")
+  presentationSection.querySelector("h1").innerHTML = selectedTranslation.title
 
-presentationSection.querySelector(".profileInfo_container h3").innerHTML = selectedTranslation.presentationSection.profileCard.role
-presentationSection.querySelector(".profileInfo_container > p").innerHTML = selectedTranslation.presentationSection.profileCard.text
-presentationSection.querySelector(".buttonZone > a > button").innerHTML = selectedTranslation.buttons.resume
+  presentationSection.querySelector(".profileInfo_container h3").innerHTML = selectedTranslation.presentationSection.profileCard.role
+  presentationSection.querySelector(".profileInfo_container > p").innerHTML = selectedTranslation.presentationSection.profileCard.text
+  presentationSection.querySelector(".buttonZone > a > button").innerHTML = selectedTranslation.buttons.resume
 
-presentationSection.querySelectorAll(".features > li").forEach((element, index) => {
-  element.innerHTML = selectedTranslation.presentationSection.features[index]
-})
+  presentationSection.querySelectorAll(".features > li").forEach((element, index) => {
+    element.innerHTML = selectedTranslation.presentationSection.features[index]
+  })
 
-presentationSection.querySelector(".aboutMe h3").innerHTML = selectedTranslation.presentationSection.aboutMe.title
-presentationSection.querySelector(".aboutMe p").innerHTML = selectedTranslation.presentationSection.aboutMe.formattedText
+  presentationSection.querySelector(".aboutMe h3").innerHTML = selectedTranslation.presentationSection.aboutMe.title
+  presentationSection.querySelector(".aboutMe p").innerHTML = selectedTranslation.presentationSection.aboutMe.formattedText
+}
 
 //// Skills section
-const skillsSection = document.getElementById("skills_section")
-skillsSection.querySelector("& > h2").innerHTML = selectedTranslation.skillsSection.title
-skillsSection.querySelectorAll(".card.skillCard > h3").forEach((element, index) => {
-  element.innerHTML = selectedTranslation.skillsSection.categories[index]
-})
+const setSkillsSectionTexts = () => {
+  const skillsSection = document.getElementById("skills_section")
+  skillsSection.querySelector("& > h2").innerHTML = selectedTranslation.skillsSection.title
+  skillsSection.querySelectorAll(".card.skillCard > h3").forEach((element, index) => {
+    element.innerHTML = selectedTranslation.skillsSection.categories[index]
+  })
+}
 
 //// Project section
-const projectSection = document.getElementById("projects_section")
-projectSection.querySelector("& > h2").innerHTML = selectedTranslation.projectsSection.title
-addInnerHtmlTextBeforeCurrent(projectSection.querySelector("a > button.outstanding"), selectedTranslation.buttons.toContact)
+const setProjectSectionTexts = () => {
+  const projectSection = document.getElementById("projects_section")
+  projectSection.querySelector("& > h2").innerHTML = selectedTranslation.projectsSection.title
+  addInnerHtmlTextBeforeCurrent(projectSection.querySelector("a > button.outstanding"), selectedTranslation.buttons.toContact)
+}
 
 //// Studies section
-const studiesSection = document.getElementById("expAndFormation_section")
-studiesSection.querySelector("& > h2").innerHTML = selectedTranslation.studiesSection.title
-studiesSection.querySelector(".unl > p").innerHTML = selectedTranslation.studiesSection.unl
-studiesSection.querySelector(".firstSteps > p").innerHTML = selectedTranslation.studiesSection.firstStepsFront
-studiesSection.querySelector(".bootcamp > p").innerHTML = selectedTranslation.studiesSection.fullStackBootcamp
-studiesSection.querySelector(".courses > p").innerHTML = selectedTranslation.studiesSection.codigoFacilitoCourses
-studiesSection.querySelector(".others > p").innerHTML = selectedTranslation.studiesSection.others
+const setStudiesSectionTexts = () => {
+  const studiesSection = document.getElementById("expAndFormation_section")
+  studiesSection.querySelector("& > h2").innerHTML = selectedTranslation.studiesSection.title
+  studiesSection.querySelector(".unl > p").innerHTML = selectedTranslation.studiesSection.unl
+  studiesSection.querySelector(".firstSteps > p").innerHTML = selectedTranslation.studiesSection.firstStepsFront
+  studiesSection.querySelector(".bootcamp > p").innerHTML = selectedTranslation.studiesSection.fullStackBootcamp
+  studiesSection.querySelector(".courses > p").innerHTML = selectedTranslation.studiesSection.codigoFacilitoCourses
+  studiesSection.querySelector(".others > p").innerHTML = selectedTranslation.studiesSection.others
 
-studiesSection.querySelector("& > a > button").innerHTML = selectedTranslation.buttons.certificates
+  studiesSection.querySelector("& > a > button").innerHTML = selectedTranslation.buttons.certificates
+}
 
 //// Contact section
-const contactSection = document.getElementById("contact_section")
-contactSection.querySelector("& > h2").innerHTML = selectedTranslation.contactSection.title
-contactSection.querySelector("& > h4").innerHTML = selectedTranslation.contactSection.subtitle
+const setContactSectionTexts = () => {
+  const contactSection = document.getElementById("contact_section")
+  contactSection.querySelector("& > h2").innerHTML = selectedTranslation.contactSection.title
+  contactSection.querySelector("& > h4").innerHTML = selectedTranslation.contactSection.subtitle
 
-contactSection.querySelectorAll(".subForm:nth-child(1) > label").forEach((element, index) => {
-  addInnerHtmlTextBeforeCurrent(element, selectedTranslation.contactSection.formLabels.data[index])
-})
-contactSection.querySelectorAll(".subForm:nth-child(2) > label").forEach((element, index) => {
-  addInnerHtmlTextBeforeCurrent(element, selectedTranslation.contactSection.formLabels.questions[index])
-})
-addInnerHtmlTextBeforeCurrent(contactSection.querySelector(".subForm:nth-child(3) > label"), selectedTranslation.contactSection.formLabels.message)
+  contactSection.querySelectorAll(".subForm:nth-child(1) > label").forEach((element, index) => {
+    addInnerHtmlTextBeforeCurrent(element, selectedTranslation.contactSection.formLabels.data[index])
+  })
+  contactSection.querySelectorAll(".subForm:nth-child(2) > label").forEach((element, index) => {
+    addInnerHtmlTextBeforeCurrent(element, selectedTranslation.contactSection.formLabels.questions[index])
+  })
+  addInnerHtmlTextBeforeCurrent(contactSection.querySelector(".subForm:nth-child(3) > label"), selectedTranslation.contactSection.formLabels.message)
 
-contactSection.querySelector("button.outstanding").innerHTML = selectedTranslation.contactSection.button
-contactSection.querySelector("& > div > h4").innerHTML = selectedTranslation.contactSection.alsoMessage
+  contactSection.querySelector("button.outstanding").innerHTML = selectedTranslation.contactSection.button
+  contactSection.querySelector("& > div > h4").innerHTML = selectedTranslation.contactSection.alsoMessage
+}
+
+const setPageTexts = () => {
+  setNavbarTexts()
+  setPresentationSectionTexts()
+  setSkillsSectionTexts()
+  setProjectSectionTexts()
+  setStudiesSectionTexts()
+  setContactSectionTexts()
+}
+setPageTexts()
