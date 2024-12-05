@@ -3,12 +3,17 @@
   width: 100%;
   overflow-y: scroll;
   scroll-behavior: smooth;
+
+  #changeLanguage_button {
+    margin-top: 0;
+  }
 }
 
 .projectsNavbar {
   display: flex;
   padding: 1.2rem;
-  gap: .2rem;
+  gap: 1rem;
+  justify-content: space-between;
   align-items: center;
   background-color: var(--bg-contrast-color);
   color: var(--bg-color);
@@ -114,6 +119,12 @@ main.notIndex {
 
 #projectUses {
   gap: 2rem;
+  
+  > div {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
 
   .usesList {
     display: grid;

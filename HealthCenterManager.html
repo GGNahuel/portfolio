@@ -25,6 +25,7 @@
       <a href="#projectTechFeatures">Características técnicas</a>
       <a href="#projectComments">Comentarios del proceso</a>
     </div> -->
+    <label id="changeLanguage_button">Español<input type="checkbox">English</label>
   </nav>
   <main class="notIndex">
     <header>
@@ -48,96 +49,50 @@
     </section>
     <section><video src="demos/HealthCenter/demoGeneral.webm" preload="metadata" controls muted></video></section>
     <section id="projectUses">
-      <h2>Características generales</h2>
+      <h2></h2>
       <div></div>
-      <div class="usesList">
-        <h3>Acerca de los usuarios...</h3>
-        <ul>
-          <li>Hay 3 roles para los usuarios que se registren: Administrador, General y Profesional.</li>
-          <li>El Administrador puede crear, modificar o dar de baja cualquier dato que este presente en la base de datos de la aplicación.</li>
-          <li>El <strong>rol "General" es el que usaría quien este a cargo de registrar los turnos y pacientes</strong>, contando también con la posibilidad de modificarlos</li>
-          <li>Los usuarios con <strong>rol "Profesional"</strong> están destinados a los profesionales de salud, <strong>permitiéndoles visualizar y manejar sus turnos de forma más 
-            directa.</strong> Así como sus propios datos.</li>
-          <li>Cualquier usuario, o incluso sin iniciar sesión, podrá visualizar los datos que quiera. Pero modificarlos, o crear nuevos, depende del rol.</li>
-          <li>Para que la navegación sea más práctica, solo aparecerán los enlaces en el menú a los que el usuario en sesión puede acceder.</li>  
-        </ul>
-      </div>
-      <div class="usesList">
-        <h3>Acerca del manejo de datos...</h3>
-        <ul>
-          <li>La búsqueda de cada tipo de dato cuenta con filtros y búsquedas personalizadas para cada uno.</li>
-          <li><strong>El registro o modificación de datos cuenta con verificaciones</strong> que comprueban que no se sobreponga con otros, entre otras <strong>validaciones</strong>. Mostrando mensajes de error si
-            algún dato en específico causaría este problema.</li>
-          <li><strong>En caso de que haya errores se mostrarán en pantalla.</strong></li>
-          <li>Tanto la creación como la modificación de turnos muestra un calendario en el que puedes seleccionar el horario y la fecha de forma más sencilla. 
-            A su vez que muestra los turnos ya ocupados para el área seleccionada y profesional.</li>
-          <li>Si quien crea un turno es un profesional, solo podrá hacerlo para las áreas en las que él se encuentre registrado. Y en cuánto a la modificación, 
-            solo aquellos turnos que ya tenga asignados, y también solo para las áreas mencionadas.</li>
-          <li>Cuando se da de baja un area de servicio o profesional se puede elegir qué hacer con los turnos que estén asociados. Pudiendo darlos de baja también.</li>
-        </ul>
-      </div>
-      <div class="usesList">
-        <h3>Acerca de los datos...</h3>
-        <ul>
-          <li>Los tipo de datos principales de la página son: pacientes, profesionales, areas de servicio, consultorios, y turnos. <strong>Estos se relacionan 
-            según cómo está pensada la base de datos.</strong></li>
-          <li>La sección principal muestra los turnos del día para cada área, o para las áreas en que un profesional esté registrado si el usuario en sesión
-            tiene el rol "Profesional".</li>
-          <li>Un profesional de salud puede estar registrado en más de un área de servicio si se requiere.</li>
-          <li>Los consultorios solo pueden tener un profesional asignado.</li>
-          <li>Entre los datos de pacientes está el de obra social. Este dato se incluye automáticamente cuando se asigna uno en un turno.</li>
-          <li>Los turnos se pueden clasificar según su estado de abono, siendo: Pagado, Debe documentación, Debe, o A Reiterar.</li>
-        </ul>
-      </div>
-      <div class="usesList">
-        <h3>Acerca de las vistas...</h3>
-        <ul>
-          <li>Cuenta con diseños que se adaptan al tema del navegador (tema oscuro o tema claro).</li>
-          <li>El diseño cambia según el tamaño de pantalla del dispositivo</li>
-        </ul>
-      </div>
     </section>
     <section id="carrousel">
       <div class="carrouselContainer">
         <div class="imageCarrouselContainer">
           <img src="imgs/healthCenter/mainPage.webp">
-          <span>Vista de la página principal</span>
+          <span></span>
         </div>
         <div class="imageCarrouselContainer">
           <img src="imgs/healthCenter/userRegistration.webp">
-          <span>Registro de usuario</span>
+          <span></span>
         </div>
         <div class="imageCarrouselContainer">
           <img src="imgs/healthCenter/userEditionMsg.webp">
-          <span>Vista del perfil de usuario, con edición exitosa de sus datos</span>
+          <span></span>
         </div>
         <div class="imageCarrouselContainer">
           <img src="imgs/healthCenter/deniedAccess.webp">
-          <span>Mensaje de error cuando no se tienen los permisos requeridos para cierta acción</span>
+          <span></span>
         </div>
         <div class="imageCarrouselContainer">
           <img src="imgs/healthCenter/schedulePicker.webp">
-          <span>Calendario para seleccionar horario y fecha al crear turno</span>
+          <span></span>
         </div>
         <div class="imageCarrouselContainer">
           <img src="imgs/healthCenter/professionalReg.webp">
-          <span>Registro de profesional médico con mensajes de error</span>
+          <span></span>
         </div>
         <div class="imageCarrouselContainer">
           <img src="imgs/healthCenter/patientsList_turns.webp">
-          <span>Lista de pacientes, con turnos desplegados</span>
+          <span></span>
         </div>
         <div class="imageCarrouselContainer">
           <img src="imgs/healthCenter/turnSearch.webp">
-          <span>Vista de búsqueda de turnos</span>
+          <span></span>
         </div>
         <div class="imageCarrouselContainer">
           <img src="imgs/healthCenter/turnSearch_name.webp">
-          <span>Búsqueda de turnos con filtros aplicados</span>
+          <span></span>
         </div>
         <div class="imageCarrouselContainer">
           <img src="imgs/healthCenter/consultoryList.webp">
-          <span>Vista de los consultorios registrados y ocupados</span>
+          <span></span>
         </div>
       </div>
       <div class="carrouselButtons">
@@ -146,38 +101,9 @@
     </section>
     <section id="projectTechFeatures">
       <h2>Características técnicas</h2>
-      <ul class="card">
-        <li><span class="material-symbols-outlined">add_box</span>
-          Base de datos relacional SQL</li>
-        <li><span class="material-symbols-outlined">add_box</span>
-          Desarrollo de una API REST</li>
-        <li><span class="material-symbols-outlined">add_box</span>
-          Arquitectura cliente-servidor. Comunicación con la API a través de solicitudes HTTP</li>
-        <li><span class="material-symbols-outlined">add_box</span>
-          Api con protección CORS específica</li>
-        <li><span class="material-symbols-outlined">add_box</span>
-          Sesión de usuario, registro y roles con diferentes permisos. Tanto para la api como para la página</li>
-        <li><span class="material-symbols-outlined">add_box</span>
-          Encriptado de contraseñas de usuario mediante el codificador BCrypt</li>
-        <li><span class="material-symbols-outlined">add_box</span>
-          Generación y utilización de token CSRF para proteger ante posibles ataques de seguridad a la base de datos</li>
-        <li><span class="material-symbols-outlined">add_box</span>
-          Verificaciones y validaciones tanto en el back como en el front</li>
-        <li><span class="material-symbols-outlined">add_box</span>
-          Excepciones personalizadas y envío de DTOs para mejorar la comunicación de errores y manejarlos en el frontend</li>
-        <li><span class="material-symbols-outlined">add_box</span>
-          Aplicación de principios SOLID</li>
-        <li><span class="material-symbols-outlined">add_box</span>
-          Componentes reutilizables</li>
-        <li><span class="material-symbols-outlined">add_box</span>
-          Visualizaciones en tablas, registros en formularios, y búsqueda dinámica de datos</li>
-        <li><span class="material-symbols-outlined">add_box</span>
-          Diseño responsivo</li>
-        <li><span class="material-symbols-outlined">add_box</span>
-          Desarrollo de pruebas unitarias</li>
-      </ul>
+      <ul class="card"></ul>
       <article class="card skillCard">
-        <h3>Tecnologías aplicadas</h3>
+        <h3></h3>
         <ul>
           <li class="skillLogo html">HTML</li>
           <li class="skillLogo css">CSS</li>
@@ -193,14 +119,14 @@
     <div class="linksZone">
       <div>
         <a href="https://github.com/GGNahuel/08-AdministracionTurnosClinica" target="_blank"><button>
-          Ver repositorio
+          <span></span>
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-github" viewBox="0 0 16 16">
             <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8"/>
           </svg>
         </button></a>
       </div>
       <a href="index.html#contact_section"><button class="outstanding">
-        Pongámonos en contacto
+        <span></span>
         <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor"class="bi bi-envelope" viewBox="0 0 16 16">
           <path
           d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1zm13 2.383-4.708 2.825L15 11.105zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741M1 11.105l4.708-2.897L1 5.383z" />
@@ -208,32 +134,15 @@
       </button></a>
     </div>
     <section id="projectComments" class="aboutMe">
-      <h2>Comentarios del proceso</h2>
-      <p>
-        Luego de completar un curso de desarrollo web de más de un año y medio, buscaba un proyecto donde pudiera aplicar de forma integral los conocimientos adquiridos. 
-        Quería una aplicación completa, con base de datos, una interfaz intuitiva y una API que conectara todos los componentes de manera segura, escalable y práctica.
-      </p>
-      <p>
-        Con esto en mente, me propuse diseñar una herramienta que facilite la programación de citas para pacientes, optimice la asignación de profesionales y consultorios, 
-        y mejore la eficiencia en la gestión de una clínica o centro de salud.
-      </p>
-      <p>
-        Sin embargo es importante aclarar que tuve que profundizar, estudiar y poner en práctica muchos conceptos que no había visto en el cursado.
-        Por lo que tuve que poner empeño en buscar información, entender y aclarar mis dudas con compañeros o a través recursos de la web. Como 
-        documentaciones oficiales, libros, foros, información multimedia e incluso tomar otros cursos. Por ejemplo, aunque tenía experiencia en JavaScript y Java, 
-        este fue mi primer proyecto usando TypeScript. Lo mismo con la seguridad web con el uso de Spring Security, fue todo un desafío comprender y poder aplicar las medidas
-        de seguridad que requería un proyecto con estas características, fue un reto que requería mucha más profundidad de la que había visto en mi cursado.
-      </p>
-      <p>
-        Desde el principio busqué mantener el código lo más organizado posible, limpio y fácil de leer, ya que mi idea era incluirlo en mi portafolio. Aunque planeo 
-        seguir puliendo detalles y sumando mejoras, me propuse publicar una versión estable que demuestre mis habilidades para así poder darle seguimiento a otros proyectos y priorizar
-        mi perfil profesional y búsqueda laboral.
-      </p>
+      <h2></h2>
+      <p></p>
     </section>
   </main>
   </div>
 
   <script src="codes/projectsPageCode.js"></script>
+  <script src="codes/translation/translationRootCode.js"></script>
+  <script src="codes/translation/healthCenterManagerTranslation.js"></script>
 </body>
 
 </html>

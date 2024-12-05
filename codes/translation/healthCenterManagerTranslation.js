@@ -65,6 +65,7 @@ const translation = {
       "Vista de búsqueda de turnos", "Búsqueda de turnos con filtros aplicados", "Vista de los consultorios registrados y ocupados"
     ],
     techFeatures: {
+      title: "Características técnicas",
       features: [
         "Base de datos relacional SQL", "Desarrollo de una API REST",
         "Arquitectura cliente-servidor. Comunicación con la API a través de solicitudes HTTP",
@@ -113,7 +114,6 @@ const translation = {
   english: {
     title: "Health center manager",
     presentation: `
-      <p>The objective of this project was apply and show my acquired knowledge and skills for web developing.</p>
       <p>It is designed as an application that <strong>allows users to create and manage appointments, as well as handle data 
         related to patients, healthcare professionals, and service areas</strong>. Essential tools for any healthcare center, 
         presented in a practical and user-friendly way.</p>
@@ -173,6 +173,7 @@ const translation = {
       "Appointment search with filters", "Consultation rooms"
     ],
     techFeatures: {
+      title: "Technical features",
       features: [
         "SQL relational database",
         "Build of an Rest API",
@@ -189,7 +190,7 @@ const translation = {
         "Responsive design",
         "Development of unit tests"
       ],
-      skillTitle: "Technologies used"
+      skillTitle: "Used technologies"
     },
     linksZone: {
       linkToRepository: "Go to repository",
@@ -249,9 +250,9 @@ const setPresentationSectionTexts = () => {
 //// Uses translations
 const setUsesSectionTexts = () => {
   const $projectUsesSection = document.getElementById("projectUses")
-  $projectUsesSection.querySelector("h2").innerHTML = translation["english"].projectUses.title
+  $projectUsesSection.querySelector("h2").innerHTML = selectedTranslation.projectUses.title
   let categoriesHTML = ""
-  translation["english"].projectUses.categories.forEach(category => {
+  selectedTranslation.projectUses.categories.forEach(category => {
     categoriesHTML += `
       <div class="usesList">
         <h3>${category.title}</h3>
@@ -263,3 +264,41 @@ const setUsesSectionTexts = () => {
 }
 
 //// Carrousel translations
+const setCarrouselTexts = () => {
+  document.querySelectorAll("#carrousel .imageCarrouselContainer").forEach((element, index) => {
+    element.querySelector("span").innerHTML = selectedTranslation.carrouselTitles[index]
+  })
+}
+
+//// Tech features translations
+const setTechFeaturesTexts = () => {
+  const $techFeaturesSection = document.getElementById("projectTechFeatures")
+  $techFeaturesSection.querySelector("& > h2").innerHTML = selectedTranslation.techFeatures.title
+  $techFeaturesSection.querySelector("ul.card").innerHTML = selectedTranslation.techFeatures.features.map(feature => 
+    `<li><span class="material-symbols-outlined">add_box</span>${feature}</li>`
+  ).join("")
+  $techFeaturesSection.querySelector("article.card > h3").innerHTML = selectedTranslation.techFeatures.skillTitle
+}
+
+//// Link zone translations
+const setLinkZoneTexts = () => {
+  const $linkZone = document.querySelector(".linksZone")
+  $linkZone.querySelector("a:nth-child(1) > button > span").innerHTML = selectedTranslation.linksZone.linkToRepository
+  $linkZone.querySelector("a:nth-child(2) > button.outstanding > span").innerHTML = selectedTranslation.linksZone.contact
+}
+
+//// Comments about project translations
+const setCommentsSectionTexts = () => {
+  document.querySelector("#projectComments > h2").innerHTML = selectedTranslation.comments.title
+  document.querySelector("#projectComments > p").innerHTML = selectedTranslation.comments.text
+}
+
+const setPageTexts = () => {
+  setGeneralTexts()
+  setPresentationSectionTexts(),
+  setUsesSectionTexts()
+  setCarrouselTexts()
+  setTechFeaturesTexts()
+  setLinkZoneTexts()
+  setCommentsSectionTexts()
+}
