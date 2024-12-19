@@ -30,7 +30,7 @@ const translation = {
     skillsSection: {
       title: "Resumen de habilidades técnicas",
       categories: ["Lenguajes de programación", "Frameworks de desarrollo y extensiones",
-        "Herramientas de marcado, estilos y plantillas", "Bases de datos", "Otras herramientas de desarrollo"
+        "Herramientas de marcado, estilos y plantillas", "Bases de datos", "Otras herramientas de desarrollo", "Tecnologías en aprendizaje"
       ]
     },
     projectsSection: {
@@ -112,7 +112,7 @@ const translation = {
     skillsSection: {
       title: "Technical skills",
       categories: ["Programming languages", "Frameworks and extensions", "Markup, styles and templating tools",
-        "Databases", "Other development tools"
+        "Databases", "Other development tools", "In training"
       ]
     },
     projectsSection: {

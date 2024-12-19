@@ -80,3 +80,15 @@
 .thymeleaf::before {
   background-image: url("https://svglogos.net/wp-content/uploads/thymeleaf-icon.svg");
 }
+
+.postman::before {
+  background-image: url("https://www.svgrepo.com/show/354202/postman-icon.svg");
+}
+
+.materialui::before {
+  background-image: url("https://seeklogo.com/images/M/material-ui-logo-5BDCB9BA8F-seeklogo.com.png");
+}
+
+.mongodb::before {
+  background-image: url("https://www.svgrepo.com/show/373845/mongo.svg");
+}
