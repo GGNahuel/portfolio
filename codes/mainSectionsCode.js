@@ -5,10 +5,11 @@ class ProjectElement {
   constructor({ translationObject = {
       spanish: {name: "", description: "", features: [], videoTitle: ""},
       english: {name: "", description: "", features: [], videoTitle: ""},
-    }, links = "", skillsList = [], videoSrc, isPortfolioCard = false, expand_link=""
+    }, repositoryLink, link, skillsList = [], videoSrc, isPortfolioCard = false, expand_link=""
   }) {
     this.translationObject = translationObject
-    this.links = links
+    this.link = link
+    this.repositoryLink = repositoryLink
     this.skillsList = skillsList
     this.videoSrc = videoSrc
     this.isPortfolioCard = isPortfolioCard
@@ -32,7 +33,8 @@ class ProjectElement {
       <path fill="#000000" fill-rule="evenodd" d="M10 3a7 7 0 100 14 7 7 0 000-14zm-9 7a9 9 0 1118 0 9 9 0 01-18 0zm8-4a1 1 0 011-1h.01a1 1 0 110 2H10a1 1 0 01-1-1zm.01 8a1 1 0 102 0V9a1 1 0 10-2 0v5z"></path>
       </g></svg></a>`,
       features_section: `<div><p>${lang == "spanish" ? "Características" : "Features"}:</p><ul class="pC_features">${featuresList}</ul></div>`,
-      link_element: `<a class="pC_link" href="${this.links}">${lang == "spanish" ? "Enlace al repositorio" : "Link to repository"}</a>`,
+      link_element: this.link ? `<a class="pC_link" href="${this.link}">${lang == "spanish" ? "Enlace al sitio" : "Link to website"}</a>` : "",
+      repoLink_element: this.repositoryLink ? `<a class="pC_link" href="${this.repositoryLink}">${lang == "spanish" ? "Enlace al repositorio" : "Link to repository"}</a>` : "",
       demo_zone: this.videoSrc && `<div class="projectCard_demo"><video src=${this.videoSrc} autoplay preload="metadata" muted loop title="${selectedTranslationObj.videoTitle}"></div>`
     }
 
@@ -54,6 +56,7 @@ class ProjectElement {
         <section class="pC_body">
           ${newDescription()}
           ${!this.isPortfolioCard ? mainProjectsElements.features_section : ""}
+          ${!this.isPortfolioCard ? mainProjectsElements.repoLink_element : ""}
           ${!this.isPortfolioCard ? mainProjectsElements.link_element : ""}
         </section>
         <footer class="pC_footer">
@@ -99,13 +102,44 @@ const HealthCenterTurnAdministrator = new ProjectElement({
       videoTitle: "General demonstration of the project"
     }
   },
-  links: "https://github.com/GGNahuel/08-AdministracionTurnosClinica",
+  repositoryLink: "https://github.com/GGNahuel/08-AdministracionTurnosClinica",
   skillsList: ["Java", "TypeScript", "Spring boot", "Spring Security", "React", "React Router", "CSS", "HTML"],
   videoSrc: "demos/HealthCenter/demoGeneral.webm",
   expand_link: "HealthCenterManager.html"
 })
 
-const projects = [HealthCenterTurnAdministrator]
+const MassagistPage = new ProjectElement({
+  translationObject: {
+    spanish: {
+      name: "Sitio web para masajista",
+      description: ["El sitio fue diseñado para un amigo que se formó como masajista profesional.",
+        "Es una landing page sencilla en cuánto a aspectos técnicos, pero que le permite dar visibilidad al servicio que ofrece y permitir el contacto con clientes.",
+        "La web se adapta tanto a pantallas grandes como a pequeñas.",
+        "En proceso se encuentra el armado de un panel de control, que le sirva al propietario para cambiar textos, imágenes, o agregar tarjetas de servicios en un futuro, entre otras cosas. " +
+        "Esto se logrará mediante una conexión a una base de datos MongoDB."
+      ],
+      features: ["Componentes reutilizables", "Diseño responsivo"],
+      videoTitle: "Recorrido por la web"
+    },
+    english: {
+      name: "Website for a Massage Therapist",
+      description: [
+        "The website was designed for a friend who trained as a professional massage therapist.",
+        "It is a simple landing page in terms of technical aspects, but it allows him to showcase the services he offers and facilitate contact with clients.",
+        "The website adapts to both large and small screens.",
+        "A control panel is currently in development, which will allow the owner to modify texts, images, or add service cards in the future, among other features. " +
+        "This will be achieved through a connection to a MongoDB database."
+      ],
+      features: ["Reusable components", "Responsive design"],
+      videoTitle: "Website Tour"
+    }
+  },
+  link: "https://masajistalucio.netlify.app/",
+  skillsList: ["React", "TypeScript", "Material UI"],
+  videoSrc: "demos/MassagistPage/demo.webm"
+})
+
+const projects = [HealthCenterTurnAdministrator, MassagistPage]
 const $projectsContainer = document.querySelector(".projectCards_container")
 projects.forEach(project => {
   $projectsContainer.appendChild(project.createElement())

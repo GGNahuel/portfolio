@@ -1,7 +1,7 @@
 const translation = {
   spanish: {
     navbar: ["Presentación", "Tecnologías", "Proyectos", "Estudios", "Contacto"],
-    title: "Lo que necesitas para que tu proyecto <span class='important'>llegue alto</span>",
+    title: "Construyendo aplicaciones que den vida y <span class='important'>potencien grandes ideas</span>",
     buttons: {
       resume: "Curriculum",
       toContact: "Hablemos de lo que necesita",
@@ -83,7 +83,7 @@ const translation = {
 
   english: {
     navbar: ["About Me", "Skills", "Projects", "Studies", "Contact me"],
-    title: "What you need to make your projects <span class='important'>grow</span>",
+    title: "Building applications <span class='important'>that enhance and bring to life big ideas</span>",
     buttons: {
       resume: "Resume",
       toContact: "Let's talk about what you need",

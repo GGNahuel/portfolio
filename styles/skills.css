@@ -17,28 +17,44 @@
   }
 }
 
-.html::before {
-  background-image: url("https://clipartcraft.com/images/html5-logo-vector-4.png");
-}
-
-.css::before {
-  background-image: url("https://cdn3.iconfinder.com/data/icons/social-media-special/256/css3-256.png");
-}
-
 .javascript::before {
-  background-image: url("https://th.bing.com/th/id/R.f7bf4b61c5727e25fb4ea64a93564202?rik=Kmz8Apfi9Pk5hQ&pid=ImgRaw&r=0");
+  background-image: url("../skillsSvg/javascript.svg");
 }
 
 .typescript::before {
-  background-image: url("https://essenceofchaos.github.io/images/typescript.png");
+  background-image: url("../skillsSvg/typescript.svg");
+}
+
+.java::before {
+  background-image: url("../skillsSvg/java.svg");
 }
 
 .react::before {
-  background-image: url("https://cdn.icon-icons.com/icons2/2699/PNG/512/reactjs_logo_icon_168875.png");
+  background-image: url("../skillsSvg/react.svg");
+}
+
+.react.router::before {
+  background-image: url("../skillsSvg/react-router.svg");
+}
+
+.spring::before {
+  background-image: url("../skillsSvg/spring.svg");
+}
+
+.html::before {
+  background-image: url("../skillsSvg/html.svg");
+}
+
+.css::before {
+  background-image: url("../skillsSvg/css.svg");
 }
 
 .sass::before {
-  background-image: url("https://www.seekpng.com/png/full/377-3772047_sass-logo.png");
+  background-image: url("../skillsSvg/sass.svg");
+}
+
+.thymeleaf::before {
+  background-image: url("../skillsSvg/thymeleaf.svg");
 }
 
 .bootstrap::before {
@@ -49,46 +65,30 @@
   background-image: url("https://cdn.iconscout.com/icon/free/png-512/figma-2296071-1912030.png");
 }
 
-.java::before {
-  background-image: url("https://usemobile.com.br/wp-content/uploads/2022/05/PikPng.com_java-logo-transparent-png_1469146.png");
-}
-
 .mysql::before {
-  background-image: url("https://logodownload.org/wp-content/uploads/2016/10/mysql-logo-599x408.png");
-}
-
-.spring::before {
-  background-image: url("https://pracowniabalonowa.pl/wp-content/uploads/2021/04/balony-z-helem-biodegradowalne-600x600.png");
-}
-
-.git::before {
-  background-image: url("https://th.bing.com/th/id/R.59863c6180caa67a7d0c00e13727a828?rik=sXRAIrjwtmaJqA&pid=ImgRaw&r=0");
-}
-
-.github::before {
-  background-image: url("https://cdn.icon-icons.com/icons2/730/PNG/512/github_icon-icons.com_62793.png");
-}
-
-.docker::before {
-  background-image: url("https://cdn-icons-png.flaticon.com/256/919/919853.png");
-}
-
-.react.router::before {
-  background-image: url("https://hushen.in/assets/react-route.png");
-}
-
-.thymeleaf::before {
-  background-image: url("https://svglogos.net/wp-content/uploads/thymeleaf-icon.svg");
-}
-
-.postman::before {
-  background-image: url("https://www.svgrepo.com/show/354202/postman-icon.svg");
-}
-
-.materialui::before {
-  background-image: url("https://seeklogo.com/images/M/material-ui-logo-5BDCB9BA8F-seeklogo.com.png");
+  background-image: url("../skillsSvg/mysql.svg");
 }
 
 .mongodb::before {
-  background-image: url("https://www.svgrepo.com/show/373845/mongo.svg");
+  background-image: url("../skillsSvg/mongo.svg");
+}
+
+.git::before {
+  background-image: url("../skillsSvg/git.svg");
+}
+
+.github::before {
+  background-image: url("../skillsSvg/github.svg");
+}
+
+.docker::before {
+  background-image: url("../skillsSvg/docker.svg");
+}
+
+.postman::before {
+  background-image: url("../skillsSvg/postman.svg");
+}
+
+.material.ui::before {
+  background-image: url("../skillsSvg/material.svg");
 }
