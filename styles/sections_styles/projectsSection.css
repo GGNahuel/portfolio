@@ -31,7 +31,6 @@
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 
   &>.projectCard_info {
-    /* grid-column: 1; */
 
     .pC_header,
     .pC_footer {
@@ -80,8 +79,6 @@
   }
 
   >.projectCard_demo {
-    /* grid-column: 2; */
-    /* grid-row: 1; */
     width: 100%;
     display: flex;
     justify-content: center;
@@ -102,10 +99,10 @@
 }
 
 .projectCard:nth-child(even) {
-  grid-template-columns: 320px auto;
+  direction: rtl;
 
   >.projectCard_info {
-    grid-column: 2;
+    direction: ltr;
 
     .pC_header::after,
     .pC_footer::before {
@@ -114,23 +111,25 @@
   }
 
   >.projectCard_demo {
-    grid-column: 1;
+    direction: ltr;
 
     video,
     img {
       perspective: 1px;
-      rotate: y 2deg;
+      rotate: y 1.5deg;
     }
   }
 }
 
 @media (max-width: 719px) or (max-height: 719px) {
   .projectCard {
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)) !important;
+    grid-template-columns: auto !important;
 
-    >.projectCard_info,
+    >.projectCard_info {
+      grid-row: 2;
+    }
     >.projectCard_demo {
-      grid-column: 1 !important;
+      grid-row: 1;
     }
 
     .seeMore {
@@ -139,8 +138,8 @@
     }
 
     >.projectCard_demo video {
-      perspective: 1px;
-      rotate: x 0.8deg !important;
+      perspective: 0;
+      rotate: x 0deg !important;
     }
   }
 }

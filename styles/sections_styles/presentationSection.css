@@ -28,16 +28,6 @@
       }
     }
 
-    .arrow {
-      position: absolute;
-      right: 0.5rem;
-      bottom: 1rem;
-      width: 3rem;
-      rotate: 170deg;
-      z-index: 1;
-      animation: arrowPresentationCard 1500ms infinite;
-    }
-
     .seeMore {
       padding-bottom: .5rem;
     }
@@ -129,10 +119,22 @@
 }
 .buttonZone {
   display: flex;
-  justify-content: space-around;
+  position: relative;
+  flex-direction: column;
   align-items: center;
   width: 100%;
-  gap: 15px;
+  gap: 8px;
+
+  
+  .arrow {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 3rem;
+    rotate: 170deg;
+    z-index: 1;
+    animation: arrowPresentationCard 1500ms infinite;
+  }
 }
 
 .features {
@@ -212,7 +214,12 @@
     }
   }
 
-  .profileInfo_container > p {
-    max-width: 50ch;
+  .profileInfo_container {
+    width: 100%;
+    
+    .buttonZone {
+      align-items: center;
+      flex-direction: column;
+    }
   }
 }

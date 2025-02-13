@@ -151,7 +151,7 @@ ul { list-style-type: none; }
 }
 
 @media (max-width: 719px) or (max-height: 719px) {
-    h1 { font-size: 3.2rem; }
+    h1 { font-size: 3.2rem; line-height: 3.3rem; }
     h2 { font-size: 2.6rem; }
     h3 { font-size: 1.8rem;}
     *::-webkit-scrollbar { width: 0; }
