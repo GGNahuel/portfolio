@@ -1,52 +1,77 @@
+// ----------
 /* Definición de recursos */
 const $firstRing = $header.querySelector(".firstRing")
 const $secondRing = $header.querySelector(".secondRing")
 
-const headerWidth = "0";
-const finalRingPosition = () => window.innerWidth > 719 ? "calc((100vw / -2) - 25%)" : "0 -100vh"
+const finalHeaderPosition = () => window.innerWidth > 719 ? "calc((100vw / -2) - 25%)" : "0 -100vh"
 
-const $KEYFRAME_opening = ({ destinationObject }) => {
-  return (
-    destinationObject == "header" ? [
-      {offset: 0, opacity: 0}, {offset: 1, opacity: 1}
-    ] :
-    destinationObject == "logo" ? [
-      {offset: 0, opacity: 0},
-      {offset: 0.4, opacity: 0.9},
-      {offset: 0.5, opacity: 0.2},
-      {offset: 0.7, opacity: 0.7},
-      {offset: 0.8, opacity: 0.6},
-      {offset: 1, opacity: 1}
-    ] :
-    destinationObject == "navItems" ? [
-      {offset: 0, scale: "0"}, {offset: 0.8, scale: "1.5"}, {offset: 1, scale: "1"}
-    ] : null
-  )
+// propiedades para las animaciones de aparición (pre-desplazamiento del header)
+const $KEYFRAME_opening = {
+  header: [
+    { offset: 0, opacity: 0}, {offset: 1, opacity: 1 }
+  ],
+  logo: [
+    // también se debería agregar, y sacar al terminar, la clase active así se puede animar el clip-path
+    { offset: 0, opacity: 0 },
+    { offset: 0.4, opacity: 0.9 },
+    { offset: 0.5, opacity: 0.2 },
+    { offset: 0.7, opacity: 0.7 },
+    { offset: 0.8, opacity: 0.6 },
+    { offset: 1, opacity: 1 }
+  ],
+  logoClose: [
+    { offset: 0, opacity: 1}, {offset: 1, opacity: 0 }
+  ],
+  firstRing: [
+    { offset: 0, rotate: 0 }, { offset: 0.3, rotate: "270deg" }, { offset: 1, rotate: "360deg" }
+  ],
+  secondRing: [
+    { offset: 0, rotate: 0} , { offset: 0.3, rotate: "210deg" }, { offset: 1, rotate: "360deg" }
+  ],
+  navItems: [
+    { offset: 0, scale: "0" }, { offset: 0.8, scale: "1.5" }, { offset: 1, scale: "1" }
+  ]
 }
-const _openingAnimationProps = ({duration, delay = 0, direction = "normal", fill = "none"}) => (
-  { duration, delay, easing: "ease", direction, fill }
+const _openingAnimationProps = ({duration, delay = 0}) => (
+  { duration, delay, easing: "ease" }
 )
 
-const $KEYFRAME_moveRing = [{
-  translate: finalRingPosition(),
-  offset: 1
-}]
-const $KEYFRAME_moveRingItems = (angle) => [
-  { rotate: "270deg", offset: 0.35 },
-  { rotate: `${angle}deg`, offset: 1 }
-]
-const _ringMoveAnimationProps = { duration: 1500, delay: 2000,easing: "ease"}
+// propiedades para las animaciones durante el desplazamiento del header completo
+const $KEYFRAME_headerTransition = {
+  header: [
+    { offset: 1, translate: finalHeaderPosition() }
+  ],
+  navItem: (angle) => [
+    { offset: 0.35, rotate: "270deg" },
+    { offset: 1, rotate: `${angle}deg` }
+  ],
+  firstRing: [
+    { offset: 1, rotate: 0 }
+  ],
+  secondRing: [
+    { offset: 1, rotate: 0 }
+  ]
+}
+const _headerTransitionAnimationProps = { duration: 1500, delay: 2500, easing: "ease" }
 
+// parámetros de tiempo para las animaciones del logo pre-desplazamiento
+const propForLogoAnimations = {
+  openingDuration: _headerTransitionAnimationProps.delay * 0.4,
+  endingDelay: _headerTransitionAnimationProps.delay * 0.6
+}
+
+// utilidades para trabajar con los ángulos de los items de la nav
 function calcularAnguloSegunItem (anguloInicial, anguloDeDistribucion, multiplicador) {
   return (
     anguloInicial + multiplicador * (anguloDeDistribucion / ($navItems_Container.length -1))
   )
 }
-
 function devolverAnguloActual (prop) {
   return Number (prop.match(/(\d*\.?\d{0,3})/)[0])
 }
+const defaultAngles = []
 
+// estilos iniciales, pre-animación de aparición
 function definirStylesSegunVWPreAnimation () {
   if (window.innerWidth > 719) {
     $header.style.width = "calc(100vh - 1rem)"
@@ -65,11 +90,10 @@ function definirStylesSegunVWPreAnimation () {
   }
 }
 
-const defaultAngles = []
 let startAnimationFinished = false
 
 const finalAnimationStyles = {
-  ring_root: () => {
+  header_root: () => {
     const $nav = $header.querySelector("nav")
     if (window.innerWidth < 720) {
       Object.assign($root.style, {
@@ -100,7 +124,7 @@ const finalAnimationStyles = {
         aspectRatio: "1",
         backgroundColor: "initial",
         padding: 0,
-        translate: finalRingPosition()
+        translate: finalHeaderPosition()
       })
       Object.assign($nav.style, {
         display: "flex"
@@ -116,7 +140,7 @@ const finalAnimationStyles = {
   },
   logo: () => {
     $logoInRing.style.opacity = 0
-    $logoInRing.style.display = "none"
+    // $logoInRing.style.display = "none"
   },
   navItems: ($element, index) => ({
     button: () => {
@@ -130,6 +154,7 @@ const finalAnimationStyles = {
       const $title = $element.querySelector(".title")
       $element.style.transition = "rotate 0ms"
 
+      // estilos para pantallas angostas
       if (window.innerWidth < 720) {
         Object.assign($element.style, {
           rotate: "0deg",
@@ -142,8 +167,9 @@ const finalAnimationStyles = {
         $navItem_button.style.width = "min-content"
         $navItem_button.style.padding = "8px"
         $title.style.display = "block"
-      } else 
-      if (window.innerHeight < 720) {
+      } 
+      // estilos para pantallas grandes según el alto
+      else if (window.innerHeight < 720) {
         const angulo = calcularAnguloSegunItem(405, 90, index) // angulo en el que se ven todos los items
         $navItem_button.style.width = "min-content"
         $navItem_button.style.padding = "8px"
@@ -169,7 +195,7 @@ const finalAnimationStyles = {
   })
 }
 
-// -----------------------------------------------------------------------------------------
+// --------------------------------------
 /* Setear animaciones y estilos al cargar la página o al cambiar el tamaño de la pantalla */
 const $logoInRing = $header.querySelector("#logoInRing")
 
@@ -182,19 +208,28 @@ window.addEventListener("load", () => {
   if (true) {//(!lastVisit || currentTime - lastVisit > minutesWithoutAnimationInMS) {
     localStorage.setItem('lastAnimationTime', currentTime);
     
-    $header.animate($KEYFRAME_opening({destinationObject: "header"}), _openingAnimationProps({duration: 600})).ready.then(() => {
-      $header.animate($KEYFRAME_moveRing, _ringMoveAnimationProps)
-      .finished.then(() => {
-        finalAnimationStyles.ring_root()
+    $header.animate($KEYFRAME_opening.header, _openingAnimationProps({duration: 600})).ready.then(() => {
+      $header.animate($KEYFRAME_headerTransition.header, _headerTransitionAnimationProps).finished.then(() => {
+        finalAnimationStyles.header_root()
       })
     })
     
-    $logoInRing.animate($KEYFRAME_opening({destinationObject: "logo"}), _openingAnimationProps({duration: 600})).finished.then(() => {
+    const logoAnimation = $logoInRing.animate($KEYFRAME_opening.logo, _openingAnimationProps({duration: propForLogoAnimations.openingDuration}))
+    logoAnimation.ready.then(() => {
+      $logoInRing.classList.add("active")
+    })
+    logoAnimation.finished.then(() => {
       $logoInRing.style.opacity = 1
-      $logoInRing.animate($KEYFRAME_opening({destinationObject: "logo"}), _openingAnimationProps({duration: 300, delay: 1400, direction:"reverse"}))
-      .finished.then(() => {
-        finalAnimationStyles.logo()
-      })
+      // 
+      window.setTimeout(() => {
+        $logoInRing.classList.remove("active")
+        $logoInRing.animate(
+          $KEYFRAME_opening.logoClose,
+          _openingAnimationProps({duration: 300})
+        ).finished.then(() => {
+          finalAnimationStyles.logo()
+        })
+      }, propForLogoAnimations.endingDelay)
     })
     
     $navItems_Container.forEach(($element, index) => {
@@ -203,12 +238,12 @@ window.addEventListener("load", () => {
       const anguloFinal = calcularAnguloSegunItem(405, 135, index)
       
       $navItem_button.animate(
-        $KEYFRAME_opening({destinationObject: "navItems"}), 
+        $KEYFRAME_opening.navItems, 
         _openingAnimationProps({duration: 500, delay: 250 * index})
       ).finished.then(() => {
         finalAnimationStyles.navItems($element, index).button()
       })
-      $element.animate($KEYFRAME_moveRingItems(anguloFinal), _ringMoveAnimationProps).finished.then(() => {
+      $element.animate($KEYFRAME_headerTransition.navItem(anguloFinal), _headerTransitionAnimationProps).finished.then(() => {
         finalAnimationStyles.navItems($element, index).item()
         $navItems_Container[0].classList.add("current")
       })
