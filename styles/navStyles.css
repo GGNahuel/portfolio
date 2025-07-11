@@ -33,12 +33,12 @@
 }
 
 #logoInRing {
-    height: 90%;
+    height: 80%;
     aspect-ratio: 1;
     opacity: 0;
     position: absolute;
-    top: 5%;
-    left: 5%;
+    top: 10%;
+    left: 10%;
     border-radius: 100%;
 }
 

@@ -1,21 +1,31 @@
 /* Definición de recursos */
+const $firstRing = $header.querySelector(".firstRing")
+const $secondRing = $header.querySelector(".secondRing")
 
+const headerWidth = "0";
 const finalRingPosition = () => window.innerWidth > 719 ? "calc((100vw / -2) - 25%)" : "0 -100vh"
 
 const $KEYFRAME_opening = ({ destinationObject }) => {
-  return destinationObject == "ring" ? [
-  {offset: 0, borderWidth: "0px"}, {offset: 1, borderWidth: "56px"}
-  ] :
-    destinationObject == "logo" ? [
+  return (
+    destinationObject == "header" ? [
       {offset: 0, opacity: 0}, {offset: 1, opacity: 1}
     ] :
-      destinationObject == "navItems" ? [
-        {offset: 0, scale: "0"}, {offset: 0.8, scale: "1.5"}, {offset: 1, scale: "1"}
-      ] : null
+    destinationObject == "logo" ? [
+      {offset: 0, opacity: 0},
+      {offset: 0.4, opacity: 0.9},
+      {offset: 0.5, opacity: 0.2},
+      {offset: 0.7, opacity: 0.7},
+      {offset: 0.8, opacity: 0.6},
+      {offset: 1, opacity: 1}
+    ] :
+    destinationObject == "navItems" ? [
+      {offset: 0, scale: "0"}, {offset: 0.8, scale: "1.5"}, {offset: 1, scale: "1"}
+    ] : null
+  )
 }
 const _openingAnimationProps = ({duration, delay = 0, direction = "normal", fill = "none"}) => (
   { duration, delay, easing: "ease", direction, fill }
-  )
+)
 
 const $KEYFRAME_moveRing = [{
   translate: finalRingPosition(),
@@ -39,17 +49,17 @@ function devolverAnguloActual (prop) {
 
 function definirStylesSegunVWPreAnimation () {
   if (window.innerWidth > 719) {
-    $ring.style.width = "calc(100vh - 1rem)"
-    $ring.style.top = "0.5rem"
+    $header.style.width = "calc(100vh - 1rem)"
+    $header.style.top = "0.5rem"
 
-    const ringWidth = $ring.offsetWidth
+    const headerWidth = $header.offsetWidth
     $main.style.alignItems = window.innerWidth < 1280 ? 'flex-start' : 'center'
-    $main.style.marginLeft = window.innerWidth < 1280 ? `${ringWidth * 0.25}px` : "0"
-    $main.style.width = `calc(100vw - ${ringWidth * 0.25}px - ${ancho$scrollbar})`
+    $main.style.marginLeft = window.innerWidth < 1280 ? `${headerWidth * 0.25}px` : "0"
+    $main.style.width = `calc(100vw - ${headerWidth * 0.25}px - ${ancho$scrollbar})`
   }
   else {
-    $ring.style.width = "calc(100vw - 2rem)"
-    // $ring.style.left = "1rem"
+    $header.style.width = "calc(100vw - 2rem)"
+    // $header.style.left = "1rem"
     $main.style.marginLeft = "0"
     $main.style.width = "100%"
   }
@@ -60,13 +70,13 @@ let startAnimationFinished = false
 
 const finalAnimationStyles = {
   ring_root: () => {
-    const $nav = $ring.querySelector("nav")
+    const $nav = $header.querySelector("nav")
     if (window.innerWidth < 720) {
       Object.assign($root.style, {
         flexDirection: "column",
         justifyContent: "flex-start"
       })
-      Object.assign($ring.style, {
+      Object.assign($header.style, {
         position: "sticky",
         top: 0,
         borderRadius: 0,
@@ -85,10 +95,8 @@ const finalAnimationStyles = {
         flexDirection: "row",
         justifyContent: "center"
       })
-      Object.assign($ring.style, {
+      Object.assign($header.style, {
         position: "fixed",
-        borderRadius: "100%",
-        border: "56px solid var(--bg-contrast-color)",
         aspectRatio: "1",
         backgroundColor: "initial",
         padding: 0,
@@ -163,7 +171,7 @@ const finalAnimationStyles = {
 
 // -----------------------------------------------------------------------------------------
 /* Setear animaciones y estilos al cargar la página o al cambiar el tamaño de la pantalla */
-const $logoInRing = $ring.querySelector("#logoInRing")
+const $logoInRing = $header.querySelector("#logoInRing")
 
 window.addEventListener("load", () => {
   definirStylesSegunVWPreAnimation()
@@ -171,11 +179,11 @@ window.addEventListener("load", () => {
   const lastVisit = localStorage.getItem('lastAnimationTime');
   const currentTime = Date.now();
 
-  if (!lastVisit || currentTime - lastVisit > minutesWithoutAnimationInMS) {
+  if (true) {//(!lastVisit || currentTime - lastVisit > minutesWithoutAnimationInMS) {
     localStorage.setItem('lastAnimationTime', currentTime);
     
-    $ring.animate($KEYFRAME_opening({destinationObject: "ring"}), _openingAnimationProps({duration: 600})).ready.then(() => {
-      $ring.animate($KEYFRAME_moveRing, _ringMoveAnimationProps)
+    $header.animate($KEYFRAME_opening({destinationObject: "header"}), _openingAnimationProps({duration: 600})).ready.then(() => {
+      $header.animate($KEYFRAME_moveRing, _ringMoveAnimationProps)
       .finished.then(() => {
         finalAnimationStyles.ring_root()
       })
@@ -285,7 +293,7 @@ $root.addEventListener("scroll", () => {
 
 /* Animación del hover en la nav */
 
-$ring.addEventListener("mouseenter", () => {
+$header.addEventListener("mouseenter", () => {
   if (!startAnimationFinished || window.innerWidth < 720) return
 
   isRingHovered = true
@@ -297,7 +305,7 @@ $ring.addEventListener("mouseenter", () => {
     $navItem.style.rotate = `${angulo}deg`
   })
 })
-$ring.addEventListener("mouseleave", () => {
+$header.addEventListener("mouseleave", () => {
   if (window.innerHeight < 720 || window.innerWidth < 720) return
 
   isRingHovered = false
