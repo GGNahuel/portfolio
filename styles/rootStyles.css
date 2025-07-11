@@ -4,14 +4,14 @@
 @import "styles/_proyectPageStyles.css"; */
 
 :root {
-    --main-color: rgb(73, 143, 20) ;
-    --secondary-color: rgb(215, 136, 0);
-    --secondary-color-dark: rgb(171, 104, 3);
-    --third-color: rgb(0, 62, 63);
+    --main-color: rgb(30, 159, 173) ;
+    --secondary-color: rgb(64, 0, 215);
+    --secondary-color-dark: rgb(39, 9, 109);
+    --third-color: rgb(6, 83, 71);
     /* --bg-color: rgb(35, 112, 95); */
     --bg-color: rgb(221, 238, 234);
-    --bg-contrast-color: /* rgb(92, 87, 62); */rgb(13,29,0);
-    --page-bg-color: rgb(201, 205, 226);
+    --bg-contrast-color: /* rgb(92, 87, 62); */rgb(6, 64, 71);
+    --page-bg-color: rgb(10, 21, 75);
     --page-bg-color2: rgb(19, 56, 112);
     --presentationCard-color: rgb(49, 64, 35);
 }
