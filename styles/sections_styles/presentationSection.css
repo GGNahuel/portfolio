@@ -135,16 +135,6 @@
   align-items: center;
   width: 100%;
   gap: 16px;
-  
-  .arrow {
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    width: 3rem;
-    rotate: 170deg;
-    z-index: 1;
-    animation: arrowPresentationCard 1500ms infinite;
-  }
 }
 
 .features {
@@ -220,17 +210,6 @@
 
   h3 {
     text-align: center;
-  }
-}
-
-@keyframes arrowPresentationCard {
-  50% {
-    rotate: 200deg;
-    transform: translate(5px, -10px);
-  }
-  100% {
-    rotate: 170deg;
-    transform: translate(0px, 0px);
   }
 }
 

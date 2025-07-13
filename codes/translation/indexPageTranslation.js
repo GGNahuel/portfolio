@@ -44,9 +44,15 @@ const translation = {
       }
     },
     skillsSection: {
-      title: "Resumen de habilidades técnicas",
-      categories: ["Lenguajes de programación", "Frameworks de desarrollo y extensiones",
-        "Herramientas de marcado, estilos y plantillas", "Bases de datos", "Otras herramientas de desarrollo", "Tecnologías en aprendizaje"
+      title: "Resumen de tecnologías y conocimientos técnicos",
+      categories: [
+        "Lenguajes de programación",
+        "Frameworks y librerías",
+        "Bases de datos",
+        "Desarrollo de APIs",
+        "Seguridad web",
+        "Herramientas de marcado,estilos y plantillas",
+        "Otras herramientas de desarrollo"
       ]
     },
     projectsSection: {
@@ -117,7 +123,7 @@ const translation = {
         "Software architecture and design patterns",
         "Web security", "JWT",
         "Rest and GraphQL API development",
-        "API Gateway",
+        "Gateway API",
         "Unit and integration tests",
         "Application containerization with Docker",
         "Multi-platform design",
@@ -138,9 +144,15 @@ const translation = {
       }
     },
     skillsSection: {
-      title: "Technical skills",
-      categories: ["Programming languages", "Frameworks and extensions", "Markup, styles and templating tools",
-        "Databases", "Other development tools", "In training"
+      title: "Technical skills and technologies used",
+      categories: [
+        "Programming languages",
+        "Frameworks and libraries",
+        "Databases",
+        "API development",
+        "Web security",
+        "Markup, styles and templating tools",
+        "Other development tools"
       ]
     },
     projectsSection: {

@@ -4,7 +4,11 @@
   align-items: center;
   text-align: center;
   flex-direction: column;
+  border-radius: 8px;
+  padding: 4px;
   padding-top: 8px;
+  background-color: var(--page-bg-color2);
+  box-sizing: border-box;
 
   &::before {
     content: "";
@@ -17,6 +21,11 @@
   }
 }
 
+/* Lenguajes de programación */
+.java::before {
+  background-image: url("../skillsSvg/java.svg");
+}
+
 .javascript::before {
   background-image: url("../skillsSvg/javascript.svg");
 }
@@ -25,8 +34,10 @@
   background-image: url("../skillsSvg/typescript.svg");
 }
 
-.java::before {
-  background-image: url("../skillsSvg/java.svg");
+/* Frameworks y librerías */
+
+.spring::before {
+  background-image: url("../skillsSvg/spring.svg");
 }
 
 .react::before {
@@ -37,9 +48,7 @@
   background-image: url("../skillsSvg/react-router.svg");
 }
 
-.spring::before {
-  background-image: url("../skillsSvg/spring.svg");
-}
+/* Herramientas de marcado y estilos */
 
 .html::before {
   background-image: url("../skillsSvg/html.svg");
@@ -58,12 +67,14 @@
 }
 
 .bootstrap::before {
-  background-image: url("https://getbootstrap.com/docs/5.3/assets/brand/bootstrap-logo-shadow.png");
+  background-image: url("../skillsSvg/bootstrap.svg");
 }
 
 .figma::before {
   background-image: url("https://cdn.iconscout.com/icon/free/png-512/figma-2296071-1912030.png");
 }
+
+/* Bases de datos */
 
 .mysql::before {
   background-image: url("../skillsSvg/mysql.svg");
@@ -72,6 +83,8 @@
 .mongodb::before {
   background-image: url("../skillsSvg/mongo.svg");
 }
+
+/* Herramientas de desarrollo */
 
 .git::before {
   background-image: url("../skillsSvg/git.svg");
@@ -91,4 +104,21 @@
 
 .material.ui::before {
   background-image: url("../skillsSvg/material.svg");
+}
+
+.jwt::before {
+  background-image: url("../skillsSvg/jwt.svg");
+}
+
+/* Apis */
+.graphql::before {
+  background-image: url("../skillsSvg/graphql.svg");
+}
+
+.apiRest::before {
+  background-image: url("../skillsSvg/apiRest.svg");
+}
+
+.gateway::before {
+  background-image: url("../skillsSvg/gateway.svg");
 }

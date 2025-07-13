@@ -21,7 +21,10 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0;
+
+  h3 {
+    filter: drop-shadow(var(--neon-shadows2-principal) var(--neon-main-color)) drop-shadow(var(--neon-shadows2-secondary) var(--main-color));
+  }
 
   > ul{
     display: grid;
@@ -29,7 +32,7 @@
     align-items: center;
     min-width: 40%;
     max-width: 100%;
-    gap: 4px;
+    gap: 8px;
     height: 100%;
   }
 }
