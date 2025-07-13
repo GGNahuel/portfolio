@@ -37,6 +37,7 @@ main {
     padding: 1rem;
     gap: 1rem;
     width: 100%;
+    color: black;
     background-color: var(--bg-color);
     box-sizing: border-box;
     transition: box-shadow 300ms ease-out;
@@ -95,7 +96,7 @@ main {
         padding-bottom: .2rem;
         cursor: pointer;
         z-index: 10;
-
+        
         svg {
             width: 32px;
         }
