@@ -174,17 +174,36 @@
 }
 
 .aboutMe {
-  background-color: var(--third-color);
-  color: var(--bg-color);
   width: 100%;
-  padding: 128px 0;
+  padding: 128px 1rem;
+  border: 10px solid var(--bg-color);
+  border-radius: 8px;
+  box-sizing: border-box;
+  position: relative;
+
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   align-items: center;
-  border: 10px solid var(--bg-color);
-  outline: 7px solid var(--bg-contrast-color);
-  box-sizing: border-box;
-  border-radius: 4px;
+
+  color: var(--bg-color);
+  filter: drop-shadow(var(--neon-shadows1-principal) var(--bg-color));
+  background-color: var(--page-bg-color);
+  
+  div.background {
+    position: absolute;
+    opacity: 0.5;
+    width: 100%;
+    height: 100%;
+    background-image: url("../../imgs/hologram_effect.gif");
+    background-repeat: no-repeat;
+    background-size: auto 170%;
+    background-position: center;
+    z-index: -1;
+  }
+  
+  > *:not(.background) {
+    filter: drop-shadow(var(--neon-shadows1-principal) var(--bg-color));
+  }
 
   article {
     max-width: 400px;
@@ -197,7 +216,6 @@
 
   img {
     width: 100%;
-    filter: drop-shadow(3px 5px 2px);
   }
 
   h3 {

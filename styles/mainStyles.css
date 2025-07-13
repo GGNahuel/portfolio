@@ -42,6 +42,7 @@ main {
   
   color: var(--neon-main-color);
   background: url("/imgs/texturaCircuitos.webp");
+  background-color: var(--secondary-color-dark);
   background-repeat: repeat-x;
   background-position-y: minmax(0, 20%);
   transition: border-color 200ms ease-out, filter 300ms ease;
