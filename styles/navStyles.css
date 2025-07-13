@@ -9,7 +9,9 @@
     z-index: 15;
 
     .firstRing, .secondRing {
+        transform-origin: center;
         filter: var(--rings-light-shadows);
+        transition: rotate 400ms;
     }
 }
 
@@ -20,13 +22,17 @@
     box-sizing: border-box;
     border: 15px solid var(--neon-main-color);
     border-radius: 100%;
-    clip-path: polygon(50% 50%, 105% 20%, 105% -5%, -5% -5%, -5% 105%, 105% 105%, 105% 80%);
+    clip-path: polygon(
+        50% 50%, 105% 20%, 105% -5%, -5% -5%, 
+        -5% 35%, 50% 50%, -5% 50%, -5% 70%, 50% 50%, 
+        -5% 75%, -5% 85%, 50% 50%, -5% 90%,
+        -5% 105%, 105% 105%, 105% 80%
+    );
 }
 
 .secondRing {
     border: 15px solid var(--neon-main-color);
     border-radius: 100%;
-    display: flex;
     width: 90%;
     height: 90%;
     top: 5%;
