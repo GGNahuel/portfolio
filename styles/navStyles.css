@@ -1,22 +1,57 @@
 #mainHeader {
+    --rings-light-shadows: drop-shadow(0 0 5px white) drop-shadow(0 0 10px var(--main-color));
+
     align-self: center;
     position: fixed;
     box-sizing: border-box;
-    border: 56px solid;
-    border-color: var(--bg-contrast-color);
     aspect-ratio: 1;
-    border-radius: 100%;
     transform-origin: center;
     z-index: 15;
+
+    .firstRing, .secondRing {
+        filter: var(--rings-light-shadows);
+    }
+}
+
+.firstRing {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    border: 15px solid var(--neon-main-color);
+    border-radius: 100%;
+    clip-path: polygon(50% 50%, 105% 20%, 105% -5%, -5% -5%, -5% 105%, 105% 105%, 105% 80%);
+}
+
+.secondRing {
+    border: 15px solid var(--neon-main-color);
+    border-radius: 100%;
+    display: flex;
+    width: 90%;
+    height: 90%;
+    top: 5%;
+    left: 5%;
+    position: absolute;
+    box-sizing: border-box;
+    clip-path: polygon(50% 50%, 10% -5%, -5% -5%, -5% 105%, 45% 105%, 50% 50%, 75% 105%, 105% 105%, 105% -5%, 50% 50%, 90% -5%, 20% -5%);
 }
 
 #logoInRing {
-    height: 100%;
+    height: 80%;
     aspect-ratio: 1;
-    opacity: 0;
     position: absolute;
-    top: 0;
+    opacity: 1;
+    top: 10%;
+    left: 10%;
     border-radius: 100%;
+    clip-path: inset(50% 0);
+    transition: clip-path 200ms ease-out;
+    
+    &.active {
+        clip-path: inset(0);
+        transition-timing-function: ease-in;
+        transition-delay: 100ms;
+    }
 }
 
 #mainHeader > nav {
@@ -30,8 +65,8 @@
 
 .navItem_Container {
     position: absolute;
-    top: -4.5rem;
-    height: calc(50% + 4.5rem);
+    top: -1.5rem;
+    height: calc(50% + 1.5rem);
     transform-origin: 50% 100%;
 
     .title {
@@ -47,23 +82,31 @@
     width: 4rem;
     aspect-ratio: 1;
     border-radius: 100%;
-    background: linear-gradient(15deg, var(--third-color) 0%, var(--main-color) 80%);
+    background: var(--main-color);
     scale: 0;
-    transition: scale 300ms;
+    transition: scale 300ms, opacity 200ms, filter 400ms;
+
     &:hover {
-        scale: 1.3 !important;
+        scale: 1.3;
+        opacity: 1 !important;
+        filter: drop-shadow(var(--neon-shadows1-principal) var(--neon-main-color)) drop-shadow(var(--neon-shadows2-secondary) var(--main-color));
     }
 
     svg {
         width: 32px;
     }
+
+    &.enabled {
+        scale: 1;
+    }
 }
-.enabled {
-    scale: 1 !important;
-}
+
 .navItem_Container.current .navItem{
-    background: linear-gradient(15deg, var(--secondary-color) 25%, var(--main-color) 80%);
-    scale: 1.2 !important;
+    background: linear-gradient(15deg, var(--neon-main-color) 25%, var(--main-color) 80%);
+    scale: 1.2;
+    opacity: 1 !important;
+    border: 2px solid var(--neon-main-color);
+    filter: drop-shadow(var(--neon-shadows2-principal) var(--neon-main-color)) drop-shadow(var(--neon-shadows2-secondary) var(--main-color));
 }
 
 @media (max-width: 719px) or (max-height: 719px) {

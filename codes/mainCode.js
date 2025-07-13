@@ -1,12 +1,11 @@
 const $loadingScreen = document.querySelector("#loadingScreen")
 const $root = document.querySelector("#root")
 
-const $ring = document.querySelector("#mainHeader")
-const $navItems_Container = $ring?.querySelectorAll(".navItem_Container")
+const $header = document.querySelector("#mainHeader")
+const $navItems_Container = $header?.querySelectorAll(".navItem_Container")
 
 const $main = document.querySelector("#root main")
 const $mainSections = document.querySelectorAll("main > section")
-
 
 const minutesWithoutAnimationInMS = 5 * 60 * 1000
 
