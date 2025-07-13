@@ -1,3 +1,7 @@
+// Primero se definen los textos en cada idioma siguiendo la misma estructura en un objeto,
+//  luego se hace la selección de los elementos y se altera su texto según el objeto
+
+// Definición del objeto de traducciones
 const translation = {
   spanish: {
     navbar: ["Presentación", "Tecnologías", "Proyectos", "Estudios", "Contacto"],
@@ -9,16 +13,19 @@ const translation = {
     },
     presentationSection: {
       profileCard: {
-        role: "Desarrollador web FullStack",
+        role: "Desarrollador web Backend",
         text: "Dispuesto a dar el 101% de mis capacidades en lo que hago. Siempre atento a ese extra que pueda aportar a hacer un trabajo de muy buena calidad."
       },
       features: [
-        "Cooperación", "Prolijidad", 
+        "Cooperación", "Prolijidad", "Principios SOLID",
         "Bases de datos SQL y NoSQL",
         "POO",
         "Arquitectura de software y patrones de diseño",
         "Seguridad web",
         "Diseño de APIs Rest y GraphQL",
+        "API Gateway",
+        "Tests unitarios y de integración",
+        "Containerización de aplicaciones con Docker",
         "Diseño para múltiples dispositivos",
         "UX/UI"
       ],
@@ -86,7 +93,7 @@ const translation = {
         message: "¿Algo más que quiera agregar o contarme?. Mensaje:"
       },
       button: "Contactarse",
-      alsoMessage: `También puede buscarme en <a href="https://www.linkedin.com/in/nahuel-gomez-gahn/" target="_blank">Linkedin</a> o escribiéndome al e-mail nahuelg8799@gmail.com`
+      alsoMessage: `También puede buscarme en <a href="https://www.linkedin.com/in/nahuel-gomez-gahn/" target="_blank">LinkedIn</a> o escribiéndome al e-mail nahuelg8799@gmail.com`
     }
   },
 
@@ -100,16 +107,19 @@ const translation = {
     },
     presentationSection: {
       profileCard: {
-        role: "FullStack web Developer",
+        role: "Backend Developer",
         text: "Ready to give 101% to my work. Always looking for that 1% extra to help projects achieve the best quality."
       },
       features: [
-        "Cooperative", "Attention to detail", 
+        "Cooperative", "Attention to detail", "SOLID principles",
         "Database development, SQL and NoSQL",
         "OOP",
         "Software architecture and design patterns",
         "Web security",
         "Rest and GraphQL API development",
+        "API Gateway",
+        "Unit and integration tests",
+        "Application containerization with Docker",
         "Multi-platform design",
         "UX/UI"
       ],
@@ -180,6 +190,8 @@ const translation = {
   }
 }
 
+// --------------------------------
+// Seleccionando y traduciendo elementos del DOM
 let selectedTranslation = null
 
 window.addEventListener("load", () => {
@@ -193,6 +205,16 @@ changeLanguageButton.addEventListener("change", () => {
   selectedTranslation = translation[selectedLanguage]
   setPageTexts()
 })
+
+// Definiendo las traducciones según elementos
+const setPageTexts = () => {
+  setNavbarTexts()
+  setPresentationSectionTexts()
+  setSkillsSectionTexts()
+  setProjectSectionTexts()
+  setStudiesSectionTexts()
+  setContactSectionTexts()
+}
 
 //// Navbar
 const setNavbarTexts = () => {
@@ -264,13 +286,4 @@ const setContactSectionTexts = () => {
 
   contactSection.querySelector("button.outstanding").innerHTML = selectedTranslation.contactSection.button
   contactSection.querySelector("& > div > h4").innerHTML = selectedTranslation.contactSection.alsoMessage
-}
-
-const setPageTexts = () => {
-  setNavbarTexts()
-  setPresentationSectionTexts()
-  setSkillsSectionTexts()
-  setProjectSectionTexts()
-  setStudiesSectionTexts()
-  setContactSectionTexts()
 }
