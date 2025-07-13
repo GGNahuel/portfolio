@@ -151,6 +151,7 @@ const finalAnimationStyles = {
       if (!isResizingWindow) defaultAngles.push(calcularAnguloSegunItem(405, 135, index))
 
       const $navItem_button = $element.querySelector(".navItem")
+      $navItem_button.style.opacity = "0.6"
       const $title = $element.querySelector(".title")
       $element.style.transition = "rotate 0ms"
 
@@ -246,7 +247,7 @@ window.addEventListener("load", () => {
       })
       $element.animate($KEYFRAME_headerTransition.navItem(anguloFinal), _headerTransitionAnimationProps).finished.then(() => {
         finalAnimationStyles.navItems($element, index).item()
-        $navItems_Container[0].classList.add("current")
+        if (index == 0) $navItems_Container[0].classList.add("current")
       })
     })
   } else {

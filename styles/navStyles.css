@@ -83,24 +83,24 @@
     aspect-ratio: 1;
     border-radius: 100%;
     background: var(--main-color);
-    opacity: 0.6;
     scale: 0;
     transition: scale 300ms, opacity 200ms, filter 400ms;
 
     &:hover {
         scale: 1.3;
-        opacity: 1;
+        opacity: 1 !important;
         filter: drop-shadow(var(--neon-shadows1-principal) var(--neon-main-color)) drop-shadow(var(--neon-shadows2-secondary) var(--main-color));
     }
 
     svg {
         width: 32px;
     }
+
+    &.enabled {
+        scale: 1;
+    }
 }
 
-.enabled {
-    scale: 1;
-}
 .navItem_Container.current .navItem{
     background: linear-gradient(15deg, var(--neon-main-color) 25%, var(--main-color) 80%);
     scale: 1.2;
