@@ -12,7 +12,16 @@ const translation = {
         role: "Desarrollador web FullStack",
         text: "Dispuesto a dar el 101% de mis capacidades en lo que hago. Siempre atento a ese extra que pueda aportar a hacer un trabajo de muy buena calidad."
       },
-      features: ["Cooperación", "Prolijidad", "Desarrollo de base de datos", "Seguridad web", "Diseño para múltiples dispositivos", "UX/UI"],
+      features: [
+        "Cooperación", "Prolijidad", 
+        "Bases de datos SQL y NoSQL",
+        "POO",
+        "Arquitectura de software y patrones de diseño",
+        "Seguridad web",
+        "Diseño de APIs Rest y GraphQL",
+        "Diseño para múltiples dispositivos",
+        "UX/UI"
+      ],
       aboutMe: {
         title: "¡Hola!. Aquí podrás conocer más de mí.",
         formattedText: `Actualmente tengo 25 años y vivo en Argentina, más específicamente en la provincia de Santa Fe, lugar donde nací.</p>
@@ -94,7 +103,16 @@ const translation = {
         role: "FullStack web Developer",
         text: "Ready to give 101% to my work. Always looking for that 1% extra to help projects achieve the best quality."
       },
-      features: ["Cooperative", "Attention to detail", "Database development", "Web security", "Multi-platform design", "UX/UI"],
+      features: [
+        "Cooperative", "Attention to detail", 
+        "Database development, SQL and NoSQL",
+        "OOP",
+        "Software architecture and design patterns",
+        "Web security",
+        "Rest and GraphQL API development",
+        "Multi-platform design",
+        "UX/UI"
+      ],
       aboutMe: {
         title: "Hello!. Here you can know more about me.",
         formattedText: `I'm 25 years old and live in Argentina at the moment, to be more specific in the province of Santa Fe, place where I was born.</p>

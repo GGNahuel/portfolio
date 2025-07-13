@@ -157,16 +157,18 @@
   > li {
     padding: 15px;
     border-radius: 10px;
-    background-color: var(--bg-contrast-color);
+    background-color: var(--secondary-color-dark);
     color: var(--bg-color);
     font-size: 1.25rem;
     font-weight: 600;
+    box-sizing: border-box;
 
     &:hover {
-      box-shadow: 10px 10px 0 0 var(--secondary-color);
-      rotate: 5deg;
-      scale: 1.1;
-      transition: 400ms;
+      outline: 2px solid var(--neon-secondary-color);
+      background-color: var(--secondary-color);
+      filter: drop-shadow(var(--neon-shadows1-principal) var(--neon-secondary-color)) drop-shadow(var(--neon-shadows1-secondary) var(--secondary-color));
+      translate: 0 -5px;
+      transition: 400ms, outline 0ms 300ms;
     }
   }
 }

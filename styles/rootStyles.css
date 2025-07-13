@@ -9,7 +9,7 @@
 
     --secondary-color: rgb(64, 0, 215);
     --secondary-color-dark: rgb(39, 9, 109);
-    --neon-secondary-color: rgb(117, 68, 230);
+    --neon-secondary-color: rgb(145, 98, 255);
 
     --third-color: rgb(10, 138, 111);
     --third-color-dark: rgb(3, 49, 36);
@@ -121,7 +121,7 @@ h1 {
     
     .important {
         color: var(--neon-secondary-color);
-        filter: drop-shadow(0 0 4px var(--neon-secondary-color)) drop-shadow(0 0 10px var(--secondary-color));
+        filter: drop-shadow(var(--neon-shadows1-principal) var(--neon-secondary-color)) drop-shadow(var(--neon-shadows1-secondary) var(--secondary-color));
     }
 }
 h2 { font-size: 3rem; }
