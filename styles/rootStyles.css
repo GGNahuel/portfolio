@@ -11,8 +11,9 @@
     --secondary-color-dark: rgb(39, 9, 109);
     --neon-secondary-color: rgb(117, 68, 230);
 
-    --third-color: rgb(6, 83, 71);
-    --third-color-dark: rgb(6, 83, 71);
+    --third-color: rgb(10, 138, 111);
+    --third-color-dark: rgb(3, 49, 36);
+    --neon-third-color: rgb(16, 255, 203);
 
     --bg-color: rgb(221, 238, 234);
     --bg-contrast-color: /* rgb(92, 87, 62); */rgb(6, 64, 71);
@@ -112,14 +113,13 @@ button {
 
 h1 {
     font-size: 4.5rem;
-    color: var(--neon-main-color);
+    color: var(--main-color);
     line-height: 5rem;
     margin-bottom: 1rem;
-    filter: drop-shadow(0 0 2px rgb(82, 82, 82)) drop-shadow(0 0 6px var(--main-color));
-
+    
     .important {
         color: var(--neon-secondary-color);
-        filter: drop-shadow(0 0 2px white) drop-shadow(0 0 6px var(--secondary-color));
+        filter: drop-shadow(0 0 4px var(--neon-secondary-color)) drop-shadow(0 0 10px var(--secondary-color));
     }
 }
 h2 { font-size: 3rem; }
