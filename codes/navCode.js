@@ -307,7 +307,7 @@ window.addEventListener("load", () => {
 window.addEventListener("resize", () => {
   definirStylesSegunVWPreAnimation()
   if (startAnimationFinished) { 
-    finalAnimationStyles.ring_root()
+    finalAnimationStyles.header_root()
     $navItems_Container.forEach(($element, index) => {finalAnimationStyles.navItems($element, index).item(true)})
   } 
 })
