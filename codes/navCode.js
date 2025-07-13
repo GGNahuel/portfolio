@@ -20,7 +20,7 @@ const $KEYFRAME_opening = {
     { offset: 1, opacity: 1 }
   ],
   logoClose: [
-    { offset: 0, opacity: 1}, {offset: 1, opacity: 0 }
+    { offset: 0, opacity: 0.7}, {offset: 1, opacity: 0 }
   ],
   firstRing: [
     { offset: 0, rotate: 0 }, { offset: 0.3, rotate: "270deg" }, { offset: 1, rotate: "360deg" }
@@ -205,7 +205,7 @@ window.addEventListener("load", () => {
   const lastVisit = localStorage.getItem('lastAnimationTime');
   const currentTime = Date.now();
 
-  if (true) {//(!lastVisit || currentTime - lastVisit > minutesWithoutAnimationInMS) {
+  if (!lastVisit || currentTime - lastVisit > minutesWithoutAnimationInMS) {
     localStorage.setItem('lastAnimationTime', currentTime);
     
     $header.animate($KEYFRAME_opening.header, _openingAnimationProps({duration: 600})).ready.then(() => {
@@ -249,7 +249,7 @@ window.addEventListener("load", () => {
       })
     })
   } else {
-    finalAnimationStyles.ring_root()
+    finalAnimationStyles.header_root()
     finalAnimationStyles.logo()
     $navItems_Container[0].classList.add("current")
     $navItems_Container.forEach(($element, index) => {
@@ -267,7 +267,7 @@ window.addEventListener("resize", () => {
   } 
 })
 
-
+// ----------------------------------
 /* Evento de scroll, "gira" de los navItems e indicación del que está activo */
 
 let pixelsForScroll = 0
@@ -326,6 +326,7 @@ $root.addEventListener("scroll", () => {
   }
 })
 
+// --------------------------------------
 /* Animación del hover en la nav */
 
 $header.addEventListener("mouseenter", () => {
