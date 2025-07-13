@@ -140,7 +140,7 @@ const finalAnimationStyles = {
   },
   logo: () => {
     $logoInRing.style.opacity = 0
-    // $logoInRing.style.display = "none"
+    $logoInRing.style.display = "none"
   },
   navItems: ($element, index) => ({
     button: () => {
@@ -205,6 +205,7 @@ window.addEventListener("load", () => {
   const lastVisit = localStorage.getItem('lastAnimationTime');
   const currentTime = Date.now();
 
+  // chequea si ya hubo animación recientemente y la hace si no es el caso
   if (!lastVisit || currentTime - lastVisit > minutesWithoutAnimationInMS) {
     localStorage.setItem('lastAnimationTime', currentTime);
     
@@ -343,7 +344,7 @@ $header.addEventListener("mouseenter", () => {
 })
 $header.addEventListener("mouseleave", () => {
   if (window.innerHeight < 720 || window.innerWidth < 720) return
-
+  
   isRingHovered = false
   $navItems_Container.forEach(($navItem, index) => {
     $navItem.style.rotate = `${anglesBackup[index]}deg`
