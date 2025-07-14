@@ -60,22 +60,25 @@ const translation = {
     },
     studiesSection: {
       title: "Formación",
-      unl: `Febrero 2019 - diciembre 2021, <strong>Tecnicatura</strong> en informática de gestión en la Facultad de Ingenierías y Ciencias Hídricas de la Universidad
-        Nacional del litoral. Estudios incompletos`,
-      firstStepsFront: `Enero - marzo 2023, curso "Primeros pasos del desarrollo frontEnd" por Argentina programa 4.0`,
-      fullStackBootcamp: `Abril 2023 - julio 2024, bootcamp para <strong>desarrollador fullstack</strong> por parte de EggCooperation</p>
-        <p class="comment">En este bootcamp además de aprender y formarme sobre programación, también tuve la oportunidad
-          de desarrollar e ir mejorando <strong>habilidades blandas</strong> a traves del trabajo en equipo y la cooperación que en el mismo se requiere.
-          Por ejemplo: el explicar o preguntar en cuánto contenido; la toma de decisiones; y el presentar, escuchar y poner en 
-          común ideas o posibles soluciones a los distintos retos que se nos iban presentando. 
+      // innerHTML de los div.text que hay en cada article del html en esta sección
+      unlCurrent: `
+        <h4>Tecnicatura en Software Libre</h4>
+        <p>Febrero 2025 - actualidad. Facultad de Ingeniería y Ciencias Hídricas - Universidad Nacional del Litoral</p>`,
+      microservicesBootcamp: `
+        <h4>Bootcamp sobre Arquitectura de microservicios con práctica en Java</h4>
+        <p>Marzo - junio 2025. <a href="https://codigofacilito.com/">Código facilito</a></p>
+        <p class="comment">Formación teórica y práctica acerca de arquitectura de microservicios en Java. Con expansión de contenido a aspectos relacionados 
+          a ellos. Por ejemplo: manejo y creación de contenedores con Docker y docker-compose, distintos tipos de API: REST y GraphQL, seguridad en microservicios,
+          testing, herramientas de monitores y observabilidad, y una aproximación teórica a Kubernetes y también a herramientas de CI/CD.
         </p>
-        <p class="comment">La modalidad de este cursado fue a traves de clases en vivo y trabajos grupales. El cuál aprobé con un
-          trabajo final en un grupo de 4 integrantes en el que nos tocó desarrollar una web completa.
-        </p>
-        <p class="comment">Este trabajo se desarrolló usando <strong>metodologías ágiles</strong>, y si bien estuve principalmente como desarrollador backend, también 
-          me tocó desempeñar el rol de <strong>líder técnico</strong>. Administrando el repositorio remoto de github y manejando cuestiones de git.
-      `,
-      codigoFacilitoCourses: `Mayo 2024, distintas capacitaciones y cursos de <a href="https://codigofacilito.com/">Código facilito</a>.</p>
+        <p class="comment">Destaco que en este bootcamp los profesores ayudaban mucho enseñando y acompañando de cerca desde su experiencia profesional, 
+          dando un seguimiento que honestamente no tuve en ninguno de mis otros lugares donde me fui formando. Aproveché al máximo las clases para aclarar
+          dudas, aprender buenas prácticas, corregir otras que ya tenía incorporadas, además de todo el conocimiento teórico y práctico que brindaron.
+        </p>`,
+      codigoFacilitoCourses: `
+        <h4>Cursos y capacitaciones</h4>
+        <p>Mayo 2024. <a href="https://codigofacilito.com/" target="_blank">Código facilito</a></p>
+        <p class="comment">Feria de cursos gratuitos que dió Código Facilito, oportunidad para expandir mis conocimientos en ese tiempo</p>
         <ul>
           <li>Curso de fundamentos de <strong>arquitectura de software</strong></li>
           <li>Capacitación sobre testing en Java</li>
@@ -83,21 +86,51 @@ const translation = {
           <li>Curso de Github</li>
           <li>Curso Profesional de deploy en servidores</li>
         </ul>`,
-      others: `Además de lo mencionado anteriormente quisiera no dejar de lado que también profundicé y amplié mis conocimientos de forma autodidacta.
-        A traves de documentaciones oficiales, foros, medios audiovisuales, y personas de las que tuve la oportunidad de comunicarme y aprender de ellas.`
+      fullStackBootcamp: `
+        <h4>Bootcamp sobre desarrollo Full Stack</h4>
+        <p>Marzo 2023 - junio 2024. <a href="https://egg.live/es/home" target="_blank">EggCooperation</a></p>
+        <p class="comment">En este bootcamp además de aprender y formarme sobre programación, también tuve la oportunidad
+          de desarrollar e ir mejorando <strong>habilidades blandas</strong> a traves del trabajo en equipo y la cooperación que en el mismo se requiere.
+          Por ejemplo: el explicar y preguntar sobre aspectos técnicos; la toma de decisiones; y el presentar, escuchar y poner en 
+          común ideas o posibles soluciones a los distintos retos que se nos iban presentando. 
+        </p>
+        <p class="comment">La modalidad de este cursado fue a traves de clases en vivo y trabajos grupales. El cuál finalizó con un
+          trabajo final en un grupo de 4 integrantes en el que nos tocó desarrollar una web completa.
+        </p>
+        <p class="comment">Este se desarrolló usando <strong>metodologías ágiles</strong>, y si bien estuve principalmente como desarrollador backend,
+          también me tocó desempeñar el rol de <strong>líder técnico</strong>. Administrando el repositorio remoto de github y manejando cuestiones de git.
+        </p>
+        <p class="comment"><a href="https://github.com/GrupoEgg-ProyectoFinal/WebApp_Servicios" target="_blank">Link al repositorio del proyecto final</a></p>`,
+      firstStepsFront: `
+        <h4>Curso "Primeros pasos del desarrollo frontEnd"</h4>
+        <p>Enero - marzo 2023. Argentina programa 4.0</p>`,
+      unl: `
+        <h4>Tecnicatura en informática de gestión.</h4>
+        <p>Febrero 2019 - diciembre 2022. Facultad de Ingenierías y Ciencias Hídricas - Universidad Nacional del litoral. Estudios incompletos</p>`,
+      english: `
+        <h4>Formación en lengua extranjera: Inglés (B1)</h4>
+        <p>Marzo - junio 2025. Estudios retomados y finalizados en "Escuela de Idiomas - Liceo municipal Antonio Fuentes del Arco”</p>
+        <p>2013 - 2016. Formación en el Instituto de Inglés San Roque. Estudios no finalizados</p>`,
+      others: `
+        <h4>Extras</h4>
+        <p class="comment">
+          Además de lo mencionado anteriormente quisiera no dejar de lado que también profundicé y amplié mis conocimientos de forma autodidacta.
+          A traves de documentaciones oficiales, foros, medios audiovisuales, y también de colegas y profesionales de los que tuve la oportunidad de 
+          comunicarme y aprender de ellos.
+        </p>`
     },
     contactSection: {
       title: "Formulario de contacto",
-      subtitle: "Responda las preguntas para saber más de lo que necesita, o bien arme su propio mensaje",
       formLabels: {
         data: ["Ingrese su nombre", "Ingrese su email"],
         questions: [
-          "¿Cuál es su área de trabajo o la de su empresa?",
-          "¿Qué tipo de proyecto o colaboración está buscando?",
-          "¿Qué es lo que espera de mí al trabajar con usted/es?"
+          "¿A qué sector o área de trabajo pertenece su empresa?",
+          "¿Qué tipo de proyectos o colaboración están buscando desarrollar?",
+          "¿Qué expectativas tienen respecto a mi participación y aporte en su equipo?"
         ],
-        message: "¿Algo más que quiera agregar o contarme?. Mensaje:"
+        message: "¿Desea agregar algún detalle adicional o comentario?"
       },
+      aboutQuestions: "La respuestas a esas preguntas me permitirán entender mejor sus necesidades y alinearme más a sus objetivos.",
       button: "Contactarse",
       alsoMessage: `También puede buscarme en <a href="https://www.linkedin.com/in/nahuel-gomez-gahn/" target="_blank">LinkedIn</a> o escribiéndome al e-mail nahuelg8799@gmail.com`
     }
@@ -132,14 +165,14 @@ const translation = {
       aboutMe: {
         title: "Hello!. Here you can know more about me.",
         formattedText: `I'm 25 years old and live in Argentina at the moment, to be more specific in the province of Santa Fe, place where I was born.</p>
-            <br><p>I enjoy activities like reading books, spending time outdoors and hanging out with my friends. My hobbies are archery and photography.
-              Activities I like to dedicate time and continually improve.
-            </p>
-            <br><p>My journey in programming begun when I was a teenager and wanted to know more about the process of making video-games. 
-              Later I chose to study more of this area, and after finding enjoyment and passion for it, I decided to train professionally as a developer.
-            </p>
-            <p>I like this activity because there is always room to improve the skills or knowledge someone already have. 
-              I feel motivated when I try to find the best possible solution to the different upcoming challenges.
+          <br><p>I enjoy activities like reading books, spending time outdoors and hanging out with my friends. My hobbies are archery and photography.
+            Activities I like to dedicate time and continually improve.
+          </p>
+          <br><p>My journey in programming begun when I was a teenager and wanted to know more about the process of making video-games. 
+            Later I chose to study more of this area, and after finding enjoyment and passion for it, I decided to train professionally as a developer.
+          </p>
+          <p>I like this activity because there is always room to improve the skills or knowledge someone already have. 
+            I feel motivated when I try to find the best possible solution to the different upcoming challenges.
         </p>`
       }
     },
@@ -160,20 +193,24 @@ const translation = {
     },
     studiesSection: {
       title: "Studies",
-      unl: `February 2019 - December 2021. <strong>Technician</strong> in computer sciences with a management focus, Universidad Nacional del Litoral (UNL).
-        Studies incomplete.`,
-      firstStepsFront: `January - March 2023. "First steps in frontend development, Argentina Programa 4.0 initiative`,
-      fullStackBootcamp: `March 2023 - June 2024. <strong>Fullstack web developer</strong> bootcamp, Egg Cooperation</p>
-        <p class="comment">In this bootcamp, in addition to learning about programming technologies, I had the opportunity
-        to develop and improve my <strong>soft skills</strong> by teamwork and cooperation. For example: 
-        explaining or asking about related content; the decision-making process; and give, listen and pool ideas
-        or possible solution to the different upcoming challenges.</p>
-        <p class="comment">The work in this bootcamp was by online classes and group activities. At the end, in a group of 4 study partners, we had to 
-        develop a full-stack web application.</p>
-        <p class="comment">This project was using <strong>agile methodologies</strong>, and in this case I was not only
-        in the backend team, but also I was designated as a <strong>tech leader</strong>. Managing the remote repository in github and git issues.</p>
-        `,
-        codigoFacilitoCourses: `April - May 2024. Different courses and training from <a href="https://codigofacilito.com/">Código facilito</a>.</p>
+      unlCurrent: `
+        <h4>Technician in open software</h4>
+        <p>February 2025 - present. Universidad Nacional del Litoral (UNL - FICH)</p>`,
+      microservicesBootcamp: `
+        <h4>Bootcamp about microservices architecture with hands-on Java practice</h4>
+        <p>March - june 2025. <a href="https://codigofacilito.com/">Código facilito</a></p>
+        <p class="comment">Theoretical and practical training about microservice architecture in Java. With content expanded to related knowledge to it,
+          For example: building and management of containers with Docker and docker-compose, different types of API: REST and GraphQL, microservices security,
+          testing, monitoring and observability tools, and a theoretical approach to Kubernetes and CI/CD tools."
+        </p>
+        <p class="comment"I appreciated how the instructors in this bootcamp supported us closely, sharing their professional experience and providing 
+          guidance, which honestly, I had not received elsewhere. I made the most of the classes to ask questions, improve my practices, and deepen both my 
+          theoretical and practical knowledge
+        </p>`,
+      codigoFacilitoCourses: `
+        <h4>Short courses and training</h4>
+        <p>May 2024. <a href="https://codigofacilito.com/" target="_blank">Código facilito</a>.</p>
+        <p class="comment">Fair of free courses, chance to expand my knowledge I had at that time</p>
         <ul>
           <li>Course about basics of <strong>software architecture</strong></li>
           <li>Training about Java testing</li>
@@ -181,21 +218,48 @@ const translation = {
           <li>GitHub course</li>
           <li>Course about deploy</li>
         </ul>`,
-        others: `Also, I don't want to ignore that I learned more independently and self-taught. By official documentations, forums, audiovisual media, and people that
-        I had the chance to talk and learn from them.`
+      fullStackBootcamp: `
+        <h4>Bootcamp about fullstack web development</h4>
+        <p>March 2023 - june 2024. <a href="https://egg.live/es/home" target="_blank">EggCooperation</a></p>
+        <p class="comment">In this bootcamp, in addition to learning about programming technologies, I had the opportunity
+          to develop and improve my <strong>soft skills</strong> by teamwork and cooperation. For example: 
+          explaining and asking about technical aspects; the decision-making process; and give, listen and pool ideas
+          or possible solutions to the different upcoming challenges.
+        </p>
+        <p class="comment">The work in this bootcamp was by online classes and group activities. It finished with a final project, in a group 
+          of 4 study partners, we had to develop a full-stack web application.
+        </p>
+        <p class="comment">This project was using <strong>agile methodologies</strong>, and in this case I was not only
+          in the backend team, but also I was designated as a <strong>tech leader</strong>. Managing the remote repository in github and git issues.
+        </p>
+        <p class="comment"><a href="https://github.com/GrupoEgg-ProyectoFinal/WebApp_Servicios" target="_blank">Link to the final project repository</a></p>`,
+      firstStepsFront: `
+        <h4>First steps in frontend development course</h4>
+        <p>January - March 2023. Argentina Programa 4.0 initiative</p>`,
+      unl: `
+        <h4>Technician in computer sciences with a management focus</h4>
+        <p>February 2019 - December 2022. Universidad Nacional del Litoral (UNL - FICH). Incomplete studies</p>`,
+      english: `
+        <h4>English studies (B1)</h4>
+        <p>March - june 2025. Continued and finished studies in "Liceo municipal Antonio Fuentes del Arco" language school</p>
+        <p>2013 - 2016. Course in english institute San Roque. Not finished studies</p>`,
+      others: `
+        <h4>Extras</h4>
+        <p>Also, I don't want to ignore that I learned more independently and self-taught. By official documentations, forums, audiovisual media, and 
+          partners and professionals who I had the chance to talk and learn from them.</p>`
     },
     contactSection: {
       title: "Contact form",
-      subtitle: "Answer the questions to know more about what you need, or write your own message below",
       formLabels: {
         data: ["Name", "Email"],
         questions: [
-          "What is your or your company's area of expertise?",
-          "What type of project or collaboration you are looking for?",
-          "What do you expect from me while working with you?",
+          "Which area of expertise is your company or team in?",
+          "What type of project or collaboration are you looking to develop?",
+          "What expectations you have about my participation in your team?",
         ],
-        message: "Anything else you'd like to add or share?. Message:"
+        message: "Is there another detail or comment you would like to add?"
       },
+      aboutQuestions: "The answers to this questions allow me to a better understanding of your needs and so I can align myself with your goals.",
       button: "Send",
       alsoMessage: `Also, you can contact me in <a href="https://www.linkedin.com/in/nahuel-gomez-gahn/" target="_blank">Linkedin</a> or sending an email to nahuelg8799@gmail.com`
     }
@@ -273,11 +337,14 @@ const setProjectSectionTexts = () => {
 const setStudiesSectionTexts = () => {
   const studiesSection = document.getElementById("expAndFormation_section")
   studiesSection.querySelector("& > h2").innerHTML = selectedTranslation.studiesSection.title
-  studiesSection.querySelector(".unl > p").innerHTML = selectedTranslation.studiesSection.unl
-  studiesSection.querySelector(".firstSteps > p").innerHTML = selectedTranslation.studiesSection.firstStepsFront
-  studiesSection.querySelector(".bootcamp > p").innerHTML = selectedTranslation.studiesSection.fullStackBootcamp
-  studiesSection.querySelector(".courses > p").innerHTML = selectedTranslation.studiesSection.codigoFacilitoCourses
-  studiesSection.querySelector(".others > p").innerHTML = selectedTranslation.studiesSection.others
+  studiesSection.querySelector(".unlCurrent > div.text").innerHTML = selectedTranslation.studiesSection.unlCurrent
+  studiesSection.querySelector(".microservices > div.text").innerHTML = selectedTranslation.studiesSection.microservicesBootcamp
+  studiesSection.querySelector(".courses > div.text").innerHTML = selectedTranslation.studiesSection.codigoFacilitoCourses
+  studiesSection.querySelector(".bootcamp > div.text").innerHTML = selectedTranslation.studiesSection.fullStackBootcamp
+  studiesSection.querySelector(".firstSteps > div.text").innerHTML = selectedTranslation.studiesSection.firstStepsFront
+  studiesSection.querySelector(".unl > div.text").innerHTML = selectedTranslation.studiesSection.unl
+  studiesSection.querySelector(".english > div.text").innerHTML = selectedTranslation.studiesSection.english
+  studiesSection.querySelector(".others > div.text").innerHTML = selectedTranslation.studiesSection.others
 
   studiesSection.querySelector("& > a > button").innerHTML = selectedTranslation.buttons.certificates
 }
@@ -286,7 +353,6 @@ const setStudiesSectionTexts = () => {
 const setContactSectionTexts = () => {
   const contactSection = document.getElementById("contact_section")
   contactSection.querySelector("& > h2").innerHTML = selectedTranslation.contactSection.title
-  contactSection.querySelector("& > h4").innerHTML = selectedTranslation.contactSection.subtitle
 
   contactSection.querySelectorAll(".subForm:nth-child(1) > label").forEach((element, index) => {
     element.querySelector("text").innerHTML = selectedTranslation.contactSection.formLabels.data[index]
@@ -294,6 +360,7 @@ const setContactSectionTexts = () => {
   contactSection.querySelectorAll(".subForm:nth-child(2) > label").forEach((element, index) => {
     element.querySelector("text").innerHTML = selectedTranslation.contactSection.formLabels.questions[index]
   })
+  contactSection.querySelector("#contact_form > p").innerHTML = selectedTranslation.contactSection.aboutQuestions
   contactSection.querySelector(".subForm:nth-child(3) > label text").innerHTML = selectedTranslation.contactSection.formLabels.message
 
   contactSection.querySelector("button.outstanding").innerHTML = selectedTranslation.contactSection.button

@@ -200,14 +200,14 @@ const Portfolio_project = new ProjectElement({
   translationObject: {
     spanish: {
       name: "Acerca de esta página",
-      description: `Decidí hacer mi portafolio usando solamente los 3 pilares para el desarrollo web front-end.
+      description: `Debido a que es una página estática, decidí hacer mi portafolio usando solamente los 3 pilares para el desarrollo web front-end.
         ¡Todo lo que ves en esta página está hecho solamente con HTML, CSS y JavaScript!`,
       features: []
     },
     english: {
       name: "About this portfolio",
-      description: "I decided to do my personal page using only the 3 core technologies for frontend development as a challenge." +
-        " Everything you see here is done with HTML, CSS and JavaScript!",
+      description: `Because this is a static website, I decided to do my portfolio using only the 3 core technologies for frontend development.
+        Everything you see here is done only with HTML, CSS and JavaScript!`,
       features: []
     }
   },
