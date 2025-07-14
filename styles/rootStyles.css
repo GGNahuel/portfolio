@@ -38,7 +38,7 @@
     width: 17px;
 }
 *::-webkit-scrollbar-thumb {
-    background-color: var(--bg-contrast-color);
+    background-color: var(--main-color);
     border-radius: 8px;
 }
 
@@ -52,7 +52,7 @@ body {
 button {
     padding: 0.7rem;
     font-size: 1.2rem;
-    font-weight: bolder;
+    font-weight: 600;
     border-radius: 8px;
     border: 0;
     cursor: pointer;

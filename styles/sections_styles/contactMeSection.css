@@ -17,7 +17,7 @@
     box-sizing: border-box;
     width: 100%;
     padding: 1rem;
-    background-color: var(--presentationCard-color);
+    background-color: var(--page-bg-color2);
     color: white;
     border-radius: 16px;
     font-size: 1.2rem;
