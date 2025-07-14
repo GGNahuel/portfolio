@@ -130,10 +130,19 @@ h2 {
 }
 h3 { font-size: 2rem; }
 h4 { font-size: 1.5rem;}
-p { font-size: 1.2rem; }
+p, li, a { font-size: 1.2rem; }
 .important {color: var(--secondary-color);}
 
-a { text-decoration: none; color: var(--main-color); }
+a { 
+    text-decoration: none; 
+    color: var(--third-color) !important;
+    transition: filter 300ms, color 300ms;
+
+    &:hover {
+        color: var(--neon-third-color) !important;
+        filter: drop-shadow(var(--neon-shadows1-principal) var(--neon-third-color));
+    }
+}
 
 ul { list-style-type: none; }
 

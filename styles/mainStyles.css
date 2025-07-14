@@ -43,12 +43,12 @@ main {
   color: var(--neon-main-color);
   background: url("/imgs/texturaCircuitos.webp");
   background-color: var(--secondary-color-dark);
-  background-repeat: repeat-x;
+  background-repeat: repeat;
   background-position-y: minmax(0, 20%);
   transition: border-color 200ms ease-out, filter 300ms ease;
 
   + .card {
-      margin-top: 1rem;
+    margin-top: 1rem;
   }
 
   &:hover {
@@ -63,6 +63,15 @@ main {
       padding-bottom: .5rem;
       transition: 300ms;
     }
+
+    h3 {
+      filter: drop-shadow(var(--neon-shadows1-principal) var(--neon-main-color)) drop-shadow(var(--neon-shadows1-secondary) var(--main-color));
+    }
+  }
+
+  h3 {
+    filter: drop-shadow(var(--neon-shadows1-principal) var(--neon-main-color));
+    transition: filter 300ms;
   }
 
   &.formation {
