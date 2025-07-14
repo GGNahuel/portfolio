@@ -179,18 +179,6 @@
   filter: drop-shadow(var(--neon-shadows1-principal) var(--bg-color));
   background-color: var(--page-bg-color);
   
-  div.background {
-    position: absolute;
-    opacity: 0.5;
-    width: 100%;
-    height: 100%;
-    background-image: url("../../imgs/hologram_effect.gif");
-    background-repeat: no-repeat;
-    background-size: auto 170%;
-    background-position: center;
-    z-index: -1;
-  }
-  
   > *:not(.background) {
     filter: drop-shadow(var(--neon-shadows1-principal) var(--bg-color));
   }

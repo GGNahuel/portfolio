@@ -45,7 +45,12 @@ class ProjectElement {
           ${lang == "spanish" ? "Enlace al repositorio" : "Link to repository"}
         </a>`
       : "",
-      demo_zone: this.videoSrc && `<div class="projectCard_demo"><video src=${this.videoSrc} autoplay preload="metadata" muted loop title="${selectedTranslationObj.videoTitle}"></div>`
+      demo_zone: this.videoSrc && `<div class="projectCard_demo">
+        <div>
+          <div class="background"></div>
+          <video src=${this.videoSrc} autoplay preload="metadata" muted loop title="${selectedTranslationObj.videoTitle}"></video>
+        </div>
+      </div>`
     }
 
     const newDescription = () => {
@@ -54,7 +59,7 @@ class ProjectElement {
         selectedTranslationObj.description.forEach(paragraph => paragraphElements += `<p>${paragraph}</p>`)
   
         return paragraphElements
-      } else return selectedTranslationObj.description
+      } else return "<p>" + selectedTranslationObj.description + "</p>"
     }
 
     return `
@@ -97,12 +102,9 @@ const InventoryAPI = new ProjectElement({
     spanish: {
       name: "Api para gestión de inventarios",
       description: [
-        "Esta api permite registrar usuarios para que estos puedan crear sus inventarios y llenarlos con los items que se requieran." + 
-        " Estos usuarios pueden a su vez crear sub-usuarios en la misma cuenta, al cual se accede también con nombre y contraseña. Lo que les permitiría " +
-        "asignar, a través de un sub-usuario admin, permisos que pueden variar para cada inventado creado en la misma cuenta.",
-        "La API está armada con una arquitectura de micro-servicios la cual, según a cuál micro-servicio el cliente necesite comunicarse, se enviarán " +
-        "solicitudes Rest o GraphQL. Ejemplo para la obtención de inventarios y sus productos se usa GraphQL, y para la mayoría de las otras se usan . " +
-        "peticiones REST. Todas estas peticiones que se hagan pasarán por una API gateway, que validará en primer lugar el JWT antes de redirigir la solicitud."
+        "Esta api permite registrar usuarios para que estos puedan crear sus inventarios y llenarlos con los items que el usuario necesite.", 
+        " Ellos pueden a su vez crear sub-usuarios en la misma cuenta, al cual se accede también con nombre y contraseña. Lo que les permitiría " +
+        "asignar, a través de un sub-usuario admin, permisos que pueden variar para cada inventario creado en la misma cuenta."
       ],
       features: [
         "Base de datos SQL", "Arquitectura de Micro-servicios", 
@@ -117,12 +119,9 @@ const InventoryAPI = new ProjectElement({
     english: {
       name: "Inventory management API",
       description: [
-        "This api allows the users to create inventories and fill them with the items they could require. Also, these users can register sub-users in " +
-        "the same account, who can access with a username and a password too. This allows to the admin sub-user assign different permissions to each of the inventories associated " +
-        "to the account.",
-        "The API is built with a microservices architecture which, depending on the endpoint the client needs to communicate, the requests sent to it will be a" +
-        "REST or a GraphQl request. For example to obtain the inventories with the products that are in is used a GraphQL request, and for the most of the others " +
-        "it is used a REST request. All of these are being validated by a Gateway API, which validates the JWT before redirecting the request."
+        "This api allows the users to create inventories and fill them with the items they could require.", 
+        "Also, these users can register sub-users in the same account, who can access with a username and a password too. " +
+        "This allows to the admin sub-user assign different permissions to each of the inventories associated to the account."
       ],
       features: [
         "SQL database", "Microservices architecture",
@@ -136,7 +135,7 @@ const InventoryAPI = new ProjectElement({
     }
   },
   repositoryLink: "https://github.com/GGNahuel/InventoryApp_API-with-microservices",
-  skillsList: ["Java", "Spring boot", "Spring security", "Gateway API", "Rest API", "GraphQL API", "JWT", "Docker", "Postman"],
+  skillsList: ["Java", "Spring boot", "Spring security", "Gateway API", "Rest API", "GraphQL API", "JWT", "MySQL", "Docker", "Postman"],
   videoSrc: "demos/MassagistPage/demo.webm"
 })
 
@@ -163,7 +162,7 @@ const HealthCenterTurnAdministrator = new ProjectElement({
     }
   },
   repositoryLink: "https://github.com/GGNahuel/08-AdministracionTurnosClinica",
-  skillsList: ["Java", "TypeScript", "Spring boot", "Spring Security", "Rest API", "React", "React Router", "CSS", "HTML"],
+  skillsList: ["Java", "Spring boot", "Spring Security", "Rest API", "MySQL", "TypeScript", "React", "React Router", "CSS", "HTML"],
   videoSrc: "demos/HealthCenter/demoGeneral.webm",
   expand_link: "HealthCenterManager.html"
 })

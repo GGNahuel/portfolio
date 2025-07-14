@@ -35,6 +35,11 @@
     color: var(--neon-main-color);
   }
 
+  &:hover div.background {
+    opacity: 0.3 !important;
+    transition: opacity 300ms ease;
+  }
+
   &>.projectCard_info {
 
     .pC_header,
@@ -99,15 +104,23 @@
     align-items: center;
     perspective: 100px;
 
-    video,
-    img {
+    > div {
+      width: 100%;
+      min-width: 300px;
       perspective: 1px;
       rotate: y -1.5deg;
+    }
+
+    div.background {
+      opacity: 0.5;
+      z-index: 10;
+    }
+
+    video, img, div.background {
       width: 100%;
       min-width: 300px;
       aspect-ratio: 16/9;
       object-fit: cover;
-      filter: drop-shadow(0 4px 2px grey);
     }
   }
 }
@@ -127,8 +140,7 @@
   >.projectCard_demo {
     direction: ltr;
 
-    video,
-    img {
+    > div {
       perspective: 1px;
       rotate: y 1.5deg;
     }
@@ -151,7 +163,7 @@
       right: 0;
     }
 
-    >.projectCard_demo video {
+    >.projectCard_demo > div {
       perspective: 0;
       rotate: x 0deg !important;
     }
