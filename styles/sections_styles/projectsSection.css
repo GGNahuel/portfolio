@@ -29,6 +29,16 @@
 .projectCard {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  color: var(--font-color);
+
+  h3 {
+    color: var(--neon-main-color);
+  }
+
+  &:hover div.background {
+    opacity: 0.3 !important;
+    transition: opacity 300ms ease;
+  }
 
   &>.projectCard_info {
 
@@ -52,6 +62,9 @@
     .pC_body {
       margin: 1rem 0 1.5rem;
       max-width: 70ch;
+      border-radius: 8px;
+      padding: 1rem;
+      background-color: var(--page-bg-color);
 
       &>* {
         margin: 0.7rem 0;
@@ -73,8 +86,14 @@
 
     .pC_link {
       color: var(--main-color);
-      font-size: 1.1rem;
+      font-size: 1.3rem;
       font-weight: 700;
+    }
+
+    .linkZone {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
     }
   }
 
@@ -85,15 +104,23 @@
     align-items: center;
     perspective: 100px;
 
-    video,
-    img {
+    > div {
+      width: 100%;
+      min-width: 300px;
       perspective: 1px;
       rotate: y -1.5deg;
+    }
+
+    div.background {
+      opacity: 0.5;
+      z-index: 10;
+    }
+
+    video, img, div.background {
       width: 100%;
       min-width: 300px;
       aspect-ratio: 16/9;
       object-fit: cover;
-      filter: drop-shadow(0 4px 2px grey);
     }
   }
 }
@@ -113,8 +140,7 @@
   >.projectCard_demo {
     direction: ltr;
 
-    video,
-    img {
+    > div {
       perspective: 1px;
       rotate: y 1.5deg;
     }
@@ -137,7 +163,7 @@
       right: 0;
     }
 
-    >.projectCard_demo video {
+    >.projectCard_demo > div {
       perspective: 0;
       rotate: x 0deg !important;
     }

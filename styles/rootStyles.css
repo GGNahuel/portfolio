@@ -9,7 +9,7 @@
 
     --secondary-color: rgb(64, 0, 215);
     --secondary-color-dark: rgb(39, 9, 109);
-    --neon-secondary-color: rgb(117, 68, 230);
+    --neon-secondary-color: rgb(145, 98, 255);
 
     --third-color: rgb(10, 138, 111);
     --third-color-dark: rgb(3, 49, 36);
@@ -121,16 +121,34 @@ h1 {
     
     .important {
         color: var(--neon-secondary-color);
-        filter: drop-shadow(0 0 4px var(--neon-secondary-color)) drop-shadow(0 0 10px var(--secondary-color));
+        filter: drop-shadow(var(--neon-shadows1-principal) var(--neon-secondary-color)) drop-shadow(var(--neon-shadows1-secondary) var(--secondary-color));
     }
 }
-h2 { font-size: 3rem; }
+h2 { 
+    font-size: 3rem;
+    filter: drop-shadow(var(--neon-shadows1-principal) var(--neon-main-color)) drop-shadow(var(--neon-shadows1-secondary) var(--main-color));
+}
 h3 { font-size: 2rem; }
-h4 { font-size: 1.5rem;}
-p { font-size: 1.2rem; }
+h4 { 
+    font-size: 1.5rem; 
+    
+    > p, > a {
+        font-size: 1.5rem;
+    }
+}
+p, li, a { font-size: 1.2rem; }
 .important {color: var(--secondary-color);}
 
-a { text-decoration: none; color: var(--main-color); }
+a { 
+    text-decoration: none; 
+    color: var(--third-color) !important;
+    transition: filter 300ms, color 300ms;
+
+    &:hover {
+        color: var(--neon-third-color) !important;
+        filter: drop-shadow(var(--neon-shadows1-principal) var(--neon-third-color));
+    }
+}
 
 ul { list-style-type: none; }
 
@@ -149,7 +167,7 @@ ul { list-style-type: none; }
         width: 80px;
         height: 32px;
         border-radius: 16px;
-        background-color: aliceblue;
+        background-color: var(--secondary-color-dark);
         position: relative;
         cursor: pointer;
 
@@ -159,7 +177,7 @@ ul { list-style-type: none; }
             width: 32px;
             height: 32px;
             border-radius: 16px;
-            background-color: var(--third-color);
+            background-color: var(--main-color);
             position: absolute;
             left: 0;
             transition: 300ms all;

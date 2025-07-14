@@ -1,3 +1,7 @@
+// Primero se definen los textos en cada idioma siguiendo la misma estructura en un objeto,
+//  luego se hace la selección de los elementos y se altera su texto según el objeto
+
+// Definición del objeto de traducciones
 const translation = {
   spanish: {
     navbar: ["Presentación", "Tecnologías", "Proyectos", "Estudios", "Contacto"],
@@ -9,10 +13,22 @@ const translation = {
     },
     presentationSection: {
       profileCard: {
-        role: "Desarrollador web FullStack",
+        role: "Desarrollador web Backend",
         text: "Dispuesto a dar el 101% de mis capacidades en lo que hago. Siempre atento a ese extra que pueda aportar a hacer un trabajo de muy buena calidad."
       },
-      features: ["Cooperación", "Prolijidad", "Desarrollo de base de datos", "Seguridad web", "Diseño para múltiples dispositivos", "UX/UI"],
+      features: [
+        "Cooperación", "Prolijidad", "Principios SOLID",
+        "Bases de datos SQL y NoSQL",
+        "POO",
+        "Arquitectura de software y patrones de diseño",
+        "Seguridad web", "JWT",
+        "Diseño de APIs Rest y GraphQL",
+        "API Gateway",
+        "Tests unitarios y de integración",
+        "Containerización de aplicaciones con Docker",
+        "Diseño para múltiples dispositivos",
+        "UX/UI"
+      ],
       aboutMe: {
         title: "¡Hola!. Aquí podrás conocer más de mí.",
         formattedText: `Actualmente tengo 25 años y vivo en Argentina, más específicamente en la provincia de Santa Fe, lugar donde nací.</p>
@@ -28,9 +44,15 @@ const translation = {
       }
     },
     skillsSection: {
-      title: "Resumen de habilidades técnicas",
-      categories: ["Lenguajes de programación", "Frameworks de desarrollo y extensiones",
-        "Herramientas de marcado, estilos y plantillas", "Bases de datos", "Otras herramientas de desarrollo", "Tecnologías en aprendizaje"
+      title: "Resumen de tecnologías y conocimientos técnicos",
+      categories: [
+        "Lenguajes de programación",
+        "Frameworks y librerías",
+        "Bases de datos",
+        "Desarrollo de APIs",
+        "Seguridad web",
+        "Herramientas de marcado,estilos y plantillas",
+        "Otras herramientas de desarrollo"
       ]
     },
     projectsSection: {
@@ -77,7 +99,7 @@ const translation = {
         message: "¿Algo más que quiera agregar o contarme?. Mensaje:"
       },
       button: "Contactarse",
-      alsoMessage: `También puede buscarme en <a href="https://www.linkedin.com/in/nahuel-gomez-gahn/" target="_blank">Linkedin</a> o escribiéndome al e-mail nahuelg8799@gmail.com`
+      alsoMessage: `También puede buscarme en <a href="https://www.linkedin.com/in/nahuel-gomez-gahn/" target="_blank">LinkedIn</a> o escribiéndome al e-mail nahuelg8799@gmail.com`
     }
   },
 
@@ -91,10 +113,22 @@ const translation = {
     },
     presentationSection: {
       profileCard: {
-        role: "FullStack web Developer",
+        role: "Backend Developer",
         text: "Ready to give 101% to my work. Always looking for that 1% extra to help projects achieve the best quality."
       },
-      features: ["Cooperative", "Attention to detail", "Database development", "Web security", "Multi-platform design", "UX/UI"],
+      features: [
+        "Cooperative", "Attention to detail", "SOLID principles",
+        "Database development, SQL and NoSQL",
+        "OOP",
+        "Software architecture and design patterns",
+        "Web security", "JWT",
+        "Rest and GraphQL API development",
+        "Gateway API",
+        "Unit and integration tests",
+        "Application containerization with Docker",
+        "Multi-platform design",
+        "UX/UI"
+      ],
       aboutMe: {
         title: "Hello!. Here you can know more about me.",
         formattedText: `I'm 25 years old and live in Argentina at the moment, to be more specific in the province of Santa Fe, place where I was born.</p>
@@ -110,9 +144,15 @@ const translation = {
       }
     },
     skillsSection: {
-      title: "Technical skills",
-      categories: ["Programming languages", "Frameworks and extensions", "Markup, styles and templating tools",
-        "Databases", "Other development tools", "In training"
+      title: "Technical skills and technologies used",
+      categories: [
+        "Programming languages",
+        "Frameworks and libraries",
+        "Databases",
+        "API development",
+        "Web security",
+        "Markup, styles and templating tools",
+        "Other development tools"
       ]
     },
     projectsSection: {
@@ -162,6 +202,8 @@ const translation = {
   }
 }
 
+// --------------------------------
+// Seleccionando y traduciendo elementos del DOM
 let selectedTranslation = null
 
 window.addEventListener("load", () => {
@@ -175,6 +217,16 @@ changeLanguageButton.addEventListener("change", () => {
   selectedTranslation = translation[selectedLanguage]
   setPageTexts()
 })
+
+// Definiendo las traducciones según elementos
+const setPageTexts = () => {
+  setNavbarTexts()
+  setPresentationSectionTexts()
+  setSkillsSectionTexts()
+  setProjectSectionTexts()
+  setStudiesSectionTexts()
+  setContactSectionTexts()
+}
 
 //// Navbar
 const setNavbarTexts = () => {
@@ -246,13 +298,4 @@ const setContactSectionTexts = () => {
 
   contactSection.querySelector("button.outstanding").innerHTML = selectedTranslation.contactSection.button
   contactSection.querySelector("& > div > h4").innerHTML = selectedTranslation.contactSection.alsoMessage
-}
-
-const setPageTexts = () => {
-  setNavbarTexts()
-  setPresentationSectionTexts()
-  setSkillsSectionTexts()
-  setProjectSectionTexts()
-  setStudiesSectionTexts()
-  setContactSectionTexts()
 }
