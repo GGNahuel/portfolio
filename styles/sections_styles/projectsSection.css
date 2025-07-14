@@ -105,10 +105,12 @@
     perspective: 100px;
 
     > div {
+      display: flex;
       width: 100%;
       min-width: 300px;
       perspective: 1px;
       rotate: y -1.5deg;
+      box-shadow: 0 0 6px white;
     }
 
     div.background {
