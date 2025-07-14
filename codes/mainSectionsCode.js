@@ -1,6 +1,5 @@
-// _________________________
 // Project Section
-//
+// definiendo clase de proyectos
 class ProjectElement {
   constructor({ translationObject = {
       spanish: {name: "", description: "", features: [], videoTitle: ""},
@@ -29,13 +28,29 @@ class ProjectElement {
 
     const mainProjectsElements = {
       expand_button: `<a class="seeMore" href="${this.expand_link}"><svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" fill="none">
-      <g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> 
-      <path fill="#ffffffff" fill-rule="evenodd" d="M10 3a7 7 0 100 14 7 7 0 000-14zm-9 7a9 9 0 1118 0 9 9 0 01-18 0zm8-4a1 1 0 011-1h.01a1 1 0 110 2H10a1 1 0 01-1-1zm.01 8a1 1 0 102 0V9a1 1 0 10-2 0v5z"></path>
-      </g></svg></a>`,
+        <g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+        <g id="SVGRepo_iconCarrier"><path fill="#ffffffff" fill-rule="evenodd" d="M10 3a7 7 0 100 14 7 7 0 000-14zm-9 7a9 9 0 1118 0 9 9 0 01-18 0zm8-4a1 1 0 011-1h.01a1 1 0 110 2H10a1 1 0 01-1-1zm.01 8a1 1 0 102 0V9a1 1 0 10-2 0v5z"></path></g>
+      </svg></a>`,
+      expandLink_element: `<a class="pC_link" href="${this.expand_link}">
+        ${lang == "spanish" ? "Saber más" : "See more info"}
+      </a>`,
       features_section: `<div><p>${lang == "spanish" ? "Características" : "Features"}:</p><ul class="pC_features">${featuresList}</ul></div>`,
-      link_element: this.link ? `<a class="pC_link" href="${this.link}" target="_blank">${lang == "spanish" ? "Enlace al sitio" : "Link to website"}</a>` : "",
-      repoLink_element: this.repositoryLink ? `<a class="pC_link" href="${this.repositoryLink}">${lang == "spanish" ? "Enlace al repositorio" : "Link to repository"}</a>` : "",
-      demo_zone: this.videoSrc && `<div class="projectCard_demo"><video src=${this.videoSrc} autoplay preload="metadata" muted loop title="${selectedTranslationObj.videoTitle}"></div>`
+      link_element: this.link ? 
+        `<a class="pC_link" href="${this.link}" target="_blank">
+          ${lang == "spanish" ? "Enlace al sitio" : "Link to website"}
+        </a>` 
+      : "",
+      repoLink_element: this.repositoryLink ? 
+        `<a class="pC_link" href="${this.repositoryLink}">
+          ${lang == "spanish" ? "Enlace al repositorio" : "Link to repository"}
+        </a>`
+      : "",
+      demo_zone: this.videoSrc && `<div class="projectCard_demo">
+        <div>
+          <div class="background"></div>
+          <video src=${this.videoSrc} autoplay preload="metadata" muted loop title="${selectedTranslationObj.videoTitle}"></video>
+        </div>
+      </div>`
     }
 
     const newDescription = () => {
@@ -44,7 +59,7 @@ class ProjectElement {
         selectedTranslationObj.description.forEach(paragraph => paragraphElements += `<p>${paragraph}</p>`)
   
         return paragraphElements
-      } else return selectedTranslationObj.description
+      } else return "<p>" + selectedTranslationObj.description + "</p>"
     }
 
     return `
@@ -55,9 +70,10 @@ class ProjectElement {
         </header>
         <section class="pC_body">
           ${newDescription()}
-          ${!this.isPortfolioCard ? mainProjectsElements.features_section : ""}
-          ${!this.isPortfolioCard ? mainProjectsElements.repoLink_element : ""}
-          ${!this.isPortfolioCard ? mainProjectsElements.link_element : ""}
+          ${!this.isPortfolioCard ? 
+            `${mainProjectsElements.features_section}
+            <div class="linkZone">${mainProjectsElements.repoLink_element + mainProjectsElements.link_element + mainProjectsElements.expandLink_element}</div>`
+          : ""}
         </section>
         <footer class="pC_footer">
           <ul class="pC_skillsList">
@@ -80,6 +96,49 @@ class ProjectElement {
   }
 }
 
+// instanciando la clase según los proyectos realizados
+const InventoryAPI = new ProjectElement({
+  translationObject: {
+    spanish: {
+      name: "Api para gestión de inventarios",
+      description: [
+        "Esta api permite registrar usuarios para que estos puedan crear sus inventarios y llenarlos con los items que el usuario necesite.", 
+        " Ellos pueden a su vez crear sub-usuarios en la misma cuenta, al cual se accede también con nombre y contraseña. Lo que les permitiría " +
+        "asignar, a través de un sub-usuario admin, permisos que pueden variar para cada inventario creado en la misma cuenta."
+      ],
+      features: [
+        "Base de datos SQL", "Arquitectura de Micro-servicios", 
+        "Desarrollo de API REST y GraphQL", "Redirección a traves de una API Gateway",
+        "Seguridad web", "Autenticación y autorización a traves de JWT", 
+        "Sesiones de usuario y permisos", "Doble inicio de sesión",
+        "Pruebas unitarias, de integración y EndToEnd",
+        "Containerización y administración de los mismos con Docker"
+      ],
+      videoTitle: ""
+    },
+    english: {
+      name: "Inventory management API",
+      description: [
+        "This api allows the users to create inventories and fill them with the items they could require.", 
+        "Also, these users can register sub-users in the same account, who can access with a username and a password too. " +
+        "This allows to the admin sub-user assign different permissions to each of the inventories associated to the account."
+      ],
+      features: [
+        "SQL database", "Microservices architecture",
+        "REST and GraphQL APIs development", "Redirection through a Gateway API",
+        "Web security", "Authentication and authorization by JWT",
+        "User sessions and authorities", "Double login",
+        "Unit, integration, and EndToEnd testing",
+        "Containerization and management of them with Docker"
+      ],
+      videoTitle: ""
+    }
+  },
+  repositoryLink: "https://github.com/GGNahuel/InventoryApp_API-with-microservices",
+  skillsList: ["Java", "Spring boot", "Spring security", "Gateway API", "Rest API", "GraphQL API", "JWT", "MySQL", "Docker", "Postman"],
+  videoSrc: "demos/MassagistPage/demo.webm"
+})
+
 const HealthCenterTurnAdministrator = new ProjectElement({
   translationObject: {
     spanish: {
@@ -88,7 +147,7 @@ const HealthCenterTurnAdministrator = new ProjectElement({
         "Cuenta con una base de datos relacional en donde  se registran los turnos, pacientes, profesionales de salud, " +
         "áreas de servicio, e incluso consultorios. Todas estas entidades se pueden crear, modificar o eliminar a traves de una interfaz simple y accesible. ",
         "Las acciones que se pueden realizar dependen del usuario que haya iniciado sesión y los permisos que éste tenga."],
-      features: ["Base de datos relacional", "Arquitectura cliente-servidor", "Desarrollo de API", "Seguridad web", "Sesiones de usuario y roles", "Búsquedas dinámicas"],
+      features: ["Base de datos SQL", "Arquitectura cliente-servidor", "Desarrollo de API REST", "Seguridad web", "Sesiones de usuario y roles", "Búsquedas dinámicas"],
       videoTitle: "Demostración general del proyecto",
     },
     english: {
@@ -103,7 +162,7 @@ const HealthCenterTurnAdministrator = new ProjectElement({
     }
   },
   repositoryLink: "https://github.com/GGNahuel/08-AdministracionTurnosClinica",
-  skillsList: ["Java", "TypeScript", "Spring boot", "Spring Security", "React", "React Router", "CSS", "HTML"],
+  skillsList: ["Java", "Spring boot", "Spring Security", "Rest API", "MySQL", "TypeScript", "React", "React Router", "CSS", "HTML"],
   videoSrc: "demos/HealthCenter/demoGeneral.webm",
   expand_link: "HealthCenterManager.html"
 })
@@ -114,9 +173,7 @@ const MassagistPage = new ProjectElement({
       name: "Sitio web para masajista",
       description: ["El sitio fue diseñado para un amigo que se formó como masajista profesional.",
         "Es una landing page sencilla en cuánto a aspectos técnicos, pero que le permite dar visibilidad al servicio que ofrece y permitir el contacto con clientes.",
-        "La web se adapta tanto a pantallas grandes como a pequeñas.",
-        "En proceso se encuentra el armado de un panel de control, que le sirva al propietario para cambiar textos, imágenes, o agregar tarjetas de servicios en un futuro, entre otras cosas. " +
-        "Esto se logrará mediante una conexión a una base de datos MongoDB."
+        "La web se adapta tanto a pantallas grandes como a pequeñas."
       ],
       features: ["Componentes reutilizables", "Diseño responsivo"],
       videoTitle: "Recorrido por la web"
@@ -126,9 +183,7 @@ const MassagistPage = new ProjectElement({
       description: [
         "The website was designed for a friend who trained as a professional massage therapist.",
         "It is a simple landing page in terms of technical aspects, but it allows him to showcase the services he offers and facilitate contact with clients.",
-        "The website adapts to both large and small screens.",
-        "A control panel is currently in development, which will allow the owner to modify texts, images, or add service cards in the future, among other features. " +
-        "This will be achieved through a connection to a MongoDB database."
+        "The website adapts to both large and small screens."
       ],
       features: ["Reusable components", "Responsive design"],
       videoTitle: "Website Tour"
@@ -139,11 +194,7 @@ const MassagistPage = new ProjectElement({
   videoSrc: "demos/MassagistPage/demo.webm"
 })
 
-const projects = [HealthCenterTurnAdministrator, MassagistPage]
-const $projectsContainer = document.querySelector(".projectCards_container")
-projects.forEach(project => {
-  $projectsContainer.appendChild(project.createElement())
-})
+const projects = [InventoryAPI, HealthCenterTurnAdministrator, MassagistPage]
 
 const Portfolio_project = new ProjectElement({
   translationObject: {
@@ -163,6 +214,13 @@ const Portfolio_project = new ProjectElement({
   skillsList: ["HTML", "CSS", "JavaScript"],
   isPortfolioCard: true
 })
+
+// agregar proyectos al html
+const $projectsContainer = document.querySelector(".projectCards_container")
+projects.forEach(project => {
+  $projectsContainer.appendChild(project.createElement())
+})
+
 const $portfolioCard_zone = document.querySelector(".portfolioCard_zone")
 $portfolioCard_zone.appendChild(Portfolio_project.createElement())
 
@@ -173,9 +231,8 @@ changeLanguageButton.addEventListener("change", () => {
   $portfolioCard_zone.querySelector("article.projectCard").innerHTML = Portfolio_project.generateInnerHTML()
 })
 
-// _________________
+// ---------------------------------
 // Contact Section
-//
 const $contactForm = document.getElementById("contact_form")
 const setLoading = (value = false) => {
   $contactForm.querySelector("& > svg").style.display = value ? "inline-block" : "none"

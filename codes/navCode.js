@@ -23,10 +23,10 @@ const $KEYFRAME_opening = {
     { offset: 0, opacity: 0.7}, {offset: 1, opacity: 0 }
   ],
   firstRing: [
-    { offset: 0, rotate: 0 }, { offset: 0.3, rotate: "270deg" }, { offset: 1, rotate: "360deg" }
+    { offset: 0, rotate: "0deg" }, { offset: 0.3, rotate: "270deg" }, { offset: 1, rotate: "360deg" }
   ],
   secondRing: [
-    { offset: 0, rotate: 0} , { offset: 0.3, rotate: "210deg" }, { offset: 1, rotate: "360deg" }
+    { offset: 0, rotate: "0deg" } , { offset: 0.3, rotate: "210deg" }, { offset: 1, rotate: "360deg" }
   ],
   navItems: [
     { offset: 0, scale: "0" }, { offset: 0.8, scale: "1.5" }, { offset: 1, scale: "1" }
@@ -46,10 +46,10 @@ const $KEYFRAME_headerTransition = {
     { offset: 1, rotate: `${angle}deg` }
   ],
   firstRing: [
-    { offset: 1, rotate: 0 }
+    { offset: 1, rotate: "-360deg" }
   ],
   secondRing: [
-    { offset: 1, rotate: 0 }
+    { offset: 1, rotate: "360deg" }
   ]
 }
 const _headerTransitionAnimationProps = { duration: 1500, delay: 2500, easing: "ease" }
@@ -59,6 +59,17 @@ const propForLogoAnimations = {
   openingDuration: _headerTransitionAnimationProps.delay * 0.4,
   endingDelay: _headerTransitionAnimationProps.delay * 0.6
 }
+
+// propiedades para la animación en loop de los anillos
+const $KEYFRAME_ringsLoopAnimation = {
+  firstRing: [
+    { offset: 0, rotate: "0deg" }, { offset: 1, rotate: "-360deg" }
+  ],
+  secondRing: [
+    { offset: 0, rotate: "0deg" }, { offset: 1, rotate: "360deg" }
+  ]
+}
+const _ringsLoopAnimationProps = { duration: 20000, iterations: Infinity, easing: "linear" }
 
 // utilidades para trabajar con los ángulos de los items de la nav
 function calcularAnguloSegunItem (anguloInicial, anguloDeDistribucion, multiplicador) {
@@ -95,6 +106,8 @@ let startAnimationFinished = false
 const finalAnimationStyles = {
   header_root: () => {
     const $nav = $header.querySelector("nav")
+
+    // estilos para pantallas chicas
     if (window.innerWidth < 720) {
       Object.assign($root.style, {
         flexDirection: "column",
@@ -114,7 +127,15 @@ const finalAnimationStyles = {
       Object.assign($nav.style, {
         display: "grid"
       })
-    } else {
+      Object.assign($firstRing.style, {
+        display: "none"
+      })
+      Object.assign($secondRing.style, {
+        display: "none"
+      })
+    } 
+    // estilos para pantallas grandes
+    else {
       Object.assign($root.style, {
         flexDirection: "row",
         justifyContent: "center"
@@ -129,13 +150,19 @@ const finalAnimationStyles = {
       Object.assign($nav.style, {
         display: "flex"
       })
+      Object.assign($firstRing.style, {
+        display: "block"
+      })
+      Object.assign($secondRing.style, {
+        display: "block"
+      })
     }
     $root.style.overflowY = "visible"
     $main.style.display = "flex"
-      window.setTimeout(() => {
-        $main.style.opacity = 1
-        startAnimationFinished = true
-      }, 100)
+    window.setTimeout(() => {
+      $main.style.opacity = 1
+      startAnimationFinished = true
+    }, 100)
     ajustarAncho()
   },
   logo: () => {
@@ -215,6 +242,22 @@ window.addEventListener("load", () => {
         finalAnimationStyles.header_root()
       })
     })
+
+    $firstRing.animate($KEYFRAME_opening.firstRing, _openingAnimationProps({duration: 1200})).ready.then(() => {
+      $firstRing.animate($KEYFRAME_headerTransition.firstRing, _headerTransitionAnimationProps).finished.then(() => {
+        window.setTimeout(() => {
+          $firstRing.animate($KEYFRAME_ringsLoopAnimation.firstRing, _ringsLoopAnimationProps)
+        }, 300)
+      })
+    })
+
+    $secondRing.animate($KEYFRAME_opening.secondRing, _openingAnimationProps({duration: 1200})).ready.then(() => {
+      $secondRing.animate($KEYFRAME_headerTransition.secondRing, _headerTransitionAnimationProps).finished.then(() => {
+        window.setTimeout(() => {
+          $secondRing.animate($KEYFRAME_ringsLoopAnimation.secondRing, _ringsLoopAnimationProps)
+        }, 300)
+      })
+    })
     
     const logoAnimation = $logoInRing.animate($KEYFRAME_opening.logo, _openingAnimationProps({duration: propForLogoAnimations.openingDuration}))
     logoAnimation.ready.then(() => {
@@ -258,13 +301,15 @@ window.addEventListener("load", () => {
       finalAnimationStyles.navItems($element, index).button()
       finalAnimationStyles.navItems($element, index).item()
     })
+    $firstRing.animate($KEYFRAME_ringsLoopAnimation.firstRing, _ringsLoopAnimationProps)
+    $secondRing.animate($KEYFRAME_ringsLoopAnimation.secondRing, _ringsLoopAnimationProps)
   }
 })
 
 window.addEventListener("resize", () => {
   definirStylesSegunVWPreAnimation()
   if (startAnimationFinished) { 
-    finalAnimationStyles.ring_root()
+    finalAnimationStyles.header_root()
     $navItems_Container.forEach(($element, index) => {finalAnimationStyles.navItems($element, index).item(true)})
   } 
 })
