@@ -115,7 +115,7 @@
   background-image: url("../skillsSvg/graphql.svg");
 }
 
-.apiRest::before {
+.rest::before {
   background-image: url("../skillsSvg/apiRest.svg");
 }
 
