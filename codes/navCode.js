@@ -301,6 +301,8 @@ window.addEventListener("load", () => {
       finalAnimationStyles.navItems($element, index).button()
       finalAnimationStyles.navItems($element, index).item()
     })
+    $firstRing.animate($KEYFRAME_ringsLoopAnimation.firstRing, _ringsLoopAnimationProps)
+    $secondRing.animate($KEYFRAME_ringsLoopAnimation.secondRing, _ringsLoopAnimationProps)
   }
 })
 
