@@ -61,9 +61,6 @@ const translation = {
     studiesSection: {
       title: "Formación",
       // innerHTML de los div.text que hay en cada article del html en esta sección
-      unlCurrent: `
-        <h4>Tecnicatura en Software Libre</h4>
-        <p>Febrero 2025 - actualidad. Facultad de Ingeniería y Ciencias Hídricas - Universidad Nacional del Litoral</p>`,
       microservicesBootcamp: `
         <h4>Bootcamp sobre Arquitectura de microservicios con práctica en Java</h4>
         <p>Marzo - junio 2025. <a href="https://codigofacilito.com/">Código facilito</a></p>
@@ -193,9 +190,6 @@ const translation = {
     },
     studiesSection: {
       title: "Studies",
-      unlCurrent: `
-        <h4>Technician in open software</h4>
-        <p>February 2025 - present. Universidad Nacional del Litoral (UNL - FICH)</p>`,
       microservicesBootcamp: `
         <h4>Bootcamp about microservices architecture with hands-on Java practice</h4>
         <p>March - june 2025. <a href="https://codigofacilito.com/">Código facilito</a></p>
@@ -245,7 +239,7 @@ const translation = {
         <p>2013 - 2016. Course in english institute San Roque. Not finished studies</p>`,
       others: `
         <h4>Extras</h4>
-        <p>Also, I don't want to ignore that I learned more independently and self-taught. By official documentations, forums, audiovisual media, and 
+        <p class="comment">Also, I don't want to ignore that I learned more independently and self-taught. By official documentations, forums, audiovisual media, and 
           partners and professionals who I had the chance to talk and learn from them.</p>`
     },
     contactSection: {
@@ -337,7 +331,6 @@ const setProjectSectionTexts = () => {
 const setStudiesSectionTexts = () => {
   const studiesSection = document.getElementById("expAndFormation_section")
   studiesSection.querySelector("& > h2").innerHTML = selectedTranslation.studiesSection.title
-  studiesSection.querySelector(".unlCurrent > div.text").innerHTML = selectedTranslation.studiesSection.unlCurrent
   studiesSection.querySelector(".microservices > div.text").innerHTML = selectedTranslation.studiesSection.microservicesBootcamp
   studiesSection.querySelector(".courses > div.text").innerHTML = selectedTranslation.studiesSection.codigoFacilitoCourses
   studiesSection.querySelector(".bootcamp > div.text").innerHTML = selectedTranslation.studiesSection.fullStackBootcamp
