@@ -135,7 +135,7 @@ const InventoryAPI = new ProjectElement({
     }
   },
   repositoryLink: "https://github.com/GGNahuel/InventoryApp_API-with-microservices",
-  skillsList: ["Java", "Spring boot", "Spring security", "Gateway API", "Rest API", "GraphQL API", "JWT", "MySQL", "Docker", "Postman"],
+  skillsList: ["Java", "Maven", "Spring boot", "Spring security", "Gateway API", "Rest API", "GraphQL API", "JWT", "MySQL", "Docker", "Postman"],
   videoSrc: "demos/MassagistPage/demo.webm"
 })
 
@@ -162,7 +162,7 @@ const HealthCenterTurnAdministrator = new ProjectElement({
     }
   },
   repositoryLink: "https://github.com/GGNahuel/08-AdministracionTurnosClinica",
-  skillsList: ["Java", "Spring boot", "Spring Security", "Rest API", "MySQL", "TypeScript", "React", "React Router", "CSS", "HTML"],
+  skillsList: ["Java", "Maven", "Spring boot", "Spring Security", "Rest API", "MySQL", "TypeScript", "React", "React Router", "CSS", "HTML"],
   videoSrc: "demos/HealthCenter/demoGeneral.webm",
   expand_link: "HealthCenterManager.html"
 })
