@@ -48,6 +48,10 @@
   background-image: url("../skillsSvg/react-router.svg");
 }
 
+.material.ui::before {
+  background-image: url("../skillsSvg/material.svg");
+}
+
 /* Herramientas de marcado y estilos */
 
 .html::before {
@@ -102,8 +106,8 @@
   background-image: url("../skillsSvg/postman.svg");
 }
 
-.material.ui::before {
-  background-image: url("../skillsSvg/material.svg");
+.maven::before {
+  background-image: url("../skillsSvg/maven.svg");
 }
 
 .jwt::before {
