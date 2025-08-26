@@ -12,7 +12,6 @@
   <link rel="stylesheet" href="styles/mainStyles.css">
   <link rel="stylesheet" href="styles/proyectPageStyles.css">
   <link rel="stylesheet" href="styles/sections_styles/skillsSection.css">
-  <link rel="stylesheet" href="styles/sections_styles/presentationSection.css">
   <link rel="stylesheet"
     href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
 </head>
@@ -20,7 +19,7 @@
 <body>
   <div id="projectRoot">
   <nav class="projectsNavbar">
-    <a href="index.html"><span class="material-symbols-outlined homeIcon">arrow_back</span></a>
+    <a href="index.html"><span class="material-symbols-outlined homeIcon">arrow_back</span>Página principal</a>
     <!-- <div>
       <a href="#projectPresentation">Presentación del proyecto</a>
       <a href="#projectUses">Características y casos de uso</a>
@@ -31,57 +30,37 @@
   </nav>
   <main class="notIndex">
     <header>
-      <h1>Proyecto de gestión de inventarios de productos</h1>
-      <p><em>Versión 1.0, fecha de lanzamiento Agosto de 2025</em></p>
+      <h1>Sistema de gestión de inventarios de productos</h1>
+      <p><em>Versión actual 1.0, fecha de primer lanzamiento Agosto de 2025</em></p>
       <ul>
         <li><a href="https://github.com/GGNahuel/InventoryManagementSystem_microservices"><button>
           <img src="/skillsSvg/github.svg" alt="Logo de github">
+          Ver repositorio
         </button></a></li>
       </ul>
     </header>
-    <section id="projectPresentation">
+    <section id="projectPresentation" class="card alternativeStyle">
+      <div class="background"></div>
       <div class="intro">
-        <div>
+        <h4>
           <p>Sistema de APIs diseñado para que usuarios puedan registrarse y crear distintos inventarios que pueden llenar con productos según lo requieran.</p>
           <p>Trabaja con base de datos y seguridad a traves de autenticaciones y autorizaciones. Las cuentas creadas por defecto crean un sub-usuario 
             <em>admin</em> que, además de poder crear inventarios, también puede registrar a otros sub-usuarios y otorgarle distintos permisos que pueden 
             variar para cada inventario. Permisos como el de agregar productos, eliminarlos, editar el inventario, entre otros.</p>
-          <blockquote>
-            <h4>Ejemplo de uso:</h4>
-            <p> Suponiendo que una <strong>cadena de farmacias</strong> desea utilizar la aplicación podría hacerlo de la siguiente forma:</p>
-            <ul>
-              <li>Una <strong>cuenta</strong> representa a la empresa principal.  </li>
-              <li>Dentro de la cuenta se crean varios <strong>inventarios</strong>, uno por cada sucursal (ej. Sucursal Norte, Sucursal Centro, Sucursal Sur).</li>
-              <li>Los <strong>productos</strong> (medicamentos, insumos, cosméticos) pueden estar disponibles en una sola sucursal o compartirse entre varias.</li>
-              <li>Los <strong>sub-usuarios</strong> representan a los empleados de cada sucursal, con permisos específicos.
-                <ul>
-                  <li>Por ejemplo: un <strong>farmacéutico</strong> puede actualizar productos, un <strong>cajero</strong> solo registrar ventas, ambos solo para 
-                    los productos que corresponden a su sucursal. En cambio, un <strong>gerente general</strong> por ejemplo, puede administrar todo de todos los 
-                    inventarios asociados a la cuenta.</li>
-                </ul>
-              </li>
-            </ul>
-            <p>De esta manera, la aplicación permite centralizar el control de los productos en cada sucursal, compartiéndolos cuando sea necesario, a su vez que se asignan permisos claros a cada rol dentro de la empresa.</p>
-          </blockquote>
-        </div>
-        <img src="" alt="">
+        </h4>
       </div>
       <div class="mainFeatures">
         <h3>Funcionalidades generales</h3>
         <ul>
-          <li><p>Los usuarios pueden registrar una cuenta e iniciar sesión en la API.</p></li>
+          <li><p>Los usuarios pueden registrar una cuenta e iniciar sesión en el sistema.</p></li>
           <li><p>Durante el registro, también se configuran los datos del sub-usuario administrador principal.</p></li>
           <li><p>Cada cuenta puede tener múltiples inventarios, que pueden ser creados, editados y eliminados por el sub-usuario administrador.</p></li>
-          <li><p>Las cuentas permiten la creación de sub-usuarios con nombre de usuario, contraseña y permisos específicos.</p>
-            <ul>
-              <li>Por defecto, se crea un sub-usuario administrador al momento del registro.</li>
-            </ul>
-          </li>
+          <li><p>Las cuentas permiten la creación de sub-usuarios con nombre de usuario, contraseña y permisos específicos.</p></li>
           <li><p>Los sub-usuarios pueden tener distintos roles como "admin", "general", "jefe de categoría", etc.</p></li>
           <li><p>Los permisos de cada sub-usuario se asignan por inventario, lo que permite:</p>
             <ul>
-              <li>Diferentes permisos en cada inventarios.</li>
-              <li>Mayor control de acceso y acciones por inventario.</li>
+              <li>Diferentes permisos en cada uno.</li>
+              <li>Mayor control de acceso y acciones disponibles.</li>
             </ul>
           </li>
           <li><p>El sub-usuario administrador puede:</p>
@@ -91,7 +70,8 @@
               <li>Realizar cualquier acción permitida a los sub-usuarios.</li>
             </ul>
           </li>
-          <li><p>La sesión puede iniciarse tanto únicamente con la cuenta principal (para visualizar inventarios) como también con un sub-usuario (para operar según sus permisos).</p>
+          <li><p>La sesión puede iniciarse tanto únicamente con la cuenta principal (para visualizar inventarios) como también con un sub-usuario 
+            (para operar según sus permisos).</p>
             <ul>
               <li>Antes de iniciarla como sub-usuario se debe iniciarla como cuenta.</li>
             </ul>
@@ -100,12 +80,30 @@
             <ul>
               <li>Agregarse, editarse, eliminarse.</li>
               <li>Buscarse por atributos como nombre, marca, stock, categoría o disponibilidad.</li>
-              <li>Copiarse entre inventarios, conservando sus atributos generales y permitiendo redefinir atributos específicos como stock y disponibilidad.</li>
+              <li>Compartirse entre inventarios, conservando sus datos generales pero permitiendo redefinir atributos específicos como stock y disponibilidad.</li>
             </ul>
           </li>
-          <li><p>Toda interacción del cliente se realiza a través del API Gateway, que enruta la solicitud al servicio correspondiente.</p></li>
         </ul>
       </div>
+    </section>
+    <section>
+      <blockquote>
+        <h4>Ejemplo de uso:</h4>
+        <p> Suponiendo que una <strong>cadena de farmacias</strong> desea utilizar la aplicación podría hacerlo de la siguiente forma:</p>
+        <ul>
+          <li>Una <strong>cuenta</strong> representa a la empresa principal.  </li>
+          <li>Dentro de la cuenta se crean varios <strong>inventarios</strong>, uno por cada sucursal (ej. Sucursal Norte, Sucursal Centro, Sucursal Sur).</li>
+          <li>Los <strong>productos</strong> (medicamentos, insumos, cosméticos) pueden estar disponibles en una sola sucursal o compartirse entre varias.</li>
+          <li>Los <strong>sub-usuarios</strong> representan a los empleados de cada sucursal, con permisos específicos.
+            <ul>
+              <li>Por ejemplo: un <strong>farmacéutico</strong> puede actualizar productos, un <strong>cajero</strong> solo registrar ventas, ambos solo para 
+                los productos que corresponden a su sucursal. En cambio, un <strong>gerente general</strong> por ejemplo, puede administrar todo de todos los 
+                inventarios asociados a la cuenta.</li>
+            </ul>
+          </li>
+        </ul>
+        <p>De esta manera, la aplicación permite centralizar el control de los productos en cada sucursal, compartiéndolos cuando sea necesario, a su vez que se asignan permisos claros a cada rol dentro de la empresa.</p>
+      </blockquote>
     </section>
     <section id="pageIndex">
       <h2>Índice</h2>

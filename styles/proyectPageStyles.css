@@ -8,6 +8,22 @@
   }
 }
 
+h1 {
+  color: var(--neon-main-color);
+  filter: drop-shadow(var(--neon-shadows1-principal) var(--neon-main-color)) drop-shadow(var(--neon-shadows1-secondary) var(--main-color));
+}
+
+blockquote {
+  padding: 1rem;
+  background-color: var(--secondary-color-dark);
+  color: var(--neon-secondary-color);
+}
+
+ul {
+  padding-left: 2rem;
+  list-style-type: disc;
+}
+
 .projectsNavbar {
   display: flex;
   padding: 1.2rem;
@@ -23,10 +39,9 @@
   a {
     color: var(--bg-color);
     margin-left: 8px;
-
-    &:hover {
-      text-decoration: underline;
-    }
+    display: flex;
+    align-items: center;
+    gap: 8px;
   }
 }
 
@@ -38,9 +53,7 @@ main.notIndex {
   opacity: 1;
   overflow-y: scroll;
 
-  p,
-  li {
-    font-size: 1.2rem;
+  p, li {
     margin-bottom: .8rem;
   }
 
@@ -55,40 +68,35 @@ main.notIndex {
     }
   }
 
-  >header {
+  > header {
     padding: 1rem 2rem;
     box-sizing: border-box;
     background-color: var(--bg-contrast-color);
     border-radius: 8px;
 
-    >ul {
+    > ul {
       display: flex;
-      justify-content: center;
+      justify-content: flex-end;
+      list-style-type: none;
+      padding-left: 0;
       gap: 8px;
 
       button {
-        padding: 12px;
-        border-radius: 50%;
+        padding: 2px 12px;
+        border-radius: 8px;
       }
-    }
 
-    .card {
-      padding: 0;
-      width: auto;
-
-      a {
-        padding: .3rem;
+      img, svg {
+        max-width: 32px;
       }
     }
   }
 }
 
 #projectPresentation {
-  background-color: rgba(105, 105, 105, 0.3);
-  padding: 64px .5rem;
-  max-width: initial;
+  max-width: 1270px;
 
-  >div {
+  > .intro {
     display: flex;
     flex-flow: row wrap;
     justify-content: space-between;
@@ -109,11 +117,16 @@ main.notIndex {
       filter: drop-shadow(5px 5px 5px);
     }
 
-    div:nth-child(2) {
-      width: 100%;
-      height: 20px;
-      background-color: red;
+    h4 {
+      font-weight: 400;
     }
+  }
+
+  > .mainFeatures {
+    filter: none;
+    border-radius: 8px;
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 1rem;
   }
 }
 
