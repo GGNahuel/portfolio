@@ -1,8 +1,7 @@
 #projectRoot {
   height: 100%;
   width: 100%;
-  overflow-y: scroll;
-  scroll-behavior: smooth;
+  color: var(--font-color);
 
   #changeLanguage_button {
     margin-top: 0;
@@ -37,6 +36,7 @@ main.notIndex {
   gap: 3rem;
   padding: 1rem;
   opacity: 1;
+  overflow-y: scroll;
 
   p,
   li {
