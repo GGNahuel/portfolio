@@ -17,6 +17,14 @@ blockquote {
   padding: 1rem;
   background-color: var(--secondary-color-dark);
   color: var(--neon-secondary-color);
+
+  &::before {
+    content: "Nota:";
+  }
+
+  & + blockquote {
+    margin-top: 1rem;
+  }
 }
 
 ul {
@@ -127,6 +135,28 @@ main.notIndex {
     border-radius: 8px;
     background-color: rgba(0, 0, 0, 0.6);
     padding: 1rem;
+  }
+}
+
+#pageIndex {
+  > ul {
+    list-style-type: none;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 1rem;
+
+    > li {
+      border: 2px solid var(--neon-secondary-color);
+      border-radius: 8px;
+      padding: 1rem;
+      background-color: var(--page-bg-color);
+      filter: drop-shadow(var(--neon-shadows2-principal) var(--neon-secondary-color)) drop-shadow(var(--neon-shadows2-secondary) var(--secondary-color));
+    }
+
+    ul {
+      margin-top: 8px;
+    }
   }
 }
 
