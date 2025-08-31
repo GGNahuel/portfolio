@@ -138,18 +138,42 @@ main.notIndex {
   }
 }
 
-#pageIndex {
-  .indexesContainer {
-    width: 100%;
-    max-width: 720px;
-    align-self: flex-start;
+.indexesContainer {
+  width: 100%;
+  max-width: 720px;
+  align-self: flex-start;
+}
+
+.indexUI {
+  --indexColor: var(--neon-main-color);
+  --indexLessGlowColor: var(--main-color);
+
+  display: flex;
+  position: relative;
+  width: 100%;
+  padding-top: 6%;
+  padding-bottom: 7%;
+  padding-left: 15%;
+  padding-right: 6%;
+  box-sizing: border-box;
+  filter: drop-shadow(var(--neon-shadows1-principal) var(--indexColor));
+  transition: translate 0.3s ease, filter 0.2s;
+
+  &:hover, &.active {
+    translate: 35px;
+    filter: drop-shadow(var(--neon-shadows2-principal) var(--indexColor)) drop-shadow(var(--neon-shadows2-secondary) var(--indexLessGlowColor));
   }
 
-  .indexUI.active .content {
-    border: 3px solid var(--neon-main-color);
-    border-top: 0;
-    border-bottom: 0;
-    padding: 0.5rem;
+  &.active {
+    --indexColor: var(--neon-secondary-color);
+    --indexLessGlowColor: var(--secondary-color);
+
+    .content {
+      border: 3px solid var(--indexColor);
+      border-top: 0;
+      border-bottom: 0;
+      padding: 0.5rem;
+    }
   }
 
   .plegable {
@@ -159,35 +183,17 @@ main.notIndex {
 
     > ul {
       margin: 1rem;
-      border: 2px solid var(--neon-secondary-color);
+      border: 2px solid var(--indexColor);
       border-radius: 8px;
       padding: 1rem;
       padding-left: 2rem;
       background-color: var(--page-bg-color);
-      filter: drop-shadow(var(--neon-shadows2-principal) var(--neon-secondary-color)) drop-shadow(var(--neon-shadows2-secondary) var(--secondary-color));
+      filter: drop-shadow(var(--neon-shadows2-principal) var(--indexColor)) drop-shadow(var(--neon-shadows2-secondary) var(--indexLessGlowColor));
 
       ul {
         margin-top: 8px;
       }
     }
-  }
-}
-
-.indexUI {
-  display: flex;
-  position: relative;
-  width: 100%;
-  padding-top: 6%;
-  padding-bottom: 7%;
-  padding-left: 15%;
-  padding-right: 6%;
-  box-sizing: border-box;
-  filter: drop-shadow(var(--neon-shadows1-principal) var(--neon-main-color));
-  transition: translate 0.3s ease, filter 0.2s;
-
-  &:hover, &.active {
-    translate: 35px;
-    filter: drop-shadow(var(--neon-shadows1-principal) var(--neon-main-color)) drop-shadow(var(--neon-shadows1-secondary) var(--main-color));
   }
 
   img, svg {
@@ -218,12 +224,13 @@ main.notIndex {
 
 .indexUIsvg {
   path {
-    stroke: var(--neon-main-color);
+    translate: all 0.5s ease-out;
+    stroke: var(--indexColor);
     fill: none;
   }
 
   .filled {
-    fill: var(--neon-main-color);
+    fill: var(--indexColor);
   }
 }
 
