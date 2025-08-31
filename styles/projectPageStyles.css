@@ -173,6 +173,7 @@ main.notIndex {
       border-top: 0;
       border-bottom: 0;
       padding: 0.5rem;
+      color: var(--indexColor);
     }
   }
 
@@ -219,6 +220,7 @@ main.notIndex {
     width: 100%;
     padding: 0.5rem calc(0.5rem + 3px); /* los 3 px son del borde que se pone cuando se activa */
     z-index: 1;
+    transition: color 0.5s ease-out;
   }
 }
 

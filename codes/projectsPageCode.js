@@ -49,14 +49,11 @@ indexUiComponents.forEach(element => {
   </svg>`
 
   element.addEventListener("click", () => {
-    console.log("Clicked")
     const plegableContent = element.querySelector(".plegable")
     if (!element.classList.contains("active")) {
-      console.log("opened")
       element.classList.add("active")
       plegableContent.style.maxHeight = plegableContent.scrollHeight + "px"
     } else {
-      console.log("closed")
       element.classList.remove("active")
       plegableContent.style.maxHeight = "0"
     }
