@@ -139,24 +139,91 @@ main.notIndex {
 }
 
 #pageIndex {
-  > ul {
-    list-style-type: none;
+  .indexesContainer {
     width: 100%;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-    gap: 1rem;
+    max-width: 720px;
+    align-self: flex-start;
+  }
 
-    > li {
+  .indexUI.active .content {
+    border: 3px solid var(--neon-main-color);
+    border-top: 0;
+    border-bottom: 0;
+    padding: 0.5rem;
+  }
+
+  .plegable {
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.4s ease;
+
+    > ul {
+      margin: 1rem;
       border: 2px solid var(--neon-secondary-color);
       border-radius: 8px;
       padding: 1rem;
+      padding-left: 2rem;
       background-color: var(--page-bg-color);
       filter: drop-shadow(var(--neon-shadows2-principal) var(--neon-secondary-color)) drop-shadow(var(--neon-shadows2-secondary) var(--secondary-color));
-    }
 
-    ul {
-      margin-top: 8px;
+      ul {
+        margin-top: 8px;
+      }
     }
+  }
+}
+
+.indexUI {
+  display: flex;
+  position: relative;
+  width: 100%;
+  padding-top: 6%;
+  padding-bottom: 7%;
+  padding-left: 15%;
+  padding-right: 6%;
+  box-sizing: border-box;
+  filter: drop-shadow(var(--neon-shadows1-principal) var(--neon-main-color));
+  transition: translate 0.3s ease, filter 0.2s;
+
+  &:hover, &.active {
+    translate: 35px;
+    filter: drop-shadow(var(--neon-shadows1-principal) var(--neon-main-color)) drop-shadow(var(--neon-shadows1-secondary) var(--main-color));
+  }
+
+  img, svg {
+    width: 100%;
+    
+  }
+
+  > .top, > .bottom {
+    position: absolute;
+    left: 0;
+    width: 100%;
+  }
+
+  > .top {
+    top: 0;
+  }
+
+  > .bottom {
+    bottom: 0;
+  }
+
+  > .content {
+    width: 100%;
+    padding: 0.5rem calc(0.5rem + 3px); /* los 3 px son del borde que se pone cuando se activa */
+    z-index: 1;
+  }
+}
+
+.indexUIsvg {
+  path {
+    stroke: var(--neon-main-color);
+    fill: none;
+  }
+
+  .filled {
+    fill: var(--neon-main-color);
   }
 }
 
