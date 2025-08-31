@@ -1,0 +1,43 @@
+#modelo-de-dominio .image {
+  display: flex;
+  justify-content: center;
+  filter: drop-shadow(var(--neon-shadows2-secondary) var(--neon-third-color));
+
+  img {
+    width: 100%;
+    max-width: 1024px;
+  }
+}
+
+#modelo-de-dominio .models {
+  padding: 1rem;
+  display: grid;
+  gap: 1rem;
+  
+  .card {
+    color: var(--font-color);
+    display: flex;
+    align-items: center;
+
+    > div {
+      width: 100%;
+      padding: 1rem;
+      background-color: var(--page-bg-color);
+      border-radius: 8px;
+    }
+
+    .attributes {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+      gap: 1rem;
+    }
+  }
+
+  .card + .card {
+    margin-top: 0;
+  }
+}
+
+#usedTechnologiesSection {
+
+}

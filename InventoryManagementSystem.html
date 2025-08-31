@@ -12,6 +12,7 @@
   <link rel="stylesheet" href="styles/mainStyles.css">
   <link rel="stylesheet" href="styles/projectPageStyles.css">
   <link rel="stylesheet" href="styles/sections_styles/skillsSection.css">
+  <link rel="stylesheet" href="styles/projectSections_styles/architectureSection.css">
 </head>
 
 <body>
@@ -261,7 +262,7 @@
       <section id="modelo-de-dominio">
         <h3>Modelo de dominio</h3>
         <p>Teniendo esto en cuenta lo que se busca la aplicación permita, ésta giraría entorno a estas 3 entidades principalmente: <u>Cuentas</u> (en donde 
-          se registrarían los usuarios), <u>Inventarios y Productos</u>.</p>
+          se registrarían los usuarios), <u>Inventarios</u> y <u>Productos</u>.</p>
         <p>Como se mencionó es probable que en un negocio, o empresa, no se desee que cualquiera con acceso a la cuenta pueda realizar grandes cambios en los 
           datos, entonces se decidió agregar una cuarta entidad: <u>Usuarios</u> (sub-usuarios). La cual guardaría los permisos para las distintas acciones que 
           se puedan realizar sobre los inventarios y sus productos.</p>
@@ -269,80 +270,86 @@
           únicamente por características relacionadas a los mismos. Como cantidad en stock, disponibilidad, y más atributos que podrían estar a futuro. Pensando 
           en esto se dividieron los datos de los productos en dos entidades: Productos en inventario y Productos de referencia.</p>
         <p><strong>Representación gráfica del modelo:</strong></p>
-        <div style="display: flex; justify-content: center">
-          <img src="" style="max-width: 720px; width: 100%;" alt="Gráfico que muestra cómo las entidades se relacionan entre sí y los atributos que estas tendrían descritos de forma general"/>
+        <div class="image">
+          <img src="imgs/inventoryManager/modelDomain.webp" alt="Gráfico que muestra cómo las entidades se relacionan entre sí y los atributos que estas tendrían descritos de forma general"/>
         </div>
         <section class="models">
-          <div>
-            <h4>Productos</h4><ul>
-            <li>
-              <h5>Productos de referencia</h5>
-              <p>Encargados de almacenar los datos principales de un producto, o item. Éstos son referenciados en los distintos inventarios, 
-                mediante <em>Producto en inventario</em> Permitiendo que los mismos datos estén en más de uno, y que si esta referencia se modifica el cambio 
-                se vea reflejado en todos los inventarios que posean esta referencia.</p>
+          <div class="card">
+            <div>
+              <h4>Productos</h4><ul>
+              <li>
+                <h5>Productos de referencia</h5>
+                <p>Encargados de almacenar los datos principales de un producto, o item. Éstos son referenciados en los distintos inventarios, 
+                  mediante <em>Producto en inventario</em> Permitiendo que los mismos datos estén en más de uno, y que si esta referencia se modifica el cambio 
+                  se vea reflejado en todos los inventarios que posean esta referencia.</p>
+                <p>Atributos:</p>
+                <ul class="attributes">
+                  <li>Nombre</li>
+                  <li>Marca</li>
+                  <li>Modelo</li>
+                  <li>Descripción</li>
+                  <li>Precio unitario</li>
+                  <li>Categorías</li>
+                </ul>
+              </li>
+              <li><h5>Productos en inventario</h5>
+                <p>Encargados de guardar la referencia al producto para obtener sus datos principales y almacenar los datos que refieren a ese producto en el 
+                  inventario asignado.</p>
+                <p>Atributos:</p>
+                <ul class="attributes">
+                  <li>Producto de referencia</li>
+                  <li>Stock</li>
+                  <li>Disponibilidad</li>
+                </ul>
+              </li>
+              </ul>
+            </div>
+          </div>
+          <div class="card">
+            <div>
+              <h4>Inventarios</h4>
+              <p>Encargados de gestionar los datos de los productos asociados a él.</p>
               <p>Atributos:</p>
-              <ul>
+              <ul class="attributes">
                 <li>Nombre</li>
-                <li>Marca</li>
-                <li>Modelo</li>
-                <li>Descripción</li>
-                <li>Precio unitario</li>
-                <li>Categorías</li>
+                <li>Lista de Productos en inventario</li>
               </ul>
-            </li>
-            <li><h5>Productos en inventario</h5>
-              <p>Encargados de guardar la referencia al producto para obtener sus datos principales y almacenar los datos que refieren a ese producto en el 
-                inventario asignado.</p>
+            </div>
+          </div>
+          <div class="card">
+            <div>
+              <h4>Cuentas</h4>
+              <p>Guarda los datos que se usarán para iniciar sesión y mostrar los inventarios asociados a ella. Además es la que permite guardar dentro a los 
+                usuarios (sub-usuarios).</p>
               <p>Atributos:</p>
-              <ul>
-                <li>Producto de referencia</li>
-                <li>Stock</li>
-                <li>Disponibilidad</li>
+              <ul class="attributes">
+                <li>Nombre de usuario</li>
+                <li>Contraseña</li>
+                <li>Lista de Inventarios</li>
+                <li>Lista de Usuarios</li>
               </ul>
-            </li>
-            </ul>
+            </div>
           </div>
-          <div>
-            <h3>Inventarios</h3>
-            <p>Encargados de gestionar los datos de los productos asociados a él.</p>
-            <p>Atributos:</p>
-            <ul>
-              <li>Nombre</li>
-              <li>Lista de Productos en inventario</li>
-            </ul>
-          </div>
-          <div>
-            <h3>Cuentas</h3>
-            <p>Guarda los datos que se usarán para iniciar sesión y mostrar los inventarios asociados a ella. Además es la que permite guardar dentro a los 
-              usuarios (sub-usuarios).</p>
-            <p>Atributos:</p>
-            <ul>
-              <li>Nombre de usuario</li>
-              <li>Contraseña</li>
-              <li>Lista de Inventarios</li>
-              <li>Lista de Usuarios</li>
-            </ul>
-          </div>
-          <div>
-            <h3>Usuarios (sub-usuarios)</h3>
-            <p>Como la aplicación posee un "doble login" ésta entidad también guardará sus propios datos de acceso. Además de eso posee un rol, que es más 
-              descriptivo que funcional para autorización, y los permisos que éste posee para cada inventario.</p>
-            <p>Atributos:</p>
-            <ul>
-              <li>Nombre del sub-usuario (se usará como username para el login)</li>
-              <li>Contraseña</li>
-              <li>Nombre del rol</li>
-              <li>Permisos por inventario<ul>
-              <li>Permisos</li>
-              <li>Inventario en donde se aplican los permisos</li>
-            </ul>
-            </li>
-            </ul>
+          <div class="card">
+            <div>
+              <h4>Usuarios (sub-usuarios)</h4>
+              <p>Como la aplicación posee un "doble login" ésta entidad también guardará sus propios datos de acceso. Además de eso posee un rol, que es más 
+                descriptivo que funcional para autorización, y los permisos que éste posee para cada inventario.</p>
+              <p>Atributos:</p>
+              <ul class="attributes">
+                <li>Nombre del sub-usuario (se usará como username para el login)</li>
+                <li>Contraseña</li>
+                <li>Nombre del rol</li>
+                <li>Permisos por inventario<ul>
+                <li>Permisos</li>
+                <li>Inventario en donde se aplican los permisos</li>
+              </ul>
+            </div>
           </div>
         </section>
       </section>
 
-      <section id="skillsSection">
+      <section id="usedTechnologiesSection">
         <h3>Resumen de tecnologías y herramientas elegidas</h3>
         <table>
           <thead>

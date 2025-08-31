@@ -180,7 +180,7 @@ main.notIndex {
   .plegable {
     overflow: hidden;
     max-height: 0;
-    transition: max-height 0.4s ease;
+    transition: max-height 0.25s linear;
 
     > ul {
       margin: 1rem;
