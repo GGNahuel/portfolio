@@ -32,6 +32,10 @@ ul {
   list-style-type: disc;
 }
 
+ol {
+  padding-left: 2rem;
+}
+
 .projectsNavbar {
   display: flex;
   padding: 1.2rem;
@@ -69,10 +73,16 @@ main.notIndex {
     min-height: initial;
     max-width: 1148px;
     margin-bottom: 0;
-    gap: 1rem;
+    gap: 1.6rem;
 
     > video {
       max-width: 100%;
+    }
+
+    > section {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
     }
   }
 

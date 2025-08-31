@@ -41,7 +41,6 @@
 #usedTechnologiesSection {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
 
   table {
     border-collapse: collapse;
@@ -70,5 +69,14 @@
     & + p {
       margin-top: .8rem;
     }
+  }
+}
+
+#componentes-y-patron-arquitectonico {
+  display: flex;
+  flex-direction: column;
+
+  > div > h4 {
+    margin-bottom: .5rem;
   }
 }
