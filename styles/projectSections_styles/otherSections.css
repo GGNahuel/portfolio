@@ -1,0 +1,32 @@
+#endpoints-y-operaciones {
+  > section > div {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    
+    > p {
+      margin: 0;
+    }
+  }
+}
+
+#datos-de-ejemplo {
+  div > ul {
+    display: grid;
+    padding: 1rem 0;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1rem;
+
+    > li {
+      font-size: 1.5rem;
+      list-style-type: none;
+      padding: 8px;
+      border: 1px solid var(--neon-secondary-color);
+      border-radius: 8px;
+
+      :first-child {
+        margin-top: 8px;
+      }
+    }
+  }
+}

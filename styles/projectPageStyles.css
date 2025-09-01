@@ -17,6 +17,9 @@ blockquote {
   padding: 1rem;
   background-color: var(--secondary-color-dark);
   color: var(--neon-secondary-color);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 
   &::before {
     content: "Nota:";
@@ -34,6 +37,37 @@ ul {
 
 ol {
   padding-left: 2rem;
+}
+
+.code {
+  font-family: "Source Code Pro", monospace;
+  background-color: var(--bg-contrast-color);
+  color: var(--neon-third-color);
+  font-size: 0.95rem;
+
+  border: 1px solid #c8e6c9;
+  padding-bottom: 16px;
+
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  gap: 8px;
+
+  &::before {
+    content: "";
+    position: static;
+    top: 0;
+    width: 100%;
+    margin-bottom: 8px;
+    height: 32px;
+    background-color: var(--third-color-dark);
+  }
+
+  span {
+    padding: 0 10px;
+    min-height: 1rem;
+    box-sizing: border-box;
+  }
 }
 
 .projectsNavbar {
@@ -82,7 +116,11 @@ main.notIndex {
     > section {
       display: flex;
       flex-direction: column;
-      gap: 1.2rem;
+      gap: 1rem;
+    }
+
+    > p {
+      margin: 0;
     }
   }
 

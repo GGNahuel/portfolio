@@ -71,6 +71,30 @@ const defineHeightOfStretchPart = () => {
 window.addEventListener("load", defineHeightOfStretchPart)
 window.addEventListener("resize", defineHeightOfStretchPart)
 
+// _____________________________________________
+// Formatear elementos code
+document.querySelectorAll(".code").forEach(el => {
+  // saltos de linea; primero detecta si la primera linea está vacía, si es el caso la quita del array
+  // para luego tomar los espacios en blancos y usar esa cantidad para saber la tabulación inicial
+  const lines = el.textContent.split("\n").filter((line, i, a) => i == 0 || i == a.length-1 ? line.trim() != "" : true)
+  const initialTab = lines[0].split(" ").filter(substring => substring == "").length
+  
+  const formattedLines = lines.map(line =>  line.substring(initialTab))
+
+  el.innerHTML = ""
+  formattedLines.forEach(line => {
+    const lineEl = document.createElement("span")
+
+    if (line.startsWith("  ")) {
+      const paddingLeft = line.split(" ").filter(substring => substring == "").length * 8 + 10 // el "+ 10" es por el padding por default
+      lineEl.style.paddingLeft = paddingLeft + "px"
+    }
+
+    lineEl.innerHTML = line
+    el.appendChild(lineEl)
+  })
+})
+
 // ____________________________
 // Código de carrusel
 const carrouselContainer = document.querySelector('.carrouselContainer')
@@ -85,9 +109,9 @@ const scrollCarrousel = (numberDirection) => {
   });
 }
 
-// -- Evento para desplazarse a la izquierda
+// - Evento para desplazarse a la izquierda
 leftButton?.addEventListener('click', () => scrollCarrousel(-1));
 
-// -- Evento para desplazarse a la derecha
+// - Evento para desplazarse a la derecha
 rightButton?.addEventListener('click', () => scrollCarrousel(1));
 

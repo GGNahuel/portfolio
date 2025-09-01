@@ -75,6 +75,7 @@
 #componentes-y-patron-arquitectonico {
   display: flex;
   flex-direction: column;
+  gap: 1.3rem;
 
   > div > h4 {
     margin-bottom: .5rem;

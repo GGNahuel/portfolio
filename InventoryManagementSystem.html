@@ -12,20 +12,16 @@
   <link rel="stylesheet" href="styles/mainStyles.css">
   <link rel="stylesheet" href="styles/projectPageStyles.css">
   <link rel="stylesheet" href="styles/sections_styles/skillsSection.css">
+
   <link rel="stylesheet" href="styles/projectSections_styles/architectureSection.css">
+  <link rel="stylesheet" href="styles/projectSections_styles/otherSections.css">
 </head>
 
 <body>
   <div id="projectRoot">
   <nav class="projectsNavbar">
     <a href="index.html"><span class="material-symbols-outlined homeIcon">arrow_back</span>Página principal</a>
-    <!-- <div>
-      <a href="#projectPresentation">Presentación del proyecto</a>
-      <a href="#projectUses">Características y casos de uso</a>
-      <a href="#projectTechFeatures">Características técnicas</a>
-      <a href="#projectComments">Comentarios del proceso</a>
-    </div> -->
-    <label id="changeLanguage_button">Español<input type="checkbox">English</label>
+    <!-- <label id="changeLanguage_button">Español<input type="checkbox">English</label> -->
   </nav>
   <main class="notIndex">
     <header>
@@ -670,7 +666,7 @@
         <div>
           <h4 id="ejemplo-de-valores">Ejemplo de valores</h4>
           <p><strong>ACLARACIÓN:</strong> Los hosts de las urls de las bases de datos (<code>mysql-database</code>) corresponden al nombre del contenedor de docker, en caso de no usar docker se debería reemplazar eso por <code>localhost</code> y usar el puerto configurado (por defecto 3306).</p>
-          <pre><code>
+          <div class="code">
             MYSQL_ROOT_PASSWORD=root
             MYSQL_USERNAME=root
             MYSQL_PASSWORD=root
@@ -679,7 +675,7 @@
             MYSQL_URL_INVENTORIES=jdbc:mysql://mysql-database:3306/inventories?createDatabaseIfNotExist=true&amp;useTimezone=true&amp;serverTimezone=GMT&amp;characterEncoding=UTF-8
         
             jwt_key=&quot;ExampleSecretKeyForJWT1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ=&quot;
-          </code></pre>
+          </div>
         </div>
       </section>
       <section id="en-caso-de-usar-docker">
@@ -688,21 +684,21 @@
           archivo .env en la carpeta raíz del proyecto (a la misma altura que se encuentra el archivo docker-compose.yml).</p>
         <p>Teniendo docker en el sistema local, y ejecutándose, alcanza con el siguiente comando en la ubicación raíz del proyecto. Esto empaquetará 
           los servicios y ejecutará los archivos .jar de cada uno.</p>
-        <pre><code>
+        <div class="code">
           #para la primera vez que se quiere levantar el proyecto
           docker compose up --build  
       
           #para las siguientes
           docker compose up 
-        </code></pre>
+        </div>
         <p>Adicionalmente se puede levantarlo con el perfil de desarrollo. Además de trabajar sin empaquetar la aplicación también, permite ver en tiempo real los cambios que se realicen gracias a spring boot devtools. Los comandos para esto son:</p>
-        <pre><code>
+        <div class="code">
           #para la primera vez que se quiere levantar el proyecto
           docker compose -f docker-compose-dev.yml up --build
       
           #para las siguientes
           docker compose -f docker-compose-dev.yml up
-        </code></pre>
+        </div>
       </section>
       <section id="en-caso-de-no-usar-docker">
         <h3>En caso de no usar docker</h3>
@@ -724,13 +720,13 @@
             <div id="otherSystems">
               <h4>Linux / macOS</h4>
               <p>En sistemas Unix-like, es necesario agregar las siguientes líneas al archivo de configuración del shell:</p>
-              <pre><code>
+              <div class="code">
                 export JAVA_HOME=/ruta/a/tu/jdk
                 export PATH=$JAVA_HOME/bin:$PATH
             
                 export MAVEN_HOME=/ruta/a/apache-maven
                 export PATH=$MAVEN_HOME/bin:$PATH
-              </code></pre>
+              </div>
               <p>Estos cambios deben agregarse en uno de los siguientes archivos, según el shell que se utilice en el sistema:</p>
               <table>
                 <thead>
@@ -756,11 +752,11 @@
               </table>
               <p>Después de editarlos, aplicá los cambios con: <code>source <del>/.bashrc</code> o <code></del>/.zshrc</code> según corresponda</p>
               <h4>Se puede verificar las configuraciones en una terminal (CMD o PowerShell) ejecutando:</h4>
-              <pre><code>
+              <div class="code">
                 java -version
                 javac -version
                 mvn -version
-              </code></pre>
+              </div>
             </div>
           </li>
           <li><p>Tener instalado el server de MySql, al menos la versión 8.0. Los valores que se asignen a la 
@@ -773,7 +769,7 @@
     </section>
     <section id="authSection">
       <h2>Autenticación y autorización</h2>
-      <div class="intro">
+      <section class="intro">
         <p>Salvo para los endpoints que refieren al registro e inicio de sesión de una cuenta, <strong>el resto de endpoints requieren autenticación mediante JWT en el header correspondiente</strong>. Éste se obtiene una vez hecho un login exitoso, y se modifica si se hace el login de sub-usuario o algún logout.</p>
         <p>Estos métodos devuelven un objeto con:</p>
         <ul>
@@ -781,21 +777,21 @@
         <li>Además se encuentra el id de la cuenta que generó el token. Aunque ésta se encuentra como claim dentro del mismo, se incluye directamente para un acceso más fácil desde el cliente, ya que esta id se debe usar en futuras peticiones como parámetro.</li>
         </ul>
         <p>Ejemplo de la respuesta:</p>
-        <pre><code class="language-json">{
-          &quot;token&quot;: &quot;tokenJWTGenerado&quot;,
-          &quot;accountId&quot;: &quot;uuid de la cuenta en el token&quot;
-        }
-        </code></pre>
+        <div class="code json">
+          {
+            &quot;token&quot;: &quot;tokenJWTGenerado&quot;,
+            &quot;accountId&quot;: &quot;uuid de la cuenta en el token&quot;
+          }
+        </div>
         <p>El valor del mismo se debe incluir en las solicitudes siguientes dentro de los headers de cada request. Específicamente dentro del header de autorización &quot;Bearer&quot;. Debería verse así:</p>
-        <pre><code>Bearer tokenJWTGenerado
-        </code></pre>
+        <div class="code">Bearer tokenJWTGenerado</div>
         <p><strong>El espacio entre &quot;Bearer&quot; y el token es importante que se encuentre, caso contrario no será reconocido.</strong></p>
-      </div>
-      <div id="sobre-el-token">
+      </section>
+      <section id="sobre-el-token">
         <h3>Sobre el token</h3>
         <p>Este no es solamente validado en la API gateway sino que también en cada redirección y llamado interno en cada una de las APIs.</p>
         <p>El mismo contiene los siguientes claims (pueden ser nulos depende de los logins o logouts que se hayan hecho):</p>
-        <pre><code class="language-json">
+        <div class="code json">
         {
           &quot;sub&quot;: &quot;nombre de usuario de la cuenta&quot;,
           &quot;accountId&quot;: &quot;id de la cuenta en formato UUID&quot;, // se debe incluir en algunos métodos para poder autorizarlos
@@ -811,10 +807,10 @@
           &quot;iat&quot;: 00000001, // fecha de emisión en ms
           &quot;eat&quot;: 00000001 // fecha de expiración en ms
         }
-        </code></pre>
+        </div>
         <p>La duración del token es de una hora. Esto se cambiaría en el caso de que se despliegue el sistema en algún servidor remoto. Haciendo que dure menos y que el mismo sistema renueve y devuelva un nuevo token.</p>
-      </div>
-      <div id="permisos">
+      </section>
+      <section id="permisos">
         <h3>Permisos (los que estarían en el permissions dentro del userPerms)</h3>
         <ul>
           <li><p>addProducts: El sub-usuario con este permiso está habilitado tanto a crear nuevos productos y agregarlos a un inventario, como a copiar de un inventario y pasarlo a otro.</p>
@@ -849,16 +845,16 @@
             <li>permisos del admin</li>
           </ol>
         </div>
-      </div>
+      </section>
     </section>
     <section id="endpoints-y-operaciones">
       <h2>Endpoints y operaciones</h2>
-      <div class="intro">
+      <section class="intro">
         <p>Todos los endpoints pueden ser accedidos a traves de la gateway. Ubicada en el localhost en el puerto 8080 
           (<a href="http://localhost:8080">http://localhost:8080</a>).</p>
         <p>Las operaciones se dividen según el servicio y funcionalidad.</p>
         <p>Tanto el servicio de usuarios como el de productos devuelven el mismo tipo de formato de respuesta. El cual es el siguiente:</p>
-        <pre><code class="language-typescript">
+        <div class="code typescript">
           interface DTO_respuestasGenerales {
             error: null | {
               message: string,
@@ -868,7 +864,7 @@
             },
             data: null | object // esto contendría el objeto resultante de la operación en caso de que lo posea. También puede contener un mensaje adicional en caso de error.
           }
-        </code></pre>
+        </div>
         <blockquote>
           <p>Los retornos y cuerpos de las solicitudes se muestran en formato typescript, o como en el schema de graphQl, para mostrar con mayor claridad y 
             simpleza los posibles valores.</p>
@@ -876,14 +872,15 @@
         <blockquote>
           <p>Todas las id son en formato UUID de 16 bytes.</p>
         </blockquote>
-      </div>
-      <div id="servicio-de-usuarios">
+      </section>
+      <section id="servicio-de-usuarios">
         <h3>Servicio de usuarios</h3>
         <div class="intro">
           <p><strong>Administración de los datos de usuarios y sub-usuarios, manejo de autenticación y autorización.</strong></p>
           <h4>Posibles retornos</h4>
           <p><strong>Tener en cuenta que estos DTOs se encontrarían dentro del <em>data</em> del DTO descrito anteriormente</strong>. A excepción de cuando se llame a algún endpoint de autenticación, ya sea de inicio o de cierre, que se retornará directamente el DTO del token.</p>
-          <pre><code class="language-typescript">  interface DTO_cuenta {
+          <div class="code typescript">
+            interface DTO_cuenta {
               id: string,
               username: string,
               nickName: string | null,
@@ -907,7 +904,7 @@
               token: string,
               accountId: string
             }
-          </code></pre>
+          </div>
         </div>
         <div id="cuentas-y-sub-usuarios">
           <h4>Cuentas y sub-usuarios</h4>
@@ -916,7 +913,7 @@
               <ul>
                 <li><p><strong>Método HTTP</strong>: POST</p></li>
                 <li><p><strong>Cuerpo requerido</strong>: Todos los campos son obligatorios y las repeticiones de contraseña deben coincidir con la que corresponda para que el método funcione correctamente.</p>
-                  <pre><code>
+                  <div class="code">
                     {
                       username: string,
                       password: string,
@@ -925,10 +922,10 @@
                       adminPassword: string,
                       adminPasswordRepeated: string
                     }
-                  </code></pre>
+                  </div>
                 </li>
                 <li><p><strong>Retorno esperado</strong>: Status code 201</p>
-                  <pre><code>
+                  <div class="code">
                     {
                       error: null
                       data: {
@@ -943,7 +940,7 @@
                         ]
                       }
                     }
-                  </code></pre>
+                  </div>
                 </li>
               </ul>
             </li>
@@ -959,7 +956,7 @@
                 <li><strong>Método HTTP</strong>: POST</li>
                 <li><strong>Requerido</strong>:<ul>
                   <li><p>Como cuerpo de la solicitud, <strong>name, password, y passwordRepeated</strong> son obligatorios:</p>
-                    <pre><code>
+                    <div class="code">
                       {
                         name: string,
                         role: string,
@@ -967,7 +964,7 @@
                         passwordRepeated: string,
                         inventoryPerms: [DTO_permisosPorInventario] | null
                       }
-                    </code></pre>
+                    </div>
                   </li>
                   <li><p>Cómo parámetro de la url se debe incluir <em><strong>accountId</strong></em> (string) de forma obligatoria.</p></li>
                 </ul></li>
@@ -1032,12 +1029,12 @@
           <h4>Autenticaciones. Logins y logouts</h4>
           <p>Todos estos endpoints usan el método HTTP POST y devuelven un <em>DTO_tokenJWT</em> con el token generado y status code 200 en caso de éxito.</p>
           <p>En el caso de los que son para login se debe incluir el siguiente cuerpo:</p>
-          <pre><code class="language-json">
+          <div class="code json">
             {
               &quot;username&quot;: &quot;nombre de usuario, ya sea el de la cuenta o la del sub-usuario según corresponda el login&quot;,
               &quot;password&quot;: &quot;contraseña de la cuenta o sub-usuario según corresponda&quot;
             }
-          </code></pre>
+          </div>
           <ul>
             <li><strong>/authenticate/login/account</strong> Inicia sesión de la cuenta.</li>
             <li><strong>/authenticate/login/user</strong> Inicia sesión con un sub-usuario. Requiere que primero haya iniciado sesión la cuenta. Solo puede haber un sub-usuario en la sesión.</li>
@@ -1045,8 +1042,8 @@
             <li><strong>/authenticate/logout/user</strong> Cierra la sesión únicamente del sub-usuario pero permanece la de la cuenta.</li>
           </ul>
         </div>
-      </div>
-      <div id="servicio-de-productos">
+      </section>
+      <section id="servicio-de-productos">
         <h3>Servicio de productos</h3>
         <p><strong>Operaciones específicas a productos, sin importar el/los inventarios en donde se encuentren ni la info específica en ellos (stock y disponibilidad)</strong></p>
         <ul>
@@ -1056,7 +1053,7 @@
               <li><strong>Requerido</strong>:
                 <ul>
                   <li><em>Cuerpo de la solicitud</em> un objeto con el siguiente formato. Se debe incluir incluso los datos que no fueron modificados ya que se sobre-escribirán los datos. <strong>El atributo id es obligatorio</strong>
-                    <pre><code class="language-typescript">
+                    <div class="code typescript">
                       interface DTO_producto {
                         id: string,
                         name: string,
@@ -1066,7 +1063,7 @@
                         unitPrice: number, // acepta decimales
                         categories: [string] | undefined
                       }
-                    </code></pre>
+                    </div>
                   </li>
                   <li><em>Parámetros de url</em>: se debe indicar la id de la cuenta, la misma del token, en el parámetro <em>accountId</em>.</li>
                 </ul>
@@ -1084,22 +1081,22 @@
             </ul>
           </li>
         </ul>
-      </div>
-      <div id="servicio-de-inventarios">
+      </section>
+      <section id="servicio-de-inventarios">
         <h3>Servicio de inventarios</h3>
-        <div class="intro">}
+        <div class="intro">
           <p><strong>Encargado de administrar todo lo relacionado a inventarios y los productos dentro.</strong></p>
           <p>Como este servicio es con GraphQl solo existe un endpoint al que se puede acceder <code>/graphql</code>, siendo una solicitud de método POST y con el cuerpo de ella en formato JSON. Estructura del cuerpo:</p>
-          <pre><code class="language-json">
+          <div class="code json">
             {
               &quot;query&quot;: &quot;query de graphQL&quot;,
               &quot;variables&quot;: {}, // propiedad opcional en caso de que se quieran usar variables en la query. Estas variables se nombran en la query con un &quot;$&quot; antes del nombre, y de forma normal en este objeto
               &quot;operationName&quot;: &quot;nombre de la operación a ejecutar&quot; // propiedad opcional en caso de que se manden varias operaciones en la query
             }
-          </code></pre>
+          </div>
           <p>Ejemplos:</p>
           <p>Ejemplo de una query para leer datos</p>
-          <pre><code class="language-json">
+          <div class="code json">
             {
               &quot;query&quot;: &quot;query {
                 getByAccount(accountId: \&quot;00112233-0011-0011-...\&quot;) {
@@ -1114,13 +1111,13 @@
                 }
               }&quot;
           }
-          </code></pre>
+          </div>
           <blockquote>
             <p>Esta query por ejemplo obtendría todos los inventarios asociados a una cuenta a traves de la id ingresada como parámetro (notar que se escribe de forma literal dentro de la misma query) y devolvería, en este caso, una lista de inventarios con solamente los atributos de id, name y products. </p>
             <p>Como &quot;products&quot; también es un objeto <strong>se debe</strong> aclarar las propiedades que serán devueltas, en este caso solo refId, name, unitPrice y stock.</p>
           </blockquote>
           <p>Ejemplo de una query para realizar cambios (mutations)</p>
-          <pre><code class="language-json">
+          <div class="code json">
             {
               &quot;query&quot;: &quot;mutation ($productToAdd: ProductInput, $idOfInventory: ID) {
                 addProduct(product: $productToAdd, invId: $idOfInventory) {
@@ -1144,7 +1141,7 @@
                 &quot;idOfInventory&quot;: &quot;11223344-1122-1122-...&quot;
               }
             }
-          </code></pre>
+          </div>
           <blockquote>
             <p>En esta query se usan variables. Notar que éstas se definen en paréntesis después de nombrar el tipo de query (query / mutation). Luego de nombrarlas se define el tipo de la variable, ejemplo: String, Int, Boolean, [String], ID, o algún objeto personalizado como lo es <em>ProductInput</em>. Posteriormente se usan como argumentos en la operación <em>addProduct</em>.</p>
             <p>Finalmente, a estas variables, se le asigna su valor correspondiente dentro del objeto <em>variables</em> del cuerpo del JSON.</p>
@@ -1154,7 +1151,7 @@
             <p>Si se encuentra un signo de exclamación (<strong>!</strong>) después de la definición de un tipo significa que este es obligatorio. Tanto como en argumento de las operaciones como en las propiedades de los objetos que se pasan o se reciben.</p>
           </blockquote>
           <p>De forma general un retorno se vería de la siguiente forma:</p>
-          <pre><code class="language-json">
+          <div class="code json">
             {
               &quot;data&quot;: {
                 &quot;nombreOperación&quot;: &quot;retorno de la misma o null en caso de error&quot;
@@ -1170,7 +1167,7 @@
                 }
               ]
             }
-          </code></pre>
+          </div>
         </div>
         <div id="graphQl-queries">
           <h4>Queries - operaciones de lectura</h4>
@@ -1227,7 +1224,7 @@
         <div id="types-e-inputs">
           <h4>Types e inputs</h4>
           <p>Estos son los objetos que se retornarían y se ingresarían respectivamente a las operaciones.</p>
-          <pre><code>
+          <div class="code">
             type Inventory {
               id: ID
               name: String!
@@ -1272,13 +1269,13 @@
               refId: ID!
               stock: Int!
             }
-          </code></pre>
+          </div>
         </div>
-      </div>
+      </section>
     </section>
     <section id="testing-y-prueba-del-sistema">
       <h2>Testing y prueba del sistema</h2>
-      <div class="intro">
+      <section class="intro">
         <p>Los tests que se encuentran en este proyecto se dividen en 3 categorías:</p>
         <ol>
           <li><p><strong>Pruebas unitarias</strong>: estas están destinadas a probar únicamente un servicio o componente de spring en especifico, probando 
@@ -1314,45 +1311,48 @@
             </ul>
           </li>
         </ol>
-      </div>
-      <div id="ejecucion-de-tests">
+      </section>
+      <section id="ejecucion-de-tests">
         <h3>Ejecución de tests</h3>
         <p>Para ejecutar las pruebas que se encuentran en los servicios deberá ejecutar el siguiente comando desde la ubicación del servicio.</p>
-        <pre><code class="language-bash">mvn test</code></pre>
+        <div class="code bash">mvn test</div>
         <p>Este ejecutará tanto las pruebas unitarias como las de integración del servicio. </p>
         <blockquote>
           <p><em>Importante</em>: para poder ejecutar este comando es necesario que tenga el jdk y maven instalado de forma local. Como alternativa con tener jdk únicamente, y solo para los 3 servicios principales, productos, inventarios, y usuarios, se puede ejecutar lo siguiente: </p>
-          <pre><code class="language-bash">./mvnw test</code></pre>
+          <div class="code bash">./mvnw test</div>
           <p>Lo que implica que usaría el wrapper de maven, lo que ya incluye configuración y scripts para ejecutarlo sin necesidad de tenerlo localmente.</p>
         </blockquote>
         <p>Herramienta de logística</p>
-      </div>
-      <div id="pruebas-con-postman">
+      </section>
+      <section id="pruebas-con-postman">
         <h3>Prueba con Postman</h3>
         <p>Dentro del repositorio se encuentra una colección de Postman, la cual puede ser importada en esa aplicación, trayendo con ella todos los endpoints y operaciones que son posibles en este sistema de apis, mencionados en la sección <a href="#endpoints-y-operaciones">Endpoints y operaciones</a>. Además viene con ejemplos prácticos según datos de ejemplo que son insertados en la base de datos al arrancar la aplicación por primera vez (Se pueden re-establecer si se elimina la cuenta de ejemplo y se vuelve a ejecutar la aplicación).</p>
-        <p><a href="./Inventory%20Api.postman_collection.json">Colección postman</a></p>
+        <p><a href="https://github.com/GGNahuel/InventoryManagementSystem_microservices/blob/main/Inventory%20Api.postman_collection.json">Colección postman</a></p>
         <p>Los datos de ejemplo son los siguientes, planteados para el ejemplo dado en <a href="#ejemplo-de-uso">el ejemplo de uso</a>. Algunos ya poseen id por un lado para ser referenciados entre los microservicios, y por el otro para tener datos para las pruebas en postman. El resto que no tiene id es porque se generó de forma aleatoria a través de JPA. </p>
         <div id="datos-de-ejemplo">
           <h4>Datos de ejemplo</h4>
           <div>
             <p><strong>Cuenta:</strong></p>
-            <ul>
-            <li>id: <code>12341234-0000-0000-0000-10001000acc1</code></li>
-            <li>username: farmaciasHealth</li>
-            <li>nickName: Farmacias Health</li>
-            <li>password: accountPassword</li>
-            </ul>
+            <ul><li>
+              <ul>
+                <li>id: <code>12341234-0000-0000-0000-10001000acc1</code></li>
+                <li>username: farmaciasHealth</li>
+                <li>nickName: Farmacias Health</li>
+                <li>password: accountPassword</li>
+              </ul>
+            </li></ul>
           </div>
+
           <div>
-            <p><strong>Sub-usuarios con sus permisos</strong></p>
-            <li><p>Admin:</p>
+            <p><strong>Sub-usuarios con sus permisos</strong></p><ul>
+            <li>Admin:
               <ul>
                 <li>name: admin</li>
                 <li>password: adminPassword</li>
                 <li>role: Administrador/ dueño</li>
               </ul>
             </li>
-            <li><p>Gerente general:</p>
+            <li>Gerente general:
               <ul>
               <li>id: <code>12341234-0000-0000-0000-000a000a0001</code></li>
               <li>name: gerenteGeneral</li>
@@ -1361,18 +1361,18 @@
               <li>permisos:
                 <ol>
                   <li><ul>
-                    <li>permissions: addProducts, editProducts, editProductReferences, deleteProducts,deleteProductReferences, editInventory</li>
+                    <li>permissions: addProducts, editProducts, editProductReferences, deleteProducts, deleteProductReferences, editInventory</li>
                     <li>inventoryReference id: 12341234-0000-1000-0001-100010001000 (Inventario de la sucursal norte)</li>
                   </ul></li>
                   <li><ul>
-                    <li>permissions: addProducts, editProducts, editProductReferences, deleteProducts,deleteProductReferences, editInventory</li>
+                    <li>permissions: addProducts, editProducts, editProductReferences, deleteProducts, deleteProductReferences, editInventory</li>
                     <li>inventoryReference id: 12341234-0000-1000-0002-100010001000 (Inventario de la sucursal centro)</li>
                   </ul></li>
                 </ol>
               </li>
               </ul>
             </li>
-            <li><p>Encargado de sucursal norte</p>
+            <li>Encargado de sucursal norte
               <ul>
                 <li>name: manager1</li>
                 <li>password: manager1Password</li>
@@ -1387,7 +1387,7 @@
                 </li>
               </ul>
             </li>
-            <li><p>Encargado de sucursal centro</p>
+            <li>Encargado de sucursal centro
               <ul>
                 <li>name: manager2</li>
                 <li>password: manager2Password</li>
@@ -1402,7 +1402,7 @@
                 </li>
               </ul>
             </li>
-            <li><p>Sub-usuario para farmacéuticos de la sucursal norte</p>
+            <li>Sub-usuario para farmacéuticos de la sucursal norte
               <ul>
                 <li>id: <code>12341234-0000-0000-0000-000a000a0002</code></li>
                 <li>name: pharmacistsForInv1</li>
@@ -1418,7 +1418,7 @@
                 </li>
               </ul>
             </li>
-            <li><p>Sub-usuario para farmacéuticos de la sucursal centro</p>
+            <li>Sub-usuario para farmacéuticos de la sucursal centro
               <ul>
                 <li>name: pharmacistsForInv2</li>
                 <li>password: pharmacists2Password</li>
@@ -1433,7 +1433,7 @@
                 </li>
               </ul>
             </li>
-            <li><p>Sub-usuario para cajeros de la sucursal norte</p>
+            <li>Sub-usuario para cajeros de la sucursal norte
               <ul>
                 <li>name: cashersForInv1</li>
                 <li>password: cashers1Password</li>
@@ -1448,7 +1448,7 @@
                 </li>
               </ul>
             </li>
-            <li><p>Sub-usuario para cajeros de la sucursal centro</p>
+            <li>Sub-usuario para cajeros de la sucursal centro
               <ul>
                 <li>name: cashersForInv2</li>
                 <li>password: cashers2Password</li>
@@ -1463,12 +1463,13 @@
                 </li>
               </ul>
             </li>
-          </div>
+          </ul></div>
+
           <div>
             <p><strong>Inventarios</strong></p>
             <p>Ambos con el atributo <em>accountId</em> con el valor de <code>12341234-0000-0000-0000-10001000acc1</code></p>
-            <div>Inventario para sucursal norte
-              <ul>
+            <ul>
+              <li>Inventario para sucursal norte<ul>
                 <li>id: <code>12341234-0000-1000-0001-100010001000</code></li>
                 <li>name: Sucursal norte</li>
                 <li>productos:<ul>
@@ -1490,10 +1491,8 @@
                   <li>id de referencia: 00000000-0000-0000-0000-000000000016, stock: 12</li>
                   <li>id de referencia: 00000000-0000-0000-0000-000000000017, stock: 2</li>
                 </ul></li>
-              </ul>
-            </div>
-            <div>Inventario para sucursal centro
-              <ul>
+              </ul></li>
+              <li>Inventario para sucursal centro<ul>
                 <li>id: <code>12341234-0000-1000-0002-100010001000</code></li>
                 <li>name: Sucursal centro</li>
                 <li>productos:<ul>
@@ -1515,12 +1514,13 @@
                   <li><p>id de referencia: 00000000-0000-0000-0000-000000000019, stock: 12</p></li>
                   <li><p>id de referencia: 00000000-0000-0000-0000-000000000020, stock: 16</p></li>
                 </ul></li>
-              </ul>
-            </div>
+              </ul></li>
+            </ul>
           </div>
-          <div>
 
+          <div>
             <p><strong>Productos</strong></p>
+            <p>De igual forma el atributo accountId es la de la cuenta mencionada arriba</p>
             <ul>
               <li><p><strong>1</strong></p>
                 <ul>
@@ -1725,7 +1725,7 @@
             </ul>
           </div>
         </div>
-      </div>
+      </section>
     </section>
     </main>
   </div>
