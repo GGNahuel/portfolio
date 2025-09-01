@@ -1,0 +1,1736 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image" href="imgs//logo.webp" />
+  <title>Sistema de administración de inventarios - Nahuel Gómez Gahn Portafolio</title>
+  
+  <link rel="stylesheet" href="styles/rootStyles.css">
+  <link rel="stylesheet" href="styles/skills.css">
+  <link rel="stylesheet" href="styles/mainStyles.css">
+  <link rel="stylesheet" href="styles/projectPageStyles.css">
+  <link rel="stylesheet" href="styles/sections_styles/skillsSection.css">
+
+  <link rel="stylesheet" href="styles/projectSections_styles/architectureSection.css">
+  <link rel="stylesheet" href="styles/projectSections_styles/otherSections.css">
+</head>
+
+<body>
+  <div id="projectRoot">
+  <nav class="projectsNavbar">
+    <a href="index.html"><span class="material-symbols-outlined homeIcon">arrow_back</span>Página principal</a>
+    <!-- <label id="changeLanguage_button">Español<input type="checkbox">English</label> -->
+  </nav>
+  <main class="notIndex">
+    <header>
+      <h1>Sistema de gestión de inventarios de productos</h1>
+      <p><em>Versión actual 1.0, fecha de primer lanzamiento Agosto de 2025</em></p>
+      <ul>
+        <li><a href="https://github.com/GGNahuel/InventoryManagementSystem_microservices"><button>
+          <img src="/skillsSvg/github.svg" alt="Logo de github">
+          Ver repositorio
+        </button></a></li>
+      </ul>
+    </header>
+    <section id="projectPresentation" class="card alternativeStyle">
+      <div class="background"></div>
+      <div class="intro">
+        <h4>
+          <p>Sistema de APIs diseñado para que usuarios puedan registrarse y crear distintos inventarios que pueden llenar con productos según lo requieran.</p>
+          <p>Trabaja con base de datos y seguridad a traves de autenticaciones y autorizaciones. Las cuentas creadas por defecto crean un sub-usuario 
+            <em>admin</em> que, además de poder crear inventarios, también puede registrar a otros sub-usuarios y otorgarle distintos permisos que pueden 
+            variar para cada inventario. Permisos como el de agregar productos, eliminarlos, editar el inventario, entre otros.</p>
+        </h4>
+      </div>
+      <div class="mainFeatures">
+        <h3>Funcionalidades generales</h3>
+        <ul>
+          <li><p>Los usuarios pueden registrar una cuenta e iniciar sesión en el sistema.</p></li>
+          <li><p>Durante el registro, también se configuran los datos del sub-usuario administrador principal.</p></li>
+          <li><p>Cada cuenta puede tener múltiples inventarios, que pueden ser creados, editados y eliminados por el sub-usuario administrador.</p></li>
+          <li><p>Las cuentas permiten la creación de sub-usuarios con nombre de usuario, contraseña y permisos específicos.</p></li>
+          <li><p>Los sub-usuarios pueden tener distintos roles como "admin", "general", "jefe de categoría", etc.</p></li>
+          <li><p>Los permisos de cada sub-usuario se asignan por inventario, lo que permite:</p>
+            <ul>
+              <li>Diferentes permisos en cada uno.</li>
+              <li>Mayor control de acceso y acciones disponibles.</li>
+            </ul>
+          </li>
+          <li><p>El sub-usuario administrador puede:</p>
+            <ul>
+              <li>Gestionar inventarios (crear, eliminar, renombrar).</li>
+              <li>Crear y configurar sub-usuarios.</li>
+              <li>Realizar cualquier acción permitida a los sub-usuarios.</li>
+            </ul>
+          </li>
+          <li><p>La sesión puede iniciarse tanto únicamente con la cuenta principal (para visualizar inventarios) como también con un sub-usuario 
+            (para operar según sus permisos).</p>
+            <ul>
+              <li>Antes de iniciarla como sub-usuario se debe iniciarla como cuenta.</li>
+            </ul>
+          </li>
+          <li><p>Los productos pueden:</p>
+            <ul>
+              <li>Agregarse, editarse, eliminarse.</li>
+              <li>Buscarse por atributos como nombre, marca, stock, categoría o disponibilidad.</li>
+              <li>Compartirse entre inventarios, conservando sus datos generales pero permitiendo redefinir atributos específicos como stock y disponibilidad.</li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </section>
+    <section>
+      <blockquote>
+        <h4>Ejemplo de uso:</h4>
+        <p> Suponiendo que una <strong>cadena de farmacias</strong> desea utilizar la aplicación podría hacerlo de la siguiente forma:</p>
+        <ul>
+          <li>Una <strong>cuenta</strong> representa a la empresa principal.  </li>
+          <li>Dentro de la cuenta se crean varios <strong>inventarios</strong>, uno por cada sucursal (ej. Sucursal Norte, Sucursal Centro, Sucursal Sur).</li>
+          <li>Los <strong>productos</strong> (medicamentos, insumos, cosméticos) pueden estar disponibles en una sola sucursal o compartirse entre varias.</li>
+          <li>Los <strong>sub-usuarios</strong> representan a los empleados de cada sucursal, con permisos específicos.
+            <ul>
+              <li>Por ejemplo: un <strong>farmacéutico</strong> puede actualizar productos, un <strong>cajero</strong> solo registrar ventas, ambos solo para 
+                los productos que corresponden a su sucursal. En cambio, un <strong>gerente general</strong> por ejemplo, puede administrar todo de todos los 
+                inventarios asociados a la cuenta.</li>
+            </ul>
+          </li>
+        </ul>
+        <p>De esta manera, la aplicación permite centralizar el control de los productos en cada sucursal, compartiéndolos cuando sea necesario, a su vez que se asignan permisos claros a cada rol dentro de la empresa.</p>
+      </blockquote>
+    </section>
+    <section id="pageIndex">
+      <h2>Contenidos</h2>
+      <div class="indexesContainer">
+        <div class="indexUI">
+          <div class="top"></div><div class="stretch"></div><div class="bottom"></div>
+          <div class="content">
+            <h4>Fundamentación del diseño y arquitectura de software</h4>
+            <div class="plegable">
+              <ul>
+                <li><a href="#estilo-arquitectenico">Estilo arquitectónico</a></li>
+                <li><a href="#modelo-de-dominio">Modelo de dominio</a><ul>
+                  <li><a href="#productos">Productos</a></li>
+                  <li><a href="#inventarios">Inventarios</a></li>
+                  <li><a href="#cuentas">Cuentas</a></li>
+                  <li><a href="#usuarios-sub-usuarios">Usuarios (sub-usuarios)</a></li>
+                </ul></li>
+                <li><a href="#skillsSection">Resumen de tecnologías y herramientas elegidas</a></li>
+                <li><a href="#componentes-y-patron-arquitectonico">Componentes y patron arquitectónico</a><ul>
+                  <li><a href="#microservicio-de-usuarios">Microservicio de Usuarios</a></li>
+                  <li><a href="#microservicio-de-inventarios">Microservicio de Inventarios</a></li>
+                  <li><a href="#microservicio-de-productos">Microservicio de Productos</a></li>
+                  <li><a href="#microservicio-para-la-api-gateway">Microservicio para la API Gateway</a></li>
+                  <li><a href="#microservicio-para-pruebas-end-to-end-e2e">Microservicio para pruebas end to end (E2E)</a></li>
+                </ul></li>
+                <li><a href="#flujo-de-interacci%C3%B3n-de-las-solicitudes-y-entre-microservicios">Flujo de interacción de las solicitudes y entre microservicios</a></li>
+                <li><a href="#otros-aspectos">Otros aspectos</a><ul>
+                  <li><a href="#patrones-de-dise%C3%B1o">Patrones de diseño</a></li>
+                  <li><a href="#patrones-y-decisiones-arquitect%C3%B3nicas">Patrones y decisiones arquitectónicas</a></li>
+                  <li><a href="#entornos-y-perfiles">Entornos y perfiles</a></li>
+                </ul></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+       <div class="indexUI">
+          <div class="top"></div><div class="stretch"></div><div class="bottom"></div>
+          <div class="content">
+            <h4>Instrucciones y requisitos para ejecución local</h4>
+            <div class="plegable">
+              <ul>
+                <li><a href="#variables-de-entorno">Variables de entorno</a><ul>
+                  <li><a href="#ejemplo-de-valores">Ejemplo de valores</a></li>
+                </ul></li>
+                <li><a href="#en-caso-de-usar-docker">En caso de usar docker</a></li>
+                <li><a href="#en-caso-de-no-usar-docker">En caso de no usar docker</a><ul>
+                  <li><a href="#windows">Windows</a></li>
+                  <li><a href="#linux--macos">Linux / macOS</a></li>
+                  <li><a href="#se-puede-verificar-las-configuraciones-en-una-terminal-cmd-o-powershell-ejecutando">Se puede verificar las configuraciones en una terminal (CMD o PowerShell) ejecutando:</a></li>
+                </ul></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+              
+        <div class="indexUI">
+          <div class="top"></div><div class="stretch"></div><div class="bottom"></div>
+          <div class="content">
+            <h4>Autenticación y autorización</h4>
+            <div class="plegable">
+              <ul>
+                <li><a href="#sobre-el-token">Sobre el token</a></li>
+                <li><a href="#permisos-los-que-estar%C3%ADan-en-el-permissions-dentro-del-userperms">Permisos (los que estarían en el permissions dentro del userPerms)</a></li>
+              </ul>
+            </div>        
+          </div>
+        </div>          
+              
+        <div class="indexUI">
+          <div class="top"></div><div class="stretch"></div><div class="bottom"></div>
+          <div class="content">
+            <h4>Endpoints y operaciones</h4>
+            <div class="plegable">
+              <ul>
+                <li><a href="#servicio-de-usuarios">Servicio de usuarios</a><ul>
+                  <li><a href="#posibles-retornos">Posibles retornos</a></li>
+                  <li><a href="#cuentas-y-sub-usuarios">Cuentas y sub-usuarios</a></li>
+                  <li><a href="#autenticaciones-logins-y-logouts">Autenticaciones. Logins y logouts</a></li>
+                </ul></li>
+                <li><a href="#servicio-de-productos">Servicio de productos</a></li>
+                <li><a href="#servicio-de-inventarios">Servicio de inventarios</a><ul>
+                  <li><a href="#queries---operaciones-de-lectura">Queries - operaciones de lectura</a></li>
+                  <li><a href="#mutations---operaciones-de-escritura">Mutations - operaciones de escritura</a></li>
+                  <li><a href="#types-e-inputs">Types e inputs</a></li>
+                </ul></li>
+              </ul>
+            </div>
+          </div>
+        </div>          
+              
+        <div class="indexUI">
+          <div class="top"></div><div class="stretch"></div><div class="bottom"></div>
+          <div class="content">
+            <h4>Testing y prueba del sistema</h4>
+            <div class="plegable">
+              <ul>
+                <li><a href="#ejecuci%C3%B3n-de-tests">Ejecución de tests</a></li>
+                <li><a href="#prueba-con-postman">Prueba con Postman</a><ul>
+                  <li><a href="#datos-de-ejemplo">Datos de ejemplo</a></li>
+                </ul></li>
+              </ul>
+            </div>
+          </div>
+        </div>          
+      </div>
+    </section>
+
+    <section id="architectureSection">
+      <h2>Fundamentación del diseño y arquitectura de software</h2>
+      <section class="intro">
+        <p>Como se mencionó antes, la idea de este proyecto es brindar una solución del lado del servidor segura y eficaz que permita a usuarios, o grupo de 
+          personas, trabajar con inventarios de una forma práctica. Pensada principalmente para negocios u organizaciones. En donde es probable que sean 
+          varias personas las que accedan a estos inventarios, pero en donde no todas ellas podrían realizar las mismas acciones sobre los datos que alojan.</p>
+        <p>Entonces, este sistema de APIs debería poder brindarle al cliente:</p>
+        <ul>
+          <li>La posibilidad de registrar y "loguear" usuarios al sistema de forma segura.</li>
+          <li>La opción de crear uno o más inventarios y llenarlos con los datos de los productos o items que necesiten los usuarios.</li>
+          <li>La alternativa de que las cuentas puedan tener distintos sub-usuarios. Siendo uno el que se encargaría de asignar los permisos para el resto, 
+            permitiendo así distintos niveles de acceso a los datos asociados a la cuenta.</li>
+          <li>La decisión de los datos que desea obtener de las solicitudes.</li>
+          <li>Que los permisos asignados puedan variar según el inventario, en el caso que hayan varios en la misma cuenta.</li>
+        </ul>
+        <p>Y en cuánto al trabajo interno del sistema, éste debería:</p>
+        <ul>
+          <li>Poder guardar los datos de forma persistente en él.</li>
+          <li>Guardar datos sensibles de forma segura, por ejemplo encriptando contraseñas y validando los parámetros que ingresan en las solicitudes.</li>
+          <li>Trabajar con autenticaciones y autorizaciones en sus operaciones.</li>
+          <li>Validar, además de los permisos del sub-usuario, que las acciones que una cuenta quiera realizar sean sobre los datos asociados a ella 
+            únicamente.</li>
+          <li>Tener en cuenta la posibilidad de extensión, tanto de nuevas funciones como de las iniciales.</li>
+          <li>Ser fácil de entender, mantener y escalar.</li>
+        </ul>
+      </section>
+      <section id="estilo-arquitectonico">
+        <h3>Estilo arquitectónico</h3>
+        <p>Viendo las necesidades se concluyó que los sistemas monolíticos tradicionales no ofrecían la flexibilidad, escalabilidad ni la facilidad de 
+          mantenimiento necesarias para este caso. Especialmente considerando la proyección de crecimiento y la necesidad de integrar futuros módulos, aún 
+          siendo este inicialmente un proyecto de demostración.</p>
+        <p>Para dar solución, se optó por una <strong>arquitectura de microservicios</strong>, donde cada funcionalidad principal se implementa como un 
+          servicio independiente. Esto permite:</p>
+        <ul>
+          <li>El escalado y mantenimiento independiente para cada servicio.</li>
+          <li>Despliegue individual sin afectar a los demás.</li>
+          <li>Aislamiento de fallos: si un servicio falla, el resto puede seguir funcionando.</li>
+          <li>Posibilidad de usar distintos tipos de API según las necesidades. Por ejemplo GraphQL para dar esa flexibilidad al cliente de obtener solo los 
+            datos que requiera, y Rest para cuando es necesario enviar y/o recibir todos los datos.</li>
+        </ul>
+        <p>Esto constaría de:</p>
+        <ul>
+          <li>Comunicación sincrónica vía HTTP (REST/GraphQL). Por el momento no se requiere de comunicación asincrónica, u orientada a eventos, ya que las 
+            funcionalidades iniciales necesitan que los datos se procesen para poder validar y seguir la operación en el trabajo interno.</li>
+          <li>API Gateway como punto de entrada único.</li>
+          <li>Uso de JWT para autenticación y autorización distribuida.</li>
+        </ul>
+      </section>
+      <section id="modelo-de-dominio">
+        <h3>Modelo de dominio</h3>
+        <p>Teniendo esto en cuenta lo que se busca la aplicación permita, ésta giraría entorno a estas 3 entidades principalmente: <u>Cuentas</u> (en donde 
+          se registrarían los usuarios), <u>Inventarios</u> y <u>Productos</u>.</p>
+        <p>Como se mencionó es probable que en un negocio, o empresa, no se desee que cualquiera con acceso a la cuenta pueda realizar grandes cambios en los 
+          datos, entonces se decidió agregar una cuarta entidad: <u>Usuarios</u> (sub-usuarios). La cual guardaría los permisos para las distintas acciones que 
+          se puedan realizar sobre los inventarios y sus productos.</p>
+        <p>Además también es probable que, según las necesidades del usuario, se requiera que el mismo producto esté en distintos inventarios diferenciándose 
+          únicamente por características relacionadas a los mismos. Como cantidad en stock, disponibilidad, y más atributos que podrían estar a futuro. Pensando 
+          en esto se dividieron los datos de los productos en dos entidades: Productos en inventario y Productos de referencia.</p>
+        <p><strong>Representación gráfica del modelo:</strong></p>
+        <div class="image">
+          <img src="imgs/inventoryManager/modelDomain.webp" alt="Gráfico que muestra cómo las entidades se relacionan entre sí y los atributos que estas tendrían descritos de forma general"/>
+        </div>
+        <section class="models">
+          <div class="card">
+            <div>
+              <h4>Productos</h4><ul>
+              <li>
+                <h5>Productos de referencia</h5>
+                <p>Encargados de almacenar los datos principales de un producto, o item. Éstos son referenciados en los distintos inventarios, 
+                  mediante <em>Producto en inventario</em> Permitiendo que los mismos datos estén en más de uno, y que si esta referencia se modifica el cambio 
+                  se vea reflejado en todos los inventarios que posean esta referencia.</p>
+                <p>Atributos:</p>
+                <ul class="attributes">
+                  <li>Nombre</li>
+                  <li>Marca</li>
+                  <li>Modelo</li>
+                  <li>Descripción</li>
+                  <li>Precio unitario</li>
+                  <li>Categorías</li>
+                </ul>
+              </li>
+              <li><h5>Productos en inventario</h5>
+                <p>Encargados de guardar la referencia al producto para obtener sus datos principales y almacenar los datos que refieren a ese producto en el 
+                  inventario asignado.</p>
+                <p>Atributos:</p>
+                <ul class="attributes">
+                  <li>Producto de referencia</li>
+                  <li>Stock</li>
+                  <li>Disponibilidad</li>
+                </ul>
+              </li>
+              </ul>
+            </div>
+          </div>
+          <div class="card">
+            <div>
+              <h4>Inventarios</h4>
+              <p>Encargados de gestionar los datos de los productos asociados a él.</p>
+              <p>Atributos:</p>
+              <ul class="attributes">
+                <li>Nombre</li>
+                <li>Lista de Productos en inventario</li>
+              </ul>
+            </div>
+          </div>
+          <div class="card">
+            <div>
+              <h4>Cuentas</h4>
+              <p>Guarda los datos que se usarán para iniciar sesión y mostrar los inventarios asociados a ella. Además es la que permite guardar dentro a los 
+                usuarios (sub-usuarios).</p>
+              <p>Atributos:</p>
+              <ul class="attributes">
+                <li>Nombre de usuario</li>
+                <li>Contraseña</li>
+                <li>Lista de Inventarios</li>
+                <li>Lista de Usuarios</li>
+              </ul>
+            </div>
+          </div>
+          <div class="card">
+            <div>
+              <h4>Usuarios (sub-usuarios)</h4>
+              <p>Como la aplicación posee un "doble login" ésta entidad también guardará sus propios datos de acceso. Además de eso posee un rol, que es más 
+                descriptivo que funcional para autorización, y los permisos que éste posee para cada inventario.</p>
+              <p>Atributos:</p>
+              <ul class="attributes">
+                <li>Nombre del sub-usuario (se usará como username para el login)</li>
+                <li>Contraseña</li>
+                <li>Nombre del rol</li>
+                <li>Permisos por inventario<ul>
+                <li>Permisos</li>
+                <li>Inventario en donde se aplican los permisos</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+      </section>
+
+      <section id="usedTechnologiesSection">
+        <h3>Resumen de tecnologías y herramientas elegidas</h3>
+        <table>
+          <thead>
+            <tr>
+              <th><p>Tecnología / herramienta</p></th>
+              <th><p>Comentario adicional</p></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><p>Java y Spring Boot</p></td>
+              <td>
+                <p>El uso de este conjunto aporta varias facilidades.</p>
+                <p>Por el lado del lenguaje, Java, brinda la madurez y soporte que posee, además de que es común su uso en sistemas empresariales.</p>
+                <p>Y con respecto a Spring Boot, éste brinda la facilidad de sus configuraciones automáticas en sus componentes y del despliegue de 
+                  aplicaciones Java. También ofrece distintos módulos que se requerían en este proyecto. Pensando principalmente en el de seguridad, Spring 
+                  Security; además de otros que sirven para desarrollar gateways, APIs REST y GraphQL, y trabajo con bases de datos relacionales.</p>
+              </td>
+            </tr>
+            <tr>
+              <td><p>Spring security</p></td>
+              <td><p>Fundamental para manejar las autenticaciones, autorizaciones, y los tokens que se usarán y verificarán en cada solicitud que entre a la 
+                aplicación.</p></td>
+            </tr>
+            <tr>
+              <td><p>JWT</p></td>
+              <td><p>Elegido debido a qué es una de las formas más seguras de manejar autenticaciones y autorizaciones en un sistema de microservicios.</p></td>
+            </tr>
+            <tr>
+              <td><p>API Rest</p></td>
+              <td>
+                <p>Usada para los servicios de usuarios y de productos, debido a la facilidad de uso y que además para estos no se requería que los datos 
+                  enviados u obtenidos sean menos.</p>
+                <p>Para el caso del servicio de usuarios, es necesario que siempre se reciban los datos completos, ya que esto incluiría los datos de acceso 
+                  o de permisos a la app.</p>
+                <p>Y para el servicio de productos no se vió necesario ya que la obtención de estos datos sería mediante el servicio de inventarios.</p>
+              </td>
+            </tr>
+            <tr>
+              <td><p>API GraphQL</p></td>
+              <td><p>Elegida para el servicio de inventarios. Con la fundamentación de que a traves de éste el cliente obtendría los datos de los productos, 
+                eligiendo qué datos mostrar y cuáles no.</p></td>
+            </tr>
+            <tr>
+              <td><p>API Gateway</p></td>
+              <td><p>Al tener una estructura de microservicios, con endpoints tanto externos, con los que se comunica el cliente, como internos, los que usan los 
+                microservicios para comunicarse entre sí, se vió la necesidad de implementar una API Gateway. La cual filtraría los endpoints accesibles y 
+                redirigiría al servicio que corresponda.</p></td>
+            </tr>
+            <tr>
+              <td><p>Base de datos relacional: MySQL</p></td>
+              <td><p>Elegida en principio debido a que permite relaciones entre las entidades definidas. Aunque es probable que en versiones futuras, por 
+                escalabilidad y rapidez para manejar los datos, se use una base de datos noSQL. Ya que como las entidades están divididas en microservicios y cada 
+                uno no posee muchas no es tan necesaria una SQL.</p></td>
+            </tr>
+            <tr>
+              <td><p>Docker</p></td>
+              <td><p>Se eligió usarlo debido a las ventajas que Docker y sus contenedores ofrecen a la hora de probar, desarrollar, y desplegar una aplicación 
+                en distintos entornos.</p></td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+      <section id="componentes-y-patron-arquitectonico">
+        <h3>Componentes y patrón arquitectónico</h3>
+        <div class="intro">
+          <p>Consta de <strong>5</strong> microservicios en total, 3 principales y otros 2 adicionales. Siendo los principales: el microservicio relacionado con usuarios, el relacionado con inventarios y el relacionado con productos; cada uno exponiendo su propia API al sistema completo y manejando su propia base de datos. Los dos adicionales son, por un lado la API Gateway y por el otro uno encargado únicamente de hacer pruebas <em>end to end</em> (e2e), levantando contenedores temporales gracias a <strong>test containers</strong>.</p>
+          <p>Todos los microservicios son proyectos de Spring boot, a excepción del de pruebas e2e en el que no es necesario y alcanza solo con el uso de <strong>Maven</strong> y su manejo de dependencias.</p>
+          <p>Los 3 principales usan el <strong>patrón de arquitectura basado en capas</strong>, lo que significa que cada capa tiene su función en específico y solo se comunica con la capa inferior o superior a ella. Esto debido a la facilidad de su implementación y costes de desarrollo. Está armado de la siguiente forma:</p>
+          <ul>
+            <li>
+              <p>Capa de controladores: Encargados de recibir las solicitudes, procesar sus datos antes de emplear la lógica de negocio, y armar la 
+                respuesta que recibirá el cliente.</p>
+              <blockquote>
+                <p>Antes de llegar al controlador, las solicitudes pasan por un filtro de seguridad. De esto se hablará más adelante en el <a href="">flujo de las solicitudes</a>.</p>
+              </blockquote>
+            </li>
+            <li><p>Capa de negocio: En esta se realiza todo el procesamiento lógico que se requiera para poder realizar la operación que se solicitó. 
+              Validará, creará, y/u obtendrá los datos necesarios para que esto se realice con éxito empleando la capa de repositorio y los distintos 
+              componentes de la aplicación.</p></li>
+            <li><p>Capa de repositorio: Esta solo se encargará de realizar las solicitudes a la base de datos, ya sean de lectura o escritura.</p></li>
+            <li><p>Capa de la base de datos: Representa la base de datos MySQL en sí.</p></li>
+          </ul>
+          <p>Además cuenta con módulos transversales como autenticación y autorización, implementados mediante Spring Security, y con filtros que validan tokens JWT y roles antes de delegar el procesamiento a las capas del sistema.</p>
+          <br>
+          <p>A continuación se describirá cada componente siguiendo el modelo de dominio planteado, explicando cuál es la función de cada uno, cómo está compuesta su base de datos y su fundamentación.</p>
+        </div>
+        <div>
+          <h4>Microservicio de Usuarios</h4>
+          <p>Expone una API Rest que, además de registrar y manejar los datos de cuentas y sub-usuarios, se encarga también de todo lo relacionado a autenticación y autorización a nivel global. Es decir, validación de usuarios y contraseñas, encriptado de ellas, logins, y generación de los JWT.</p>
+          <p>En su base de datos se encuentran las siguientes entidades:</p>
+          <p><strong>AccountEntity</strong>: Representa la cuenta. Guardando datos relacionados a su autenticación, los sub-usuarios que contiene y también una referencia a los inventarios que tiene creados.</p>
+          <ul>
+            <li>id</li>
+            <li>username</li>
+            <li>password</li>
+            <li>lista users (Relación 1 a muchos con UserEntity)</li>
+            <li>lista inventoryReferences (Relación 1 a muchos con InventoryRefEntity)</li>
+          </ul>
+          <p><strong>UserEntity</strong>: Representa a los sub-usuarios. También guarda datos relacionados a su autenticación y los permisos que éste posee para cada inventario.</p>
+          <ul>
+            <li>id</li>
+            <li>name</li>
+            <li>role (El rol es descriptivo, no influye en las autorizaciones de la aplicación)</li>
+            <li>isAdmin (Este booleano se usa para armar el token y dar prioridad a este atributo en lugar de a los permisos cuando se hace la autorización a algún método u operación)</li>
+            <li>associatedAccount (Relación muchos a 1 con AccountEntity)</li>
+            <li>lista inventoryPerms (Relación 1 a muchos con PermissionsForInventoryEntity)</li>
+          </ul>
+          <p><strong>PermissionsForInventoryEntity</strong>: Entidades que representan los permisos que un usuario tendría para un inventario en específico.</p>
+          <ul>
+            <li>id</li>
+            <li>permissions (Cadena de texto formateada en base a una lista de permisos)</li>
+            <li>inventoryReference (relación muchos a 1 con InventoryRefEntity)</li>
+          </ul>
+          <p><strong>InventoryRefEntity</strong>: Entidad que guarda la id que referencia al inventario en su respectiva base de datos y servicio. Se usa como entidad y no como elemento ya que son varias las entidades que usarían las ids.</p>
+          <ul>
+            <li>id</li>
+            <li>referenceId</li>
+          </ul>
+        </div>
+        <div>
+          <h4>Microservicio de Inventarios</h4>
+          <p>Api con GraphQL también con su propia base de datos sql. Se la define con graphQL porque es la que se comunica con el cliente principalmente, 
+            <em>salvo para cuestiones de autenticación o usuarios, o cosas específicas de los productos</em>. Por lo que permitiría devolver solo los datos 
+            solicitados en la request y no realizar ni over-fetching ni under-fetching, optimizando así la información que viaja entre solicitudes.</p>
+          <p>Se encarga de manejar cuestiones de los productos que hay en cada inventario. Agregar, editar, borrar, copiar, modificar el stock, etc. Se 
+            vincula principalmente con el microservicio de productos para obtener la información específica de cada uno.</p>
+          <p>Consta de 2 entidades en su base de datos:</p>
+          <p><strong>InventoryEntity</strong>: Los inventarios se identifican en base a su nombre y una lista de productos en inventario. Lista que 
+            contiene la info relacionada al producto en ese inventario particular, además de la referencia.</p>
+          <ul>
+            <li>id</li>
+            <li>name</li>
+            <li>accountId (Se guarda la id de la cuenta a la que pertenece el inventario)</li>
+            <li>products (Relación 1 a muchos con ProductInInvEntity)</li>
+          </ul>
+          <p><strong>ProductInInvEntity</strong>: Como ya se mencionó anteriormente, estos representan a un producto como elemento de un inventario, no al 
+            producto en sí.</p>
+          <ul>
+            <li>id</li>
+            <li>referenceId (Id de la entidad guardada en el microservicio de productos)</li>
+            <li>stock</li>
+            <li>isAvailable (Depende del stock, serviría para filtrado si el cliente lo requiere)</li>
+            <li>inventory (Relación muchos a uno con InventoryEntity)</li>
+          </ul>
+        </div>
+        <div>
+          <h4>Microservicio de Productos</h4>
+          <p>Este microservicio contiene las operaciones para trabajar con los productos de referencia nombrados en el planteamiento de la aplicación. 
+            Con él se comunica internamente el microservicio de inventarios para agregar, editar, o eliminar los datos principales de los productos. 
+            Consta de una API rest con su propia base de datos SQL.</p>
+          <p>Expone únicamente aquellos endpoints que su acción no incluye nada relacionado a los inventarios directamente. Específicamente, 
+            cuando el cliente quiere editar o borrar un producto de referencia en cuestión.</p>
+          <p>Su base de datos consta de una sola entidad.</p>
+          <p><strong>ProductEntity</strong>: En donde se guarda la información principal de los productos.</p>
+          <ul>
+            <li>id</li>
+            <li>name</li>
+            <li>brand</li>
+            <li>model</li>
+            <li>description</li>
+            <li>unitPrice</li>
+            <li>categories (Lista de string, manejada a través de una ElementCollection de JPA)</li>
+            <li>accountId (Id de referencia a la cuenta a la que pertenece este producto)</li>
+          </ul>
+        </div>
+
+        <p>Estos 3 microservicios poseen Spring Security, el cual se utiliza para autorizar endpoints y realizar la validación del Json Web Token en cada 
+          solicitud, incluso si el cliente sea otro microservicio del sistema o la propia gateway.</p>
+  
+        <div>
+          <h4>Microservicio para la API Gateway</h4>
+          <p>La gateway es un microservicio sencillo, se encarga de exponer y redirigir las solicitudes a ciertos endpoints. Validando el JWT 
+            antes de la redirección a través de un filtro AuthenticationFilter.</p>
+        </div>
+        <div>
+          <h4>Microservicio para pruebas end to end (E2E)</h4>
+          <p>Este consta de un proyecto de maven el cual ejecuta distintas pruebas que cada una realiza una cadena de acciones, imitando el uso que los 
+            usuarios le darían. Por ejemplo: crear sesión y e iniciarla; crear inventarios, agregarles productos, editarlos o copiarlos; crear sub-usuarios y 
+            asignarle permisos para inventarios ya creados, etc.</p>
+          <p>Éste microservicio no es necesario para que la app funcione correctamente, sí para verificar que lo haga. Es decir, su implementación no es 
+            requerida como tal por otros microservicios.</p>
+          <p>Para ver cómo ejecutarlas y qué se requiere, revisar <a href="#testing-y-prueba-del-sistema">la sección de testing</a>.</p>
+        </div>
+      </section>
+      <section id="flujo-de-interacciones">
+        <h3>Flujo de interacción de las solicitudes y entre microservicios</h3>
+        <div class="intro">
+          <p>El flujo presentado a continuación se usa para todas las peticiones sin importar quién sea el cliente, ya sea si es externo al sistema o si 
+            es uno de los propios componentes. (A excepción de los puntos relacionados con la Gateway, la cuál solo la usarían los clientes externos).</p>
+          <ol>
+            <li>Cliente</li>
+            <li>API Gateway. Validará, según si el endpoint requiere o no, el token JWT, redirigiendo en caso de éxito al servicio que corresponda.</li>
+            <li>Servicios. Previo al procesamiento de la operación, la solicitud pasará por un par de filtros de seguridad.
+              <ol>
+                <li>Primero pasa por uno de autenticación, que además de validar nuevamente el token JWT, asigna en el contexto de seguridad local a ese 
+                  servicio los datos que llegan en ese token.</li>
+                <li>Posteriormente pasa por otro filtro de autorización antes de llegar al controlador. Que revisará si los datos presentes en el contexto de 
+                  seguridad local tienen los permisos requeridos para el endpoint solicitado.</li>
+                <li>Finalmente la solicitud llega a la capa del controlador. La que llamará a la capa de negocio la cual trabajará con los recursos internos 
+                  para lograr el objetivo de la operación.<ul>
+                  <li>En esta etapa es donde se dan las comunicaciones con otros servicios internos en caso de ser necesario. Mandando nuevamente el token en 
+                    la solicitud para que el otro servicio pueda validarlo y repetir este procedimiento (item 3).</li>
+                </ul></li>
+              </ol>
+            </li>
+            <li>Api Gateway. Finalmente se recibe el retorno del re-direccionamiento y se lo envía al cliente.</li>
+          </ol>
+        </div>
+        <section class="specificInteractions">
+          <p>Ahora se mencionará específicamente cómo, y en qué operaciones, los microservicios interactúan entre sí.</p>
+          <blockquote>
+            <p>Aclaración: tener en cuenta que toda operación inicia en la Gateway, por fines prácticos en esta sección se describen las operaciones 
+              saltando esa etapa. El cliente debería comunicarse siempre con la API Gateway para realizar cualquier acción en el sistema.</p>
+          </blockquote>
+          <ul>
+            <li><h4>Eliminación de cuenta</h4>
+              <p>Se invocará este método desde el <strong>microservicio de usuarios</strong>. Él se encargará de eliminar, además de los sub-usuarios y 
+                permisos relacionados, también los inventarios y productos asociados, mediante el llamado a los correspondientes 
+                <strong>microservicios</strong>.</p>
+            </li>
+            <li><h4>Creación de inventario</h4>
+              <p>Se realiza mediante el <strong>microservicio de inventarios</strong>. Éste llamará al método de asignación en el <strong>microservicio de 
+                usuarios</strong> para añadir la referencia de la nueva entidad. De esta forma ese servicio podría usarla para crear permisos.</p>
+            </li>
+            <li><h4>Creación de nuevos productos en inventarios</h4>
+              <p>Se le pasa los datos del nuevo producto, tanto los que estarían en el <em>Producto de referencia</em> como en el <em>Producto en 
+                inventario</em>, al <strong>microservicio de inventarios</strong>. El cual llamará al <strong>microservicio de productos</strong> para que 
+                este cree la nueva entidad y devuelva su id. La que el servicio de inventarios asignará al <em>producto en inventario</em> creado.</p>
+            </li>
+            <li><h4>Obtención de datos de inventario con sus productos</h4>
+              <p>Cada vez que se obtiene algún inventario, éste viene con los productos (si es que se los incluye en la request GraphQL). Para obtener esa 
+                información usa las ids de referencia guardadas al momento de crear, copiar o editar los productos y las envía a una solicitud GET al 
+                <strong>microservicio de productos</strong>.</p>
+              <blockquote>
+                <p>Si no se encuentra algún producto que su id de referencia esté guardada en la base de datos del servicio de inventarios se borrarán 
+                  todas las entidades ProductInInventory que tengan esa id asociada. Ya que normalmente eso significaría que el producto de referencia fue 
+                  eliminado directamente en su servicio.</p>
+              </blockquote>
+            </li>
+            <li><h4>Edición o eliminación de productos en inventarios</h4>
+              <p>Salvo que se quiera trabajar directamente sobre los datos exclusivos de los Productos de referencia (si es el caso se llama al 
+                <strong>microservicio de productos</strong> en primera y única instancia), se llama al <strong>microservicio de inventarios</strong>.</p>
+              <p>Éste último, mediante las IDs de referencia, y demás datos si es el caso de edición, comprobará si la referencia guardada en el 
+                <em>producto en inventario</em> es compartida con otros inventarios en la misma cuenta. Si es el caso solo editará o eliminará las 
+                entidades relacionadas al inventario (<em>producto en inventario</em>). Caso contrario se editará o eliminará además los datos en el 
+                <em>producto de referencia</em> llamando al <strong>microservicio de productos</strong> (este llamado es distinto, aunque hacen lo mismo, 
+                que cuando se quiere realizar alguna acción directamente sobre los productos. Lo único que cambia es el permiso requerido y que no tendría 
+                que afectar a otros inventarios).</p>
+            </li>
+            <li><h4>Eliminación de inventario</h4>
+              <p>Cuando se elimina un inventario desde el <strong>microservicio de inventarios</strong>, se busca también aquellos productos que no están 
+                asociados a ningún otro de la misma cuenta. Posteriormente se llama al endpoint del <strong>microservicio de productos</strong> que se 
+                encarga de borrar esos productos en base a la id de referencia, ya que esos solo existen en el inventario a borrar y la permanencia de ellos 
+                ya no es necesaria en la base de datos.</p>
+              <p>Además el servicio de inventarios llama al <strong>microservicio de usuarios</strong> para remover la id de referencia del mismo en la 
+                cuenta asociada. Éste eliminando también aquellos permisos que trabajaban sobre esa id.</p>
+            </li>
+          </ul>
+        </section>
+      </section>
+      <section id="otros-aspectos">
+        <h3>Otros aspectos</h3>
+        <div id="designPatterns">
+          <h4>Patrones de diseño</h4>
+          <p>Se utilizaron:</p>
+          <ul>
+            <li><strong>Repository Pattern</strong>: para aislar la lógica de acceso a datos.</li>
+            <li><strong>Service Layer Pattern</strong>: para encapsular reglas de negocio y reutilizarlas.</li>
+            <li><strong>Data Transfer Object (DTO) Pattern</strong>: para separar modelos internos de lo que se expone al cliente.</li>
+          </ul>
+        </div>
+        <div id="architecturePatterns">
+          <h4>Patrones y decisiones arquitectónicas</h4>
+          <p>Se implementaron:</p>
+          <ul>
+            <li><strong>API Gateway Pattern</strong>: para centralizar la entrada al sistema y filtrar endpoints destinados a comunicación entre 
+              microservicios.</li>
+            <li><strong>Stateless Authentication Pattern</strong> (implementado con JWT): para manejo de sesión sin estado.</li>
+          </ul>
+        </div>
+        <div id="entornos-y-perfiles">
+          <h4>Entornos y perfiles</h4>
+          <p>En el proyecto se encuentran varios perfiles según el entorno para el que esta destinada su ejecución.</p>
+          <p>El perfil por defecto es el que se usaría en el entorno de producción. El cual por ejemplo construye las imágenes de docker empaquetando los 
+            proyectos y luego ejecutando el archivo con extension <em>jar</em> que se genera. También usa la base de datos MySQL y variables de entorno 
+            definidas en un archivo .env, en dónde se guardarían los valores de las urls a las bases de datos y la clave con la que se firmarían y 
+            validarían los tokens jwt.</p>
+          <p>Luego se encuentra el perfil para desarrollo. En el cual no se empaquetan los servicios, porque sino habría que empaquetar cada vez que se 
+            quiera ejecutar alguno, sino que lo hacen a través de spring boot. Además cuenta con utilidades para este entorno, como la de spring devtools, 
+            la cual aplica los cambios en el código en tiempo de ejecución (sin necesidad de reiniciar de forma manual).</p>
+          <p>Luego hay 2 perfiles que se usan solo en entornos de testing. Está el perfil "test" y el "e2e". Con el "test" se usa una <strong>base de 
+            datos en memoria, H2</strong>, y aporta algunos componentes que son útiles para las pruebas. De misma forma está el perfil "e2e", que solo se 
+            usa en el servicio de pruebas <em>end to end</em>, que brinda endpoints o queries graphQL con el mismo fin.</p>
+        </div>
+      </section>
+    </section>
+    <section id="installationGuide">
+      <h2>Instrucciones de instalación y requisitos para ejecución local</h2>
+      <p>Todos los servicios del proyecto están envueltos en contenedores de Docker y orquestados mediante él mismo a través de docker compose. Esto simplifica mucho las acciones necesarias para poder levantar los servicios. Aún así se puede hacerlo sin Docker.</p>
+      <section id="variables-de-entorno">
+        <h3>Variables de entorno</h3>
+        <p>Ya sea se ejecute con o sin docker es necesario configurar las variables de entorno. Las mismas son las siguientes. (Respetar el uso de mayúsculas cuando es necesario)</p>
+        <ul>
+          <li><strong>MYSQL_ROOT_PASSWORD</strong>: la cuál contiene la contraseña que se asignará al usuario root en la imagen de MySql. Ésta variable 
+            es solo necesaria si se usa Docker.</li>
+          <li><strong>MYSQL_USERNAME</strong>: variable usada por cada servicio para poder acceder a MySql.</li>
+          <li><strong>MYSQL_PASSWORD</strong>: variable usada por cada servicio para poder acceder a MySql.</li>
+          <li><strong>MYSQL_URL_USERS</strong>: url a la base de datos que usará el servicio de usuarios.</li>
+          <li><strong>MYSQL_URL_PRODUCTS</strong>: url a la base de datos que usará el servicio de productos.</li>
+          <li><strong>MYSQL_URL_INVENTORIES</strong>: url a la base de datos que usará el servicio de inventarios.</li>
+          <li><strong>jwt_key</strong>: valor de la llave con la que se firmarán y validarán los tokens.</li>
+        </ul>
+        <blockquote>
+          <p><em><strong>La llave jwt debe ser creada con el algoritmo HS256.</strong></em> Puede generarse mediante el comando 
+            <code>openssl rand -base64 32</code>. O bien se puede usar la que se muestra como ejemplo a continuación.</p>
+        </blockquote>
+        <div>
+          <h4 id="ejemplo-de-valores">Ejemplo de valores</h4>
+          <p><strong>ACLARACIÓN:</strong> Los hosts de las urls de las bases de datos (<code>mysql-database</code>) corresponden al nombre del contenedor de docker, en caso de no usar docker se debería reemplazar eso por <code>localhost</code> y usar el puerto configurado (por defecto 3306).</p>
+          <div class="code">
+            MYSQL_ROOT_PASSWORD=root
+            MYSQL_USERNAME=root
+            MYSQL_PASSWORD=root
+            MYSQL_URL_USERS=jdbc:mysql://mysql-database:3306/users?createDatabaseIfNotExist=true&amp;useTimezone=true&amp;serverTimezone=GMT&amp;characterEncoding=UTF-8
+            MYSQL_URL_PRODUCTS=jdbc:mysql://mysql-database:3306/products?createDatabaseIfNotExist=true&amp;useTimezone=true&amp;serverTimezone=GMT&amp;characterEncoding=UTF-8
+            MYSQL_URL_INVENTORIES=jdbc:mysql://mysql-database:3306/inventories?createDatabaseIfNotExist=true&amp;useTimezone=true&amp;serverTimezone=GMT&amp;characterEncoding=UTF-8
+        
+            jwt_key=&quot;ExampleSecretKeyForJWT1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ=&quot;
+          </div>
+        </div>
+      </section>
+      <section id="en-caso-de-usar-docker">
+        <h3>En caso de usar docker</h3>
+        <p>Para empezar es necesario configurar las <a href="#variables-de-entorno"><strong>variables de entorno</strong></a>. Para esto se crea un 
+          archivo .env en la carpeta raíz del proyecto (a la misma altura que se encuentra el archivo docker-compose.yml).</p>
+        <p>Teniendo docker en el sistema local, y ejecutándose, alcanza con el siguiente comando en la ubicación raíz del proyecto. Esto empaquetará 
+          los servicios y ejecutará los archivos .jar de cada uno.</p>
+        <div class="code">
+          #para la primera vez que se quiere levantar el proyecto
+          docker compose up --build  
+      
+          #para las siguientes
+          docker compose up 
+        </div>
+        <p>Adicionalmente se puede levantarlo con el perfil de desarrollo. Además de trabajar sin empaquetar la aplicación también, permite ver en tiempo real los cambios que se realicen gracias a spring boot devtools. Los comandos para esto son:</p>
+        <div class="code">
+          #para la primera vez que se quiere levantar el proyecto
+          docker compose -f docker-compose-dev.yml up --build
+      
+          #para las siguientes
+          docker compose -f docker-compose-dev.yml up
+        </div>
+      </section>
+      <section id="en-caso-de-no-usar-docker">
+        <h3>En caso de no usar docker</h3>
+        <p>Si se quiere correr el proyecto sin docker es necesario contar con los siguientes recursos:</p>
+        <ul>
+          <li>
+            <p>Este proyecto requiere instalar y tener correctamente configuradas las variables de entorno para <strong>Java JDK</strong> y 
+              <strong>Maven</strong>, tanto en Windows como en sistemas basados en Unix (Linux/macOS).</p>
+            <div id="windows">
+              <h4>Windows</h4>
+              <p>Se debe agregar al <code>Path</code> del sistema (Variable de entorno) las rutas a:</p>
+              <ul>
+                <li>El bin del <strong>JDK</strong>, en el proyecto se usa la versión 17 (ejemplo: <code>C:\Program Files\Java\jdk-17\bin</code>)</li>
+                <li>El bin de <strong>Maven</strong> (ejemplo: <code>C:\apache-maven-3.9.6\bin</code>)</li>
+              </ul>
+              <p>Para esto buscar la opción "Editar las variables de entorno" en el panel de control y hacer click en el botón "Variables de entorno...", 
+                ubicado en la pestaña Opciones avanzadas.</p>
+            </div>
+            <div id="otherSystems">
+              <h4>Linux / macOS</h4>
+              <p>En sistemas Unix-like, es necesario agregar las siguientes líneas al archivo de configuración del shell:</p>
+              <div class="code">
+                export JAVA_HOME=/ruta/a/tu/jdk
+                export PATH=$JAVA_HOME/bin:$PATH
+            
+                export MAVEN_HOME=/ruta/a/apache-maven
+                export PATH=$MAVEN_HOME/bin:$PATH
+              </div>
+              <p>Estos cambios deben agregarse en uno de los siguientes archivos, según el shell que se utilice en el sistema:</p>
+              <table>
+                <thead>
+                  <tr>
+                    <th>Shell</th>
+                    <th>Archivo de configuración</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Bash</td>
+                    <td>~/.bashrc o ~/.bash_profile</td>
+                  </tr>
+                  <tr>
+                    <td>Zsh (macOS)</td>
+                    <td>~/.zshrc</td>
+                  </tr>
+                  <tr>
+                    <td>Fish</td>
+                    <td>~/.config/fish/config.fish</td>
+                  </tr>
+                </tbody>
+              </table>
+              <p>Después de editarlos, aplicá los cambios con: <code>source <del>/.bashrc</code> o <code></del>/.zshrc</code> según corresponda</p>
+              <h4>Se puede verificar las configuraciones en una terminal (CMD o PowerShell) ejecutando:</h4>
+              <div class="code">
+                java -version
+                javac -version
+                mvn -version
+              </div>
+            </div>
+          </li>
+          <li><p>Tener instalado el server de MySql, al menos la versión 8.0. Los valores que se asignen a la 
+            cuenta serán los que deberán ir en las <a href="#variables-de-entorno">variables de entorno</a>.</p></li>
+        </ul>
+        <p>Posteriormente las variables de entorno se pueden definir como se mencionó anteriormente (pero no dentro de la variable del Path), en el IDE si 
+          este lo permite, o directamente en los application.properties de cada servicio como se muestra en el <a href="#ejemplo-de-valores">ejemplo</a>.</p>
+        <p>Finalmente se debe iniciar cada proyecto de spring ubicado en las carpetas correspondientes a los microservicios.</p>
+      </section>
+    </section>
+    <section id="authSection">
+      <h2>Autenticación y autorización</h2>
+      <section class="intro">
+        <p>Salvo para los endpoints que refieren al registro e inicio de sesión de una cuenta, <strong>el resto de endpoints requieren autenticación mediante JWT en el header correspondiente</strong>. Éste se obtiene una vez hecho un login exitoso, y se modifica si se hace el login de sub-usuario o algún logout.</p>
+        <p>Estos métodos devuelven un objeto con:</p>
+        <ul>
+        <li>Una propiedad llamada &quot;token&quot; de tipo string dentro del body de la respuesta. El valor de la misma es el valor del token. </li>
+        <li>Además se encuentra el id de la cuenta que generó el token. Aunque ésta se encuentra como claim dentro del mismo, se incluye directamente para un acceso más fácil desde el cliente, ya que esta id se debe usar en futuras peticiones como parámetro.</li>
+        </ul>
+        <p>Ejemplo de la respuesta:</p>
+        <div class="code json">
+          {
+            &quot;token&quot;: &quot;tokenJWTGenerado&quot;,
+            &quot;accountId&quot;: &quot;uuid de la cuenta en el token&quot;
+          }
+        </div>
+        <p>El valor del mismo se debe incluir en las solicitudes siguientes dentro de los headers de cada request. Específicamente dentro del header de autorización &quot;Bearer&quot;. Debería verse así:</p>
+        <div class="code">Bearer tokenJWTGenerado</div>
+        <p><strong>El espacio entre &quot;Bearer&quot; y el token es importante que se encuentre, caso contrario no será reconocido.</strong></p>
+      </section>
+      <section id="sobre-el-token">
+        <h3>Sobre el token</h3>
+        <p>Este no es solamente validado en la API gateway sino que también en cada redirección y llamado interno en cada una de las APIs.</p>
+        <p>El mismo contiene los siguientes claims (pueden ser nulos depende de los logins o logouts que se hayan hecho):</p>
+        <div class="code json">
+        {
+          &quot;sub&quot;: &quot;nombre de usuario de la cuenta&quot;,
+          &quot;accountId&quot;: &quot;id de la cuenta en formato UUID&quot;, // se debe incluir en algunos métodos para poder autorizarlos
+          &quot;userName&quot;: &quot;nombre de sub-usuario en sesión&quot;,
+          &quot;userRole&quot;: &quot;rol del sub-usuario en sesión&quot;,
+          &quot;isAdmin&quot;: &quot;valor booleano que determina si el sub-usuario es admin o no&quot;,
+          &quot;userPerms&quot;: [
+            {
+              &quot;idOfInventoryReferenced&quot;: &quot;id del inventario en su respectiva base de datos&quot;,
+              &quot;permissions&quot;: [&quot;permiso&quot;, &quot;permiso&quot;] // lista de permisos asociados a ese inventario
+            }
+          ], // esta lista puede estar vacía (o nula)
+          &quot;iat&quot;: 00000001, // fecha de emisión en ms
+          &quot;eat&quot;: 00000001 // fecha de expiración en ms
+        }
+        </div>
+        <p>La duración del token es de una hora. Esto se cambiaría en el caso de que se despliegue el sistema en algún servidor remoto. Haciendo que dure menos y que el mismo sistema renueve y devuelva un nuevo token.</p>
+      </section>
+      <section id="permisos">
+        <h3>Permisos (los que estarían en el permissions dentro del userPerms)</h3>
+        <ul>
+          <li><p>addProducts: El sub-usuario con este permiso está habilitado tanto a crear nuevos productos y agregarlos a un inventario, como a copiar de un inventario y pasarlo a otro.</p>
+          </li>
+          <li><p>editProducts: El sub-usuario con este permiso puede editar la información principal de un producto en un inventario. Por ejemplo el nombre, marca, categorías, etc. </p>
+          </li>
+          <li><p>editProductReferences: El sub-usuario con este permiso puede editar directamente la referencia a un producto. Afectando así a todos los inventarios que contengan la misma referencia en alguno de sus productos.</p>
+          </li>
+          <li><p>deleteProducts: El sub-usuario con este permiso puede borrar los productos en un inventario, pero la referencia a la información principal se mantiene si ese producto también se encuentra en otro inventario.</p>
+          </li>
+          <li><p>deleteProductReferences: El sub-usuario con este permiso puede borrar no solo los productos en inventarios, sino también sus referencias. Haciendo que si otro inventario compartía la referencia en un producto ésta se elimine.</p>
+          </li>
+          <li><p>editInventory: El sub-usuario con este permiso puede editar lo relacionado a las características de los productos dentro de un inventario, es decir el stock y disponibilidad.</p>
+          </li>
+        </ul>
+        <blockquote>
+          <p>El <strong>sub-usuario admin</strong> incluye todos estos permisos y además puede</p>
+          <ul>
+            <li>Crear, editar y eliminar sub-usuarios.</li>
+            <li>Asignar, editar y quitar permisos.</li>
+            <li>Crear y borrar inventarios.</li>
+            <li>Borrar la cuenta y todos los datos asociados a ella en las bases de datos.</li>
+          </ul>
+        </blockquote>
+        <div>
+          <p>Si se ordenaran de menor a mayor, según qué tanto las acciones que permiten esos permisos influyen a los datos de una cuenta, el resultado sería el siguiente:</p>
+          <ol>
+            <li>editInventory</li>
+            <li>editProducts</li>
+            <li>addProducts, deleteProducts</li>
+            <li>editProductReferences, deleteProductReferences</li>
+            <li>permisos del admin</li>
+          </ol>
+        </div>
+      </section>
+    </section>
+    <section id="endpoints-y-operaciones">
+      <h2>Endpoints y operaciones</h2>
+      <section class="intro">
+        <p>Todos los endpoints pueden ser accedidos a traves de la gateway. Ubicada en el localhost en el puerto 8080 
+          (<a href="http://localhost:8080">http://localhost:8080</a>).</p>
+        <p>Las operaciones se dividen según el servicio y funcionalidad.</p>
+        <p>Tanto el servicio de usuarios como el de productos devuelven el mismo tipo de formato de respuesta. El cual es el siguiente:</p>
+        <div class="code typescript">
+          interface DTO_respuestasGenerales {
+            error: null | {
+              message: string,
+              cause: string,
+              type: &quot;warning&quot; | &quot;critical&quot;,
+              exClass: string
+            },
+            data: null | object // esto contendría el objeto resultante de la operación en caso de que lo posea. También puede contener un mensaje adicional en caso de error.
+          }
+        </div>
+        <blockquote>
+          <p>Los retornos y cuerpos de las solicitudes se muestran en formato typescript, o como en el schema de graphQl, para mostrar con mayor claridad y 
+            simpleza los posibles valores.</p>
+        </blockquote>
+        <blockquote>
+          <p>Todas las id son en formato UUID de 16 bytes.</p>
+        </blockquote>
+      </section>
+      <section id="servicio-de-usuarios">
+        <h3>Servicio de usuarios</h3>
+        <div class="intro">
+          <p><strong>Administración de los datos de usuarios y sub-usuarios, manejo de autenticación y autorización.</strong></p>
+          <h4>Posibles retornos</h4>
+          <p><strong>Tener en cuenta que estos DTOs se encontrarían dentro del <em>data</em> del DTO descrito anteriormente</strong>. A excepción de cuando se llame a algún endpoint de autenticación, ya sea de inicio o de cierre, que se retornará directamente el DTO del token.</p>
+          <div class="code typescript">
+            interface DTO_cuenta {
+              id: string,
+              username: string,
+              nickName: string | null,
+              inventoryReferenceIds: [string] | null,
+              users: [DTO_subUsuario] | null
+            }
+      
+            interface DTO_subUsuario {
+              id: string,
+              name: string,
+              role: string,
+              inventoryPerms: null | [DTO_permisosPorInventario]
+            }
+      
+            interface DTO_permisosPorInventario {
+              permissions: [&quot;addProducts&quot; | &quot;editProducts&quot; | &quot;deleteProducts&quot; | &quot;editInventory&quot;],
+              idOfInventoryReferenced: string
+            }
+      
+            interface DTO_tokenJWT {
+              token: string,
+              accountId: string
+            }
+          </div>
+        </div>
+        <div id="cuentas-y-sub-usuarios">
+          <h4>Cuentas y sub-usuarios</h4>
+          <ul>
+            <li><p><strong>/account/register</strong> Registra cuenta de usuario creando y asignando también el sub-usuario admin. Este tendrá de nombre de usuario &quot;admin&quot;. <strong>No requiere token</strong>.</p>
+              <ul>
+                <li><p><strong>Método HTTP</strong>: POST</p></li>
+                <li><p><strong>Cuerpo requerido</strong>: Todos los campos son obligatorios y las repeticiones de contraseña deben coincidir con la que corresponda para que el método funcione correctamente.</p>
+                  <div class="code">
+                    {
+                      username: string,
+                      password: string,
+                      passwordRepeated: string,
+                      nickName: string,
+                      adminPassword: string,
+                      adminPasswordRepeated: string
+                    }
+                  </div>
+                </li>
+                <li><p><strong>Retorno esperado</strong>: Status code 201</p>
+                  <div class="code">
+                    {
+                      error: null
+                      data: {
+                        id: string,
+                        username: string,
+                        inventoryReferenceIds: null,
+                        users: [
+                          id: string,
+                          name: &quot;admin&quot;,
+                          role: &quot;admin&quot;,
+                          inventoryPerms: null
+                        ]
+                      }
+                    }
+                  </div>
+                </li>
+              </ul>
+            </li>
+            <li><p><strong>/account/id/{id}</strong> Busca en base de datos la cuenta con la id colocada en la misma ruta. (en el lugar de {id} iría la id de la cuenta que se quiere buscar).</p>
+              <ul>
+                <li><strong>Método HTTP</strong>: GET</li>
+                <li><strong>Requerido</strong>: la id dentro de la misma ruta.</li>
+                <li><strong>Retorno esperado</strong>: Status code 200. Se espera un <em>DTO_cuenta</em> dentro del data de <em>DTO_respuestasGenerales</em>.</li>
+              </ul>
+            </li>
+            <li><p><strong>/account/add-user</strong> Registra y asocia un nuevo sub-usuario a la cuenta especificada. </p>
+              <ul>
+                <li><strong>Método HTTP</strong>: POST</li>
+                <li><strong>Requerido</strong>:<ul>
+                  <li><p>Como cuerpo de la solicitud, <strong>name, password, y passwordRepeated</strong> son obligatorios:</p>
+                    <div class="code">
+                      {
+                        name: string,
+                        role: string,
+                        password: string,
+                        passwordRepeated: string,
+                        inventoryPerms: [DTO_permisosPorInventario] | null
+                      }
+                    </div>
+                  </li>
+                  <li><p>Cómo parámetro de la url se debe incluir <em><strong>accountId</strong></em> (string) de forma obligatoria.</p></li>
+                </ul></li>
+                <li><strong>Retorno esperado</strong>: Status code 200. <em>DTO-subUsuario</em> dentro del data de <em>DTO_respuestasGenerales</em>.</li>
+                <li><strong>Permisos</strong>: Se requiere que sea el sub-usuario admin para poder realizar esta operación sobre la cuenta definida.</li>
+              </ul>
+            </li>
+            <li><p><strong>/account/delete</strong> Borra una cuenta y todos los datos asociados a ella, incluido sus inventarios y sus productos. Como la cuenta necesita ser la misma que en el token, devolverá un nuevo token pero vacío en caso de éxito.</p>
+              <ul>
+                <li><strong>Método HTTP</strong>: DELETE</li>
+                <li><strong>Parámetro requerido</strong>: Se requiere la id de la cuenta a borrar dentro del parámetro de la url &quot;id&quot;.</li>
+                <li><strong>Retorno esperado</strong>: Status code 200. Retorna <strong>directamente</strong> el <em>DTO_tokenJWT</em> (no envuelto dentro del data de DTO_respuestasGenerales).</li>
+                <li><strong>Permisos</strong>: Se requiere el sub-usuario admin.</li>
+              </ul>
+            </li>
+            <li><p><strong>/user/id/{id}</strong> Busca en base de datos el sub-usuario con la id colocada en la misma ruta. (en el lugar de {id} iría la id del mismo).</p>
+              <ul>
+                <li><strong>Método HTTP</strong>: GET</li>
+                <li><strong>Requerido</strong>: la id en la misma ruta y además el parámetro <em>accountId</em> para verificar que no se esté intentando acceder a un usuario fuera de la cuenta detallada en el token.</li>
+                <li><strong>Retorno esperado</strong>: Status code 200. Objeto <em>DTO_subUsuario</em> dentro del data de <em>DTO_respuestasGenerales</em>.</li>
+              </ul>
+            </li>
+            <li><p><strong>/user/edit</strong> Esta operación permite editar los atributos genéricos del usuario, como el nombre y el rol. Para editar los permisos se requiere acceder al endpoint correspondiente.</p>
+              <ul>
+                <li><strong>Método HTTP</strong>: PUT</li>
+                <li><strong>Requerido</strong>: requiere un <em>DTO_subUser</em> con los campos, id, nombre y rol de forma obligatoria. Además el parámetro de url <em>accountId</em>.</li>
+                <li><strong>Retorno esperado</strong>: Status code 200. Objeto <em>DTO_subUsuario</em> dentro del data de <em>DTO_respuestasGenerales</em>.</li>
+                <li><strong>Permisos</strong>: Se requiere el sub-usuario admin.</li>
+              </ul>
+            </li>
+            <li><p><strong>/user/permissions</strong> Operación para agregar o editar permisos asociados a un sub-usuario ya existente. El microservicio detectará según la id del inventario si debe crear o editar.</p>
+              <ul>
+                <li><strong>Método HTTP</strong>: PATCH</li>
+                <li><strong>Requerido</strong>: Además del <em>DTO_permisosPorInventario</em> como cuerpo de la solicitud, se debe enviar como parámetros de url tanto la id del sub-usuario, como <em>userId</em>, y la de la cuenta a la que pertenece, como <em>accountId</em>.
+                  <ul>
+                    <li>La lista de permisos (ej: editProducts, addProducts, etc) que se mandan en el cuerpo del DTO debe incluir los que ya tenía, en caso de que se quiera editar y volver a incluirlos. Ya que se sobrescribirá la lista con la que se ingrese, permitiendo modificar la lista entera sin necesidad de hacer varias solicitudes.</li>
+                  </ul>
+                </li>
+                <li><strong>Retorno esperado</strong>: Status code 200. Objeto <em>DTO_subUsuario</em> dentro del data de <em>DTO_respuestasGenerales</em>.</li>
+                <li><strong>Permisos</strong>: Se requiere el sub-usuario admin.</li>
+              </ul>
+            </li>
+            <li><p><strong>/user/permissions/delete</strong> Permite borrar los permisos de un sub-usuario asociados a un inventario.</p>
+              <ul>
+                <li><strong>Método HTTP</strong>: PATCH</li>
+                <li><strong>Requerido</strong>: Se necesita la id del inventario como <em>invRefId</em> y la del sub-usuario como <em>userId</em>. Ademas de la de la cuenta, <em>accountId</em> para la validación.</li>
+                <li><strong>Retorno esperado</strong>: Status code 204.</li>
+                <li><strong>Permisos</strong>: Se requiere el sub-usuario admin.</li>
+              </ul>
+            </li>
+            <li><p><strong>/user/delete</strong> Borra un usuario en base a su id. También internamente se borra la relación con los inventarios a los que estaba asociado.</p>
+              <ul>
+                <li><strong>Método HTTP</strong>: DELETE</li>
+                <li><strong>Requerido</strong>: Se debe enviar como parámetros de url tanto la id del sub-usuario, como <em>id</em>, y la de la cuenta a la que pertenece, como <em>accountId</em>.</li>
+                <li><strong>Retorno esperado</strong>: Status code 204.</li>
+                <li><strong>Permisos</strong>: Se requiere el sub-usuario admin.</li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+        <div id="autenticaciones">
+          <h4>Autenticaciones. Logins y logouts</h4>
+          <p>Todos estos endpoints usan el método HTTP POST y devuelven un <em>DTO_tokenJWT</em> con el token generado y status code 200 en caso de éxito.</p>
+          <p>En el caso de los que son para login se debe incluir el siguiente cuerpo:</p>
+          <div class="code json">
+            {
+              &quot;username&quot;: &quot;nombre de usuario, ya sea el de la cuenta o la del sub-usuario según corresponda el login&quot;,
+              &quot;password&quot;: &quot;contraseña de la cuenta o sub-usuario según corresponda&quot;
+            }
+          </div>
+          <ul>
+            <li><strong>/authenticate/login/account</strong> Inicia sesión de la cuenta.</li>
+            <li><strong>/authenticate/login/user</strong> Inicia sesión con un sub-usuario. Requiere que primero haya iniciado sesión la cuenta. Solo puede haber un sub-usuario en la sesión.</li>
+            <li><strong>/authenticate/logout/account</strong> Cierra todas las sesiones activas, tanto la de la cuenta como la de sub-usuario.</li>
+            <li><strong>/authenticate/logout/user</strong> Cierra la sesión únicamente del sub-usuario pero permanece la de la cuenta.</li>
+          </ul>
+        </div>
+      </section>
+      <section id="servicio-de-productos">
+        <h3>Servicio de productos</h3>
+        <p><strong>Operaciones específicas a productos, sin importar el/los inventarios en donde se encuentren ni la info específica en ellos (stock y disponibilidad)</strong></p>
+        <ul>
+          <li><p><strong>/product/edit</strong> Sobre-escribe los detalles del producto en su base de datos. Todos los inventarios que tengan referencia al producto seleccionado verán los cambios afectados en su contenido.</p>
+            <ul>
+              <li><strong>Método HTTP</strong>: PUT</li>
+              <li><strong>Requerido</strong>:
+                <ul>
+                  <li><em>Cuerpo de la solicitud</em> un objeto con el siguiente formato. Se debe incluir incluso los datos que no fueron modificados ya que se sobre-escribirán los datos. <strong>El atributo id es obligatorio</strong>
+                    <div class="code typescript">
+                      interface DTO_producto {
+                        id: string,
+                        name: string,
+                        brand: string,
+                        model: string | undefined,
+                        description: string | undefined,
+                        unitPrice: number, // acepta decimales
+                        categories: [string] | undefined
+                      }
+                    </div>
+                  </li>
+                  <li><em>Parámetros de url</em>: se debe indicar la id de la cuenta, la misma del token, en el parámetro <em>accountId</em>.</li>
+                </ul>
+              </li>
+              <li><strong>Retorno esperado</strong>: Status code 200. Y el <em>DTO_producto</em> reflejando los cambios, y con el atributo accountId incluido en él.</li>
+              <li><strong>Permiso</strong>: se requiere el permiso <em>editProductReferences</em>.</li>
+            </ul>
+          </li>
+          <li><p><strong>/product/delete</strong>: Borra de la base de datos el producto seleccionado por si Id. Todos los inventarios que tengan referencia al producto seleccionado verán los cambios afectados en su contenido.</p>
+            <ul>
+              <li><strong>Método HTTP</strong>: DELETE</li>
+              <li><strong>Requerido</strong>: el método funcionará solo si se encuentran los 2 siguientes parámetros en la url. <em>id</em>: id del producto a borrar, <em>accountId</em> id de la cuenta con la que se inició sesión.</li>
+              <li><strong>Retorno esperado</strong>: Status code 204.</li>
+              <li><strong>Permisos</strong>: Se requiere el permiso <em>deleteProductReferences</em>.</li>
+            </ul>
+          </li>
+        </ul>
+      </section>
+      <section id="servicio-de-inventarios">
+        <h3>Servicio de inventarios</h3>
+        <div class="intro">
+          <p><strong>Encargado de administrar todo lo relacionado a inventarios y los productos dentro.</strong></p>
+          <p>Como este servicio es con GraphQl solo existe un endpoint al que se puede acceder <code>/graphql</code>, siendo una solicitud de método POST y con el cuerpo de ella en formato JSON. Estructura del cuerpo:</p>
+          <div class="code json">
+            {
+              &quot;query&quot;: &quot;query de graphQL&quot;,
+              &quot;variables&quot;: {}, // propiedad opcional en caso de que se quieran usar variables en la query. Estas variables se nombran en la query con un &quot;$&quot; antes del nombre, y de forma normal en este objeto
+              &quot;operationName&quot;: &quot;nombre de la operación a ejecutar&quot; // propiedad opcional en caso de que se manden varias operaciones en la query
+            }
+          </div>
+          <p>Ejemplos:</p>
+          <p>Ejemplo de una query para leer datos</p>
+          <div class="code json">
+            {
+              &quot;query&quot;: &quot;query {
+                getByAccount(accountId: \&quot;00112233-0011-0011-...\&quot;) {
+                  id
+                  name
+                  products {
+                    refId
+                    name
+                    unitPrice
+                    stock
+                  }
+                }
+              }&quot;
+          }
+          </div>
+          <blockquote>
+            <p>Esta query por ejemplo obtendría todos los inventarios asociados a una cuenta a traves de la id ingresada como parámetro (notar que se escribe de forma literal dentro de la misma query) y devolvería, en este caso, una lista de inventarios con solamente los atributos de id, name y products. </p>
+            <p>Como &quot;products&quot; también es un objeto <strong>se debe</strong> aclarar las propiedades que serán devueltas, en este caso solo refId, name, unitPrice y stock.</p>
+          </blockquote>
+          <p>Ejemplo de una query para realizar cambios (mutations)</p>
+          <div class="code json">
+            {
+              &quot;query&quot;: &quot;mutation ($productToAdd: ProductInput, $idOfInventory: ID) {
+                addProduct(product: $productToAdd, invId: $idOfInventory) {
+                  refId
+                  name
+                  brand
+                  categories
+                  unitPrice
+                  stock
+                }
+              }&quot;,
+              &quot;variables&quot;: {
+                &quot;productToAdd&quot;: {
+                  &quot;name&quot;: &quot;Monitor&quot;,
+                  &quot;brand&quot;: &quot;Marca&quot;,
+                  &quot;model&quot;: &quot;ABC-123pro&quot;,
+                  &quot;categories&quot;: [&quot;electrónicos&quot;, &quot;computación&quot;],
+                  &quot;unitPrice&quot;: 120.50,
+                  &quot;stock&quot;: 6
+                },
+                &quot;idOfInventory&quot;: &quot;11223344-1122-1122-...&quot;
+              }
+            }
+          </div>
+          <blockquote>
+            <p>En esta query se usan variables. Notar que éstas se definen en paréntesis después de nombrar el tipo de query (query / mutation). Luego de nombrarlas se define el tipo de la variable, ejemplo: String, Int, Boolean, [String], ID, o algún objeto personalizado como lo es <em>ProductInput</em>. Posteriormente se usan como argumentos en la operación <em>addProduct</em>.</p>
+            <p>Finalmente, a estas variables, se le asigna su valor correspondiente dentro del objeto <em>variables</em> del cuerpo del JSON.</p>
+          </blockquote>
+          <p>A continuación se detallan las operaciones que se pueden realizar en las queries. Para ver los objetos de retorno y de ingreso a ellas ver <a href="#types-e-inputs">los Types e Inputs</a> respectivamente.</p>
+          <blockquote>
+            <p>Si se encuentra un signo de exclamación (<strong>!</strong>) después de la definición de un tipo significa que este es obligatorio. Tanto como en argumento de las operaciones como en las propiedades de los objetos que se pasan o se reciben.</p>
+          </blockquote>
+          <p>De forma general un retorno se vería de la siguiente forma:</p>
+          <div class="code json">
+            {
+              &quot;data&quot;: {
+                &quot;nombreOperación&quot;: &quot;retorno de la misma o null en caso de error&quot;
+              },
+              &quot;errors&quot;: [ // presente en caso de que haya errores únicamente
+                {
+                  &quot;message&quot;: &quot;mensaje del error&quot;,
+                  &quot;locations&quot;: [
+                    { &quot;line&quot;: 1, &quot;column&quot;: 1 }
+                  ],
+                  &quot;path&quot;: [&quot;nombreOperación con el error mencionado&quot;],
+                  &quot;extensions&quot;: {} // información adicional
+                }
+              ]
+            }
+          </div>
+        </div>
+        <div id="graphQl-queries">
+          <h4>Queries - operaciones de lectura</h4>
+          <ul>
+            <li><p><strong>getById(id: ID!, accountId: ID!)</strong>: <em>Inventory</em></p>
+              <p>Busca un inventario por su Id y devuelve el objeto con la información solicitada. En caso de no encontrar devuelve error.</p>
+            </li>
+            <li><p><strong>getByAccount(accountId: ID!)</strong>: [<em>Inventory</em>]</p>
+              <p>Devuelve una lista de todos los inventarios asociados a una cuenta según su id.</p>
+            </li>
+            <li>
+              <p><strong>searchProductsInInventories(
+                name: String, 
+                brand: String, 
+                model: String, 
+                categories: [String], 
+                accountId: ID!
+              )</strong>: [<em>Inventory</em>]</p>
+              <p>Devuelve una lista de los inventarios que tengan productos que coincidan con la búsqueda, filtrando también estos productos a solo los que concuerden con lo solicitado. Salvo el argumento de la id de la cuenta, el resto son opcionales, pueden ir vacíos o directamente no estar presentes</p>
+            </li>
+          </ul>
+        </div>
+        <div id="graphQl-mutations">
+          <h4>Mutations - operaciones de escritura</h4>
+          <ul>
+            <li><p><strong>create(name: String!, accountId: ID!)</strong>: <em>Inventory</em></p>
+              <p>Operación para crear inventarios. Se requiere que sea el sub-user admin quien ejecute esa operación. <strong>name</strong> refiere al nombre que se le asignará al inventario.</p>
+            </li>
+            <li><p><strong>edit(invId: ID!, name: String!, accountId: ID!)</strong>: Boolean</p>
+              <p>Operación para editar inventarios. Se requiere que sea el sub-user admin quien ejecute esa operación.</p>
+            </li>
+            <li><p><strong>delete(id: ID!, accountId: ID!)</strong>: Boolean</p>
+              <p>Operación para eliminar inventarios. Se requiere que sea el sub-user admin quien ejecute esa operación.</p>
+            </li>
+            <li><p><strong>addProduct(product: <em>ProductInput</em>!, invId: ID!, accountId: ID!)</strong>: <em>ProductInInventory</em></p>
+              <p>Agrega un producto al inventario seleccionado, incluyendo el stock.</p>
+            </li>
+            <li><p><strong>editProductInInventory(product: <em>EditProductInput</em>!, invId: ID!, accountId: ID!)</strong>: <em>ProductInInventory</em></p>
+              <p>Esta operación editará el producto seleccionado a través de su id de referencia. No edita el de referencia sino la copia que se encuentra en ese inventario. Es decir, si el producto seleccionado también se encuentra en otros inventarios, la edición solo se verá reflejada en el que pertenece. Esta edición no incluye el stock.</p>
+              <p><em>Si el producto seleccionado se encontraba también en otros inventarios, se creará un nuevo producto de referencia, anulando así la conexión de datos compartida entre los productos</em>.</p>
+            </li>
+            <li><p><strong>copyProducts(products: [<em>ProductToCopyInput</em>]!, idTo: ID!, accountId: ID!)</strong>: Boolean</p>
+              <p>Copiará todos los productos seleccionados en base a su id de referencia al inventario de destino. También se deberá definir el nuevo stock para cada producto copiado.</p>
+              <p>Los productos copiados compartirán referencia, lo que significa que si un sub-usuario con los permisos para editar o eliminar productos de referencia realiza alguna acción sobre ellos, aquellos copiados se verán también afectados.</p>
+            </li>
+            <li><p><strong>editStockOfProduct(relativeNewStock: Int!, productRefId: ID!, invId: ID!, accountId: ID!)</strong>: Boolean</p>
+              <p>Método específico para cambiar el stock a través de un número relativo en el inventario seleccionado. Es decir que si anteriormente el producto tenia el valor <em>12</em> en stock, y en el <em>relativeNewStock</em> se coloca <em>-5</em>, el nuevo valor de stock sería <em>12-5 = 7</em>. Si en cambio es un número positivo el que se ingresa este se sumaría.</p>
+            </li>
+            <li><p><strong>deleteProductsInInventory(productRefIds: [ID]!, invId: ID!, accountId: ID!)</strong>: Boolean</p>
+              <p>Operación para borrar uno o más productos solo en el inventario seleccionado.</p>
+            </li>
+          </ul>
+        </div>
+        <div id="types-e-inputs">
+          <h4>Types e inputs</h4>
+          <p>Estos son los objetos que se retornarían y se ingresarían respectivamente a las operaciones.</p>
+          <div class="code">
+            type Inventory {
+              id: ID
+              name: String!
+              accountId: ID
+              products: [ProductInInventory]
+            }
+        
+            type ProductInInventory {
+              refId: ID
+              name: String!
+              brand: String
+              model: String
+              description: String
+              unitPrice: Int
+              categories: [String]
+              stock: Int
+              isAvailable: Boolean
+            }
+        
+        
+            input ProductInput {
+              name: String!
+              brand: String
+              model: String
+              description: String
+              unitPrice: Int
+              categories: [String]
+              stock: Int!
+            }
+        
+            input EditProductInput {
+              refId: ID!
+              name: String!
+              brand: String
+              model: String
+              description: String
+              unitPrice: Int
+              categories: [String]
+            }
+        
+            input ProductToCopyInput {
+              refId: ID!
+              stock: Int!
+            }
+          </div>
+        </div>
+      </section>
+    </section>
+    <section id="testing-y-prueba-del-sistema">
+      <h2>Testing y prueba del sistema</h2>
+      <section class="intro">
+        <p>Los tests que se encuentran en este proyecto se dividen en 3 categorías:</p>
+        <ol>
+          <li><p><strong>Pruebas unitarias</strong>: estas están destinadas a probar únicamente un servicio o componente de spring en especifico, probando 
+            los distintos métodos que este tenga. Se emulan la mayoría de dependencias para centrarse específicamente en el elemento que se está probando. 
+            Se prueban de igual forma casos de éxito como los casos de fallo.</p></li>
+          <li><p><strong>Pruebas de integración</strong>: a través de algunas herramientas específicas se hace una solicitud a alguno de los endpoints o 
+            queries de los controladores que tenga el microservicio. Esto significa que se prueba todo el servicio, desde que llega al controlador 
+            pasando por los filtros de seguridad, llegando a la base de datos, y hasta el retorno al controlador con el resultado de la operación. Los 
+            casos de fallo se centran principalmente en las autenticaciones y autorizaciones que cada endpoint, o query graphQL, requiere.</p>
+            <ul>
+              <li><p>En estas pruebas se busca aislar por servicio su funcionalidad, por lo que la llamadas a otros microservicios estarían emuladas. 
+                Pudiendo así centrarse en el microservicio que se está testeando y no depender de que otro se esté ejecutando correctamente. 
+                <em>El flujo real sería probado en las pruebas e2e</em>.</p>
+              </li>
+              <li><p>Los demás casos de errores, por ejemplo los que salen cuando no se encuentra alguna entidad necesaria para alguna operación, son 
+                evaluados desde el test del ExceptionHandler de cada servicio. Si bien se fuerzan algunos errores, sirve para verificar los resultados si 
+                una excepción se dá en algún método. </p>
+                <p>Si los métodos hacen salir alguna excepción, y cuándo lo hacen, se testean en las pruebas unitarias.</p>
+              </li>
+            </ul>
+          </li>
+          <li><p><strong>Pruebas End to End (e2e)</strong>: estas se encargan de probar flujos de solicitudes imitando lo más posible al entorno de producción. De forma que se levanta cada servicio junto a su propia base de datos MySQL, se configuran variables de entorno y demás. Ejemplos de lo que hacen estos test:</p>
+            <ul>
+              <li><p>Realizan un flujo completo de solicitudes que podría ser común en un entorno real.</p>
+                <p>Ejemplo: registro de cuenta -&gt; login de cuenta -&gt; creación de inventario -&gt; agregado de productos -&gt; obtención de inventario 
+                  con los productos.</p>
+              </li>
+              <li><p>Prueban que la comunicación entre microservicios funcione correctamente. Por ejemplo cuando se agrega un item a un inventario se 
+                comprueba que la nueva entidad tenga los datos ingresados y exista en la base de datos del servicio de productos, y que también se encuentre 
+                su implementación en la de inventarios.</p>
+              </li>
+              <li><p>Verifican flujos CRUD completos. Creación, edición, lectura y borrado de datos.</p></li>
+            </ul>
+          </li>
+        </ol>
+      </section>
+      <section id="ejecucion-de-tests">
+        <h3>Ejecución de tests</h3>
+        <p>Para ejecutar las pruebas que se encuentran en los servicios deberá ejecutar el siguiente comando desde la ubicación del servicio.</p>
+        <div class="code bash">mvn test</div>
+        <p>Este ejecutará tanto las pruebas unitarias como las de integración del servicio. </p>
+        <blockquote>
+          <p><em>Importante</em>: para poder ejecutar este comando es necesario que tenga el jdk y maven instalado de forma local. Como alternativa con tener jdk únicamente, y solo para los 3 servicios principales, productos, inventarios, y usuarios, se puede ejecutar lo siguiente: </p>
+          <div class="code bash">./mvnw test</div>
+          <p>Lo que implica que usaría el wrapper de maven, lo que ya incluye configuración y scripts para ejecutarlo sin necesidad de tenerlo localmente.</p>
+        </blockquote>
+        <p>Herramienta de logística</p>
+      </section>
+      <section id="pruebas-con-postman">
+        <h3>Prueba con Postman</h3>
+        <p>Dentro del repositorio se encuentra una colección de Postman, la cual puede ser importada en esa aplicación, trayendo con ella todos los endpoints y operaciones que son posibles en este sistema de apis, mencionados en la sección <a href="#endpoints-y-operaciones">Endpoints y operaciones</a>. Además viene con ejemplos prácticos según datos de ejemplo que son insertados en la base de datos al arrancar la aplicación por primera vez (Se pueden re-establecer si se elimina la cuenta de ejemplo y se vuelve a ejecutar la aplicación).</p>
+        <p><a href="https://github.com/GGNahuel/InventoryManagementSystem_microservices/blob/main/Inventory%20Api.postman_collection.json">Colección postman</a></p>
+        <p>Los datos de ejemplo son los siguientes, planteados para el ejemplo dado en <a href="#ejemplo-de-uso">el ejemplo de uso</a>. Algunos ya poseen id por un lado para ser referenciados entre los microservicios, y por el otro para tener datos para las pruebas en postman. El resto que no tiene id es porque se generó de forma aleatoria a través de JPA. </p>
+        <div id="datos-de-ejemplo">
+          <h4>Datos de ejemplo</h4>
+          <div>
+            <p><strong>Cuenta:</strong></p>
+            <ul><li>
+              <ul>
+                <li>id: <code>12341234-0000-0000-0000-10001000acc1</code></li>
+                <li>username: farmaciasHealth</li>
+                <li>nickName: Farmacias Health</li>
+                <li>password: accountPassword</li>
+              </ul>
+            </li></ul>
+          </div>
+
+          <div>
+            <p><strong>Sub-usuarios con sus permisos</strong></p><ul>
+            <li>Admin:
+              <ul>
+                <li>name: admin</li>
+                <li>password: adminPassword</li>
+                <li>role: Administrador/ dueño</li>
+              </ul>
+            </li>
+            <li>Gerente general:
+              <ul>
+              <li>id: <code>12341234-0000-0000-0000-000a000a0001</code></li>
+              <li>name: gerenteGeneral</li>
+              <li>password: managerPassword</li>
+              <li>role: Gerente general</li>
+              <li>permisos:
+                <ol>
+                  <li><ul>
+                    <li>permissions: addProducts, editProducts, editProductReferences, deleteProducts, deleteProductReferences, editInventory</li>
+                    <li>inventoryReference id: 12341234-0000-1000-0001-100010001000 (Inventario de la sucursal norte)</li>
+                  </ul></li>
+                  <li><ul>
+                    <li>permissions: addProducts, editProducts, editProductReferences, deleteProducts, deleteProductReferences, editInventory</li>
+                    <li>inventoryReference id: 12341234-0000-1000-0002-100010001000 (Inventario de la sucursal centro)</li>
+                  </ul></li>
+                </ol>
+              </li>
+              </ul>
+            </li>
+            <li>Encargado de sucursal norte
+              <ul>
+                <li>name: manager1</li>
+                <li>password: manager1Password</li>
+                <li>role: Encargado de sucursal norte</li>
+                <li>permisos:
+                  <ol>
+                    <li><ul>
+                      <li>permissions: addProducts, editProducts, deleteProducts, editInventory</li>
+                      <li>inventoryReference id: 12341234-0000-1000-0001-100010001000 (Inventario de la sucursal norte)</li>
+                    </ul></li>
+                  </ol>
+                </li>
+              </ul>
+            </li>
+            <li>Encargado de sucursal centro
+              <ul>
+                <li>name: manager2</li>
+                <li>password: manager2Password</li>
+                <li>role: Encargado de sucursal centro</li>
+                <li>permisos:
+                  <ol>
+                    <li><ul>
+                      <li>permissions: addProducts, editProducts, deleteProducts, editInventory</li>
+                      <li>inventoryReference id: 12341234-0000-1000-0002-100010001000 (Inventario de la sucursal centro)</li>
+                    </ul></li>
+                  </ol>
+                </li>
+              </ul>
+            </li>
+            <li>Sub-usuario para farmacéuticos de la sucursal norte
+              <ul>
+                <li>id: <code>12341234-0000-0000-0000-000a000a0002</code></li>
+                <li>name: pharmacistsForInv1</li>
+                <li>password: pharmacists1Password</li>
+                <li>role: Farmacéuticos</li>
+                <li>permisos:
+                  <ol>
+                    <li><ul>
+                    <li>permissions: editProducts</li>
+                    <li>inventoryReference id: 12341234-0000-1000-0001-100010001000 (Inventario de la sucursal norte)</li>
+                    </ul></li>
+                  </ol>
+                </li>
+              </ul>
+            </li>
+            <li>Sub-usuario para farmacéuticos de la sucursal centro
+              <ul>
+                <li>name: pharmacistsForInv2</li>
+                <li>password: pharmacists2Password</li>
+                <li>role: Farmacéuticos</li>
+                <li>permisos:
+                  <ol>
+                    <li><ul>
+                      <li>permissions: editProducts</li>
+                      <li>inventoryReference id: 12341234-0000-1000-0002-100010001000 (Inventario de la sucursal centro)</li>
+                    </ul></li>
+                  </ol>
+                </li>
+              </ul>
+            </li>
+            <li>Sub-usuario para cajeros de la sucursal norte
+              <ul>
+                <li>name: cashersForInv1</li>
+                <li>password: cashers1Password</li>
+                <li>role: Cajeros</li>
+                <li>permisos:
+                  <ol>
+                    <li><ul>
+                      <li>permissions: editInventory</li>
+                      <li>inventoryReference id: 12341234-0000-1000-0001-100010001000 (Inventario de la sucursal norte)</li>
+                    </ul></li>
+                  </ol>
+                </li>
+              </ul>
+            </li>
+            <li>Sub-usuario para cajeros de la sucursal centro
+              <ul>
+                <li>name: cashersForInv2</li>
+                <li>password: cashers2Password</li>
+                <li>role: Cajeros</li>
+                <li>permisos:
+                  <ol>
+                    <li><ul>
+                      <li>permissions: editInventory</li>
+                      <li>inventoryReference id: 12341234-0000-1000-0002-100010001000 (Inventario de la sucursal centro)</li>
+                    </ul></li>
+                  </ol>
+                </li>
+              </ul>
+            </li>
+          </ul></div>
+
+          <div>
+            <p><strong>Inventarios</strong></p>
+            <p>Ambos con el atributo <em>accountId</em> con el valor de <code>12341234-0000-0000-0000-10001000acc1</code></p>
+            <ul>
+              <li>Inventario para sucursal norte<ul>
+                <li>id: <code>12341234-0000-1000-0001-100010001000</code></li>
+                <li>name: Sucursal norte</li>
+                <li>productos:<ul>
+                  <li>id de referencia: 00000000-0000-0000-0000-000000000001, stock: 38</li>
+                  <li>id de referencia: 00000000-0000-0000-0000-000000000002, stock: 25</li>
+                  <li>id de referencia: 00000000-0000-0000-0000-000000000003, stock: 20</li>
+                  <li>id de referencia: 00000000-0000-0000-0000-000000000004, stock: 16</li>
+                  <li>id de referencia: 00000000-0000-0000-0000-000000000005, stock: 18</li>
+                  <li>id de referencia: 00000000-0000-0000-0000-000000000006, stock: 22</li>
+                  <li>id de referencia: 00000000-0000-0000-0000-000000000007, stock: 22</li>
+                  <li>id de referencia: 00000000-0000-0000-0000-000000000008, stock: 15</li>
+                  <li>id de referencia: 00000000-0000-0000-0000-000000000009, stock: 12</li>
+                  <li>id de referencia: 00000000-0000-0000-0000-000000000010, stock: 12</li>
+                  <li>id de referencia: 00000000-0000-0000-0000-000000000011, stock: 12</li>
+                  <li>id de referencia: 00000000-0000-0000-0000-000000000012, stock: 12</li>
+                  <li>id de referencia: 00000000-0000-0000-0000-000000000013, stock: 12</li>
+                  <li>id de referencia: 00000000-0000-0000-0000-000000000014, stock: 12</li>
+                  <li>id de referencia: 00000000-0000-0000-0000-000000000015, stock: 12</li>
+                  <li>id de referencia: 00000000-0000-0000-0000-000000000016, stock: 12</li>
+                  <li>id de referencia: 00000000-0000-0000-0000-000000000017, stock: 2</li>
+                </ul></li>
+              </ul></li>
+              <li>Inventario para sucursal centro<ul>
+                <li>id: <code>12341234-0000-1000-0002-100010001000</code></li>
+                <li>name: Sucursal centro</li>
+                <li>productos:<ul>
+                  <li><p>id de referencia: 00000000-0000-0000-0000-000000000001, stock: 38</p></li>
+                  <li><p>id de referencia: 00000000-0000-0000-0000-000000000002, stock: 25</p></li>
+                  <li><p>id de referencia: 00000000-0000-0000-0000-000000000003, stock: 20</p></li>
+                  <li><p>id de referencia: 00000000-0000-0000-0000-000000000004, stock: 16</p></li>
+                  <li><p>id de referencia: 00000000-0000-0000-0000-000000000005, stock: 18</p></li>
+                  <li><p>id de referencia: 00000000-0000-0000-0000-000000000006, stock: 22</p></li>
+                  <li><p>id de referencia: 00000000-0000-0000-0000-000000000008, stock: 15</p></li>
+                  <li><p>id de referencia: 00000000-0000-0000-0000-000000000009, stock: 12</p></li>
+                  <li><p>id de referencia: 00000000-0000-0000-0000-000000000010, stock: 12</p></li>
+                  <li><p>id de referencia: 00000000-0000-0000-0000-000000000011, stock: 12</p></li>
+                  <li><p>id de referencia: 00000000-0000-0000-0000-000000000012, stock: 12</p></li>
+                  <li><p>id de referencia: 00000000-0000-0000-0000-000000000014, stock: 12</p></li>
+                  <li><p>id de referencia: 00000000-0000-0000-0000-000000000015, stock: 12</p></li>
+                  <li><p>id de referencia: 00000000-0000-0000-0000-000000000016, stock: 12</p></li>
+                  <li><p>id de referencia: 00000000-0000-0000-0000-000000000018, stock: 22</p></li>
+                  <li><p>id de referencia: 00000000-0000-0000-0000-000000000019, stock: 12</p></li>
+                  <li><p>id de referencia: 00000000-0000-0000-0000-000000000020, stock: 16</p></li>
+                </ul></li>
+              </ul></li>
+            </ul>
+          </div>
+
+          <div>
+            <p><strong>Productos</strong></p>
+            <p>De igual forma el atributo accountId es la de la cuenta mencionada arriba</p>
+            <ul>
+              <li><p><strong>1</strong></p>
+                <ul>
+                  <li>id: <code>00000000-0000-0000-0000-000000000001</code></li>
+                  <li>name: Ibuprofeno 400mg</li>
+                  <li>brand: Genérico</li>
+                  <li>model: Caja 20 comprimidos</li>
+                  <li>description: Analgésico y antiinflamatorio</li>
+                  <li>categories: Medicamentos, Analgésicos</li>
+                </ul>
+              </li>
+              <li><p><strong>2</strong></p>
+                <ul>
+                  <li>id: <code>00000000-0000-0000-0000-000000000002</code></li>
+                  <li>name: Paracetamol 500mg</li>
+                  <li>brand: Genérico</li>
+                  <li>model: Caja 16 comprimidos</li>
+                  <li>description: Fiebre y dolor leve</li>
+                  <li>categories: Medicamentos, Analgésicos</li>
+                </ul>
+              </li>
+              <li><p><strong>3</strong></p>
+                <ul>
+                  <li>id: <code>00000000-0000-0000-0000-000000000003</code></li>
+                  <li>name: Amoxicilina 500mg</li>
+                  <li>brand: Genérico</li>
+                  <li>model: Caja 12 cápsulas</li>
+                  <li>description: Antibiótico de amplio espectro</li>
+                  <li>categories: Medicamentos, Antibióticos</li>
+                </ul>
+              </li>
+              <li><p><strong>4</strong></p>
+                <ul>
+                  <li>id: <code>00000000-0000-0000-0000-000000000004</code></li>
+                  <li>name: Alcohol en gel 500ml</li>
+                  <li>brand: PureHands</li>
+                  <li>model: Envase 500ml</li>
+                  <li>description: Desinfectante de manos</li>
+                  <li>categories: Higiene, Antisépticos</li>
+                </ul>
+              </li>
+              <li><p><strong>5</strong></p>
+                <ul>
+                  <li>id: <code>00000000-0000-0000-0000-000000000005</code></li>
+                  <li>name: Guantes de látex</li>
+                  <li>brand: LatexPro</li>
+                  <li>model: Caja 100 unidades</li>
+                  <li>description: Guantes descartables de látex</li>
+                  <li>categories: Higiene, Insumos médicos</li>
+                </ul>
+              </li>
+              <li><p><strong>6</strong></p>
+                <ul>
+                  <li>id: <code>00000000-0000-0000-0000-000000000006</code></li>
+                  <li>name: Termómetro digital</li>
+                  <li>brand: MedTech</li>
+                  <li>model: MT-200</li>
+                  <li>description: Termómetro de uso oral y axilar</li>
+                  <li>categories: Equipos médicos, Diagnóstico</li>
+                </ul>
+              </li>
+              <li><p><strong>7</strong></p>
+                <ul>
+                  <li>id: <code>00000000-0000-0000-0000-000000000007</code></li>
+                  <li>name: Enjuague bucal</li>
+                  <li>brand: Colgate</li>
+                  <li>model: 250ml</li>
+                  <li>description: Higiene bucal antibacterial</li>
+                  <li>categories: Higiene, Cuidado personal</li>
+                </ul>
+              </li>
+              <li><p><strong>8</strong></p>
+                <ul>
+                  <li>id: <code>00000000-0000-0000-0000-000000000008</code></li>
+                  <li>name: Toallitas húmedas</li>
+                  <li>brand: Huggies</li>
+                  <li>model: Pack 50 unidades</li>
+                  <li>description: Toallitas húmedas antibacteriales</li>
+                  <li>categories: Higiene, Cuidado personal</li>
+                </ul>
+              </li>
+              <li><p><strong>9</strong></p>
+                <ul>
+                  <li>id: <code>00000000-0000-0000-0000-000000000009</code></li>
+                  <li>name: Omeprazol 20mg</li>
+                  <li>brand: Genérico</li>
+                  <li>model: Caja 14 cápsulas</li>
+                  <li>description: Protector gástrico</li>
+                  <li>categories: Medicamentos, Gastrointestinales</li>
+                </ul>
+              </li>
+              <li><p><strong>10</strong></p>
+                <ul>
+                  <li>id: <code>00000000-0000-0000-0000-000000000010</code></li>
+                  <li>name: Diclofenac 50mg</li>
+                  <li>brand: Genérico</li>
+                  <li>model: Caja 10 comprimidos</li>
+                  <li>description: Antiinflamatorio y analgésico</li>
+                  <li>categories: Medicamentos, Antiinflamatorios</li>
+                </ul>
+              </li>
+              <li><p><strong>11</strong></p>
+                <ul>
+                  <li>id: <code>00000000-0000-0000-0000-000000000011</code></li>
+                  <li>name: Jarabe para la tos</li>
+                  <li>brand: Bisolvon</li>
+                  <li>model: Frasco 120ml</li>
+                  <li>description: Mucolítico y expectorante</li>
+                  <li>categories: Medicamentos, Respiratorios</li>
+                </ul>
+              </li>
+              <li><p><strong>12</strong></p>
+                <ul>
+                  <li>id: <code>00000000-0000-0000-0000-000000000012</code></li>
+                  <li>name: Crema antibiótica</li>
+                  <li>brand: Bactroban</li>
+                  <li>model: Pomo 15g</li>
+                  <li>description: Crema antibacteriana tópica</li>
+                  <li>categories: Medicamentos, Antibióticos</li>
+                </ul>
+              </li>
+              <li><p><strong>13</strong></p>
+                <ul>
+                  <li>id: <code>00000000-0000-0000-0000-000000000013</code></li>
+                  <li>name: Suero fisiológico</li>
+                  <li>brand: FisioLine</li>
+                  <li>model: Envase 500ml</li>
+                  <li>description: Solución salina estéril</li>
+                  <li>categories: Insumos médicos, Soluciones</li>
+                </ul>
+              </li>
+              <li><p><strong>14</strong></p>
+                <ul>
+                  <li>id: <code>00000000-0000-0000-0000-000000000014</code></li>
+                  <li>name: Jeringas descartables 5ml</li>
+                  <li>brand: MedLine</li>
+                  <li>model: Caja 100 unidades</li>
+                  <li>description: Jeringas estériles de 5ml</li>
+                  <li>categories: Insumos médicos, Descartables</li>
+                </ul>
+              </li>
+              <li><p><strong>15</strong></p>
+                <ul>
+                  <li>id: <code>00000000-0000-0000-0000-000000000015</code></li>
+                  <li>name: Venda elástica</li>
+                  <li>brand: Tensoplast</li>
+                  <li>model: 5cm x 4m</li>
+                  <li>description: Venda elástica adhesiva</li>
+                  <li>categories: Insumos médicos, Primeros auxilios</li>
+                </ul>
+              </li>
+              <li><p><strong>16</strong></p>
+                <ul>
+                  <li>id: <code>00000000-0000-0000-0000-000000000016</code></li>
+                  <li>name: Alcohol etílico 96°</li>
+                  <li>brand: Sanitol</li>
+                  <li>model: Envase 1 litro</li>
+                  <li>description: Antiséptico y desinfectante</li>
+                  <li>categories: Higiene, Antisépticos</li>
+                </ul>
+              </li>
+              <li><p><strong>17</strong></p>
+                <ul>
+                  <li>id: <code>00000000-0000-0000-0000-000000000017</code></li>
+                  <li>name: Mascarilla N95</li>
+                  <li>brand: 3M</li>
+                  <li>model: 8210</li>
+                  <li>description: Mascarilla de protección respiratoria</li>
+                  <li>categories: Higiene, Protección personal</li>
+                </ul>
+              </li>
+              <li><p><strong>18</strong></p>
+                <ul>
+                  <li>id: <code>00000000-0000-0000-0000-000000000018</code></li>
+                  <li>name: Vitamina C 1g</li>
+                  <li>brand: Redoxon</li>
+                  <li>model: Tubo 10 tabletas efervescentes</li>
+                  <li>description: Suplemento vitamínico</li>
+                  <li>categories: Suplementos, Vitaminas</li>
+                </ul>
+              </li>
+              <li><p><strong>19</strong></p>
+                <ul>
+                  <li>id: <code>00000000-0000-0000-0000-000000000019</code></li>
+                  <li>name: Leche maternizada etapa 1</li>
+                  <li>brand: Nestlé NAN</li>
+                  <li>model: Lata 800g</li>
+                  <li>description: Fórmula para lactantes</li>
+                  <li>categories: Nutrición, Infantil</li>
+                </ul>
+              </li>
+              <li><p><strong>20</strong></p>
+                <ul>
+                  <li>id: <code>00000000-0000-0000-0000-000000000020</code></li>
+                  <li>name: Crema hidratante</li>
+                  <li>brand: Nivea</li>
+                  <li>model: Tarro 200ml</li>
+                  <li>description: Crema corporal para piel seca</li>
+                  <li>categories: Cuidado personal, Cosméticos</li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+    </section>
+    </main>
+  </div>
+
+  <script src="codes/projectsPageCode.js"></script>
+  <script src="codes/translation/translationRootCode.js"></script>
+</body>
+</html>

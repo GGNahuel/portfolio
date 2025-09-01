@@ -1,0 +1,83 @@
+#modelo-de-dominio .image {
+  display: flex;
+  justify-content: center;
+  filter: drop-shadow(var(--neon-shadows2-secondary) var(--neon-third-color));
+
+  img {
+    width: 100%;
+    max-width: 1024px;
+  }
+}
+
+#modelo-de-dominio .models {
+  padding: 1rem;
+  display: grid;
+  gap: 1rem;
+  
+  .card {
+    color: var(--font-color);
+    display: flex;
+    align-items: center;
+
+    > div {
+      width: 100%;
+      padding: 1rem;
+      background-color: var(--page-bg-color);
+      border-radius: 8px;
+    }
+
+    .attributes {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+      gap: 1rem;
+    }
+  }
+
+  .card + .card {
+    margin-top: 0;
+  }
+}
+
+#usedTechnologiesSection {
+  display: flex;
+  flex-direction: column;
+
+  table {
+    border-collapse: collapse;
+  }
+
+  thead {
+    background-color: var(--main-color);
+    color: var(--page-bg-color);
+  }
+
+  tr:not(:last-child) {
+    border-bottom: 1px solid var(--main-color);
+  }
+
+  th, td {
+    padding: 1rem;
+
+    &:first-child {
+      border-right: 1px solid var(--main-color);
+    }
+  }
+
+  p {
+    margin: 0;
+
+    & + p {
+      margin-top: .8rem;
+    }
+  }
+}
+
+#componentes-y-patron-arquitectonico {
+  display: flex;
+  flex-direction: column;
+  gap: 1.3rem;
+
+  > div > h4 {
+    margin-bottom: .5rem;
+  }
+}
