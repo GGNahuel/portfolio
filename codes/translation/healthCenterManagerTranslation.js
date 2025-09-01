@@ -230,7 +230,7 @@ window.addEventListener("load", () => {
   setPageTexts()
 })
 
-changeLanguageButton.addEventListener("change", () => {
+changeLanguageButton?.addEventListener("change", () => {
   selectedLanguage = localStorage.getItem("webLanguage") == "spanish" ? "english" : "spanish"
   localStorage.setItem("webLanguage", selectedLanguage)
   selectedTranslation = translation[selectedLanguage]
@@ -244,7 +244,7 @@ const setGeneralTexts = () => {
 
 //// Presentation translations
 const setPresentationSectionTexts = () => {
-  document.querySelector("#projectPresentation > div > div").innerHTML = selectedTranslation.presentation
+  document.querySelector("#projectPresentation > div > div > h4").innerHTML = selectedTranslation.presentation
 }
 
 //// Uses translations
@@ -275,7 +275,7 @@ const setTechFeaturesTexts = () => {
   const $techFeaturesSection = document.getElementById("projectTechFeatures")
   $techFeaturesSection.querySelector("& > h2").innerHTML = selectedTranslation.techFeatures.title
   $techFeaturesSection.querySelector("ul.card").innerHTML = selectedTranslation.techFeatures.features.map(feature => 
-    `<li><span class="material-symbols-outlined">add_box</span>${feature}</li>`
+    `<li>${feature}</li>`
   ).join("")
   $techFeaturesSection.querySelector("article.card > h3").innerHTML = selectedTranslation.techFeatures.skillTitle
 }
