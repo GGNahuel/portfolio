@@ -103,7 +103,17 @@ const translation = {
         <p>Enero - marzo 2023. Argentina programa 4.0</p>`,
       unl: `
         <h4>Tecnicatura en informática de gestión.</h4>
-        <p>Febrero 2019 - diciembre 2022. Facultad de Ingenierías y Ciencias Hídricas - Universidad Nacional del litoral. Estudios incompletos</p>`,
+        <p>Febrero 2019 - diciembre 2022. Facultad de Ingenierías y Ciencias Hídricas - Universidad Nacional del litoral. Estudios incompletos</p>
+        <p>En el último año que cursé (2022), la carrera iba a cambiar su plan de estudios. Es decir, algunas materias se removerían, otras se incorporarían, 
+        e incluso algunas se combinarían. Para poder seguir con el plan que tenía, debía tener un mínimo de ellas rendidas y aprobadas, que eran 
+        más del 50% de las totales aproximadamente. Sin embargo por tener algunas materias que no podía rendir debido a las condiciones de correlación, no he
+        podido llegar a ese mínimo de materias por unas pocas, necesarias para permanecer en el plan de estudios en el que ya estaba. Por lo que tenía que empezar el 2023 con 
+        el nuevo plan académico.</p>
+        <p>Las materias que ya había cursado, rendido, y aprobado me permitían hacer equivalencias con las del nuevo plan. Pero aún así esas equivalencias eran 
+        casi como empezar la carrera desde 0, quedándome más de la mitad por realizar cuando antes ya me quedaba muy poco, rendir algunas materias que ya había 
+        cursado, luego cursar y rendir aproximadamente 4 materias y el proyecto final.</p>
+        <p>En ese momento tras analizar la situación decidí continuar con mis estudios pero por otro lado. Decidí tomar 
+        varios cursos, profundizar en teoría, lenguajes, y metodologías, adquirir más experiencia práctica a través de proyectos y demás.</p>`,
       english: `
         <h4>Formación en lengua extranjera: Inglés (B1)</h4>
         <p>Marzo - junio 2025. Estudios retomados y finalizados en "Escuela de Idiomas - Liceo municipal Antonio Fuentes del Arco”</p>
@@ -232,7 +242,16 @@ const translation = {
         <p>January - March 2023. Argentina Programa 4.0 initiative</p>`,
       unl: `
         <h4>Technician in computer sciences with a management focus</h4>
-        <p>February 2019 - December 2022. Universidad Nacional del Litoral (UNL - FICH). Incomplete studies</p>`,
+        <p>February 2019 - December 2022. Universidad Nacional del Litoral (UNL - FICH). Incomplete studies</p>
+        <p>In the last year I studied (2022), the degree program was going to change its curriculum. Some subjects would be removed, others would be added, 
+        and even some would be combined. In order to continue with the plan I was already in, I needed to have a minimum number of subjects taken and passed, 
+        which was more than 50% of the total approximately. However, since I had some of them I couldn't take the exam due to prerequisite conditions, I didn't 
+        reach that minimum number of required courses to remain in the curriculum I was in, so I had to start 2023 with the new academic plan.</p>
+        <p>The subjects I had already attended, taken, and passed allowed me to validate them against the ones in the new plan. But even so, those equivalences were 
+        almost like starting the course all over again. Remaining more than the 50% of the course, when I already almost finishing it, the only things left to do 
+        were pass the exams of some subjects, take approximately other 4 and the final project.</p> 
+        <p>At that moment, after analyzing the situation, I decided to continue with my studies but from another angle. I decided to take several small or 
+        medium courses, go deeper into theory, languages, and methodologies, and gain more practical experience through projects and more.</p>`,
       english: `
         <h4>English studies (B1)</h4>
         <p>March - june 2025. Continued and finished studies in "Liceo municipal Antonio Fuentes del Arco" language school</p>
