@@ -110,26 +110,26 @@
               <h4>Fundamentación del diseño y arquitectura de software</h4>
               <div class="plegable">
                 <ul>
-                  <li><a href="#architectureSection">Intro</a></li>
+                  <li><a href="#architectureSection">Introducción</a></li>
                   <li><a href="#estilo-arquitectenico">Estilo arquitectónico</a></li>
                   <li><a href="#modelo-de-dominio">Modelo de dominio</a><ul>
-                    <li><a href="#productos">Productos</a></li>
-                    <li><a href="#inventarios">Inventarios</a></li>
-                    <li><a href="#cuentas">Cuentas</a></li>
-                    <li><a href="#usuarios-sub-usuarios">Usuarios (sub-usuarios)</a></li>
+                    <li><a href="#modelsProducts">Productos</a></li>
+                    <li><a href="#modelsInventories">Inventarios</a></li>
+                    <li><a href="#modelsAccounts">Cuentas</a></li>
+                    <li><a href="#modelsUsers">Usuarios (sub-usuarios)</a></li>
                   </ul></li>
-                  <li><a href="#skillsSection">Resumen de tecnologías y herramientas elegidas</a></li>
+                  <li><a href="#usedTechnologiesSection">Resumen de tecnologías y herramientas elegidas</a></li>
                   <li><a href="#componentes-y-patron-arquitectonico">Componentes y patron arquitectónico</a><ul>
-                    <li><a href="#microservicio-de-usuarios">Microservicio de Usuarios</a></li>
-                    <li><a href="#microservicio-de-inventarios">Microservicio de Inventarios</a></li>
-                    <li><a href="#microservicio-de-productos">Microservicio de Productos</a></li>
-                    <li><a href="#microservicio-para-la-api-gateway">Microservicio para la API Gateway</a></li>
-                    <li><a href="#microservicio-para-pruebas-end-to-end-e2e">Microservicio para pruebas end to end (E2E)</a></li>
+                    <li><a href="#usersMicroservice">Microservicio de Usuarios</a></li>
+                    <li><a href="#inventoriesMicroservice">Microservicio de Inventarios</a></li>
+                    <li><a href="#productsMicroservice">Microservicio de Productos</a></li>
+                    <li><a href="#gatewayMicroservice">Microservicio para la API Gateway</a></li>
+                    <li><a href="#e2eTestsMicroservice">Microservicio para pruebas end to end (E2E)</a></li>
                   </ul></li>
-                  <li><a href="#flujo-de-interacci%C3%B3n-de-las-solicitudes-y-entre-microservicios">Flujo de interacción de las solicitudes y entre microservicios</a></li>
+                  <li><a href="#flujo-de-interacciones">Flujo de interacción de las solicitudes y entre microservicios</a></li>
                   <li><a href="#otros-aspectos">Otros aspectos</a><ul>
-                    <li><a href="#patrones-de-dise%C3%B1o">Patrones de diseño</a></li>
-                    <li><a href="#patrones-y-decisiones-arquitect%C3%B3nicas">Patrones y decisiones arquitectónicas</a></li>
+                    <li><a href="designPatterns">Patrones de diseño</a></li>
+                    <li><a href="#architecturePatterns">Patrones y decisiones arquitectónicas</a></li>
                     <li><a href="#entornos-y-perfiles">Entornos y perfiles</a></li>
                   </ul></li>
                 </ul>
@@ -145,14 +145,14 @@
               <h4>Instrucciones y requisitos para ejecución local</h4>
               <div class="plegable">
                 <ul>
+                  <li><a href="#installationGuide">Introducción</a></li>
                   <li><a href="#variables-de-entorno">Variables de entorno</a><ul>
                     <li><a href="#ejemplo-de-valores">Ejemplo de valores</a></li>
                   </ul></li>
                   <li><a href="#en-caso-de-usar-docker">En caso de usar docker</a></li>
                   <li><a href="#en-caso-de-no-usar-docker">En caso de no usar docker</a><ul>
                     <li><a href="#windows">Windows</a></li>
-                    <li><a href="#linux--macos">Linux / macOS</a></li>
-                    <li><a href="#se-puede-verificar-las-configuraciones-en-una-terminal-cmd-o-powershell-ejecutando">Se puede verificar las configuraciones en una terminal (CMD o PowerShell) ejecutando:</a></li>
+                    <li><a href="#otherSystems">Linux / macOS</a></li>
                   </ul></li>
                 </ul>
               </div>
@@ -167,8 +167,9 @@
               <h4>Autenticación y autorización</h4>
               <div class="plegable">
                 <ul>
+                  <li><a href="#authSection">Introducción</a></li>
                   <li><a href="#sobre-el-token">Sobre el token</a></li>
-                  <li><a href="#permisos-los-que-estar%C3%ADan-en-el-permissions-dentro-del-userperms">Permisos (los que estarían en el permissions dentro del userPerms)</a></li>
+                  <li><a href="#permisos">Permisos</a></li>
                 </ul>
               </div>        
             </div>
@@ -182,15 +183,16 @@
               <h4>Endpoints y operaciones</h4>
               <div class="plegable">
                 <ul>
+                  <li><a href="#endpoints-y-operaciones">Introducción</a></li>
                   <li><a href="#servicio-de-usuarios">Servicio de usuarios</a><ul>
                     <li><a href="#posibles-retornos">Posibles retornos</a></li>
                     <li><a href="#cuentas-y-sub-usuarios">Cuentas y sub-usuarios</a></li>
-                    <li><a href="#autenticaciones-logins-y-logouts">Autenticaciones. Logins y logouts</a></li>
+                    <li><a href="#autenticaciones">Autenticaciones. Logins y logouts</a></li>
                   </ul></li>
                   <li><a href="#servicio-de-productos">Servicio de productos</a></li>
                   <li><a href="#servicio-de-inventarios">Servicio de inventarios</a><ul>
-                    <li><a href="#queries---operaciones-de-lectura">Queries - operaciones de lectura</a></li>
-                    <li><a href="#mutations---operaciones-de-escritura">Mutations - operaciones de escritura</a></li>
+                    <li><a href="#graphQl-queries">Queries - operaciones de lectura</a></li>
+                    <li><a href="#graphQl-mutations">Mutations - operaciones de escritura</a></li>
                     <li><a href="#types-e-inputs">Types e inputs</a></li>
                   </ul></li>
                 </ul>
@@ -206,7 +208,8 @@
               <h4>Testing y prueba del sistema</h4>
               <div class="plegable">
                 <ul>
-                  <li><a href="#ejecuci%C3%B3n-de-tests">Ejecución de tests</a></li>
+                  <li><a href="#testing-y-prueba-del-sistema"></a></li>
+                  <li><a href="#ejecucion-de-tests">Ejecución de tests</a></li>
                   <li><a href="#prueba-con-postman">Prueba con Postman</a><ul>
                     <li><a href="#datos-de-ejemplo">Datos de ejemplo</a></li>
                   </ul></li>
@@ -281,7 +284,7 @@
           <img src="imgs/inventoryManager/modelDomain.webp" alt="Gráfico que muestra cómo las entidades se relacionan entre sí y los atributos que estas tendrían descritos de forma general"/>
         </div>
         <section class="models">
-          <div class="card">
+          <div class="card" id="modelsProducts">
             <div>
               <h4>Productos</h4><ul>
               <li>
@@ -312,7 +315,7 @@
               </ul>
             </div>
           </div>
-          <div class="card">
+          <div class="card" id="modelsInventories">
             <div>
               <h4>Inventarios</h4>
               <p>Encargados de gestionar los datos de los productos asociados a él.</p>
@@ -323,7 +326,7 @@
               </ul>
             </div>
           </div>
-          <div class="card">
+          <div class="card" id="modelsAccounts">
             <div>
               <h4>Cuentas</h4>
               <p>Guarda los datos que se usarán para iniciar sesión y mostrar los inventarios asociados a ella. Además es la que permite guardar dentro a los 
@@ -337,7 +340,7 @@
               </ul>
             </div>
           </div>
-          <div class="card">
+          <div class="card" id="modelsUsers">
             <div>
               <h4>Usuarios (sub-usuarios)</h4>
               <p>Como la aplicación posee un "doble login" ésta entidad también guardará sus propios datos de acceso. Además de eso posee un rol, que es más 
@@ -444,7 +447,7 @@
           <br>
           <p>A continuación se describirá cada componente siguiendo el modelo de dominio planteado, explicando cuál es la función de cada uno, cómo está compuesta su base de datos y su fundamentación.</p>
         </div>
-        <div>
+        <div id="usersMicroservice">
           <h4>Microservicio de Usuarios</h4>
           <p>Expone una API Rest que, además de registrar y manejar los datos de cuentas y sub-usuarios, se encarga también de todo lo relacionado a autenticación y autorización a nivel global. Es decir, validación de usuarios y contraseñas, encriptado de ellas, logins, y generación de los JWT.</p>
           <p>En su base de datos se encuentran las siguientes entidades:</p>
@@ -477,7 +480,7 @@
             <li>referenceId</li>
           </ul>
         </div>
-        <div>
+        <div id="inventoriesMicroservice">
           <h4>Microservicio de Inventarios</h4>
           <p>Api con GraphQL también con su propia base de datos sql. Se la define con graphQL porque es la que se comunica con el cliente principalmente, 
             <em>salvo para cuestiones de autenticación o usuarios, o cosas específicas de los productos</em>. Por lo que permitiría devolver solo los datos 
@@ -503,7 +506,7 @@
             <li>inventory (Relación muchos a uno con InventoryEntity)</li>
           </ul>
         </div>
-        <div>
+        <div id="productsMicroservice">
           <h4>Microservicio de Productos</h4>
           <p>Este microservicio contiene las operaciones para trabajar con los productos de referencia nombrados en el planteamiento de la aplicación. 
             Con él se comunica internamente el microservicio de inventarios para agregar, editar, o eliminar los datos principales de los productos. 
@@ -527,12 +530,12 @@
         <p>Estos 3 microservicios poseen Spring Security, el cual se utiliza para autorizar endpoints y realizar la validación del Json Web Token en cada 
           solicitud, incluso si el cliente sea otro microservicio del sistema o la propia gateway.</p>
   
-        <div>
+        <div id="gatewayMicroservice">
           <h4>Microservicio para la API Gateway</h4>
           <p>La gateway es un microservicio sencillo, se encarga de exponer y redirigir las solicitudes a ciertos endpoints. Validando el JWT 
             antes de la redirección a través de un filtro AuthenticationFilter.</p>
         </div>
-        <div>
+        <div id="e2eTestsMicroservice">
           <h4>Microservicio para pruebas end to end (E2E)</h4>
           <p>Este consta de un proyecto de maven el cual ejecuta distintas pruebas que cada una realiza una cadena de acciones, imitando el uso que los 
             usuarios le darían. Por ejemplo: crear sesión y e iniciarla; crear inventarios, agregarles productos, editarlos o copiarlos; crear sub-usuarios y 
@@ -674,8 +677,8 @@
           <p><em><strong>La llave jwt debe ser creada con el algoritmo HS256.</strong></em> Puede generarse mediante el comando 
             <code>openssl rand -base64 32</code>. O bien se puede usar la que se muestra como ejemplo a continuación.</p>
         </blockquote>
-        <div>
-          <h4 id="ejemplo-de-valores">Ejemplo de valores</h4>
+        <div id="ejemplo-de-valores">
+          <h4>Ejemplo de valores</h4>
           <p><strong>ACLARACIÓN:</strong> Los hosts de las urls de las bases de datos (<code>mysql-database</code>) corresponden al nombre del contenedor de docker, en caso de no usar docker se debería reemplazar eso por <code>localhost</code> y usar el puerto configurado (por defecto 3306).</p>
           <div class="code">
             MYSQL_ROOT_PASSWORD=root
@@ -822,7 +825,8 @@
         <p>La duración del token es de una hora. Esto se cambiaría en el caso de que se despliegue el sistema en algún servidor remoto. Haciendo que dure menos y que el mismo sistema renueve y devuelva un nuevo token.</p>
       </section>
       <section id="permisos">
-        <h3>Permisos (los que estarían en el permissions dentro del userPerms)</h3>
+        <h3>Permisos</h3> 
+        <h4>(los que estarían en el permissions dentro del userPerms)</h4>
         <ul>
           <li><p>addProducts: El sub-usuario con este permiso está habilitado tanto a crear nuevos productos y agregarlos a un inventario, como a copiar de un inventario y pasarlo a otro.</p>
           </li>
@@ -890,7 +894,7 @@
           <p><strong>Administración de los datos de usuarios y sub-usuarios, manejo de autenticación y autorización.</strong></p>
           <h4>Posibles retornos</h4>
           <p><strong>Tener en cuenta que estos DTOs se encontrarían dentro del <em>data</em> del DTO descrito anteriormente</strong>. A excepción de cuando se llame a algún endpoint de autenticación, ya sea de inicio o de cierre, que se retornará directamente el DTO del token.</p>
-          <div class="code typescript">
+          <div class="code typescript" id="posibles-retornos">
             interface DTO_cuenta {
               id: string,
               username: string,
