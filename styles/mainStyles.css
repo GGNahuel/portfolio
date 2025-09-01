@@ -47,11 +47,23 @@ main {
   background-position-y: minmax(0, 20%);
   transition: border-color 200ms ease-out, filter 300ms ease;
 
+  &.alternativeStyle {
+    border: 10px solid var(--bg-color);
+    color: var(--bg-color);
+    filter: drop-shadow(var(--neon-shadows1-principal) var(--bg-color));
+    background: none;
+    background-color: black;
+    
+    > *:not(.background) {
+      filter: drop-shadow(var(--neon-shadows2-principal) var(--bg-color));
+    }
+  }
+
   + .card {
     margin-top: 1rem;
   }
 
-  &:hover {
+  &:hover:not(.alternativeStyle) {
     scale: 1.01;
     border-color: var(--neon-secondary-color);
     filter: drop-shadow(var(--neon-shadows1-principal) var(--neon-secondary-color)) drop-shadow(var(--neon-shadows1-secondary) var(--secondary-color));
@@ -69,7 +81,7 @@ main {
     }
   }
 
-  h3 {
+  &:not(.alternativeStyle) h3 {
     filter: drop-shadow(var(--neon-shadows1-principal) var(--neon-main-color));
     transition: filter 300ms;
   }
