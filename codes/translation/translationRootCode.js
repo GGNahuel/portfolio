@@ -7,5 +7,5 @@ window.addEventListener("load", () => {
     localStorage.setItem("webLanguage", defaultLanguage)
   }
   selectedLanguage = localStorage.getItem("webLanguage")
-  changeLanguageButton.querySelector("input").checked = localStorage.getItem("webLanguage") == "english"
+  changeLanguageButton?.querySelector("input").checked = localStorage.getItem("webLanguage") == "english"
 })
