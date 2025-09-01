@@ -131,7 +131,7 @@ const InventoryAPI = new ProjectElement({
         "Unit, integration, and EndToEnd testing",
         "Containerization and management of them with Docker"
       ],
-      videoTitle: "In the video some operations are demonstrated in postman"
+      videoTitle: "Some operations are being demonstrated in postman"
     }
   },
   repositoryLink: "https://github.com/GGNahuel/InventoryApp_API-with-microservices",
@@ -174,7 +174,8 @@ const MassagistPage = new ProjectElement({
       name: "Sitio web para masajista",
       description: ["El sitio fue diseñado para un amigo que se formó como masajista profesional.",
         "Es una landing page sencilla en cuánto a aspectos técnicos, pero que le permite dar visibilidad al servicio que ofrece y permitir el contacto con clientes.",
-        "La web se adapta tanto a pantallas grandes como a pequeñas."
+        "La web se adapta tanto a pantallas grandes como a pequeñas.",
+        "Lanzamiento en enero 2025"
       ],
       features: ["Componentes reutilizables", "Diseño responsivo"],
       videoTitle: "Recorrido por la web"
@@ -184,7 +185,8 @@ const MassagistPage = new ProjectElement({
       description: [
         "The website was designed for a friend who trained as a professional massage therapist.",
         "It is a simple landing page in terms of technical aspects, but it allows him to showcase the services he offers and facilitate contact with clients.",
-        "The website adapts to both large and small screens."
+        "The website adapts to both large and small screens.",
+        "First upload on January 2025"
       ],
       features: ["Reusable components", "Responsive design"],
       videoTitle: "Website Tour"

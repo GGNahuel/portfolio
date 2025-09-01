@@ -346,12 +346,16 @@ main.notIndex {
   > ul {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));;
-    column-gap: 1.5rem;
+    column-gap: 1rem;
 
     li {
       display: flex;
       align-items: center;
       font-size: 1.3rem;
+      background-color: var(--secondary-color-dark);
+      border-radius: 8px;
+      padding: 16px;
+      color: var(--font-color);
       gap: 8px;
 
       span {
