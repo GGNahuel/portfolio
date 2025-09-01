@@ -114,7 +114,7 @@ const InventoryAPI = new ProjectElement({
         "Pruebas unitarias, de integración y EndToEnd",
         "Containerización y administración de los mismos con Docker"
       ],
-      videoTitle: ""
+      videoTitle: "Demostración en postman de algunas operaciones disponibles del sistema"
     },
     english: {
       name: "Inventory management API",
@@ -131,12 +131,13 @@ const InventoryAPI = new ProjectElement({
         "Unit, integration, and EndToEnd testing",
         "Containerization and management of them with Docker"
       ],
-      videoTitle: ""
+      videoTitle: "In the video some operations are demonstrated in postman"
     }
   },
   repositoryLink: "https://github.com/GGNahuel/InventoryApp_API-with-microservices",
+  expand_link: "InventoryManagementSystem.html",
   skillsList: ["Java", "Maven", "Spring boot", "Spring security", "Gateway API", "Rest API", "GraphQL API", "JWT", "MySQL", "Docker", "Postman"],
-  videoSrc: "demos/MassagistPage/demo.webm"
+  videoSrc: "demos/InventoryManager/demo.webm"
 })
 
 const HealthCenterTurnAdministrator = new ProjectElement({
