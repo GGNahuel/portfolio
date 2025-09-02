@@ -384,7 +384,7 @@ $header.addEventListener("mouseenter", () => {
   $navItems_Container.forEach(($navItem, index) => {
     anglesBackup.push(devolverAnguloActual($navItem.style.rotate))
     const angulo = calcularAnguloSegunItem(405, 90, index)
-    $navItem.style.transition = "rotate 500ms ease"
+    $navItem.style.transition = "rotate 400ms ease"
     $navItem.style.rotate = `${angulo}deg`
   })
 })
