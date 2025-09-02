@@ -26,12 +26,11 @@ const translation = {
         "API Gateway",
         "Tests unitarios y de integración",
         "Containerización de aplicaciones con Docker",
-        "Diseño para múltiples dispositivos",
-        "UX/UI"
+        "Diseño para múltiples dispositivos"
       ],
       aboutMe: {
         title: "¡Hola!. Aquí podrás conocer más de mí.",
-        formattedText: `Actualmente tengo 25 años y vivo en Argentina, más específicamente en la provincia de Santa Fe, lugar donde nací.</p>
+        formattedText: `Actualmente tengo 26 años y vivo en Argentina, más específicamente en la provincia de Santa Fe, lugar donde nací.</p>
           <br><p>Disfruto de actividades como leer, disfrutar del aire libre y salidas con amigos. Mis hobbies son el tiro con arco y la fotografía.
             Actividades a las que me gusta ponerle esfuerzo e ir mejorando con el tiempo.
           </p>
@@ -97,23 +96,21 @@ const translation = {
         <p class="comment">Este se desarrolló usando <strong>metodologías ágiles</strong>, y si bien estuve principalmente como desarrollador backend,
           también me tocó desempeñar el rol de <strong>líder técnico</strong>. Administrando el repositorio remoto de github y manejando cuestiones de git.
         </p>
-        <p class="comment"><a href="https://github.com/GrupoEgg-ProyectoFinal/WebApp_Servicios" target="_blank">Link al repositorio del proyecto final</a></p>`,
+        <p class="comment"><strong><a href="https://github.com/GrupoEgg-ProyectoFinal/WebApp_Servicios" target="_blank">Link al repositorio del proyecto 
+        final</a></strong></p>`,
       firstStepsFront: `
         <h4>Curso "Primeros pasos del desarrollo frontEnd"</h4>
         <p>Enero - marzo 2023. Argentina programa 4.0</p>`,
       unl: `
         <h4>Tecnicatura en informática de gestión.</h4>
         <p>Febrero 2019 - diciembre 2022. Facultad de Ingenierías y Ciencias Hídricas - Universidad Nacional del litoral. Estudios incompletos</p>
-        <p>En el último año que cursé (2022), la carrera iba a cambiar su plan de estudios. Es decir, algunas materias se removerían, otras se incorporarían, 
-        e incluso algunas se combinarían. Para poder seguir con el plan que tenía, debía tener un mínimo de ellas rendidas y aprobadas, que eran 
-        más del 50% de las totales aproximadamente. Sin embargo por tener algunas materias que no podía rendir debido a las condiciones de correlación, no he
-        podido llegar a ese mínimo de materias por unas pocas, necesarias para permanecer en el plan de estudios en el que ya estaba. Por lo que tenía que empezar el 2023 con 
-        el nuevo plan académico.</p>
-        <p>Las materias que ya había cursado, rendido, y aprobado me permitían hacer equivalencias con las del nuevo plan. Pero aún así esas equivalencias eran 
-        casi como empezar la carrera desde 0, quedándome más de la mitad por realizar cuando antes ya me quedaba muy poco, rendir algunas materias que ya había 
-        cursado, luego cursar y rendir aproximadamente 4 materias y el proyecto final.</p>
-        <p>En ese momento tras analizar la situación decidí continuar con mis estudios pero por otro lado mientras trabajaba. Decidí tomar 
-        varios cursos, profundizar en teoría, lenguajes, y metodologías, adquirir más experiencia práctica a través de proyectos y demás.</p>`,
+        <p>Adquirí formación sobre las bases en programación, algoritmos, lógica, diseño web, y también sobre sistemas, estructuras de datos, 
+        comunicación digital y software libre.</p>
+        <p>En 2022, la carrera estaba por modificar su plan académico que reduciría significativamente las equivalencias de las materias que ya había cursado. 
+        Ya que por varias razones y requisitos no podía mantenerme en el plan anterior. Esto implicaba retomar gran parte de la carrera desde cero, a pesar de 
+        estar en una etapa avanzada.</p>
+        <p>En aquel entonces, tras evaluar esta situación, decidí continuar mi formación, a la par que trabaja, mediante otros medios. A través de 
+        cursos, bootcamps, guías, y proyectos personales, adquiriendo también experiencia práctica sin dejar de lado aspectos teóricos.</p>`,
       english: `
         <h4>Formación en lengua extranjera: Inglés (B1)</h4>
         <p>Febrero - junio 2025. Estudios retomados y finalizados en "Escuela de Idiomas - Liceo municipal Antonio Fuentes del Arco”</p>
@@ -167,19 +164,19 @@ const translation = {
         "Gateway API",
         "Unit and integration tests",
         "Application containerization with Docker",
-        "Multi-platform design",
-        "UX/UI"
+        "Multi-platform design"
       ],
       aboutMe: {
         title: "Hello!. Here you can know more about me.",
-        formattedText: `I'm 25 years old and live in Argentina at the moment, to be more specific in the province of Santa Fe, place where I was born.</p>
+        formattedText: `I'm 26 years old and right now I'm living in Argentina, to be more specific in Santa Fe, place where I was born.</p>
           <br><p>I enjoy activities like reading books, spending time outdoors and hanging out with my friends. My hobbies are archery and photography.
-            Activities I like to dedicate time and continually improve.
+            Activities I like to dedicate time and improve over time.
           </p>
           <br><p>My journey in programming begun when I was a teenager and wanted to know more about the process of making video-games. 
-            Later I chose to study more of this area, and after finding enjoyment and passion for it, I decided to train professionally as a developer.
+            Later I chose to study more of this area, and after finding enjoyment and passion for it, I decided to study and develop my skills as a developer
+            in a professional way.
           </p>
-          <p>I like this activity because there is always room to improve the skills or knowledge someone already have. 
+          <p>I like this activity because there is always room to improve the skills or knowledge someone already has. 
             I feel motivated when I try to find the best possible solution to the different upcoming challenges.
         </p>`
       }
@@ -237,22 +234,21 @@ const translation = {
         <p class="comment">This project was using <strong>agile methodologies</strong>, and in this case I was not only
           in the backend team, but also I was designated as a <strong>tech leader</strong>. Managing the remote repository in github and git issues.
         </p>
-        <p class="comment"><a href="https://github.com/GrupoEgg-ProyectoFinal/WebApp_Servicios" target="_blank">Link to the final project repository</a></p>`,
+        <p class="comment"><strong><a href="https://github.com/GrupoEgg-ProyectoFinal/WebApp_Servicios" target="_blank">Link to the final project 
+        repository</a></strong></p>`,
       firstStepsFront: `
         <h4>First steps in frontend development course</h4>
         <p>January - March 2023. Argentina Programa 4.0 initiative</p>`,
       unl: `
         <h4>Technician in computer sciences with a management focus</h4>
         <p>February 2019 - December 2022. Universidad Nacional del Litoral (UNL - FICH). Incomplete studies</p>
-        <p>In the last year I studied (2022), the degree program was going to change its curriculum. Some subjects would be removed, others would be added, 
-        and even some would be combined. In order to continue with the plan I was already in, I needed to have a minimum number of subjects taken and passed, 
-        which was more than 50% of the total approximately. However, since I had some of them I couldn't take the exam due to prerequisite conditions, I didn't 
-        reach that minimum number of required courses to remain in the curriculum I was in, so I had to start 2023 with the new academic plan.</p>
-        <p>The subjects I had already attended, taken, and passed allowed me to validate them against the ones in the new plan. But even so, those equivalences were 
-        almost like starting the course all over again. Remaining more than the 50% of the course, when I already almost finishing it, the only things left to do 
-        were pass the exams of some subjects, take approximately other 4 and the final project.</p> 
-        <p>At that moment, after analyzing the situation, I decided to continue with my studies but from another angle while I keep working. I decided to take several small and 
-        medium courses, go deeper into theory, languages, and methodologies, and gain more practical experience through projects and more.</p>`,
+        <p>I gained training on the basics of programming, algorithms, logic, web design, as well as on systems, data structures, 
+          digital communication, and open software.</p>
+        <p>In 2022, the degree program was about to change its academic plan, which would significantly reduce the equivalences of the courses I had already 
+          taken. For several reasons and requirements, I couldn't stay in the previous plan. This meant having to start over a large part of the degree, even 
+          though I was already at an advanced stage.</p>
+        <p>At that time, after evaluating the situation, I decided to continue my education, while working at the same time, through other means. By taking courses, bootcamps, guides, 
+          and personal projects, so with that I could still gain practical experience without leaving aside theoretical aspects too.</p>`,
       english: `
         <h4>English studies (B1)</h4>
         <p>February - june 2025. Continued and finished studies in "Liceo municipal Antonio Fuentes del Arco" language school</p>

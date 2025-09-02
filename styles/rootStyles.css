@@ -54,7 +54,9 @@ button {
     padding: 0.7rem;
     font-size: 1.2rem;
     font-weight: 600;
-    border-radius: 8px;
+    border-radius: 4px;
+    background-color: var(--page-bg-color2);
+    color: var(--main-color);
     border: 0;
     cursor: pointer;
     display: flex;
@@ -62,7 +64,8 @@ button {
     gap: 8px;
 
     &:hover {
-        background-color: rgb(207, 207, 207);
+        outline: 1px solid var(--neon-main-color);
+        color: var(--neon-main-color);
         transition: 300ms;
     }
     
