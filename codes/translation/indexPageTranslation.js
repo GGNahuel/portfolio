@@ -116,7 +116,7 @@ const translation = {
         varios cursos, profundizar en teoría, lenguajes, y metodologías, adquirir más experiencia práctica a través de proyectos y demás.</p>`,
       english: `
         <h4>Formación en lengua extranjera: Inglés (B1)</h4>
-        <p>Marzo - junio 2025. Estudios retomados y finalizados en "Escuela de Idiomas - Liceo municipal Antonio Fuentes del Arco”</p>
+        <p>Febrero - junio 2025. Estudios retomados y finalizados en "Escuela de Idiomas - Liceo municipal Antonio Fuentes del Arco”</p>
         <p>2013 - 2016. Formación en el Instituto de Inglés San Roque. Estudios no finalizados</p>`,
       others: `
         <h4>Extras</h4>
@@ -254,7 +254,7 @@ const translation = {
         medium courses, go deeper into theory, languages, and methodologies, and gain more practical experience through projects and more.</p>`,
       english: `
         <h4>English studies (B1)</h4>
-        <p>March - june 2025. Continued and finished studies in "Liceo municipal Antonio Fuentes del Arco" language school</p>
+        <p>February - june 2025. Continued and finished studies in "Liceo municipal Antonio Fuentes del Arco" language school</p>
         <p>2013 - 2016. Course in english institute San Roque. Not finished studies</p>`,
       others: `
         <h4>Extras</h4>
