@@ -38,6 +38,10 @@
       text-decoration: underline;
     }
   }
+
+  .important {
+    color: var(--neon-secondary-color);
+  }
 }
 
 .subForm {

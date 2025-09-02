@@ -100,9 +100,9 @@ class ProjectElement {
 const InventoryAPI = new ProjectElement({
   translationObject: {
     spanish: {
-      name: "Api para gestión de inventarios",
+      name: "Sistema de gestión de inventarios",
       description: [
-        "Esta api permite registrar usuarios para que estos puedan crear sus inventarios y llenarlos con los items que el usuario necesite.", 
+        "Este sistema permite registrar usuarios para que estos puedan crear sus inventarios y llenarlos con los items que el usuario necesite.", 
         " Ellos pueden a su vez crear sub-usuarios en la misma cuenta, al cual se accede también con nombre y contraseña. Lo que les permitiría " +
         "asignar, a través de un sub-usuario admin, permisos que pueden variar para cada inventario creado en la misma cuenta."
       ],
@@ -117,9 +117,9 @@ const InventoryAPI = new ProjectElement({
       videoTitle: "Demostración en postman de algunas operaciones disponibles del sistema"
     },
     english: {
-      name: "Inventory management API",
+      name: "Inventory management system",
       description: [
-        "This api allows the users to create inventories and fill them with the items they could require.", 
+        "This system allows the users to create inventories and fill them with the items they could require.", 
         "Also, these users can register sub-users in the same account, who can access with a username and a password too. " +
         "This allows to the admin sub-user assign different permissions to each of the inventories associated to the account."
       ],

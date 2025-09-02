@@ -112,7 +112,7 @@ const translation = {
         <p>Las materias que ya había cursado, rendido, y aprobado me permitían hacer equivalencias con las del nuevo plan. Pero aún así esas equivalencias eran 
         casi como empezar la carrera desde 0, quedándome más de la mitad por realizar cuando antes ya me quedaba muy poco, rendir algunas materias que ya había 
         cursado, luego cursar y rendir aproximadamente 4 materias y el proyecto final.</p>
-        <p>En ese momento tras analizar la situación decidí continuar con mis estudios pero por otro lado. Decidí tomar 
+        <p>En ese momento tras analizar la situación decidí continuar con mis estudios pero por otro lado mientras trabajaba. Decidí tomar 
         varios cursos, profundizar en teoría, lenguajes, y metodologías, adquirir más experiencia práctica a través de proyectos y demás.</p>`,
       english: `
         <h4>Formación en lengua extranjera: Inglés (B1)</h4>
@@ -139,7 +139,8 @@ const translation = {
       },
       aboutQuestions: "La respuestas a esas preguntas me permitirán entender mejor sus necesidades y alinearme más a sus objetivos.",
       button: "Contactarse",
-      alsoMessage: `También puede buscarme en <a href="https://www.linkedin.com/in/nahuel-gomez-gahn/" target="_blank">LinkedIn</a> o escribiéndome al e-mail nahuelg8799@gmail.com`
+      alsoMessage: `También puede buscarme en <a href="https://www.linkedin.com/in/nahuel-gomez-gahn/" target="_blank">LinkedIn</a> o escribiéndome al 
+      e-mail <span class="important">nahuelg8799@gmail.com</span>`
     }
   },
 
@@ -250,7 +251,7 @@ const translation = {
         <p>The subjects I had already attended, taken, and passed allowed me to validate them against the ones in the new plan. But even so, those equivalences were 
         almost like starting the course all over again. Remaining more than the 50% of the course, when I already almost finishing it, the only things left to do 
         were pass the exams of some subjects, take approximately other 4 and the final project.</p> 
-        <p>At that moment, after analyzing the situation, I decided to continue with my studies but from another angle. I decided to take several small or 
+        <p>At that moment, after analyzing the situation, I decided to continue with my studies but from another angle while I keep working. I decided to take several small and 
         medium courses, go deeper into theory, languages, and methodologies, and gain more practical experience through projects and more.</p>`,
       english: `
         <h4>English studies (B1)</h4>
@@ -274,7 +275,8 @@ const translation = {
       },
       aboutQuestions: "The answers to this questions allow me to a better understanding of your needs and so I can align myself with your goals.",
       button: "Send",
-      alsoMessage: `Also, you can contact me in <a href="https://www.linkedin.com/in/nahuel-gomez-gahn/" target="_blank">Linkedin</a> or sending an email to nahuelg8799@gmail.com`
+      alsoMessage: `Also, you can contact me in <a href="https://www.linkedin.com/in/nahuel-gomez-gahn/" target="_blank">Linkedin</a> or sending an email 
+      to <span class="important">nahuelg8799@gmail.com</span>`
     }
   }
 }
