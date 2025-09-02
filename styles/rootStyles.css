@@ -38,7 +38,7 @@
     width: 17px;
 }
 *::-webkit-scrollbar-thumb {
-    background-color: var(--main-color);
+    background-color: var(--neon-main-color);
     box-shadow: var(--neon-shadows2-secondary) var(--neon-main-color);
     border-radius: 8px;
 }
