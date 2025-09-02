@@ -31,9 +31,11 @@ class ProjectElement {
         <g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
         <g id="SVGRepo_iconCarrier"><path fill="#ffffffff" fill-rule="evenodd" d="M10 3a7 7 0 100 14 7 7 0 000-14zm-9 7a9 9 0 1118 0 9 9 0 01-18 0zm8-4a1 1 0 011-1h.01a1 1 0 110 2H10a1 1 0 01-1-1zm.01 8a1 1 0 102 0V9a1 1 0 10-2 0v5z"></path></g>
       </svg></a>`,
-      expandLink_element: `<a class="pC_link" href="${this.expand_link}">
-        ${lang == "spanish" ? "Saber más" : "See more info"}
-      </a>`,
+      expandLink_element: this.expand_link ? 
+        `<a class="pC_link" href="${this.expand_link}">
+          ${lang == "spanish" ? "Saber más" : "See more info"}
+        </a>`
+      : "",
       features_section: `<div><p>${lang == "spanish" ? "Características" : "Features"}:</p><ul class="pC_features">${featuresList}</ul></div>`,
       link_element: this.link ? 
         `<a class="pC_link" href="${this.link}" target="_blank">
@@ -63,7 +65,7 @@ class ProjectElement {
     }
 
     return `
-      ${!this.isPortfolioCard ? mainProjectsElements.expand_button : ""}
+      ${!this.isPortfolioCard && this.expand_link ? mainProjectsElements.expand_button : ""}
       <div class="projectCard_info">
         <header class="pC_header">
           <h3>${selectedTranslationObj.name}</h3>
