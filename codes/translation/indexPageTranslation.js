@@ -26,12 +26,11 @@ const translation = {
         "API Gateway",
         "Tests unitarios y de integración",
         "Containerización de aplicaciones con Docker",
-        "Diseño para múltiples dispositivos",
-        "UX/UI"
+        "Diseño para múltiples dispositivos"
       ],
       aboutMe: {
         title: "¡Hola!. Aquí podrás conocer más de mí.",
-        formattedText: `Actualmente tengo 25 años y vivo en Argentina, más específicamente en la provincia de Santa Fe, lugar donde nací.</p>
+        formattedText: `Actualmente tengo 26 años y vivo en Argentina, más específicamente en la provincia de Santa Fe, lugar donde nací.</p>
           <br><p>Disfruto de actividades como leer, disfrutar del aire libre y salidas con amigos. Mis hobbies son el tiro con arco y la fotografía.
             Actividades a las que me gusta ponerle esfuerzo e ir mejorando con el tiempo.
           </p>
@@ -165,19 +164,19 @@ const translation = {
         "Gateway API",
         "Unit and integration tests",
         "Application containerization with Docker",
-        "Multi-platform design",
-        "UX/UI"
+        "Multi-platform design"
       ],
       aboutMe: {
         title: "Hello!. Here you can know more about me.",
-        formattedText: `I'm 25 years old and live in Argentina at the moment, to be more specific in the province of Santa Fe, place where I was born.</p>
+        formattedText: `I'm 26 years old and right now I'm living in Argentina, to be more specific in Santa Fe, place where I was born.</p>
           <br><p>I enjoy activities like reading books, spending time outdoors and hanging out with my friends. My hobbies are archery and photography.
-            Activities I like to dedicate time and continually improve.
+            Activities I like to dedicate time and improve over time.
           </p>
           <br><p>My journey in programming begun when I was a teenager and wanted to know more about the process of making video-games. 
-            Later I chose to study more of this area, and after finding enjoyment and passion for it, I decided to train professionally as a developer.
+            Later I chose to study more of this area, and after finding enjoyment and passion for it, I decided to study and develop my skills as a developer
+            in a professional way.
           </p>
-          <p>I like this activity because there is always room to improve the skills or knowledge someone already have. 
+          <p>I like this activity because there is always room to improve the skills or knowledge someone already has. 
             I feel motivated when I try to find the best possible solution to the different upcoming challenges.
         </p>`
       }
