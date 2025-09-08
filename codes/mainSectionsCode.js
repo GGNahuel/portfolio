@@ -149,7 +149,8 @@ const HealthCenterTurnAdministrator = new ProjectElement({
       description: ["Aplicación de interfaz sencilla pensada para poder gestionar datos en un centro de salud.", 
         "Cuenta con una base de datos relacional en donde  se registran los turnos, pacientes, profesionales de salud, " +
         "áreas de servicio, e incluso consultorios. Todas estas entidades se pueden crear, modificar o eliminar a traves de una interfaz simple y accesible. ",
-        "Las acciones que se pueden realizar dependen del usuario que haya iniciado sesión y los permisos que éste tenga."],
+        "Las acciones que se pueden realizar dependen del usuario que haya iniciado sesión y los permisos que éste tenga.","", 
+        "Actualmente el proyecto se encuentra en actualización, por lo que la información mostrada en la página de este proyecto puede variar con la que se muestra en el repositorio."],
       features: ["Base de datos SQL", "Arquitectura cliente-servidor", "Desarrollo de API REST", "Seguridad web", "Sesiones de usuario y roles", "Búsquedas dinámicas"],
       videoTitle: "Demostración general del proyecto",
     },
@@ -158,7 +159,8 @@ const HealthCenterTurnAdministrator = new ProjectElement({
       description: ["This is an application with a simple interface designed to help managing data in a health center.",
         "It has a relational database to store information about turns, patients, health professionals, service areas, and even assigned rooms. " +
         "All of these entities can be created, modified or deleted through an easy-to-use interface.",
-        "The available actions depends on the permissions of the logged user."
+        "The available actions depends on the permissions of the logged user.", "",
+        "At the moment the project is being updated. Meaning the information on this portfolio could be different from what is in the repository."
       ],
       features: ["Relational database", "Client-server architecture", "Rest API development", "Web security", "User session and roles", "Dynamic search"],
       videoTitle: "General demonstration of the project"
