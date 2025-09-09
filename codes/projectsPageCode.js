@@ -3,7 +3,7 @@ const navbar = document.querySelector(".projectsNavbar")
 const mainZone = document.querySelector("main.notIndex")
 mainZone.style.height = `calc(100dvh - ${navbar.scrollHeight}px)`
 
-// _____________________________________________
+// ==========================================================
 // Rellenar y agregar funcionalidad a los desplegables de los índices de contenidos
 const indexUiComponents = document.querySelectorAll(".indexUI")
 indexUiComponents.forEach(element => {
@@ -71,7 +71,7 @@ const defineHeightOfStretchPart = () => {
 window.addEventListener("load", defineHeightOfStretchPart)
 window.addEventListener("resize", defineHeightOfStretchPart)
 
-// _____________________________________________
+// =========================================
 // Formatear elementos code
 document.querySelectorAll(".code").forEach(el => {
   // saltos de linea; primero detecta si la primera linea está vacía, si es el caso la quita del array
@@ -95,23 +95,52 @@ document.querySelectorAll(".code").forEach(el => {
   })
 })
 
-// ____________________________
+// ========================================
 // Código de carrusel
 const carrouselContainer = document.querySelector('.carrouselContainer')
+const images = carrouselContainer.querySelectorAll('.imageCarrouselContainer')
+const selectButtonContainer = document.querySelector('.selectItemButtons')
 const leftButton = document.querySelector('.carrouselButtons .left')
 const rightButton = document.querySelector('.carrouselButtons .right')
 
-const scrollAmount = carrouselContainer?.offsetWidth;
-const scrollCarrousel = (numberDirection) => {
-  carrouselContainer?.scrollBy({
-    left: scrollAmount * numberDirection,
+const scrollAmount = carrouselContainer?.offsetWidth
+let carrouselIndex = 0
+
+const scrollCarrousel = (newIndex, isRelative = false) => {
+  if (isRelative) {
+    carrouselIndex += newIndex
+  } else {
+    carrouselIndex = newIndex
+  }
+
+  if (newIndex < 0) {
+    carrouselIndex = images.length - 1
+  }
+  if (newIndex > images.length - 1) {
+    carrouselIndex = 0
+  }
+
+  newIndex = carrouselIndex
+
+  carrouselContainer?.scrollTo({
+    left: scrollAmount * newIndex,
     behavior: 'smooth',
-  });
+  })
 }
 
 // - Evento para desplazarse a la izquierda
-leftButton?.addEventListener('click', () => scrollCarrousel(-1));
+leftButton?.addEventListener('click', () => scrollCarrousel(-1, true))
 
 // - Evento para desplazarse a la derecha
-rightButton?.addEventListener('click', () => scrollCarrousel(1));
+rightButton?.addEventListener('click', () => scrollCarrousel(1, true))
 
+// - Creación de botones de selección específicos
+images.forEach((_, index) => {
+  if (!selectButtonContainer) return
+
+  const itemSelector = document.createElement("span")
+  itemSelector.addEventListener('click', () => {
+    scrollCarrousel(index)
+  })
+  selectButtonContainer.appendChild(itemSelector)
+})
