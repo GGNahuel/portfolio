@@ -109,6 +109,7 @@ let carrouselIndex = 0
 const scrollCarrousel = (newIndex, isRelative = false) => {
   if (isRelative) {
     carrouselIndex += newIndex
+    newIndex = carrouselIndex
   } else {
     carrouselIndex = newIndex
   }
@@ -128,11 +129,25 @@ const scrollCarrousel = (newIndex, isRelative = false) => {
   })
 }
 
+const highlightItemSelector = () => {
+  const itemSelectors = selectButtonContainer.querySelectorAll("& > span")
+  itemSelectors.forEach((item, index) => {
+    if (index == carrouselIndex) item.classList.toggle("active", true)
+    else item.classList.toggle("active", false)
+  })
+}
+
 // - Evento para desplazarse a la izquierda
-leftButton?.addEventListener('click', () => scrollCarrousel(-1, true))
+leftButton?.addEventListener('click', () => {
+  scrollCarrousel(-1, true)
+  highlightItemSelector()
+})
 
 // - Evento para desplazarse a la derecha
-rightButton?.addEventListener('click', () => scrollCarrousel(1, true))
+rightButton?.addEventListener('click', () => {
+  scrollCarrousel(1, true)
+  highlightItemSelector()
+})
 
 // - Creación de botones de selección específicos
 images.forEach((_, index) => {
@@ -141,6 +156,13 @@ images.forEach((_, index) => {
   const itemSelector = document.createElement("span")
   itemSelector.addEventListener('click', () => {
     scrollCarrousel(index)
+
+    const othersItemSelectors = selectButtonContainer.querySelectorAll("&>span")
+    othersItemSelectors.forEach(item => {
+      item.classList.toggle("active", false)
+    })
+    itemSelector.classList.add("active")
   })
+  if (index == 0) itemSelector.classList.add("active")
   selectButtonContainer.appendChild(itemSelector)
 })
