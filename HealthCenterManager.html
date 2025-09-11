@@ -13,6 +13,7 @@
   <link rel="stylesheet" href="styles/projectPageStyles.css">
   <link rel="stylesheet" href="styles/sections_styles/skillsSection.css">
   <link rel="stylesheet" href="styles/sections_styles/presentationSection.css">
+  <link rel="stylesheet" href="styles/projectSections_styles/architectureSection.css">
 </head>
 
 <body>
@@ -51,7 +52,32 @@
         <div><h4></h4></div>
         <img src="imgs/healthCenter/devices demo.webp" alt="Demostración de la vista principal en distintos dispositivos">
       </div>
-      <div>
+      <div class="mainFeatures">
+        <h3>Funcionalidades generales</h3>
+        <ul>
+          <div>
+            <p><strong>Acerca de los usuarios:</strong></p>
+            <li>La aplicación permite que los usuarios puedan tener uno de estos 3 roles: Administrador, General y Profesional.</li>
+            <li>El Administrador puede crear, modificar o dar de baja cualquier dato que este presente en la base de datos de la aplicación.</li>
+            <li>El rol "General" está pensado para quien esté a cargo de registrar los turnos y pacientes, contando también con la posibilidad de modificarlos</li>
+            <li>Los usuarios con rol "Profesional" están destinados a los profesionales de salud, permitiéndoles visualizar y administrar sus turnos asociados, o a asociar, 
+              de forma más directa. Así como sus propios datos.</li>
+            <li>Cualquier usuario, o incluso sin iniciar sesión, podrá visualizar los datos que quiera. Pero modificarlos, o crear nuevos, depende del rol.</li>
+          </div>
+          <div>
+            <p><strong>Acerca del trabajo con datos:</strong></p>
+            <li>La búsqueda de cada tipo de dato cuenta con filtros y búsquedas personalizadas para cada uno.</li>
+            <li>El registro o modificación de datos cuenta con verificaciones y validaciones. Que en caso de que no se cumplan o haya errores se los mostrará en pantalla.</li>
+            <li>Tanto la creación como la modificación de turnos muestra un calendario en el que puedes seleccionar el horario y la fecha de forma más sencilla. A 
+              su vez que muestra los turnos ya ocupados para el área seleccionada y profesional.</li>
+            <li>Algunos de sus datos pueden darse de baja, permitiendo conservarlos pero marcarlos como inactivos.</li>
+          </div>
+          <div>
+            <p><strong>Otras características:</strong></p>
+            <li>Cuenta con diseños que se adaptan al tema del navegador (tema oscuro o tema claro).</li>
+            <li>El diseño cambia según el tamaño de pantalla del dispositivo</li>
+          </div>
+        </ul>
         <!-- objetivos y función de la página/app (para qué sirve) -->  
       </div>
     </section>
@@ -59,10 +85,6 @@
       <h3>Demostración general</h3>
       <p>En el video se muestran distintas funcionalidades de la aplicación. Se muestran casos de éxito y de fallo ante distintas situaciones</p>
       <video src="demos/HealthCenter/demoGeneral.webm" preload="metadata" controls muted></video>
-    </section>
-    <section id="projectUses">
-      <h2></h2>
-      <div></div>
     </section>
     <section id="carrousel">
       <div class="carrouselContainer">
@@ -108,25 +130,535 @@
         </div>
       </div>
       <div class="carrouselButtons">
-        <span class="left">&lt;</span><span class="right">&gt;</span>
+        <span class="left">&lt;</span>
+        <div class="selectItemButtons"></div>
+        <span class="right">&gt;</span>
       </div>
     </section>
-    <section id="projectTechFeatures">
-      <h2>Características técnicas</h2>
-      <ul class="card"></ul>
-      <article class="card skillCard">
-        <h3></h3>
+    <section id="pageIndex">
+      <h2>Contenidos</h2>
+      <div class="indexesContainer">
+
+        <div class="indexUI">
+          <div class="inner">
+            <div class="top"></div><div class="stretch"></div><div class="bottom"></div>
+            <div class="content">
+              <h4>Fundamentación de Arquitectura y diseño de software</h4>
+              <div class="plegable">
+                <ul>
+                  <li><a href="#estilo-arquitectónico">Estilo arquitectónico</a></li>
+                  <li><a href="#modelo-de-dominio">Modelo de dominio</a>
+                    <ul>
+                      <li><a href="#turnos">Turnos</a></li>
+                      <li><a href="#pacientes">Pacientes</a></li>
+                      <li><a href="#profesionales-de-salud">Profesionales de salud</a></li>
+                      <li><a href="#usuarios">Usuarios</a></li>
+                    </ul>
+                  </li>
+                  <li><a href="#resumen-de-tecnologías-y-herramientas-elegidas">Resumen de tecnologías y herramientas elegidas</a></li>
+                  <li><a href="#patrón-arquitectónico">Patrón arquitectónico</a>
+                    <ul>
+                      <li><a href="#capa-del-modelo">Capa del modelo</a></li>
+                      <li><a href="#capa-de-vista">Capa de vista</a>
+                        <ul>
+                          <li><a href="#vistas">Vistas</a></li>
+                        </ul>
+                      </li>
+                      <li><a href="#capa-de-controlador">Capa de controlador</a></li>
+                    </ul>
+                  </li>
+                  <li><a href="#seguridad-y-autenticaciones">Seguridad y autenticaciones</a>
+                    <ul>
+                      <li><a href="#roles-disponibles">Roles disponibles</a></li>
+                      <li><a href="#validación-de-datos">Validación de datos</a></li>
+                    </ul>
+                  </li>
+                  <li><a href="#entornos">Entornos</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="indexUI">
+          <div class="inner">
+            <div class="top"></div><div class="stretch"></div><div class="bottom"></div>
+            <div class="content">
+              <h4>Instrucciones de instalación y requisitos</h4>
+              <div class="plegable">
+                <ul>
+                  <li><a href="#variables-de-entorno">Variables de entorno</a></li>
+                  <li><a href="#en-caso-de-usar-docker">En caso de usar docker</a></li>
+                  <li><a href="#en-caso-de-no-usar-docker">En caso de no usar docker</a>
+                    <ul>
+                      <li><a href="#windows">Windows</a></li>
+                      <li><a href="#linux--macos">Linux / macOS</a></li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="indexUI">
+          <div class="inner">
+            <div class="top"></div><div class="stretch"></div><div class="bottom"></div>
+            <div class="content">
+              <h4>Guía de operaciones</h4>
+              <div class="plegable">
+                <ul>
+                  <li><a href="#registrar-nuevo-usuario">Registrar nuevo usuario</a></li>
+                  <li><a href="#inicio-de-sesión">Inicio de sesión</a></li>
+                  <li><a href="#registrar-turnos">Registrar turnos</a></li>
+                  <li><a href="#registrar-pacientes">Registrar pacientes</a></li>
+                  <li><a href="#registrar-profesionales-de-salud">Registrar profesionales de salud</a></li>
+                  <li><a href="#registro-de-áreas-de-servicio-y-consultorios">Registro de áreas de servicio y consultorios</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="indexUI">
+          <div class="inner">
+            <div class="top"></div><div class="stretch"></div><div class="bottom"></div>
+            <div class="content">
+              <h4>Comentarios del proceso</h4>
+              <div class="plegable">
+                <ul>
+                  <li><a href="#comentarios-del-proceso">Comentarios del proceso</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="architectureSection">
+      <h2>Fundamentación de arquitectura y diseño de software</h2>
+      <section class="intro">
+        <p>La aplicación entonces tiene como objetivo la gestión de turnos, tanto para secretarios como para profesionales.</p>
+        <p>Está destinada a centros de salud, pero cada uno tendría su propia instancia de la misma. Es decir que no está pensada como una aplicación 
+          que estaría alojada en algún servidor remoto con acceso global, sino más bien a una aplicación de ejecución local. Y por lo tanto ésta debería 
+          trabajar con datos relacionados al ámbito de salud 
+          y para el fin mencionado. Lo que implicaría:
+        </p>
+        <p>Que debe brindar:</p>
         <ul>
-          <li class="skillLogo html">HTML</li>
-          <li class="skillLogo css">CSS</li>
-          <li class="skillLogo typescript">TypeScript</li>
-          <li class="skillLogo react">React.js</li>
-          <li class="skillLogo java">Java</li>
-          <li class="skillLogo mysql">MySQL</li>
-          <li class="skillLogo spring">Spring Boot</li>
-          <li class="skillLogo spring">Spring Security</li>
+          <li>Una interfaz fácil de entender y de acceder a las distintas acciones que se quieran realizar.</li>
+          <li>La posibilidad de tanto visualizar como de registrar turnos en el corto y largo plazo.</li>
+          <li>El registro de pacientes y personal de salud.</li>
+          <li>La asociación de esos pacientes y profesionales a los turnos.</li>
+          <li>Permitir que cada profesional pueda acceder y manejar los turnos con los que se encuentre asociado.</li>
+          <li>Dar la seguridad de que no se permitiría que los turnos se sobrepongan para un mismo profesional.</li>
         </ul>
-      </article>
+        <p>Y que el sistema debería:</p>
+        <ul>
+          <li>Poder guardar los datos de forma persistente en él.</li>
+          <li>Además de una interfaz clara, éste debería tener su API que permita comunicarse con la base de datos de forma práctica.</li>
+          <li>Que el lado de la interfaz y el lado del servidor estén en constante comunicación, y las operaciones puedan tener respuesta sincrónica.</li>
+          <li>Guardar datos sensibles de forma segura, por ejemplo encriptando contraseñas y validando los parámetros que ingresan en las solicitudes.</li>
+          <li>Trabajar con autenticaciones y autorizaciones en sus operaciones.</li>
+          <li>Exponerse dentro de la red local, para que pueda ser accedida desde distintos dispositivos en el área del centro de salud.</li>
+          <li>Realizar back-ups periódicamente para la conservación de datos.</li>
+        </ul>
+      </section>
+      <section id="estilo-arquitectonico">
+        <h3>Estilo arquitectónico</h3>
+        <p>Analizando las necesidades del proyecto se llegó a la conclusión de que la mejor opción para este caso sería un sistema monolítico, ya que no 
+          requiere de tanta complejidad ni está pensada una gran escalabilidad para este caso. Aprovechando entonces la facilidad de desarrollo y la simpleza en 
+          su infraestructura que permiten estos sistemas.</p>
+        <p>El proyecto, con esta arquitectura monolítica, constaría de:</p>
+        <ul>
+          <li>Una base de datos.</li>
+          <li>Una API a la que accede la interfaz y que se comunica con la base de datos para las operaciones que los usuarios deseen realizar.</li>
+          <li>Y una interfaz, capaz de mostrar y permitir realizar de forma clara todo el trabajo que está pensado para la aplicación.</li>
+        </ul>
+      </section>
+      <section id="modelo-de-dominio">
+        <h3>Modelo de dominio</h3>
+        <p>Estando destinada a la gestión de turnos para centros de salud debería contar con las siguientes entidades como centro del proyecto: turnos, 
+          pacientes y profesionales de salud principalmente.</p>
+        <p>Como a la aplicación podrían acceder distintos usuarios, también se necesitaría de una entidad que maneje y guarde estos datos. Que serán 
+          usados para autenticarse y validar los distintos roles.</p>
+        <p>Aspectos adicionales que se asignaron o que se tuvieron en cuenta:</p>
+        <ul>
+          <li>Un profesional de salud puede estar registrado en más de un área de servicio si se requiere.</li>
+          <li>Los consultorios solo pueden tener un profesional asignado.</li>
+          <li>Entre los datos de pacientes estaría el de obra social. Dato que serviría también al momento de crear turnos.</li>
+          <li>Es posible que en el centro de salud donde se use haya áreas que sean sin turnos fijos, sin fecha y horario, sino más bien por orden de 
+            llegada. Pero que igual se necesita registrar los datos de pacientes y de abono.</li>
+        </ul>
+        <p><strong>Representación gráfica del modelo:</strong></p>
+        <div class="image">
+          <img src="docs/resources/image.png" alt="Gráfico que muestra cómo las entidades se relacionan entre sí y los atributos que estas tendrían descritos de forma general" />
+        </div>
+        <section class="models">
+          <div class="card" id="modelsAppointments">
+            <div>
+              <h4>Turnos</h4>
+              <p>Esta entidad guardaría los datos que corresponden a cada turno. Relacionándose con pacientes, profesionales, asignando fecha, 
+                horario, consultorio, entre otras cosas.</p>
+              <p>Atributos:</p>
+              <ul class="attributes">
+                <li>Paciente que solicita</li>
+                <li>Fecha</li>
+                <li>Horario</li>
+                <li>Área de servicio</li>
+                <li>Profesional de salud</li>
+                <li>Consultorio</li>
+                <li>Estado de pago (Pagado, Debe documentación, Debe, o A Reiterar)</li>
+                <li>Obra social (si aplica se le asignaría la que tiene el paciente)</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="card" id="modelsPatients">
+            <div>
+              <h4>Pacientes</h4>
+              <p>Entidad destinada a cada paciente, se registraría uno nuevo cada vez que alguien pide un turno por primera vez en el centro de salud.</p>
+              <p>Atributos:</p>
+              <ul class="attributes">
+                <li>Nombre completo</li>
+                <li>DNI</li>
+                <li>Número de teléfono</li>
+                <li>Obra social</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="card" id="modelsProfessionals">
+            <div>
+              <h4>Profesionales de salud</h4>
+              <p>Encargados de tener asociados los turnos que le corresponden, además de datos personales y profesionales. Pudiendo manejar también sus 
+                propios turnos.</p>
+              <p>El profesional puede estar en distintas áreas según su formación e infraestructura del centro de salud</p>
+              <p>Atributos:</p>
+              <ul class="attributes">
+                <li>Nombre completo</li>
+                <li>DNI</li>
+                <li>Número de teléfono</li>
+                <li>Número de matrícula profesional</li>
+                <li>Áreas de servicio</li>
+                <li>Consultorio</li>
+                <li>Horarios de atención</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="card" id="modelsUsers">
+            <div>
+              <h4>Usuarios</h4>
+              <p>Que servirán para guardar los datos relacionados a autenticaciones al sistema. Lo que según el rol del usuario se habilitarían distintas 
+                funciones.</p>
+              <p>Atributos:</p>
+              <ul class="attributes">
+                <li>Nombre de usuario</li>
+                <li>Contraseña</li>
+                <li>Rol</li>
+                <li>Email (para recuperación de datos)</li>
+                <li>Profesional de salud (En caso de que esté relacionado con uno)</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+        <blockquote><p>El "DNI" es usado en Argentina como número de identificación para cada persona.</p></blockquote>
+      </section>
+      <section id="usedTechnologiesSection">
+        <h3>Resumen de tecnologías y herramientas elegidas</h3>
+        <table>
+          <thead>
+            <tr>
+              <th><p>Tecnología / herramienta</p></th>
+              <th><p>Comentario adicional</p></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><p>Java y Spring Boot</p></td>
+              <td>
+                <p>El uso de este conjunto aporta varias facilidades.</p>
+                <p>Por el lado del lenguaje, Java, brinda la madurez y soporte que posee, además de que es común su uso en aplicaciones.</p>
+                <p>Y con respecto a Spring Boot, éste brinda la facilidad de sus configuraciones automáticas en sus componentes y del despliegue de 
+                  aplicaciones Java. También ofrece distintos módulos que se requerían en este proyecto. Pensando principalmente en el de seguridad, 
+                  Spring Security; además de otros que sirven para desarrollar gateways, APIs REST y GraphQL, y trabajo con bases de datos relacionales.</p>
+              </td>
+            </tr>
+            <tr>
+              <td><p>Spring security</p></td>
+              <td>
+                <p>Fundamental para manejar las autenticaciones, autorizaciones, validaciones y algunas protecciones necesarias para la seguridad de la 
+                  aplicación.</p>
+              </td>
+            </tr>
+            <tr>
+              <td><p>API Rest</p></td>
+              <td>
+                <p>Elegida ya que es la que más se adapta al proyecto debido a su que forma de comunicación y obtención de respuestas es sincrónica, necesaria 
+                  para esta aplicación.</p>
+                <p>Además no es fundamental el filtrado de datos enviados o recibidos de las solicitudes a la API, por lo que no hacen falta tecnologías 
+                  como GraphQL.</p>
+              </td>
+            </tr>
+            <tr>
+              <td><p>Base de datos Relacional - MySQL</p></td>
+              <td>
+                <p>Las bases de datos relacionales son ampliamente usadas en entornos como para el que está pensada la aplicación, debido a las relaciones 
+                  que permiten y la estructura que le brinda a sus componentes.</p>
+              </td>
+            </tr>
+            <tr>
+              <td><p>TypeScript</p></td>
+              <td>
+                <p>Aporta estructura y rigidez a todo el frontend, lo que hace que se sincronice con las características del backend en Java.</p>
+              </td>
+            </tr>
+            <tr>
+              <td><p>React</p></td>
+              <td>
+                <p>Se eligió React por su enfoque en componentes reutilizables, rendimiento mediante Virtual DOM, ecosistema maduro, compatibilidad con 
+                  Typescript, y amplia comunidad. Esto lo hace ideal para una aplicación que requiere interfaces dinámicas, y fáciles de mantener.</p>
+              </td>
+            </tr>
+            <tr>
+              <td><p>React Router</p></td>
+              <td>
+                <p>Librería especial de React, focalizada en el enrutamiento de la aplicación.</p>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section id="patron-arquitectonico">
+        <h3>Patrón arquitectónico</h3>
+        <section class="intro">
+          <p>El sistema implementa una arquitectura en capas cliente-servidor que, en producción, se despliega como un único monolítico estilo MVC.
+            La capa de presentación (React) se empaqueta y sirve a través de Spring Boot, mientras que las capas de aplicación, dominio y acceso a 
+            datos se mantienen en el backend.</p>
+          <p>Esto permite la separación de responsabilidades, haciendo que cada una tenga un propósito claro y su lógica esté separada.
+            Lo que también permite escalabilidad y mantenimiento:</p>
+          <ul>
+            <li>El modelo gestionaría los datos y toda la lógica relacionada a ellos.</li>
+            <li>La vista, mediante el frontend en React, se encargaría de mostrar una interfaz clara al usuario final.</li>
+            <li>Y el controlador, siendo el intermediario entre las otras dos capas.</li>
+          </ul>
+        </section>
+
+        <section id="capa-del-modelo">
+          <h4>Capa del modelo</h4>
+          <p>Esto incluye, de forma dividida las capas de servicio, de repositorio, y de base de datos.</p>
+          <div id="capa-de-servicio">
+            <h5>Capa de servicio</h5>
+            <p>
+              Esta se comunica con la de repositorio y se encarga de realizar todo lo necesario para que los datos sean procesados ya sea desde o hacia la base de datos.
+              Se realizan las validaciones, conversiones y toda la lógica de negocio.
+            </p>
+          </div>
+
+          <div id="capa-de-repositorio">
+            <h5>Capa de repositorio</h5>
+            <p>
+              Funciona de mediador entre la de servicio y la base de datos. Mandando solicitudes a ella ya sea de lectura o de escritura.
+            </p>
+          </div>
+
+          <div id="capa-de-base-de-datos">
+            <h5>Capa de base de datos</h5>
+            <p>
+              En la que se almacena la información persistente de la aplicación. Consta de las siguientes entidades:
+            </p>
+            <ul>
+              <li>
+                Turno:
+                <ul>
+                  <li>id</li>
+                  <li>paciente (Parámetro obligatorio)</li>
+                  <li>fecha (Parámetro obligatorio)</li>
+                  <li>horario (Parámetro obligatorio)</li>
+                  <li>areaProfesional (Relación muchos a uno - Parámetro obligatorio)</li>
+                  <li>metodoDeAbono</li>
+                  <li>obraSocial</li>
+                  <li>estadoPago (enum)</li>
+                  <li>comentario</li>
+                  <li>consultorio (Relación muchos a uno - Parámetro obligatorio)</li>
+                  <li>active (Booleano que representaría si el turno está en vigencia o fue cancelado, o dado de baja - Parámetro obligatorio)</li>
+                </ul>
+              </li>
+              <li>
+                Paciente:
+                <ul>
+                  <li>id</li>
+                  <li>nombreCompleto (Parámetro obligatorio)</li>
+                  <li>dni (Parámetro obligatorio)</li>
+                  <li>numeroContacto (Parámetro obligatorio)</li>
+                  <li>obraSocial</li>
+                </ul>
+              </li>
+              <li>
+                Profesional Médico
+                <ul>
+                  <li>id</li>
+                  <li>nombreCompleto</li>
+                  <li>dni</li>
+                  <li>numeroContacto</li>
+                  <li>matricula</li>
+                  <li>areas</li>
+                  <li>consultorio</li>
+                  <li>horarios</li>
+                  <li>active (Agregado en caso de que el médico no esté activo en cierto momento, permitiendo conservar sus datos pero que no se le puedan asignar turnos)</li>
+                </ul>
+              </li>
+              <li>
+                Áreas de servicio (definido como entidad debido a que necesita relacionarse tanto con los turnos como con los profesionales)
+                <ul>
+                  <li>id</li>
+                  <li>nombre</li>
+                  <li>searchName (usado para lógica interna, facilitando obtención de datos)</li>
+                  <li>necesitaTurno (Booleano que representa si el área requiere de turnos fijos o no)</li>
+                  <li>active (Agregado en caso de que el médico no esté activo en cierto momento, permitiendo conservar sus datos pero que no se le puedan asignar turnos)</li>
+                </ul>
+              </li>
+              <li>
+                Consultorio (definido como entidad por las relaciones que tendría con otras entidades)
+                <ul>
+                  <li>id</li>
+                  <li>numero</li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        <section id="capa-de-vista">
+          <h4>Capa de vista</h4>
+          <p>
+            Implementada a traves del frontend con React y Typescript. Se encarga de mostrar y permitir al usuario final,
+            el personal de centros de salud, realizar de forma cómoda y sencilla las operaciones que posee la aplicación.
+          </p>
+
+          <section id="vistas">
+
+            <h5>Vistas</h5>
+            <p>
+              Las vistas son aquellas que dividen las operaciones permitidas, y generalmente, cada una tiene un fin único
+              para poder brindar una mejor experiencia al usuario.
+            </p>
+            <ul>
+              <li>
+                <strong>Vista inicial - Turnos del día</strong>
+                <p>
+                  El sistema detectará automáticamente los turnos de la fecha actual. Filtrándolos por área de servicio y
+                  separados por horarios según los profesionales de ella.
+                </p>
+                <p>
+                  Esta puede variar según el usuario que ingresa. Ejemplo si ingresa un profesional de salud específico éste
+                  solo verá los turnos que tiene asociados a él en el día actual. En cambio si es el secretario mostraría
+                  todos los turnos del centro de salud, filtrados por área.
+                </p>
+              </li>
+              <li>
+                <strong>Búsqueda de turnos</strong>
+                <p>
+                  Como su nombre lo índica permite buscar turnos, ya sean futuros o pasados. La búsqueda permite hacerlo por
+                  los atributos de los turnos, ej: nombre del paciente o del profesional, fecha, área de servicio, estado de
+                  pago del turno, entre otras.
+                </p>
+                <p>
+                  Los resultados se muestran en tablas, permitiendo seleccionar y realizar acciones sobre ellos. Por ejemplo:
+                  darlos de baja, eliminarlos, o editarlos (lo que abriría un modal, o pudiendo ser también un enlace, con
+                  las mismas características de la <em>vista de creación de turnos</em>. Pero con los datos del turno a editar incluidos).
+                </p>
+              </li>
+              <li>
+                <strong>Creación de turnos</strong>
+                <p>
+                  Consta de un formulario sencillo y con el agregado de un calendario. En él se muestran por día, cada horario
+                  disponible del área y profesional seleccionado mostrando cuáles están disponibles y cuáles ya están solicitados.
+                </p>
+              </li>
+              <br />
+              <li>
+                <strong>Creación de pacientes</strong>
+                <p>Requerido para registrar turnos en caso de que el paciente no esté registrado antes.</p>
+              </li>
+              <li>
+                <strong>Búsqueda de pacientes</strong>
+                <p>
+                  Muestra los resultados en tablas, permitiendo ver sus datos y los turnos que tienen asociados. Al igual que
+                  realizar acciones sobre ellos.
+                </p>
+              </li>
+              <br />
+              <li>
+                <strong>Creación de profesionales</strong>
+                <p>Necesario para que se le puedan asignar turnos. También si se quiere asignar este profesional a una cuenta de usuario.</p>
+              </li>
+              <li>
+                <strong>Búsqueda de profesionales</strong>
+                <p>Al igual que la de pacientes muestra los resultados en tablas permitiendo hacer operaciones sobre ellos.</p>
+              </li>
+              <br />
+              <li>
+                <strong>Registro de usuario</strong>
+                <p>Formulario para el registro, que además permite la vinculación de un profesional de salud a la cuenta.</p>
+              </li>
+              <li><strong>Inicio de sesión</strong></li>
+              <li>
+                <strong>Perfil de usuario</strong>
+                <p>Muestra la información principal del usuario, permitiendo editarlos.</p>
+              </li>
+            </ul>
+          </section>
+        </section>
+
+        <section id="capa-de-controlador">
+          <h4>Capa de controlador</h4>
+          <p>Permite redirigir las solicitudes del cliente al sistema a la capa de modelo.</p>
+        </section>
+      </section>
+      <section id="seguridad-y-autenticaciones">
+        <h3>Seguridad y autenticaciones</h3>
+        <section class="intro">
+          <p>La seguridad del sistema está gestionada principalmente a través de <strong>Spring Security</strong>, que provee distintos mecanismos 
+            para garantizar la integridad y el control de acceso:</p>
+          <ul>
+            <li><strong>Control de CORS</strong>: se configuran los orígenes desde los cuales se permiten las solicitudes hacia la API, asegurando 
+              que solo clientes autorizados puedan interactuar con ella.</li>
+            <li><strong>Protección CSRF</strong>: cada petición es validada mediante un token CSRF, lo que evita ataques de falsificación 
+              de solicitudes en sitios cruzados.</li>
+            <li><strong>Autenticación y autorización por roles</strong>: el acceso a las distintas operaciones de la aplicación está restringido 
+              según el rol asignado a cada usuario.</li>
+            <li><strong>Sesiones de usuario</strong>: las sesiones duran un tiempo determinado, protegiendo a los usuarios de que sus sesiones queden 
+              abiertas y otras personas puedan aprovecharse de eso.</li>
+          </ul>
+        </section>
+        <section id="roles-disponibles">
+          <h4>Roles disponibles</h4>
+          <p>
+            Existen tres roles principales que definen los permisos de los usuarios dentro de la aplicación:
+          </p>
+          <ul>
+            <li><strong>Administrador</strong>: posee control total sobre el sistema. Puede crear, modificar o dar de baja cualquier dato en la base de datos.</li>
+            <li><strong>General</strong>: orientado al personal administrativo encargado de gestionar pacientes y turnos.</li>
+            <li><strong>Profesional</strong>: destinado a los profesionales de la salud, quienes pueden visualizar y administrar sus propios turnos, así como actualizar su información personal.</li>
+          </ul>
+          <p>Además:</p>
+          <ul>
+            <li>Cualquier usuario, incluso sin iniciar sesión, puede <strong>consultar información pública</strong>.</li>
+            <li>Las operaciones de <strong>creación, modificación o eliminación de datos</strong> requieren autenticación y el rol adecuado.</li>
+          </ul>
+        </section>
+        <section id="validacion-de-datos">
+          <h4>Validación de datos</h4>
+          <p>
+            De manera complementaria, todos los datos ingresados por los usuarios (especialmente a través de 
+            formularios) son validados en el backend antes de ser procesados, evitando así inconsistencias 
+            y posibles ataques.
+          </p>
+        </section>
+      </section>
     </section>
     <div class="linksZone">
       <div>
@@ -145,10 +677,6 @@
         </svg>
       </button></a>
     </div>
-    <section id="projectComments" class="aboutMe">
-      <h2></h2>
-      <p></p>
-    </section>
   </main>
   </div>
 

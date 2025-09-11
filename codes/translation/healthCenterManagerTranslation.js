@@ -248,7 +248,7 @@ const setPresentationSectionTexts = () => {
 }
 
 //// Uses translations
-const setUsesSectionTexts = () => {
+/* const setUsesSectionTexts = () => {
   const $projectUsesSection = document.getElementById("projectUses")
   $projectUsesSection.querySelector("h2").innerHTML = selectedTranslation.projectUses.title
   let categoriesHTML = ""
@@ -261,7 +261,7 @@ const setUsesSectionTexts = () => {
     `
   })
   $projectUsesSection.querySelector("& > div").innerHTML = categoriesHTML
-}
+} */
 
 //// Carrousel translations
 const setCarrouselTexts = () => {
@@ -271,14 +271,14 @@ const setCarrouselTexts = () => {
 }
 
 //// Tech features translations
-const setTechFeaturesTexts = () => {
+/* const setTechFeaturesTexts = () => {
   const $techFeaturesSection = document.getElementById("projectTechFeatures")
-  $techFeaturesSection.querySelector("& > h2").innerHTML = selectedTranslation.techFeatures.title
-  $techFeaturesSection.querySelector("ul.card").innerHTML = selectedTranslation.techFeatures.features.map(feature => 
+  $techFeaturesSection?.querySelector("& > h2").innerHTML = selectedTranslation.techFeatures.title
+  $techFeaturesSection?.querySelector("ul.card").innerHTML = selectedTranslation.techFeatures.features.map(feature => 
     `<li>${feature}</li>`
   ).join("")
-  $techFeaturesSection.querySelector("article.card > h3").innerHTML = selectedTranslation.techFeatures.skillTitle
-}
+  $techFeaturesSection?.querySelector("article.card > h3").innerHTML = selectedTranslation.techFeatures.skillTitle
+} */
 
 //// Link zone translations
 const setLinkZoneTexts = () => {
@@ -288,17 +288,17 @@ const setLinkZoneTexts = () => {
 }
 
 //// Comments about project translations
-const setCommentsSectionTexts = () => {
+/* const setCommentsSectionTexts = () => {
   document.querySelector("#projectComments > h2").innerHTML = selectedTranslation.comments.title
   document.querySelector("#projectComments > p").innerHTML = selectedTranslation.comments.text
-}
+} */
 
 const setPageTexts = () => {
   setGeneralTexts()
   setPresentationSectionTexts(),
-  setUsesSectionTexts()
+  // setUsesSectionTexts()
   setCarrouselTexts()
-  setTechFeaturesTexts()
+  // setTechFeaturesTexts()
   setLinkZoneTexts()
-  setCommentsSectionTexts()
+  // setCommentsSectionTexts()
 }
