@@ -14,6 +14,7 @@
   <link rel="stylesheet" href="styles/sections_styles/skillsSection.css">
   <link rel="stylesheet" href="styles/sections_styles/presentationSection.css">
   <link rel="stylesheet" href="styles/projectSections_styles/architectureSection.css">
+  <link rel="stylesheet" href="styles/projectSections_styles/otherSections.css">
 </head>
 
 <body>
@@ -659,6 +660,12 @@
           </p>
         </section>
       </section>
+      <section id="entornos">
+        <h3>Entornos</h3>
+        <p>Existen 2 entornos el de desarrollo, el cual permite ejecutar tanto el frontend como el backend de modo que se reflejan los cambios generados 
+          automáticamente. Y el de producción, el cual ejecuta el build del proyecto de React y lo aloja en la carpeta resources/static del proyecto en 
+          Spring Boot, ejecutando posteriormente la compilación y el empaquetado del backend a un archivo .jar para luego ser ejecutado.</p>
+      </section>
     </section>
     <div class="linksZone">
       <div>
@@ -677,6 +684,304 @@
         </svg>
       </button></a>
     </div>
+    <section id="installationGuide">
+      <h2>Instrucciones de instalación y requisitos</h2>
+      <section class="intro">
+        <p>Estas instrucciones corresponden al caso en que se quiera ejecutar, o levantar el proyecto en modo desarrollo, de forma local. Si no es ese el 
+          caso, puede ir directamente al <a href="https://administracionturnosclinica.onrender.com">sitio web</a> donde está alojada la aplicación, y 
+          dirigirse a la <a href="#guía-de-operaciones">guía de operaciones</a> para saber qué puede hacer y cómo interactuar con el sistema.</p>
+        <p>Se realizaron ciertos ajustes para poder ejecutar con pocos comandos, ya sea el entorno productivo o el de desarrollo. Logrando que se pueda 
+          levantar tanto con o como sin Docker de forma relativamente sencilla.</p>
+      </section>
+      <section id="variables-de-entorno">
+        <h3>Variables de entorno</h3>
+        <p>Las variables de entorno tienen relación principalmente con propiedades de la base de datos o la ruta de conexión que usaría el frontend 
+          para comunicarse con la API. Lo que permite variarlas según requiera el entorno.</p>
+        <p>Ellas son las siguientes, se muestran con los valores que vienen por defecto:</p>
+        <div class="code">
+          DB_HOST=localhost #Host donde se encuentra la base de datos.
+          DB_USER=root #Nombre de usuario de la base de datos utilizada para acceder a ella.
+          DB_PASSWORD=root #Contraseña de usuario de la base de datos
+          VITE_API_PREFIX="http://localhost:8080/api" #Ruta que utiliza el frontend para conectarse a la api
+        </div>
+      </section>
+      <section id="installation-with-docker">
+        <h3>En caso de tener docker</h3>
+        <p>
+          Teniendo docker en el sistema local, y ejecutándose, alcanza con el siguiente comando en la ubicación raíz del proyecto. 
+          Esto empaquetará los servicios y ejecutará los archivos .jar de cada uno.
+        </p>
+        <div class="code">
+          #para la primera vez que se quiere levantar el proyecto
+          docker compose -f docker-compose-prod.yml up --build  
+
+          #para las siguientes
+          docker compose -f docker-compose-prod.yml up 
+        </div>
+        <p>Para levantar el sistema en modo desarrollo se usan los comandos:</p>
+        <div class="code">
+          #para la primera vez que se quiere levantar el proyecto
+          docker compose -f docker-compose-dev.yml up --build
+
+          #para las siguientes
+          docker compose -f docker-compose-dev.yml up
+        </div>
+        <p>
+          Las variables de entorno ya vienen actualizadas para cada entorno, utilizando como host el nombre de los contenedores 
+          y sincronizando con los datos de la imagen de la base de datos. 
+          En caso de que se quiera modificar se debe crear un archivo .env en la carpeta raíz del proyecto, 
+          aclarando los valores como se muestra en los valores de ejemplo.
+        </p>
+      </section>
+      <section id="en-caso-de-no-usar-docker">
+        <h3>En caso de no usar docker</h3>
+        <h4>REQUISITOS:</h4>
+        <p>Si se quiere correr el proyecto sin docker es necesario contar con los siguientes recursos:</p>
+        <ul>
+          <li>
+            <p>
+              Este proyecto requiere instalar y tener correctamente configuradas las variables de entorno para 
+              <strong>Java JDK</strong> y <strong>Maven</strong>, tanto en Windows como en sistemas basados en Unix (Linux/macOS).
+            </p>
+            <div id="windows">
+              <h4>Windows</h4>
+              <p>Se debe agregar al <code>Path</code> del sistema (Variable de entorno) las rutas a:</p>
+              <ul>
+                <li>El bin del <strong>JDK</strong>, en el proyecto se usa la versión 17 (ejemplo: <code>C:\Program Files\Java\jdk-17\bin</code>)</li>
+                <li>El bin de <strong>Maven</strong> (ejemplo: <code>C:\apache-maven-3.9.6\bin</code>)</li>
+              </ul>
+              <p>
+                Para esto buscar la opción "Editar las variables de entorno" en el panel de control y hacer click en el botón 
+                "Variables de entorno...", ubicado en la pestaña Opciones avanzadas.
+              </p>
+            </div>
+            <div id="otherSystems">
+              <h4>Linux / macOS</h4>
+              <p>En sistemas Unix-like, es necesario agregar las siguientes líneas al archivo de configuración del shell:</p>
+              <div class="code">
+                export JAVA_HOME=/ruta/a/tu/jdk
+                export PATH=$JAVA_HOME/bin:$PATH
+
+                export MAVEN_HOME=/ruta/a/apache-maven
+                export PATH=$MAVEN_HOME/bin:$PATH
+              </div>
+              <p>Estos cambios deben agregarse en uno de los siguientes archivos, según el shell que se utilice en el sistema:</p>
+              <table>
+                <thead>
+                  <tr>
+                    <th>Shell</th>
+                    <th>Archivo de configuración</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Bash</td>
+                    <td>~/.bashrc o ~/.bash_profile</td>
+                  </tr>
+                  <tr>
+                    <td>Zsh (macOS)</td>
+                    <td>~/.zshrc</td>
+                  </tr>
+                  <tr>
+                    <td>Fish</td>
+                    <td>~/.config/fish/config.fish</td>
+                  </tr>
+                </tbody>
+              </table>
+              <p>
+                Después de editarlos, aplicá los cambios con: 
+                <code>source ~/.bashrc</code> o <code>~/.zshrc</code> según corresponda
+              </p>
+              <h4>Se puede verificar las configuraciones en una terminal (CMD o PowerShell) ejecutando:</h4>
+              <div class="code">
+                java -version
+                javac -version
+                mvn -version
+              </div>
+            </div>
+          </li>
+          <li>
+            <p>
+              Tener instalado el server de MySql, al menos la versión 8.0. 
+              Los valores que se asignen a la cuenta serán los que deberán ir en las 
+              <a href="#variables-de-entorno">variables de entorno</a> 
+              (por defecto se usa <code>root</code> para el usuario principal y también para la contraseña, 
+              a menos que se indique lo contrario).
+            </p>
+          </li>
+          <li><p>Tener <strong>Node.js</strong> versión 20 instalado</p></li>
+        </ul>
+
+        <p>
+          Las variables de entorno para el backend tienen su valor por defecto en caso de que no se asignen. 
+          En caso de querer cambiarlas se deberá asignar el nuevo valor cambiando los valores por defecto en el 
+          <code>application.properties</code> (dentro de <code>/backend/src/main/resources</code>), 
+          o mediante las variables de entorno según su sistema operativo (o IDE si aplica).
+        </p>
+        <p>
+          Para la variable de entorno del frontend alcanza con crear un archivo <code>.env</code>, 
+          en la ruta <code>/frontend</code>, con el nuevo valor como se muestra en 
+          <a href="#variables-de-entorno">el ejemplo</a>.
+        </p>
+
+        <h4>OBTENER DEPENDENCIAS:</h4>
+        <p>
+          Antes de ejecutar el sistema en cualquier perfil hay que instalar las dependencias. 
+          Para eso se usan los siguientes comandos, siendo el primero para las dependencias de ejecución generales 
+          y el segundo para las dependencias del frontend:
+        </p>
+        <div class="code">
+          npm install
+
+          npm run install
+        </div>
+
+        <h4>MODO DE DESARROLLO:</h4>
+        <p>
+          Teniendo los recursos necesarios (Java, Maven, MySQL, Node) se puede levantar tanto el frontend como el backend 
+          a la par con el comando:
+        </p>
+        <div class="code">
+          npm run dev
+        </div>
+        <p>
+          La interfaz se puede visualizar accediendo a 
+          <a href="http://localhost:5173" target="_blank">http://localhost:5173</a>, 
+          y la API estará alojada en 
+          <a href="http://localhost:8080" target="_blank">http://localhost:8080</a>.
+        </p>
+
+        <h4>MODO DE PRODUCCIÓN:</h4>
+        <p>
+          Para levantarlo en modo de producción se realizan dos comandos la primera vez. 
+          Luego alcanza con ejecutar solamente el segundo.
+        </p>
+        <p>
+          El primero debe ser ejecutado cada vez que hayan nuevos cambios, ya sea en el frontend o en el backend, 
+          para que haga los build de ambos combinados; el segundo es para ejecutarlo directamente, 
+          <em>pero requiere que al menos una vez se haya hecho el primero</em>.
+        </p>
+        <div class="code">
+          npm run prod:build
+
+          npm run prod
+        </div>
+        <p>
+          En este caso toda la aplicación estará levantada en 
+          <a href="http://localhost:8080" target="_blank">http://localhost:8080</a>.
+        </p>
+      </section>
+    </section>
+    <section id="guide">
+      <h2>Guía de operaciones</h2>
+      <p>
+        En esta la guía se mostrará cómo se realizan las operaciones disponibles en la aplicación.
+      </p>
+      <blockquote>
+        <p>Para acceder mediante rutas a cualquiera de las operaciones se la debe agregar posterior a la ruta original, ej: 
+        https://administracionturnosclinica.onrender.com/turno/crear para la creación de turnos.</p>
+      </blockquote>
+      <p>
+        Las vistas que refieren a registros muestran mensajes en caso de algún error, como falta de campo requerido, advertencia de registro ya existente, o error del sistema.
+      </p>
+      <section id="menu">
+        <h3>Menú</h3>
+        <p>El menú es la barra lateral, o desplegable en pantallas chicas, en la que aparecen atajos de navegación para realizar las acciones que se espera que la aplicación pueda realizar.</p>
+        <img src="./imgs/healthCenter/guide/navbar.webp" alt="Captura en la que se ve únicamente la barra de navegación de forma completa">
+        <p>En el menú se mostrarán solamente aquellas opciones que son válidas para el estado de la sesión y el usuario en la sesión. Por ejemplo la opción para crear profesionales, que solo puede hacerlo el admin, no les aparecerá a usuarios con rol GENERAL ni con rol Profesional. Y, aunque se ingrese con la ruta a la que se accede a la vista, la solicitud dará error al intentar completarse ya que el backend valida las autenticaciones.</p>
+        <p>Todas las opciones son las siguientes:</p>
+        <div class="container_imgs">
+          <img src="imgs/healthCenter/guide/navbar_turnos.webp" alt="Bloque del desplegable del menú con las opciones referidas a turnos">
+          <img src="imgs/healthCenter/guide/navbar_pacientes.webp" alt="Bloque del desplegable del menú con las opciones referidas a pacientes">
+          <img src="imgs/healthCenter/guide/navbar_profesionales.webp" alt="Bloque del desplegable del menú con las opciones referidas a profesionales">
+          <img src="imgs/healthCenter/guide/navbar_cons_areas.webp" alt="Bloque del desplegable del menú con las opciones referidas a áreas y consultorios">
+        </div>
+        <p>Luego se encuentran botones que refieren a la sesión de usuario y el usuario. Indicándose al señalarlos la acción que estos realizan.</p>
+      </section>
+      <section id="sesiones-de-usuario-y-registro">
+        <h3>Sesiones de usuario y registro</h3>
+        <div>
+          <h4>Registrar nuevo usuario</h4>
+          <p><strong>Acceso:</strong> A través de la ruta <code>/signup</code>, o mediante el botón en la barra de navegación.</p>
+          <img src="./imgs/healthCenter/guide/vista_registroUsuario.webp">
+        </div>
+        <div>
+          <h4>Inicio de sesión</h4>
+          <p><strong>Acceso:</strong> Mediante la ruta <code>/login</code> o mediante el botón en el menú.</p>
+        </div>
+      </section>
+      <section id="creacion-de-datos">
+        <h3>Creación de datos</h3>
+        <div>
+          <h4>Registrar turnos</h4>
+          <p><strong>Acceso:</strong> A través de la ruta <code>/turno/crear</code>, o mediante del enlace correspondiente en el menú.</p>
+          <p><strong>Permisos:</strong> Esta acción es posible si se inició sesión en el sistema con cualquiera de los roles. En el caso de los 
+            usuarios con rol <em>PROFESIONAL</em> solo podrán crear turnos asignados automáticamente a ellos mismos.</p>
+          <p>Aparecerá un formulario en el que se deben ingresar los datos que corresponden al nuevo turno. Es necesario, para asociar un paciente, 
+            que este ya se encuentre registrado en el sistema.</p>
+          <img src="./imgs/healthCenter/guide/vista_creacionTurnos.webp">
+          <blockquote>
+            <p>El calendario solo aparecerá si se selecciona un área de servicio y esta posea algún personal de salud asociado. 
+            Se puede hacer click en las celdas que aparecen disponibles para asignar esa fecha y horario de forma más sencilla. 
+            También muestra los turnos que ya están ocupados.</p>
+            <br>
+            <img src="./imgs/healthCenter/guide/vista_creacionTurnos2.webp">
+          </blockquote>
+        </div>
+        <div>
+          <h4>Registrar pacientes</h4>
+          <p><strong>Acceso:</strong> A través de la ruta <code>/paciente/registrar</code>, o mediante el enlace en el menú.</p>
+          <p><strong>Permisos:</strong> Solo podrán realizarla los usuarios con rol GENERAL o ADMIN.</p>
+          <p>Formulario sencillo donde se rellena con los datos del paciente.</p>
+          <img src="./imgs/healthCenter/guide/vista_creacionPacientes.webp">
+        </div>
+        <div>
+          <h4>Registrar profesionales de salud</h4>
+          <p><strong>Acceso:</strong> A través de la ruta <code>/profesional/registrar</code>, o mediante el enlace en el menú.</p>
+          <p><strong>Permisos:</strong> Esta acción solo puede ser empleada por el usuario ADMIN.</p>
+          <img src="./imgs/healthCenter/guide/vista_creacionProfesionales.webp">
+        </div>
+        <div>
+          <h4>Registro de áreas de servicio y consultorios</h4>
+          <p><strong>Acceso:</strong> Ambas acciones se pueden realizar mediante la misma ruta <code>/areas_consultorios/crear</code>, o 
+            bien mediante la opción en el menú.</p>
+        </div>
+      </section>
+      <section id="busqueda-de-datos">
+        <h3>Búsqueda de datos</h3>
+        <p>Lás búsquedas son accesibles para todos los usuarios, incluso cuando no se haya iniciado sesión. Los resultados son mostrados en tablas con los datos que cada entidad posee.</p>
+        <p>Los parámetros de texto que se usan para las búsquedas ignoran mayúsculas y acentos, y no hace falta que estén completos. Lo que significa que, por ejemplo, se incluirán los resultados de la paciente María Gómez aunque se coloque "mari".</p>
+        <p>Llenar los campos de búsqueda agregan parámetros a la url.</p>
+        <blockquote>
+          <p>Por ejemplo la ruta para buscar los turnos asociados a al paciente María en la fecha 11/09/2025 quedaría de la siguiente forma: /turno?searchName=mari&date=11%2F09%2F2025 (los caracteres como la barra "/" son transformados a %2F automáticamente). Tener el enlace permitiría compartirlo si es necesario.</p>
+        </blockquote>
+        <p>Los resultados que aparecen pueden ser señalados, lo que esto permitiría la edición o el dar de baja si es que se cuenta con los permisos adecuados.</p>
+        <div>
+          <h4>Búsqueda de turnos</h4>
+          <p>Permite buscar turnos por nombre de paciente o profesional de salud, y/o fecha. Pudiendo aplicar filtros a la búsqueda según el área de servicio y/o estado de pago de los turnos.</p>
+          <p><strong>Acceso:</strong> Mediante la ruta <code>/turno</code> o mediante el menú.</p>
+          <img src="imgs/healthCenter/guide/vista_busquedaTurnos.webp" alt="Captura de la vista en donde se ve la tabla con algunos resultados">
+        </div>
+        <div>
+          <h4>Búsqueda de pacientes</h4>
+          <p>Permite buscarlos por nombre o dni y/o filtrarlos por obra social. Permite ver los turnos asociados de cada paciente, resaltando si hay alguno en un estado que no sea el de "Pagado".</p>
+          <p><strong>Acceso:</strong> Mediante la ruta <code>/paciente</code> o mediante el menú.</p>
+          <img src="imgs/healthCenter/guide/vista_busquedaPacientes.webp" alt="Captura de la vista en donde se ve la tabla con algunos resultados">
+        </div>
+        <div>
+          <h4>Búsqueda de profesionales</h4>
+          <p>Permite buscarlos por nombre o dni, por matricula, o por área de servicio.</p>
+          <p><strong>Acceso:</strong> Mediante la ruta <code>/profesional</code> o mediante el menú.</p>
+          <img src="imgs/healthCenter/guide/vista_busquedaProfesionales.webp" alt="Captura de la vista en donde se ve la tabla con algunos resultados">
+        </div>
+        <div>
+          <h4>Búsqueda de áreas de servicio y consultorios</h4>
+          <p>En la misma vista se pueden buscar ambos tipo de datos, separados en tablas distintas. Los consultorios pueden filtrarse según si ya tienen profesional asignado o no. Y las áreas según si están activas o si necesitan de turnos fijos o no.</p>
+          <p><strong>Acceso:</strong> Mediante la ruta <code>/areas_consultorios</code> o mediante el menú</p>
+          <img src="imgs/healthCenter/guide/vista_busquedaConsAreas.webp" alt="Captura de la vista en donde se ven las tablas con algunos resultados">
+        </div>
+      </section>
+    </section>
   </main>
   </div>
 
