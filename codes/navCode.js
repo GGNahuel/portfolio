@@ -89,8 +89,8 @@ function definirStylesSegunVWPreAnimation () {
     $header.style.top = "0.5rem"
 
     const headerWidth = $header.offsetWidth
-    $main.style.alignItems = window.innerWidth < 1280 ? 'flex-start' : 'center'
-    $main.style.marginLeft = window.innerWidth < 1280 ? `${headerWidth * 0.25}px` : "0"
+    $main.style.alignItems = window.innerWidth < 1380 ? 'flex-start' : 'center'
+    $main.style.marginLeft = window.innerWidth < 1380 ? `${headerWidth * 0.25}px` : "0"
     $main.style.width = `calc(100vw - ${headerWidth * 0.25}px - ${ancho$scrollbar})`
   }
   else {
