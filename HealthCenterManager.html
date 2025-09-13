@@ -147,17 +147,17 @@
               <div class="plegable">
                 <ul>
                   <li><a href="#architectureSection">Introducción</a></li>
-                  <li><a href="#estilo-arquitectónico">Estilo arquitectónico</a></li>
+                  <li><a href="#estilo-arquitectonico">Estilo arquitectónico</a></li>
                   <li><a href="#modelo-de-dominio">Modelo de dominio</a>
                     <ul>
-                      <li><a href="#turnos">Turnos</a></li>
-                      <li><a href="#pacientes">Pacientes</a></li>
-                      <li><a href="#profesionales-de-salud">Profesionales de salud</a></li>
-                      <li><a href="#usuarios">Usuarios</a></li>
+                      <li><a href="#modelsAppointments">Turnos</a></li>
+                      <li><a href="#modelsPatients">Pacientes</a></li>
+                      <li><a href="#modelsProfessionals">Profesionales de salud</a></li>
+                      <li><a href="#modelsUsers">Usuarios</a></li>
                     </ul>
                   </li>
-                  <li><a href="#resumen-de-tecnologías-y-herramientas-elegidas">Resumen de tecnologías y herramientas elegidas</a></li>
-                  <li><a href="#patrón-arquitectónico">Patrón arquitectónico</a>
+                  <li><a href="#usedTechnologiesSection">Resumen de tecnologías y herramientas elegidas</a></li>
+                  <li><a href="#patron-arquitectonico">Patrón arquitectónico</a>
                     <ul>
                       <li><a href="#capa-del-modelo">Capa del modelo</a></li>
                       <li><a href="#capa-de-vista">Capa de vista</a>
@@ -190,11 +190,11 @@
                 <ul>
                   <li><a href="#installationGuide">Introducción</a></li>
                   <li><a href="#variables-de-entorno">Variables de entorno</a></li>
-                  <li><a href="#en-caso-de-usar-docker">En caso de usar docker</a></li>
-                  <li><a href="#en-caso-de-no-usar-docker">En caso de no usar docker</a>
+                  <li><a href="#installation-with-docker">En caso de usar docker</a></li>
+                  <li><a href="#installation-without-docker">En caso de no usar docker</a>
                     <ul>
                       <li><a href="#windows">Windows</a></li>
-                      <li><a href="#linux--macos">Linux / macOS</a></li>
+                      <li><a href="#otherSystems">Linux / macOS</a></li>
                     </ul>
                   </li>
                 </ul>
@@ -210,8 +210,8 @@
               <h4>Guía de operaciones</h4>
               <div class="plegable">
                 <ul>
-                  <li><a href="#guide"></a></li>
-                  <li><a href="#menú">Menú</a></li>
+                  <li><a href="#guide">Introducción</a></li>
+                  <li><a href="#menu">Menú</a></li>
                   <li><a href="#sesiones-de-usuario-y-registro">Sesiones de usuario y registro</a>
                     <ul>
                       <li><a href="#registrar-nuevo-usuario">Registrar nuevo usuario</a></li>
@@ -242,6 +242,16 @@
 
       </div>
     </section>
+    <div class="scrollToIndex"><a href="#pageIndex">
+      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" transform="rotate(180)" stroke="#000000">
+        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+        <g id="SVGRepo_iconCarrier">
+          <path d="M8 11L12 15M12 15L16 11M12 15V3M7 4.51555C4.58803 6.13007 3 8.87958 3 12C3 16.9706 7.02944 21 12 21C16.9706 21 21 16.9706 21 12C21 8.87958 19.412 6.13007 17 4.51555" 
+            stroke="#ff0000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+        </g>
+      </svg>
+    </a></div>
     <section id="architectureSection">
       <h2>Fundamentación de arquitectura y diseño de software</h2>
       <section class="intro">
@@ -739,7 +749,7 @@
           aclarando los valores como se muestra en los valores de ejemplo.
         </p>
       </section>
-      <section id="en-caso-de-no-usar-docker">
+      <section id="installation-without-docker">
         <h3>En caso de no usar docker</h3>
         <h4>REQUISITOS:</h4>
         <p>Si se quiere correr el proyecto sin docker es necesario contar con los siguientes recursos:</p>
@@ -893,14 +903,14 @@
       <section id="menu">
         <h3>Menú</h3>
         <p>El menú es la barra lateral, o desplegable en pantallas chicas, en la que aparecen atajos de navegación para realizar las acciones que se espera que la aplicación pueda realizar.</p>
-        <img src="./imgs/healthCenter/guide/navbar.webp" alt="Captura en la que se ve únicamente la barra de navegación de forma completa">
+        <img class="small" src="./imgs/healthCenter/guide/navbar.webp" alt="Captura en la que se ve únicamente la barra de navegación de forma completa">
         <p>En el menú se mostrarán solamente aquellas opciones que son válidas para el estado de la sesión y el usuario en la sesión. Por ejemplo la opción para crear profesionales, que solo puede hacerlo el admin, no les aparecerá a usuarios con rol GENERAL ni con rol Profesional. Y, aunque se ingrese con la ruta a la que se accede a la vista, la solicitud dará error al intentar completarse ya que el backend valida las autenticaciones.</p>
         <p>Todas las opciones son las siguientes:</p>
         <div class="container_imgs">
-          <img src="imgs/healthCenter/guide/navbar_turnos.webp" alt="Bloque del desplegable del menú con las opciones referidas a turnos">
-          <img src="imgs/healthCenter/guide/navbar_pacientes.webp" alt="Bloque del desplegable del menú con las opciones referidas a pacientes">
-          <img src="imgs/healthCenter/guide/navbar_profesionales.webp" alt="Bloque del desplegable del menú con las opciones referidas a profesionales">
-          <img src="imgs/healthCenter/guide/navbar_cons_areas.webp" alt="Bloque del desplegable del menú con las opciones referidas a áreas y consultorios">
+          <img class="small" src="imgs/healthCenter/guide/navbar_turnos.webp" alt="Bloque del desplegable del menú con las opciones referidas a turnos">
+          <img class="small" src="imgs/healthCenter/guide/navbar_pacientes.webp" alt="Bloque del desplegable del menú con las opciones referidas a pacientes">
+          <img class="small" src="imgs/healthCenter/guide/navbar_profesionales.webp" alt="Bloque del desplegable del menú con las opciones referidas a profesionales">
+          <img class="small" src="imgs/healthCenter/guide/navbar_cons_areas.webp" alt="Bloque del desplegable del menú con las opciones referidas a áreas y consultorios">
         </div>
         <p>Luego se encuentran botones que refieren a la sesión de usuario y el usuario. Indicándose al señalarlos la acción que estos realizan.</p>
       </section>
