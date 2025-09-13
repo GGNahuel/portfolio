@@ -215,23 +215,23 @@
                   <li><a href="#sesiones-de-usuario-y-registro">Sesiones de usuario y registro</a>
                     <ul>
                       <li><a href="#registrar-nuevo-usuario">Registrar nuevo usuario</a></li>
-                      <li><a href="#inicio-de-sesión">Inicio de sesión</a></li>
+                      <li><a href="#inicio-de-sesion">Inicio de sesión</a></li>
                     </ul>
                   </li>
-                  <li><a href="#creación-de-datos">Creación de datos</a>
+                  <li><a href="#creacion-de-datos">Creación de datos</a>
                     <ul>
                       <li><a href="#registrar-turnos">Registrar turnos</a></li>
                       <li><a href="#registrar-pacientes">Registrar pacientes</a></li>
                       <li><a href="#registrar-profesionales-de-salud">Registrar profesionales de salud</a></li>
-                      <li><a href="#registro-de-áreas-de-servicio-y-consultorios">Registro de áreas de servicio y consultorios</a></li>
+                      <li><a href="#registro-de-areas-de-servicio-y-consultorios">Registro de áreas de servicio y consultorios</a></li>
                     </ul>
                   </li>
-                  <li><a href="#búsqueda-de-datos">Búsqueda de datos</a>
+                  <li><a href="#busqueda-de-datos">Búsqueda de datos</a>
                     <ul>
-                      <li><a href="#búsqueda-de-turnos">Búsqueda de turnos</a></li>
-                      <li><a href="#búsqueda-de-pacientes">Búsqueda de pacientes</a></li>
-                      <li><a href="#búsqueda-de-profesionales">Búsqueda de profesionales</a></li>
-                      <li><a href="#búsqueda-de-consultorios-y-áreas-de-servicio">Búsqueda de consultorios y áreas de servicio</a></li>
+                      <li><a href="#busqueda-de-turnos">Búsqueda de turnos</a></li>
+                      <li><a href="#busqueda-de-pacientes">Búsqueda de pacientes</a></li>
+                      <li><a href="#busqueda-de-profesionales">Búsqueda de profesionales</a></li>
+                      <li><a href="#busqueda-de-areas-de-servicio-y-consultorios">Búsqueda de áreas de servicio y consultorios</a></li>
                     </ul>
                   </li>
                 </ul>
@@ -916,19 +916,19 @@
       </section>
       <section id="sesiones-de-usuario-y-registro">
         <h3>Sesiones de usuario y registro</h3>
-        <div>
+        <div id="registrar-nuevo-usuario">
           <h4>Registrar nuevo usuario</h4>
           <p><strong>Acceso:</strong> A través de la ruta <code>/signup</code>, o mediante el botón en la barra de navegación.</p>
           <img src="./imgs/healthCenter/guide/vista_registroUsuario.webp">
         </div>
-        <div>
+        <div id="inicio-de-sesion">
           <h4>Inicio de sesión</h4>
           <p><strong>Acceso:</strong> Mediante la ruta <code>/login</code> o mediante el botón en el menú.</p>
         </div>
       </section>
       <section id="creacion-de-datos">
         <h3>Creación de datos</h3>
-        <div>
+        <div id="registrar-turnos">
           <h4>Registrar turnos</h4>
           <p><strong>Acceso:</strong> A través de la ruta <code>/turno/crear</code>, o mediante del enlace correspondiente en el menú.</p>
           <p><strong>Permisos:</strong> Esta acción es posible si se inició sesión en el sistema con cualquiera de los roles. En el caso de los 
@@ -944,20 +944,20 @@
             <img src="./imgs/healthCenter/guide/vista_creacionTurnos2.webp">
           </blockquote>
         </div>
-        <div>
+        <div id="registrar-pacientes">
           <h4>Registrar pacientes</h4>
           <p><strong>Acceso:</strong> A través de la ruta <code>/paciente/registrar</code>, o mediante el enlace en el menú.</p>
           <p><strong>Permisos:</strong> Solo podrán realizarla los usuarios con rol GENERAL o ADMIN.</p>
           <p>Formulario sencillo donde se rellena con los datos del paciente.</p>
           <img src="./imgs/healthCenter/guide/vista_creacionPacientes.webp">
         </div>
-        <div>
+        <div id="registrar-profesionales-de-salud">
           <h4>Registrar profesionales de salud</h4>
           <p><strong>Acceso:</strong> A través de la ruta <code>/profesional/registrar</code>, o mediante el enlace en el menú.</p>
           <p><strong>Permisos:</strong> Esta acción solo puede ser empleada por el usuario ADMIN.</p>
           <img src="./imgs/healthCenter/guide/vista_creacionProfesionales.webp">
         </div>
-        <div>
+        <div id="registro-de-areas-de-servicio-y-consultorios">
           <h4>Registro de áreas de servicio y consultorios</h4>
           <p><strong>Acceso:</strong> Ambas acciones se pueden realizar mediante la misma ruta <code>/areas_consultorios/crear</code>, o 
             bien mediante la opción en el menú.</p>
@@ -972,25 +972,25 @@
           <p>Por ejemplo la ruta para buscar los turnos asociados a al paciente María en la fecha 11/09/2025 quedaría de la siguiente forma: /turno?searchName=mari&date=11%2F09%2F2025 (los caracteres como la barra "/" son transformados a %2F automáticamente). Tener el enlace permitiría compartirlo si es necesario.</p>
         </blockquote>
         <p>Los resultados que aparecen pueden ser señalados, lo que esto permitiría la edición o el dar de baja si es que se cuenta con los permisos adecuados.</p>
-        <div>
+        <div id="busqueda-de-turnos">
           <h4>Búsqueda de turnos</h4>
           <p>Permite buscar turnos por nombre de paciente o profesional de salud, y/o fecha. Pudiendo aplicar filtros a la búsqueda según el área de servicio y/o estado de pago de los turnos.</p>
           <p><strong>Acceso:</strong> Mediante la ruta <code>/turno</code> o mediante el menú.</p>
           <img src="imgs/healthCenter/guide/vista_busquedaTurnos.webp" alt="Captura de la vista en donde se ve la tabla con algunos resultados">
         </div>
-        <div>
+        <div id="busqueda-de-pacientes">
           <h4>Búsqueda de pacientes</h4>
           <p>Permite buscarlos por nombre o dni y/o filtrarlos por obra social. Permite ver los turnos asociados de cada paciente, resaltando si hay alguno en un estado que no sea el de "Pagado".</p>
           <p><strong>Acceso:</strong> Mediante la ruta <code>/paciente</code> o mediante el menú.</p>
           <img src="imgs/healthCenter/guide/vista_busquedaPacientes.webp" alt="Captura de la vista en donde se ve la tabla con algunos resultados">
         </div>
-        <div>
+        <div id="busqueda-de-profesionales">
           <h4>Búsqueda de profesionales</h4>
           <p>Permite buscarlos por nombre o dni, por matricula, o por área de servicio.</p>
           <p><strong>Acceso:</strong> Mediante la ruta <code>/profesional</code> o mediante el menú.</p>
           <img src="imgs/healthCenter/guide/vista_busquedaProfesionales.webp" alt="Captura de la vista en donde se ve la tabla con algunos resultados">
         </div>
-        <div>
+        <div id="busqueda-de-areas-de-servicio-y-consultorios">
           <h4>Búsqueda de áreas de servicio y consultorios</h4>
           <p>En la misma vista se pueden buscar ambos tipo de datos, separados en tablas distintas. Los consultorios pueden filtrarse según si ya tienen profesional asignado o no. Y las áreas según si están activas o si necesitan de turnos fijos o no.</p>
           <p><strong>Acceso:</strong> Mediante la ruta <code>/areas_consultorios</code> o mediante el menú</p>
