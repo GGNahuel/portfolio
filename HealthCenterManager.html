@@ -13,6 +13,8 @@
   <link rel="stylesheet" href="styles/projectPageStyles.css">
   <link rel="stylesheet" href="styles/sections_styles/skillsSection.css">
   <link rel="stylesheet" href="styles/sections_styles/presentationSection.css">
+  <link rel="stylesheet" href="styles/projectSections_styles/architectureSection.css">
+  <link rel="stylesheet" href="styles/projectSections_styles/otherSections.css">
 </head>
 
 <body>
@@ -51,7 +53,32 @@
         <div><h4></h4></div>
         <img src="imgs/healthCenter/devices demo.webp" alt="Demostración de la vista principal en distintos dispositivos">
       </div>
-      <div>
+      <div class="mainFeatures">
+        <h3>Funcionalidades generales</h3>
+        <ul>
+          <div>
+            <p><strong>Acerca de los usuarios:</strong></p>
+            <li>La aplicación permite que los usuarios puedan tener uno de estos 3 roles: Administrador, General y Profesional.</li>
+            <li>El Administrador puede crear, modificar o dar de baja cualquier dato que este presente en la base de datos de la aplicación.</li>
+            <li>El rol "General" está pensado para quien esté a cargo de registrar los turnos y pacientes, contando también con la posibilidad de modificarlos</li>
+            <li>Los usuarios con rol "Profesional" están destinados a los profesionales de salud, permitiéndoles visualizar y administrar sus turnos asociados, o a asociar, 
+              de forma más directa. Así como sus propios datos.</li>
+            <li>Cualquier usuario, o incluso sin iniciar sesión, podrá visualizar los datos que quiera. Pero modificarlos, o crear nuevos, depende del rol.</li>
+          </div>
+          <div>
+            <p><strong>Acerca del trabajo con datos:</strong></p>
+            <li>La búsqueda de cada tipo de dato cuenta con filtros y búsquedas personalizadas para cada uno.</li>
+            <li>El registro o modificación de datos cuenta con verificaciones y validaciones. Que en caso de que no se cumplan o haya errores se los mostrará en pantalla.</li>
+            <li>Tanto la creación como la modificación de turnos muestra un calendario en el que puedes seleccionar el horario y la fecha de forma más sencilla. A 
+              su vez que muestra los turnos ya ocupados para el área seleccionada y profesional.</li>
+            <li>Algunos de sus datos pueden darse de baja, permitiendo conservarlos pero marcarlos como inactivos.</li>
+          </div>
+          <div>
+            <p><strong>Otras características:</strong></p>
+            <li>Cuenta con diseños que se adaptan al tema del navegador (tema oscuro o tema claro).</li>
+            <li>El diseño cambia según el tamaño de pantalla del dispositivo</li>
+          </div>
+        </ul>
         <!-- objetivos y función de la página/app (para qué sirve) -->  
       </div>
     </section>
@@ -59,10 +86,6 @@
       <h3>Demostración general</h3>
       <p>En el video se muestran distintas funcionalidades de la aplicación. Se muestran casos de éxito y de fallo ante distintas situaciones</p>
       <video src="demos/HealthCenter/demoGeneral.webm" preload="metadata" controls muted></video>
-    </section>
-    <section id="projectUses">
-      <h2></h2>
-      <div></div>
     </section>
     <section id="carrousel">
       <div class="carrouselContainer">
@@ -108,25 +131,557 @@
         </div>
       </div>
       <div class="carrouselButtons">
-        <span class="left">&lt;</span><span class="right">&gt;</span>
+        <span class="left">&lt;</span>
+        <div class="selectItemButtons"></div>
+        <span class="right">&gt;</span>
       </div>
     </section>
-    <section id="projectTechFeatures">
-      <h2>Características técnicas</h2>
-      <ul class="card"></ul>
-      <article class="card skillCard">
-        <h3></h3>
+    <section id="pageIndex">
+      <h2>Contenidos</h2>
+      <div class="indexesContainer">
+        <div class="indexUI">
+          <div class="inner">
+            <div class="top"></div><div class="stretch"></div><div class="bottom"></div>
+            <div class="content">
+              <h4>Fundamentación de Arquitectura y diseño de software</h4>
+              <div class="plegable">
+                <ul>
+                  <li><a href="#architectureSection">Introducción</a></li>
+                  <li><a href="#estilo-arquitectonico">Estilo arquitectónico</a></li>
+                  <li><a href="#modelo-de-dominio">Modelo de dominio</a>
+                    <ul>
+                      <li><a href="#modelsAppointments">Turnos</a></li>
+                      <li><a href="#modelsPatients">Pacientes</a></li>
+                      <li><a href="#modelsProfessionals">Profesionales de salud</a></li>
+                      <li><a href="#modelsUsers">Usuarios</a></li>
+                    </ul>
+                  </li>
+                  <li><a href="#usedTechnologiesSection">Resumen de tecnologías y herramientas elegidas</a></li>
+                  <li><a href="#patron-arquitectonico">Patrón arquitectónico</a>
+                    <ul>
+                      <li><a href="#capa-del-modelo">Capa del modelo</a></li>
+                      <li><a href="#capa-de-vista">Capa de vista</a>
+                        <ul>
+                          <li><a href="#vistas">Vistas</a></li>
+                        </ul>
+                      </li>
+                      <li><a href="#capa-de-controlador">Capa de controlador</a></li>
+                    </ul>
+                  </li>
+                  <li><a href="#seguridad-y-autenticaciones">Seguridad y autenticaciones</a>
+                    <ul>
+                      <li><a href="#roles-disponibles">Roles disponibles</a></li>
+                      <li><a href="#validación-de-datos">Validación de datos</a></li>
+                    </ul>
+                  </li>
+                  <li><a href="#entornos">Entornos</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="indexUI">
+          <div class="inner">
+            <div class="top"></div><div class="stretch"></div><div class="bottom"></div>
+            <div class="content">
+              <h4>Instrucciones de instalación y requisitos</h4>
+              <div class="plegable">
+                <ul>
+                  <li><a href="#installationGuide">Introducción</a></li>
+                  <li><a href="#variables-de-entorno">Variables de entorno</a></li>
+                  <li><a href="#installation-with-docker">En caso de usar docker</a></li>
+                  <li><a href="#installation-without-docker">En caso de no usar docker</a>
+                    <ul>
+                      <li><a href="#windows">Windows</a></li>
+                      <li><a href="#otherSystems">Linux / macOS</a></li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="indexUI">
+          <div class="inner">
+            <div class="top"></div><div class="stretch"></div><div class="bottom"></div>
+            <div class="content">
+              <h4>Guía de operaciones</h4>
+              <div class="plegable">
+                <ul>
+                  <li><a href="#guide">Introducción</a></li>
+                  <li><a href="#menu">Menú</a></li>
+                  <li><a href="#sesiones-de-usuario-y-registro">Sesiones de usuario y registro</a>
+                    <ul>
+                      <li><a href="#registrar-nuevo-usuario">Registrar nuevo usuario</a></li>
+                      <li><a href="#inicio-de-sesion">Inicio de sesión</a></li>
+                    </ul>
+                  </li>
+                  <li><a href="#creacion-de-datos">Creación de datos</a>
+                    <ul>
+                      <li><a href="#registrar-turnos">Registrar turnos</a></li>
+                      <li><a href="#registrar-pacientes">Registrar pacientes</a></li>
+                      <li><a href="#registrar-profesionales-de-salud">Registrar profesionales de salud</a></li>
+                      <li><a href="#registro-de-areas-de-servicio-y-consultorios">Registro de áreas de servicio y consultorios</a></li>
+                    </ul>
+                  </li>
+                  <li><a href="#busqueda-de-datos">Búsqueda de datos</a>
+                    <ul>
+                      <li><a href="#busqueda-de-turnos">Búsqueda de turnos</a></li>
+                      <li><a href="#busqueda-de-pacientes">Búsqueda de pacientes</a></li>
+                      <li><a href="#busqueda-de-profesionales">Búsqueda de profesionales</a></li>
+                      <li><a href="#busqueda-de-areas-de-servicio-y-consultorios">Búsqueda de áreas de servicio y consultorios</a></li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+    <div class="scrollToIndex"><a href="#pageIndex">
+      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" transform="rotate(180)" stroke="#000000">
+        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+        <g id="SVGRepo_iconCarrier">
+          <path d="M8 11L12 15M12 15L16 11M12 15V3M7 4.51555C4.58803 6.13007 3 8.87958 3 12C3 16.9706 7.02944 21 12 21C16.9706 21 21 16.9706 21 12C21 8.87958 19.412 6.13007 17 4.51555" 
+            stroke="#ff0000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+        </g>
+      </svg>
+    </a></div>
+    <section id="architectureSection">
+      <h2>Fundamentación de arquitectura y diseño de software</h2>
+      <section class="intro">
+        <p>La aplicación entonces tiene como objetivo la gestión de turnos, tanto para secretarios como para profesionales.</p>
+        <p>Está destinada a centros de salud, pero cada uno tendría su propia instancia de la misma. Es decir que no está pensada como una aplicación 
+          que estaría alojada en algún servidor remoto con acceso global, sino más bien a una aplicación de ejecución local. Y por lo tanto ésta debería 
+          trabajar con datos relacionados al ámbito de salud 
+          y para el fin mencionado. Lo que implicaría:
+        </p>
+        <p>Que debe brindar:</p>
         <ul>
-          <li class="skillLogo html">HTML</li>
-          <li class="skillLogo css">CSS</li>
-          <li class="skillLogo typescript">TypeScript</li>
-          <li class="skillLogo react">React.js</li>
-          <li class="skillLogo java">Java</li>
-          <li class="skillLogo mysql">MySQL</li>
-          <li class="skillLogo spring">Spring Boot</li>
-          <li class="skillLogo spring">Spring Security</li>
+          <li>Una interfaz fácil de entender y de acceder a las distintas acciones que se quieran realizar.</li>
+          <li>La posibilidad de tanto visualizar como de registrar turnos en el corto y largo plazo.</li>
+          <li>El registro de pacientes y personal de salud.</li>
+          <li>La asociación de esos pacientes y profesionales a los turnos.</li>
+          <li>Permitir que cada profesional pueda acceder y manejar los turnos con los que se encuentre asociado.</li>
+          <li>Dar la seguridad de que no se permitiría que los turnos se sobrepongan para un mismo profesional.</li>
         </ul>
-      </article>
+        <p>Y que el sistema debería:</p>
+        <ul>
+          <li>Poder guardar los datos de forma persistente en él.</li>
+          <li>Además de una interfaz clara, éste debería tener su API que permita comunicarse con la base de datos de forma práctica.</li>
+          <li>Que el lado de la interfaz y el lado del servidor estén en constante comunicación, y las operaciones puedan tener respuesta sincrónica.</li>
+          <li>Guardar datos sensibles de forma segura, por ejemplo encriptando contraseñas y validando los parámetros que ingresan en las solicitudes.</li>
+          <li>Trabajar con autenticaciones y autorizaciones en sus operaciones.</li>
+          <li>Exponerse dentro de la red local, para que pueda ser accedida desde distintos dispositivos en el área del centro de salud.</li>
+          <li>Realizar back-ups periódicamente para la conservación de datos.</li>
+        </ul>
+      </section>
+      <section id="estilo-arquitectonico">
+        <h3>Estilo arquitectónico</h3>
+        <p>Analizando las necesidades del proyecto se llegó a la conclusión de que la mejor opción para este caso sería un sistema monolítico, ya que no 
+          requiere de tanta complejidad ni está pensada una gran escalabilidad para este caso. Aprovechando entonces la facilidad de desarrollo y la simpleza en 
+          su infraestructura que permiten estos sistemas.</p>
+        <p>El proyecto, con esta arquitectura monolítica, constaría de:</p>
+        <ul>
+          <li>Una base de datos.</li>
+          <li>Una API a la que accede la interfaz y que se comunica con la base de datos para las operaciones que los usuarios deseen realizar.</li>
+          <li>Y una interfaz, capaz de mostrar y permitir realizar de forma clara todo el trabajo que está pensado para la aplicación.</li>
+        </ul>
+      </section>
+      <section id="modelo-de-dominio">
+        <h3>Modelo de dominio</h3>
+        <p>Estando destinada a la gestión de turnos para centros de salud debería contar con las siguientes entidades como centro del proyecto: turnos, 
+          pacientes y profesionales de salud principalmente.</p>
+        <p>Como a la aplicación podrían acceder distintos usuarios, también se necesitaría de una entidad que maneje y guarde estos datos. Que serán 
+          usados para autenticarse y validar los distintos roles.</p>
+        <p>Aspectos adicionales que se asignaron o que se tuvieron en cuenta:</p>
+        <ul>
+          <li>Un profesional de salud puede estar registrado en más de un área de servicio si se requiere.</li>
+          <li>Los consultorios solo pueden tener un profesional asignado.</li>
+          <li>Entre los datos de pacientes estaría el de obra social. Dato que serviría también al momento de crear turnos.</li>
+          <li>Es posible que en el centro de salud donde se use haya áreas que sean sin turnos fijos, sin fecha y horario, sino más bien por orden de 
+            llegada. Pero que igual se necesita registrar los datos de pacientes y de abono.</li>
+        </ul>
+        <p><strong>Representación gráfica del modelo:</strong></p>
+        <div class="image">
+          <img src="imgs/healthCenter/modelDomain.webp" alt="Gráfico que muestra cómo las entidades se relacionan entre sí y los atributos que estas tendrían descritos de forma general" />
+        </div>
+        <section class="models">
+          <div class="card" id="modelsAppointments">
+            <div>
+              <h4>Turnos</h4>
+              <p>Esta entidad guardaría los datos que corresponden a cada turno. Relacionándose con pacientes, profesionales, asignando fecha, 
+                horario, consultorio, entre otras cosas.</p>
+              <p>Atributos:</p>
+              <ul class="attributes">
+                <li>Paciente que solicita</li>
+                <li>Fecha</li>
+                <li>Horario</li>
+                <li>Área de servicio</li>
+                <li>Profesional de salud</li>
+                <li>Consultorio</li>
+                <li>Estado de pago (Pagado, Debe documentación, Debe, o A Reiterar)</li>
+                <li>Obra social (si aplica se le asignaría la que tiene el paciente)</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="card" id="modelsPatients">
+            <div>
+              <h4>Pacientes</h4>
+              <p>Entidad destinada a cada paciente, se registraría uno nuevo cada vez que alguien pide un turno por primera vez en el centro de salud.</p>
+              <p>Atributos:</p>
+              <ul class="attributes">
+                <li>Nombre completo</li>
+                <li>DNI</li>
+                <li>Número de teléfono</li>
+                <li>Obra social</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="card" id="modelsProfessionals">
+            <div>
+              <h4>Profesionales de salud</h4>
+              <p>Encargados de tener asociados los turnos que le corresponden, además de datos personales y profesionales. Pudiendo manejar también sus 
+                propios turnos.</p>
+              <p>El profesional puede estar en distintas áreas según su formación e infraestructura del centro de salud</p>
+              <p>Atributos:</p>
+              <ul class="attributes">
+                <li>Nombre completo</li>
+                <li>DNI</li>
+                <li>Número de teléfono</li>
+                <li>Número de matrícula profesional</li>
+                <li>Áreas de servicio</li>
+                <li>Consultorio</li>
+                <li>Horarios de atención</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="card" id="modelsUsers">
+            <div>
+              <h4>Usuarios</h4>
+              <p>Que servirán para guardar los datos relacionados a autenticaciones al sistema. Lo que según el rol del usuario se habilitarían distintas 
+                funciones.</p>
+              <p>Atributos:</p>
+              <ul class="attributes">
+                <li>Nombre de usuario</li>
+                <li>Contraseña</li>
+                <li>Rol</li>
+                <li>Email (para recuperación de datos)</li>
+                <li>Profesional de salud (En caso de que esté relacionado con uno)</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+        <blockquote><p>El "DNI" es usado en Argentina como número de identificación para cada persona.</p></blockquote>
+      </section>
+      <section id="usedTechnologiesSection">
+        <h3>Resumen de tecnologías y herramientas elegidas</h3>
+        <table>
+          <thead>
+            <tr>
+              <th><p>Tecnología / herramienta</p></th>
+              <th><p>Comentario adicional</p></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><p>Java y Spring Boot</p></td>
+              <td>
+                <p>El uso de este conjunto aporta varias facilidades.</p>
+                <p>Por el lado del lenguaje, Java, brinda la madurez y soporte que posee, además de que es común su uso en aplicaciones.</p>
+                <p>Y con respecto a Spring Boot, éste brinda la facilidad de sus configuraciones automáticas en sus componentes y del despliegue de 
+                  aplicaciones Java. También ofrece distintos módulos que se requerían en este proyecto. Pensando principalmente en el de seguridad, 
+                  Spring Security; además de otros que sirven para desarrollar gateways, APIs REST y GraphQL, y trabajo con bases de datos relacionales.</p>
+              </td>
+            </tr>
+            <tr>
+              <td><p>Spring security</p></td>
+              <td>
+                <p>Fundamental para manejar las autenticaciones, autorizaciones, validaciones y algunas protecciones necesarias para la seguridad de la 
+                  aplicación.</p>
+              </td>
+            </tr>
+            <tr>
+              <td><p>API Rest</p></td>
+              <td>
+                <p>Elegida ya que es la que más se adapta al proyecto debido a su que forma de comunicación y obtención de respuestas es sincrónica, necesaria 
+                  para esta aplicación.</p>
+                <p>Además no es fundamental el filtrado de datos enviados o recibidos de las solicitudes a la API, por lo que no hacen falta tecnologías 
+                  como GraphQL.</p>
+              </td>
+            </tr>
+            <tr>
+              <td><p>Base de datos Relacional - MySQL</p></td>
+              <td>
+                <p>Las bases de datos relacionales son ampliamente usadas en entornos como para el que está pensada la aplicación, debido a las relaciones 
+                  que permiten y la estructura que le brinda a sus componentes.</p>
+              </td>
+            </tr>
+            <tr>
+              <td><p>TypeScript</p></td>
+              <td>
+                <p>Aporta estructura y rigidez a todo el frontend, lo que hace que se sincronice con las características del backend en Java.</p>
+              </td>
+            </tr>
+            <tr>
+              <td><p>React</p></td>
+              <td>
+                <p>Se eligió React por su enfoque en componentes reutilizables, rendimiento mediante Virtual DOM, ecosistema maduro, compatibilidad con 
+                  Typescript, y amplia comunidad. Esto lo hace ideal para una aplicación que requiere interfaces dinámicas, y fáciles de mantener.</p>
+              </td>
+            </tr>
+            <tr>
+              <td><p>React Router</p></td>
+              <td>
+                <p>Librería especial de React, focalizada en el enrutamiento de la aplicación.</p>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section id="patron-arquitectonico">
+        <h3>Patrón arquitectónico</h3>
+        <section class="intro">
+          <p>El sistema implementa una arquitectura en capas cliente-servidor que, en producción, se despliega como un único monolítico estilo MVC.
+            La capa de presentación (React) se empaqueta y sirve a través de Spring Boot, mientras que las capas de aplicación, dominio y acceso a 
+            datos se mantienen en el backend.</p>
+          <p>Esto permite la separación de responsabilidades, haciendo que cada una tenga un propósito claro y su lógica esté separada.
+            Lo que también permite escalabilidad y mantenimiento:</p>
+          <ul>
+            <li>El modelo gestionaría los datos y toda la lógica relacionada a ellos.</li>
+            <li>La vista, mediante el frontend en React, se encargaría de mostrar una interfaz clara al usuario final.</li>
+            <li>Y el controlador, siendo el intermediario entre las otras dos capas.</li>
+          </ul>
+        </section>
+
+        <section id="capa-del-modelo">
+          <h4>Capa del modelo</h4>
+          <p>Esto incluye, de forma dividida las capas de servicio, de repositorio, y de base de datos.</p>
+          <div id="capa-de-servicio">
+            <h5>Capa de servicio</h5>
+            <p>
+              Esta se comunica con la de repositorio y se encarga de realizar todo lo necesario para que los datos sean procesados ya sea desde o hacia la base de datos.
+              Se realizan las validaciones, conversiones y toda la lógica de negocio.
+            </p>
+          </div>
+
+          <div id="capa-de-repositorio">
+            <h5>Capa de repositorio</h5>
+            <p>
+              Funciona de mediador entre la de servicio y la base de datos. Mandando solicitudes a ella ya sea de lectura o de escritura.
+            </p>
+          </div>
+
+          <div id="capa-de-base-de-datos">
+            <h5>Capa de base de datos</h5>
+            <p>
+              En la que se almacena la información persistente de la aplicación. Consta de las siguientes entidades:
+            </p>
+            <ul>
+              <li>
+                Turno:
+                <ul>
+                  <li>id</li>
+                  <li>paciente (Parámetro obligatorio)</li>
+                  <li>fecha (Parámetro obligatorio)</li>
+                  <li>horario (Parámetro obligatorio)</li>
+                  <li>areaProfesional (Relación muchos a uno - Parámetro obligatorio)</li>
+                  <li>metodoDeAbono</li>
+                  <li>obraSocial</li>
+                  <li>estadoPago (enum)</li>
+                  <li>comentario</li>
+                  <li>consultorio (Relación muchos a uno - Parámetro obligatorio)</li>
+                  <li>active (Booleano que representaría si el turno está en vigencia o fue cancelado, o dado de baja - Parámetro obligatorio)</li>
+                </ul>
+              </li>
+              <li>
+                Paciente:
+                <ul>
+                  <li>id</li>
+                  <li>nombreCompleto (Parámetro obligatorio)</li>
+                  <li>dni (Parámetro obligatorio)</li>
+                  <li>numeroContacto (Parámetro obligatorio)</li>
+                  <li>obraSocial</li>
+                </ul>
+              </li>
+              <li>
+                Profesional Médico
+                <ul>
+                  <li>id</li>
+                  <li>nombreCompleto</li>
+                  <li>dni</li>
+                  <li>numeroContacto</li>
+                  <li>matricula</li>
+                  <li>areas</li>
+                  <li>consultorio</li>
+                  <li>horarios</li>
+                  <li>active (Agregado en caso de que el médico no esté activo en cierto momento, permitiendo conservar sus datos pero que no se le puedan asignar turnos)</li>
+                </ul>
+              </li>
+              <li>
+                Áreas de servicio (definido como entidad debido a que necesita relacionarse tanto con los turnos como con los profesionales)
+                <ul>
+                  <li>id</li>
+                  <li>nombre</li>
+                  <li>searchName (usado para lógica interna, facilitando obtención de datos)</li>
+                  <li>necesitaTurno (Booleano que representa si el área requiere de turnos fijos o no)</li>
+                  <li>active (Agregado en caso de que el médico no esté activo en cierto momento, permitiendo conservar sus datos pero que no se le puedan asignar turnos)</li>
+                </ul>
+              </li>
+              <li>
+                Consultorio (definido como entidad por las relaciones que tendría con otras entidades)
+                <ul>
+                  <li>id</li>
+                  <li>numero</li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        <section id="capa-de-vista">
+          <h4>Capa de vista</h4>
+          <p>
+            Implementada a traves del frontend con React y Typescript. Se encarga de mostrar y permitir al usuario final,
+            el personal de centros de salud, realizar de forma cómoda y sencilla las operaciones que posee la aplicación.
+          </p>
+
+          <section id="vistas">
+
+            <h5>Vistas</h5>
+            <p>
+              Las vistas son aquellas que dividen las operaciones permitidas, y generalmente, cada una tiene un fin único
+              para poder brindar una mejor experiencia al usuario.
+            </p>
+            <ul>
+              <li>
+                <strong>Vista inicial - Turnos del día</strong>
+                <p>
+                  El sistema detectará automáticamente los turnos de la fecha actual. Filtrándolos por área de servicio y
+                  separados por horarios según los profesionales de ella.
+                </p>
+                <p>
+                  Esta puede variar según el usuario que ingresa. Ejemplo si ingresa un profesional de salud específico éste
+                  solo verá los turnos que tiene asociados a él en el día actual. En cambio si es el secretario mostraría
+                  todos los turnos del centro de salud, filtrados por área.
+                </p>
+              </li>
+              <li>
+                <strong>Búsqueda de turnos</strong>
+                <p>
+                  Como su nombre lo índica permite buscar turnos, ya sean futuros o pasados. La búsqueda permite hacerlo por
+                  los atributos de los turnos, ej: nombre del paciente o del profesional, fecha, área de servicio, estado de
+                  pago del turno, entre otras.
+                </p>
+                <p>
+                  Los resultados se muestran en tablas, permitiendo seleccionar y realizar acciones sobre ellos. Por ejemplo:
+                  darlos de baja, eliminarlos, o editarlos (lo que abriría un modal, o pudiendo ser también un enlace, con
+                  las mismas características de la <em>vista de creación de turnos</em>. Pero con los datos del turno a editar incluidos).
+                </p>
+              </li>
+              <li>
+                <strong>Creación de turnos</strong>
+                <p>
+                  Consta de un formulario sencillo y con el agregado de un calendario. En él se muestran por día, cada horario
+                  disponible del área y profesional seleccionado mostrando cuáles están disponibles y cuáles ya están solicitados.
+                </p>
+              </li>
+              <br />
+              <li>
+                <strong>Creación de pacientes</strong>
+                <p>Requerido para registrar turnos en caso de que el paciente no esté registrado antes.</p>
+              </li>
+              <li>
+                <strong>Búsqueda de pacientes</strong>
+                <p>
+                  Muestra los resultados en tablas, permitiendo ver sus datos y los turnos que tienen asociados. Al igual que
+                  realizar acciones sobre ellos.
+                </p>
+              </li>
+              <br />
+              <li>
+                <strong>Creación de profesionales</strong>
+                <p>Necesario para que se le puedan asignar turnos. También si se quiere asignar este profesional a una cuenta de usuario.</p>
+              </li>
+              <li>
+                <strong>Búsqueda de profesionales</strong>
+                <p>Al igual que la de pacientes muestra los resultados en tablas permitiendo hacer operaciones sobre ellos.</p>
+              </li>
+              <br />
+              <li>
+                <strong>Registro de usuario</strong>
+                <p>Formulario para el registro, que además permite la vinculación de un profesional de salud a la cuenta.</p>
+              </li>
+              <li><strong>Inicio de sesión</strong></li>
+              <li>
+                <strong>Perfil de usuario</strong>
+                <p>Muestra la información principal del usuario, permitiendo editarlos.</p>
+              </li>
+            </ul>
+          </section>
+        </section>
+
+        <section id="capa-de-controlador">
+          <h4>Capa de controlador</h4>
+          <p>Permite redirigir las solicitudes del cliente al sistema a la capa de modelo.</p>
+        </section>
+      </section>
+      <section id="seguridad-y-autenticaciones">
+        <h3>Seguridad y autenticaciones</h3>
+        <section class="intro">
+          <p>La seguridad del sistema está gestionada principalmente a través de <strong>Spring Security</strong>, que provee distintos mecanismos 
+            para garantizar la integridad y el control de acceso:</p>
+          <ul>
+            <li><strong>Control de CORS</strong>: se configuran los orígenes desde los cuales se permiten las solicitudes hacia la API, asegurando 
+              que solo clientes autorizados puedan interactuar con ella.</li>
+            <li><strong>Protección CSRF</strong>: cada petición es validada mediante un token CSRF, lo que evita ataques de falsificación 
+              de solicitudes en sitios cruzados.</li>
+            <li><strong>Autenticación y autorización por roles</strong>: el acceso a las distintas operaciones de la aplicación está restringido 
+              según el rol asignado a cada usuario.</li>
+            <li><strong>Sesiones de usuario</strong>: las sesiones duran un tiempo determinado, protegiendo a los usuarios de que sus sesiones queden 
+              abiertas y otras personas puedan aprovecharse de eso.</li>
+          </ul>
+        </section>
+        <section id="roles-disponibles">
+          <h4>Roles disponibles</h4>
+          <p>
+            Existen tres roles principales que definen los permisos de los usuarios dentro de la aplicación:
+          </p>
+          <ul>
+            <li><strong>Administrador</strong>: posee control total sobre el sistema. Puede crear, modificar o dar de baja cualquier dato en la base de datos.</li>
+            <li><strong>General</strong>: orientado al personal administrativo encargado de gestionar pacientes y turnos.</li>
+            <li><strong>Profesional</strong>: destinado a los profesionales de la salud, quienes pueden visualizar y administrar sus propios turnos, así como actualizar su información personal.</li>
+          </ul>
+          <p>Además:</p>
+          <ul>
+            <li>Cualquier usuario, incluso sin iniciar sesión, puede <strong>consultar información pública</strong>.</li>
+            <li>Las operaciones de <strong>creación, modificación o eliminación de datos</strong> requieren autenticación y el rol adecuado.</li>
+          </ul>
+        </section>
+        <section id="validacion-de-datos">
+          <h4>Validación de datos</h4>
+          <p>
+            De manera complementaria, todos los datos ingresados por los usuarios (especialmente a través de 
+            formularios) son validados en el backend antes de ser procesados, evitando así inconsistencias 
+            y posibles ataques.
+          </p>
+        </section>
+      </section>
+      <section id="entornos">
+        <h3>Entornos</h3>
+        <p>Existen 2 entornos el de desarrollo, el cual permite ejecutar tanto el frontend como el backend de modo que se reflejan los cambios generados 
+          automáticamente. Y el de producción, el cual ejecuta el build del proyecto de React y lo aloja en la carpeta resources/static del proyecto en 
+          Spring Boot, ejecutando posteriormente la compilación y el empaquetado del backend a un archivo .jar para luego ser ejecutado.</p>
+      </section>
     </section>
     <div class="linksZone">
       <div>
@@ -145,9 +700,303 @@
         </svg>
       </button></a>
     </div>
-    <section id="projectComments" class="aboutMe">
-      <h2></h2>
-      <p></p>
+    <section id="installationGuide">
+      <h2>Instrucciones de instalación y requisitos</h2>
+      <section class="intro">
+        <p>Estas instrucciones corresponden al caso en que se quiera ejecutar, o levantar el proyecto en modo desarrollo, de forma local. Si no es ese el 
+          caso, puede ir directamente al <a href="https://administracionturnosclinica.onrender.com">sitio web</a> donde está alojada la aplicación, y 
+          dirigirse a la <a href="#guía-de-operaciones">guía de operaciones</a> para saber qué puede hacer y cómo interactuar con el sistema.</p>
+        <p>Se realizaron ciertos ajustes para poder ejecutar con pocos comandos, ya sea el entorno productivo o el de desarrollo. Logrando que se pueda 
+          levantar tanto con o como sin Docker de forma relativamente sencilla.</p>
+      </section>
+      <section id="variables-de-entorno">
+        <h3>Variables de entorno</h3>
+        <p>Las variables de entorno tienen relación principalmente con propiedades de la base de datos o la ruta de conexión que usaría el frontend 
+          para comunicarse con la API. Lo que permite variarlas según requiera el entorno.</p>
+        <p>Ellas son las siguientes, se muestran con los valores que vienen por defecto:</p>
+        <div class="code">
+          DB_HOST=localhost #Host donde se encuentra la base de datos.
+          DB_USER=root #Nombre de usuario de la base de datos utilizada para acceder a ella.
+          DB_PASSWORD=root #Contraseña de usuario de la base de datos
+          VITE_API_PREFIX="http://localhost:8080/api" #Ruta que utiliza el frontend para conectarse a la api
+        </div>
+      </section>
+      <section id="installation-with-docker">
+        <h3>En caso de tener docker</h3>
+        <p>
+          Teniendo docker en el sistema local, y ejecutándose, alcanza con el siguiente comando en la ubicación raíz del proyecto. 
+          Esto empaquetará los servicios y ejecutará los archivos .jar de cada uno.
+        </p>
+        <div class="code">
+          #para la primera vez que se quiere levantar el proyecto
+          docker compose -f docker-compose-prod.yml up --build  
+
+          #para las siguientes
+          docker compose -f docker-compose-prod.yml up 
+        </div>
+        <p>Para levantar el sistema en modo desarrollo se usan los comandos:</p>
+        <div class="code">
+          #para la primera vez que se quiere levantar el proyecto
+          docker compose -f docker-compose-dev.yml up --build
+
+          #para las siguientes
+          docker compose -f docker-compose-dev.yml up
+        </div>
+        <p>
+          Las variables de entorno ya vienen actualizadas para cada entorno, utilizando como host el nombre de los contenedores 
+          y sincronizando con los datos de la imagen de la base de datos. 
+          En caso de que se quiera modificar se debe crear un archivo .env en la carpeta raíz del proyecto, 
+          aclarando los valores como se muestra en los valores de ejemplo.
+        </p>
+      </section>
+      <section id="installation-without-docker">
+        <h3>En caso de no usar docker</h3>
+        <h4>REQUISITOS:</h4>
+        <p>Si se quiere correr el proyecto sin docker es necesario contar con los siguientes recursos:</p>
+        <ul>
+          <li>
+            <p>
+              Este proyecto requiere instalar y tener correctamente configuradas las variables de entorno para 
+              <strong>Java JDK</strong> y <strong>Maven</strong>, tanto en Windows como en sistemas basados en Unix (Linux/macOS).
+            </p>
+            <div id="windows">
+              <h4>Windows</h4>
+              <p>Se debe agregar al <code>Path</code> del sistema (Variable de entorno) las rutas a:</p>
+              <ul>
+                <li>El bin del <strong>JDK</strong>, en el proyecto se usa la versión 17 (ejemplo: <code>C:\Program Files\Java\jdk-17\bin</code>)</li>
+                <li>El bin de <strong>Maven</strong> (ejemplo: <code>C:\apache-maven-3.9.6\bin</code>)</li>
+              </ul>
+              <p>
+                Para esto buscar la opción "Editar las variables de entorno" en el panel de control y hacer click en el botón 
+                "Variables de entorno...", ubicado en la pestaña Opciones avanzadas.
+              </p>
+            </div>
+            <div id="otherSystems">
+              <h4>Linux / macOS</h4>
+              <p>En sistemas Unix-like, es necesario agregar las siguientes líneas al archivo de configuración del shell:</p>
+              <div class="code">
+                export JAVA_HOME=/ruta/a/tu/jdk
+                export PATH=$JAVA_HOME/bin:$PATH
+
+                export MAVEN_HOME=/ruta/a/apache-maven
+                export PATH=$MAVEN_HOME/bin:$PATH
+              </div>
+              <p>Estos cambios deben agregarse en uno de los siguientes archivos, según el shell que se utilice en el sistema:</p>
+              <table>
+                <thead>
+                  <tr>
+                    <th>Shell</th>
+                    <th>Archivo de configuración</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Bash</td>
+                    <td>~/.bashrc o ~/.bash_profile</td>
+                  </tr>
+                  <tr>
+                    <td>Zsh (macOS)</td>
+                    <td>~/.zshrc</td>
+                  </tr>
+                  <tr>
+                    <td>Fish</td>
+                    <td>~/.config/fish/config.fish</td>
+                  </tr>
+                </tbody>
+              </table>
+              <p>
+                Después de editarlos, aplicá los cambios con: 
+                <code>source ~/.bashrc</code> o <code>~/.zshrc</code> según corresponda
+              </p>
+              <h4>Se puede verificar las configuraciones en una terminal (CMD o PowerShell) ejecutando:</h4>
+              <div class="code">
+                java -version
+                javac -version
+                mvn -version
+              </div>
+            </div>
+          </li>
+          <li>
+            <p>
+              Tener instalado el server de MySql, al menos la versión 8.0. 
+              Los valores que se asignen a la cuenta serán los que deberán ir en las 
+              <a href="#variables-de-entorno">variables de entorno</a> 
+              (por defecto se usa <code>root</code> para el usuario principal y también para la contraseña, 
+              a menos que se indique lo contrario).
+            </p>
+          </li>
+          <li><p>Tener <strong>Node.js</strong> versión 20 instalado</p></li>
+        </ul>
+
+        <p>
+          Las variables de entorno para el backend tienen su valor por defecto en caso de que no se asignen. 
+          En caso de querer cambiarlas se deberá asignar el nuevo valor cambiando los valores por defecto en el 
+          <code>application.properties</code> (dentro de <code>/backend/src/main/resources</code>), 
+          o mediante las variables de entorno según su sistema operativo (o IDE si aplica).
+        </p>
+        <p>
+          Para la variable de entorno del frontend alcanza con crear un archivo <code>.env</code>, 
+          en la ruta <code>/frontend</code>, con el nuevo valor como se muestra en 
+          <a href="#variables-de-entorno">el ejemplo</a>.
+        </p>
+
+        <h4>OBTENER DEPENDENCIAS:</h4>
+        <p>
+          Antes de ejecutar el sistema en cualquier perfil hay que instalar las dependencias. 
+          Para eso se usan los siguientes comandos, siendo el primero para las dependencias de ejecución generales 
+          y el segundo para las dependencias del frontend:
+        </p>
+        <div class="code">
+          npm install
+
+          npm run install
+        </div>
+
+        <h4>MODO DE DESARROLLO:</h4>
+        <p>
+          Teniendo los recursos necesarios (Java, Maven, MySQL, Node) se puede levantar tanto el frontend como el backend 
+          a la par con el comando:
+        </p>
+        <div class="code">
+          npm run dev
+        </div>
+        <p>
+          La interfaz se puede visualizar accediendo a 
+          <a href="http://localhost:5173" target="_blank">http://localhost:5173</a>, 
+          y la API estará alojada en 
+          <a href="http://localhost:8080" target="_blank">http://localhost:8080</a>.
+        </p>
+
+        <h4>MODO DE PRODUCCIÓN:</h4>
+        <p>
+          Para levantarlo en modo de producción se realizan dos comandos la primera vez. 
+          Luego alcanza con ejecutar solamente el segundo.
+        </p>
+        <p>
+          El primero debe ser ejecutado cada vez que hayan nuevos cambios, ya sea en el frontend o en el backend, 
+          para que haga los build de ambos combinados; el segundo es para ejecutarlo directamente, 
+          <em>pero requiere que al menos una vez se haya hecho el primero</em>.
+        </p>
+        <div class="code">
+          npm run prod:build
+
+          npm run prod
+        </div>
+        <p>
+          En este caso toda la aplicación estará levantada en 
+          <a href="http://localhost:8080" target="_blank">http://localhost:8080</a>.
+        </p>
+      </section>
+    </section>
+    <section id="guide">
+      <h2>Guía de operaciones</h2>
+      <p>
+        En esta la guía se mostrará cómo se realizan las operaciones disponibles en la aplicación.
+      </p>
+      <blockquote>
+        <p>Para acceder mediante rutas a cualquiera de las operaciones se la debe agregar posterior a la ruta original, ej: 
+        https://administracionturnosclinica.onrender.com/turno/crear para la creación de turnos.</p>
+      </blockquote>
+      <p>
+        Las vistas que refieren a registros muestran mensajes en caso de algún error, como falta de campo requerido, advertencia de registro ya existente, o error del sistema.
+      </p>
+      <section id="menu">
+        <h3>Menú</h3>
+        <p>El menú es la barra lateral, o desplegable en pantallas chicas, en la que aparecen atajos de navegación para realizar las acciones que se espera que la aplicación pueda realizar.</p>
+        <img class="small" src="./imgs/healthCenter/guide/navbar.webp" alt="Captura en la que se ve únicamente la barra de navegación de forma completa">
+        <p>En el menú se mostrarán solamente aquellas opciones que son válidas para el estado de la sesión y el usuario en la sesión. Por ejemplo la opción para crear profesionales, que solo puede hacerlo el admin, no les aparecerá a usuarios con rol GENERAL ni con rol Profesional. Y, aunque se ingrese con la ruta a la que se accede a la vista, la solicitud dará error al intentar completarse ya que el backend valida las autenticaciones.</p>
+        <p>Todas las opciones son las siguientes:</p>
+        <div class="container_imgs">
+          <img class="small" src="imgs/healthCenter/guide/navbar_turnos.webp" alt="Bloque del desplegable del menú con las opciones referidas a turnos">
+          <img class="small" src="imgs/healthCenter/guide/navbar_pacientes.webp" alt="Bloque del desplegable del menú con las opciones referidas a pacientes">
+          <img class="small" src="imgs/healthCenter/guide/navbar_profesionales.webp" alt="Bloque del desplegable del menú con las opciones referidas a profesionales">
+          <img class="small" src="imgs/healthCenter/guide/navbar_cons_areas.webp" alt="Bloque del desplegable del menú con las opciones referidas a áreas y consultorios">
+        </div>
+        <p>Luego se encuentran botones que refieren a la sesión de usuario y el usuario. Indicándose al señalarlos la acción que estos realizan.</p>
+      </section>
+      <section id="sesiones-de-usuario-y-registro">
+        <h3>Sesiones de usuario y registro</h3>
+        <div id="registrar-nuevo-usuario">
+          <h4>Registrar nuevo usuario</h4>
+          <p><strong>Acceso:</strong> A través de la ruta <code>/signup</code>, o mediante el botón en la barra de navegación.</p>
+          <img src="./imgs/healthCenter/guide/vista_registroUsuario.webp">
+        </div>
+        <div id="inicio-de-sesion">
+          <h4>Inicio de sesión</h4>
+          <p><strong>Acceso:</strong> Mediante la ruta <code>/login</code> o mediante el botón en el menú.</p>
+        </div>
+      </section>
+      <section id="creacion-de-datos">
+        <h3>Creación de datos</h3>
+        <div id="registrar-turnos">
+          <h4>Registrar turnos</h4>
+          <p><strong>Acceso:</strong> A través de la ruta <code>/turno/crear</code>, o mediante del enlace correspondiente en el menú.</p>
+          <p><strong>Permisos:</strong> Esta acción es posible si se inició sesión en el sistema con cualquiera de los roles. En el caso de los 
+            usuarios con rol <em>PROFESIONAL</em> solo podrán crear turnos asignados automáticamente a ellos mismos.</p>
+          <p>Aparecerá un formulario en el que se deben ingresar los datos que corresponden al nuevo turno. Es necesario, para asociar un paciente, 
+            que este ya se encuentre registrado en el sistema.</p>
+          <img src="./imgs/healthCenter/guide/vista_creacionTurnos.webp">
+          <blockquote>
+            <p>El calendario solo aparecerá si se selecciona un área de servicio y esta posea algún personal de salud asociado. 
+            Se puede hacer click en las celdas que aparecen disponibles para asignar esa fecha y horario de forma más sencilla. 
+            También muestra los turnos que ya están ocupados.</p>
+            <br>
+            <img src="./imgs/healthCenter/guide/vista_creacionTurnos2.webp">
+          </blockquote>
+        </div>
+        <div id="registrar-pacientes">
+          <h4>Registrar pacientes</h4>
+          <p><strong>Acceso:</strong> A través de la ruta <code>/paciente/registrar</code>, o mediante el enlace en el menú.</p>
+          <p><strong>Permisos:</strong> Solo podrán realizarla los usuarios con rol GENERAL o ADMIN.</p>
+          <p>Formulario sencillo donde se rellena con los datos del paciente.</p>
+          <img src="./imgs/healthCenter/guide/vista_creacionPacientes.webp">
+        </div>
+        <div id="registrar-profesionales-de-salud">
+          <h4>Registrar profesionales de salud</h4>
+          <p><strong>Acceso:</strong> A través de la ruta <code>/profesional/registrar</code>, o mediante el enlace en el menú.</p>
+          <p><strong>Permisos:</strong> Esta acción solo puede ser empleada por el usuario ADMIN.</p>
+          <img src="./imgs/healthCenter/guide/vista_creacionProfesionales.webp">
+        </div>
+        <div id="registro-de-areas-de-servicio-y-consultorios">
+          <h4>Registro de áreas de servicio y consultorios</h4>
+          <p><strong>Acceso:</strong> Ambas acciones se pueden realizar mediante la misma ruta <code>/areas_consultorios/crear</code>, o 
+            bien mediante la opción en el menú.</p>
+        </div>
+      </section>
+      <section id="busqueda-de-datos">
+        <h3>Búsqueda de datos</h3>
+        <p>Lás búsquedas son accesibles para todos los usuarios, incluso cuando no se haya iniciado sesión. Los resultados son mostrados en tablas con los datos que cada entidad posee.</p>
+        <p>Los parámetros de texto que se usan para las búsquedas ignoran mayúsculas y acentos, y no hace falta que estén completos. Lo que significa que, por ejemplo, se incluirán los resultados de la paciente María Gómez aunque se coloque "mari".</p>
+        <p>Llenar los campos de búsqueda agregan parámetros a la url.</p>
+        <blockquote>
+          <p>Por ejemplo la ruta para buscar los turnos asociados a al paciente María en la fecha 11/09/2025 quedaría de la siguiente forma: /turno?searchName=mari&date=11%2F09%2F2025 (los caracteres como la barra "/" son transformados a %2F automáticamente). Tener el enlace permitiría compartirlo si es necesario.</p>
+        </blockquote>
+        <p>Los resultados que aparecen pueden ser señalados, lo que esto permitiría la edición o el dar de baja si es que se cuenta con los permisos adecuados.</p>
+        <div id="busqueda-de-turnos">
+          <h4>Búsqueda de turnos</h4>
+          <p>Permite buscar turnos por nombre de paciente o profesional de salud, y/o fecha. Pudiendo aplicar filtros a la búsqueda según el área de servicio y/o estado de pago de los turnos.</p>
+          <p><strong>Acceso:</strong> Mediante la ruta <code>/turno</code> o mediante el menú.</p>
+          <img src="imgs/healthCenter/guide/vista_busquedaTurnos.webp" alt="Captura de la vista en donde se ve la tabla con algunos resultados">
+        </div>
+        <div id="busqueda-de-pacientes">
+          <h4>Búsqueda de pacientes</h4>
+          <p>Permite buscarlos por nombre o dni y/o filtrarlos por obra social. Permite ver los turnos asociados de cada paciente, resaltando si hay alguno en un estado que no sea el de "Pagado".</p>
+          <p><strong>Acceso:</strong> Mediante la ruta <code>/paciente</code> o mediante el menú.</p>
+          <img src="imgs/healthCenter/guide/vista_busquedaPacientes.webp" alt="Captura de la vista en donde se ve la tabla con algunos resultados">
+        </div>
+        <div id="busqueda-de-profesionales">
+          <h4>Búsqueda de profesionales</h4>
+          <p>Permite buscarlos por nombre o dni, por matricula, o por área de servicio.</p>
+          <p><strong>Acceso:</strong> Mediante la ruta <code>/profesional</code> o mediante el menú.</p>
+          <img src="imgs/healthCenter/guide/vista_busquedaProfesionales.webp" alt="Captura de la vista en donde se ve la tabla con algunos resultados">
+        </div>
+        <div id="busqueda-de-areas-de-servicio-y-consultorios">
+          <h4>Búsqueda de áreas de servicio y consultorios</h4>
+          <p>En la misma vista se pueden buscar ambos tipo de datos, separados en tablas distintas. Los consultorios pueden filtrarse según si ya tienen profesional asignado o no. Y las áreas según si están activas o si necesitan de turnos fijos o no.</p>
+          <p><strong>Acceso:</strong> Mediante la ruta <code>/areas_consultorios</code> o mediante el menú</p>
+          <img src="imgs/healthCenter/guide/vista_busquedaConsAreas.webp" alt="Captura de la vista en donde se ven las tablas con algunos resultados">
+        </div>
+      </section>
     </section>
   </main>
   </div>

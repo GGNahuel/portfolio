@@ -168,7 +168,7 @@
               <div class="plegable">
                 <ul>
                   <li><a href="#architectureSection">Introducción</a></li>
-                  <li><a href="#estilo-arquitectenico">Estilo arquitectónico</a></li>
+                  <li><a href="#estilo-arquitectonico">Estilo arquitectónico</a></li>
                   <li><a href="#modelo-de-dominio">Modelo de dominio</a><ul>
                     <li><a href="#modelsProducts">Productos</a></li>
                     <li><a href="#modelsInventories">Inventarios</a></li>
@@ -185,8 +185,8 @@
                   </ul></li>
                   <li><a href="#flujo-de-interacciones">Flujo de interacción de las solicitudes y entre microservicios</a></li>
                   <li><a href="#otros-aspectos">Otros aspectos</a><ul>
-                    <li><a href="designPatterns">Patrones de diseño</a></li>
-                    <li><a href="#architecturePatterns">Patrones y decisiones arquitectónicas</a></li>
+                    <li><a href="#patrones-de-diseño">Patrones de diseño</a></li>
+                    <li><a href="#patrones-y-decisiones-arquitectonicas">Patrones y decisiones arquitectónicas</a></li>
                     <li><a href="#entornos-y-perfiles">Entornos y perfiles</a></li>
                   </ul></li>
                 </ul>
@@ -206,8 +206,8 @@
                   <li><a href="#variables-de-entorno">Variables de entorno</a><ul>
                     <li><a href="#ejemplo-de-valores">Ejemplo de valores</a></li>
                   </ul></li>
-                  <li><a href="#en-caso-de-usar-docker">En caso de usar docker</a></li>
-                  <li><a href="#en-caso-de-no-usar-docker">En caso de no usar docker</a><ul>
+                  <li><a href="#installation-with-docker">En caso de usar docker</a></li>
+                  <li><a href="#installation-without-docker">En caso de no usar docker</a><ul>
                     <li><a href="#windows">Windows</a></li>
                     <li><a href="#otherSystems">Linux / macOS</a></li>
                   </ul></li>
@@ -240,7 +240,7 @@
               <h4>Endpoints y operaciones</h4>
               <div class="plegable">
                 <ul>
-                  <li><a href="#endpoints-y-operaciones">Introducción</a></li>
+                  <li><a href="#guide">Introducción</a></li>
                   <li><a href="#servicio-de-usuarios">Servicio de usuarios</a><ul>
                     <li><a href="#posibles-retornos">Posibles retornos</a></li>
                     <li><a href="#cuentas-y-sub-usuarios">Cuentas y sub-usuarios</a></li>
@@ -265,7 +265,7 @@
               <h4>Testing y prueba del sistema</h4>
               <div class="plegable">
                 <ul>
-                  <li><a href="#testing-y-prueba-del-sistema">Introducción</a></li>
+                  <li><a href="#testing">Introducción</a></li>
                   <li><a href="#ejecucion-de-tests">Ejecución de tests</a></li>
                   <li><a href="#prueba-con-postman">Prueba con Postman</a><ul>
                     <li><a href="#datos-de-ejemplo">Datos de ejemplo</a></li>
@@ -277,7 +277,16 @@
         </div>          
       </div>
     </section>
-
+    <div class="scrollToIndex"><a href="#pageIndex">
+      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" transform="rotate(180)" stroke="#000000">
+        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+        <g id="SVGRepo_iconCarrier">
+          <path d="M8 11L12 15M12 15L16 11M12 15V3M7 4.51555C4.58803 6.13007 3 8.87958 3 12C3 16.9706 7.02944 21 12 21C16.9706 21 21 16.9706 21 12C21 8.87958 19.412 6.13007 17 4.51555" 
+            stroke="#ff0000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+        </g>
+      </svg>
+    </a></div>
     <section id="architectureSection">
       <h2>Fundamentación del diseño y arquitectura de software</h2>
       <section class="intro">
@@ -680,7 +689,7 @@
       </section>
       <section id="otros-aspectos">
         <h3>Otros aspectos</h3>
-        <div id="designPatterns">
+        <div id="patrones-de-diseño">
           <h4>Patrones de diseño</h4>
           <p>Se utilizaron:</p>
           <ul>
@@ -689,7 +698,7 @@
             <li><strong>Data Transfer Object (DTO) Pattern</strong>: para separar modelos internos de lo que se expone al cliente.</li>
           </ul>
         </div>
-        <div id="architecturePatterns">
+        <div id="patrones-y-decisiones-arquitectonicas">
           <h4>Patrones y decisiones arquitectónicas</h4>
           <p>Se implementaron:</p>
           <ul>
@@ -749,7 +758,7 @@
           </div>
         </div>
       </section>
-      <section id="en-caso-de-usar-docker">
+      <section id="installation-with-docker">
         <h3>En caso de usar docker</h3>
         <p>Para empezar es necesario configurar las <a href="#variables-de-entorno"><strong>variables de entorno</strong></a>. Para esto se crea un 
           archivo .env en la carpeta raíz del proyecto (a la misma altura que se encuentra el archivo docker-compose.yml).</p>
@@ -771,7 +780,7 @@
           docker compose -f docker-compose-dev.yml up
         </div>
       </section>
-      <section id="en-caso-de-no-usar-docker">
+      <section id="installation-without-docker">
         <h3>En caso de no usar docker</h3>
         <p>Si se quiere correr el proyecto sin docker es necesario contar con los siguientes recursos:</p>
         <ul>
@@ -919,7 +928,7 @@
         </div>
       </section>
     </section>
-    <section id="endpoints-y-operaciones">
+    <section id="guide">
       <h2>Endpoints y operaciones</h2>
       <section class="intro">
         <p>Todos los endpoints pueden ser accedidos a traves de la gateway. Ubicada en el localhost en el puerto 8080 
@@ -949,9 +958,9 @@
         <h3>Servicio de usuarios</h3>
         <div class="intro">
           <p><strong>Administración de los datos de usuarios y sub-usuarios, manejo de autenticación y autorización.</strong></p>
-          <h4>Posibles retornos</h4>
+          <h4 id="posibles-retornos">Posibles retornos</h4>
           <p><strong>Tener en cuenta que estos DTOs se encontrarían dentro del <em>data</em> del DTO descrito anteriormente</strong>. A excepción de cuando se llame a algún endpoint de autenticación, ya sea de inicio o de cierre, que se retornará directamente el DTO del token.</p>
-          <div class="code typescript" id="posibles-retornos">
+          <div class="code typescript">
             interface DTO_cuenta {
               id: string,
               username: string,
@@ -1345,7 +1354,7 @@
         </div>
       </section>
     </section>
-    <section id="testing-y-prueba-del-sistema">
+    <section id="testing">
       <h2>Testing y prueba del sistema</h2>
       <section class="intro">
         <p>Los tests que se encuentran en este proyecto se dividen en 3 categorías:</p>
@@ -1396,7 +1405,7 @@
         </blockquote>
         <p>Herramienta de logística</p>
       </section>
-      <section id="pruebas-con-postman">
+      <section id="prueba-con-postman">
         <h3>Prueba con Postman</h3>
         <p>Dentro del repositorio se encuentra una colección de Postman, la cual puede ser importada en esa aplicación, trayendo con ella todos los endpoints y operaciones que son posibles en este sistema de apis, mencionados en la sección <a href="#endpoints-y-operaciones">Endpoints y operaciones</a>. Además viene con ejemplos prácticos según datos de ejemplo que son insertados en la base de datos al arrancar la aplicación por primera vez (Se pueden re-establecer si se elimina la cuenta de ejemplo y se vuelve a ejecutar la aplicación).</p>
         <p><a href="https://github.com/GGNahuel/InventoryManagementSystem_microservices/blob/main/Inventory%20Api.postman_collection.json">Colección postman</a></p>

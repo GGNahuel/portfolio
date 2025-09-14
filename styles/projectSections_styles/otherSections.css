@@ -1,4 +1,4 @@
-#endpoints-y-operaciones {
+#guide {
   > section > div {
     display: flex;
     flex-direction: column;
@@ -7,6 +7,17 @@
     > p {
       margin: 0;
     }
+  }
+
+  img {
+    max-width: 1024px;
+    width: 100%;
+    align-self: center;
+  }
+
+  .container_imgs {
+    align-self: center;
+    flex-flow: row wrap;
   }
 }
 

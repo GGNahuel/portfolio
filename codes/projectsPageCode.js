@@ -1,19 +1,19 @@
 // Separar navbar de main zone
-const navbar = document.querySelector(".projectsNavbar")
-const mainZone = document.querySelector("main.notIndex")
-mainZone.style.height = `calc(100dvh - ${navbar.scrollHeight}px)`
+const $navbar = document.querySelector(".projectsNavbar")
+const $mainZone = document.querySelector("main.notIndex")
+$mainZone.style.height = `calc(100dvh - ${$navbar.scrollHeight}px)`
 
 // ==========================================================
 // Rellenar y agregar funcionalidad a los desplegables de los índices de contenidos
-const indexUiComponents = document.querySelectorAll(".indexUI")
-indexUiComponents.forEach(element => {
-  const topPart = element.querySelector(".top")
-  const stretchPart = element.querySelector(".stretch")
-  const bottomPart = element.querySelector(".bottom")
+const $indexUiComponents = document.querySelectorAll(".indexUI")
+$indexUiComponents.forEach($element => {
+  const $topPart = $element.querySelector(".top")
+  const $stretchPart = $element.querySelector(".stretch")
+  const $bottomPart = $element.querySelector(".bottom")
 
-  const stretchPartHeight = (element.offsetWidth - (element.offsetWidth * 0.06) - (element.offsetWidth * 0.07)) / 32
+  const stretchPartHeight = ($element.offsetWidth - ($element.offsetWidth * 0.06) - ($element.offsetWidth * 0.07)) / 32
 
-  topPart.innerHTML = `<svg class="indexUIsvg" version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 60">
+  $topPart.innerHTML = `<svg class="indexUIsvg" version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 60">
     <style>
       .s0 { stroke-width: 3 } 
     </style>
@@ -32,7 +32,7 @@ indexUiComponents.forEach(element => {
     <path id="Forma 4" fill-rule="evenodd" class="s0" d="m60 0v32"/>
     <path id="Forma 4 copy" fill-rule="evenodd" class="s0" d="m480 0v32"/>
   </svg>` */
-  bottomPart.innerHTML = `<svg class="indexUIsvg" version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 72">
+  $bottomPart.innerHTML = `<svg class="indexUIsvg" version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 72">
     <style>
       .s0 { stroke-width: 3 } 
       .s1 { stroke-linecap: round } 
@@ -48,28 +48,40 @@ indexUiComponents.forEach(element => {
     <path id="Forma 7" fill-rule="evenodd" class="filled" d="m20 13c-1.1 0-2-0.9-2-2 0-1.1 0.9-2 2-2 1.1 0 2 0.9 2 2 0 1.1-0.9 2-2 2z"/>
   </svg>`
 
-  element.addEventListener("click", () => {
-    const plegableContent = element.querySelector(".plegable")
-    if (!element.classList.contains("active")) {
-      element.classList.add("active")
+  $element.addEventListener("click", () => {
+    const plegableContent = $element.querySelector(".plegable")
+    if (!$element.classList.contains("active")) {
+      $element.classList.add("active")
       plegableContent.style.maxHeight = plegableContent.scrollHeight + "px"
     } else {
-      element.classList.remove("active")
+      $element.classList.remove("active")
       plegableContent.style.maxHeight = "0"
     }
   })
 })
 
 const defineHeightOfStretchPart = () => {
-  indexUiComponents.forEach(element => {
-    const stretchablePart = element.querySelector(".stretch")
-    stretchablePart.style.top = `${element.scrollWidth * 0.06}px`
-    stretchablePart.style.bottom = `${element.scrollWidth * 0.07}px`
+  $indexUiComponents.forEach($element => {
+    const $stretchablePart = $element.querySelector(".stretch")
+    $stretchablePart.style.top = `${$element.scrollWidth * 0.06}px`
+    $stretchablePart.style.bottom = `${$element.scrollWidth * 0.07}px`
   })
 }
 
 window.addEventListener("load", defineHeightOfStretchPart)
 window.addEventListener("resize", defineHeightOfStretchPart)
+
+// =========================================
+// Aparición del botón para scrollear al índice
+const $pageIndex = document.querySelector("#pageIndex")
+
+$mainZone.addEventListener("scroll", () => {
+  const scrollPosition = $mainZone.scrollTop
+  const indexLastScrollPosition = $pageIndex?.offsetTop + $pageIndex?.offsetHeight
+
+  const $toIndexButton = document.querySelector(".scrollToIndex")
+  $toIndexButton?.classList.toggle("active", scrollPosition > indexLastScrollPosition)
+})
 
 // =========================================
 // Formatear elementos code
@@ -97,13 +109,13 @@ document.querySelectorAll(".code").forEach(el => {
 
 // ========================================
 // Código de carrusel
-const carrouselContainer = document.querySelector('.carrouselContainer')
-const images = carrouselContainer.querySelectorAll('.imageCarrouselContainer')
-const selectButtonContainer = document.querySelector('.selectItemButtons')
-const leftButton = document.querySelector('.carrouselButtons .left')
-const rightButton = document.querySelector('.carrouselButtons .right')
+const $carrouselContainer = document.querySelector('.carrouselContainer')
+const $images = $carrouselContainer.querySelectorAll('.imageCarrouselContainer')
+const $selectButtonContainer = document.querySelector('.selectItemButtons')
+const $leftButton = document.querySelector('.carrouselButtons .left')
+const $rightButton = document.querySelector('.carrouselButtons .right')
 
-const scrollAmount = carrouselContainer?.offsetWidth
+const scrollAmount = $carrouselContainer?.offsetWidth
 let carrouselIndex = 0
 
 const scrollCarrousel = (newIndex, isRelative = false) => {
@@ -115,22 +127,22 @@ const scrollCarrousel = (newIndex, isRelative = false) => {
   }
 
   if (newIndex < 0) {
-    carrouselIndex = images.length - 1
+    carrouselIndex = $images.length - 1
   }
-  if (newIndex > images.length - 1) {
+  if (newIndex > $images.length - 1) {
     carrouselIndex = 0
   }
 
   newIndex = carrouselIndex
 
-  carrouselContainer?.scrollTo({
+  $carrouselContainer?.scrollTo({
     left: scrollAmount * newIndex,
     behavior: 'smooth',
   })
 }
 
 const highlightItemSelector = () => {
-  const itemSelectors = selectButtonContainer.querySelectorAll("& > span")
+  const itemSelectors = $selectButtonContainer.querySelectorAll("& > span")
   itemSelectors.forEach((item, index) => {
     if (index == carrouselIndex) item.classList.toggle("active", true)
     else item.classList.toggle("active", false)
@@ -138,31 +150,31 @@ const highlightItemSelector = () => {
 }
 
 // - Evento para desplazarse a la izquierda
-leftButton?.addEventListener('click', () => {
+$leftButton?.addEventListener('click', () => {
   scrollCarrousel(-1, true)
   highlightItemSelector()
 })
 
 // - Evento para desplazarse a la derecha
-rightButton?.addEventListener('click', () => {
+$rightButton?.addEventListener('click', () => {
   scrollCarrousel(1, true)
   highlightItemSelector()
 })
 
 // - Creación de botones de selección específicos
-images.forEach((_, index) => {
-  if (!selectButtonContainer) return
+$images.forEach((_, index) => {
+  if (!$selectButtonContainer) return
 
   const itemSelector = document.createElement("span")
   itemSelector.addEventListener('click', () => {
     scrollCarrousel(index)
 
-    const othersItemSelectors = selectButtonContainer.querySelectorAll("&>span")
+    const othersItemSelectors = $selectButtonContainer.querySelectorAll("&>span")
     othersItemSelectors.forEach(item => {
       item.classList.toggle("active", false)
     })
     itemSelector.classList.add("active")
   })
   if (index == 0) itemSelector.classList.add("active")
-  selectButtonContainer.appendChild(itemSelector)
+  $selectButtonContainer.appendChild(itemSelector)
 })
