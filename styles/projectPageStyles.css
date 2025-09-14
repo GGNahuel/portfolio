@@ -13,25 +13,6 @@ h1 {
   filter: drop-shadow(var(--neon-shadows1-principal) var(--neon-main-color)) drop-shadow(var(--neon-shadows1-secondary) var(--main-color));
 }
 
-blockquote {
-  padding: 1rem;
-  background-color: var(--secondary-color-dark);
-  color: var(--neon-secondary-color);
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  box-sizing: border-box;
-  width: 100%;
-
-  &::before {
-    content: "Nota:";
-  }
-
-  & + blockquote {
-    margin-top: 1rem;
-  }
-}
-
 ul {
   padding-left: 2rem;
   list-style-type: disc;
