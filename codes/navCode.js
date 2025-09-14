@@ -3,7 +3,7 @@
 const $firstRing = $header.querySelector(".firstRing")
 const $secondRing = $header.querySelector(".secondRing")
 
-const finalHeaderPosition = () => window.innerWidth > 719 ? "calc((100vw / -2) - 25%)" : "0 -100vh"
+const finalHeaderPosition = () => window.innerWidth > 719 ? "calc((100vw / -2) - 25%)" : "0 -100dvh"
 
 // propiedades para las animaciones de aparición (pre-desplazamiento del header)
 const $KEYFRAME_opening = {
@@ -85,7 +85,7 @@ const defaultAngles = []
 // estilos iniciales, pre-animación de aparición
 function definirStylesSegunVWPreAnimation () {
   if (window.innerWidth > 719) {
-    $header.style.width = "calc(100vh - 1rem)"
+    $header.style.width = "calc(100dvh - 1rem)"
     $header.style.top = "0.5rem"
 
     const headerWidth = $header.offsetWidth
