@@ -286,7 +286,7 @@ window.addEventListener("load", () => {
   setPageTexts()
 })
 
-changeLanguageButton.addEventListener("change", () => {
+changeLanguageButton?.addEventListener("change", () => {
   selectedLanguage = localStorage.getItem("webLanguage") == "spanish" ? "english" : "spanish"
   localStorage.setItem("webLanguage", selectedLanguage)
   selectedTranslation = translation[selectedLanguage]
