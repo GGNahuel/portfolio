@@ -2,8 +2,8 @@
 // definiendo clase de proyectos
 class ProjectElement {
   constructor({ translationObject = {
-      spanish: {name: "", description: "", features: [], videoTitle: ""},
-      english: {name: "", description: "", features: [], videoTitle: ""},
+      spanish: {name: "", description: "", features: [], videoTitle: "", note: ""},
+      english: {name: "", description: "", features: [], videoTitle: "", note: ""},
     }, repositoryLink, link, skillsList = [], videoSrc, isPortfolioCard = false, expand_link=""
   }) {
     this.translationObject = translationObject
@@ -52,7 +52,8 @@ class ProjectElement {
           <div class="background"></div>
           <video src=${this.videoSrc} autoplay preload="metadata" muted loop title="${selectedTranslationObj.videoTitle}"></video>
         </div>
-      </div>`
+      </div>`,
+      note: this.translationObject[lang].note && this.translationObject[lang].note != "" ? `<blockquote><p>${this.translationObject[lang].note}</p></blockquote>` : ""
     }
 
     const newDescription = () => {
@@ -74,6 +75,7 @@ class ProjectElement {
           ${newDescription()}
           ${!this.isPortfolioCard ? 
             `${mainProjectsElements.features_section}
+            ${mainProjectsElements.note}
             <div class="linkZone">${mainProjectsElements.repoLink_element + mainProjectsElements.link_element + mainProjectsElements.expandLink_element}</div>`
           : ""}
         </section>
@@ -158,6 +160,7 @@ const HealthCenterTurnAdministrator = new ProjectElement({
       ],
       features: ["Base de datos SQL", "Arquitectura cliente-servidor", "Desarrollo de API REST", "Seguridad web", "Sesiones de usuario y roles", "Búsquedas dinámicas"],
       videoTitle: "Demostración general del proyecto",
+      note: "La demo de la aplicación está desplegada en Render, lo que significa que si el sitio quedó inactivo durante un tiempo la carga inicial puede demorarse unos minutos."
     },
     english: {
       name: "Health Center Administrator",
@@ -170,13 +173,15 @@ const HealthCenterTurnAdministrator = new ProjectElement({
         "At the moment the project is being updated. Meaning the information on this portfolio could be different from what is in the repository."
       ],
       features: ["Relational database", "Client-server architecture", "Rest API development", "Web security", "User session and roles", "Dynamic search"],
-      videoTitle: "General demonstration of the project"
+      videoTitle: "General demonstration of the project",
+      note: "The app demo is deployed on Render. Which means if this site was without activity in a while the initial load could take a few minutes."
     }
   },
+  link: "https://administracionturnosclinica.onrender.com",
   repositoryLink: "https://github.com/GGNahuel/08-AdministracionTurnosClinica",
+  expand_link: "HealthCenterManager.html",
   skillsList: ["Java", "Maven", "Spring boot", "Spring Security", "Rest API", "MySQL", "TypeScript", "React", "React Router", "CSS", "HTML"],
   videoSrc: "demos/HealthCenter/demoGeneral.webm",
-  expand_link: "HealthCenterManager.html"
 })
 
 const MassagistPage = new ProjectElement({
