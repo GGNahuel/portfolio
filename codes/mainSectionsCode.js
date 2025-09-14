@@ -104,6 +104,7 @@ const InventoryAPI = new ProjectElement({
     spanish: {
       name: "Sistema de gestión de inventarios",
       description: [
+        "Primer lanzamiento: Agosto 2025",
         "Este sistema permite registrar usuarios para que estos puedan crear sus inventarios y llenarlos con los items que el usuario necesite.", 
         " Ellos pueden a su vez crear sub-usuarios en la misma cuenta, al cual se accede también con nombre y contraseña. Lo que les permitiría " +
         "asignar, a través de un sub-usuario admin, permisos que pueden variar para cada inventario creado en la misma cuenta."
@@ -121,6 +122,7 @@ const InventoryAPI = new ProjectElement({
     english: {
       name: "Inventory management system",
       description: [
+        "First release: August 2025",
         "This system allows the users to create inventories and fill them with the items they could require.", 
         "Also, these users can register sub-users in the same account, who can access with a username and a password too. " +
         "This allows to the admin sub-user assign different permissions to each of the inventories associated to the account."
@@ -146,17 +148,22 @@ const HealthCenterTurnAdministrator = new ProjectElement({
   translationObject: {
     spanish: {
       name: "Administrador de turnos para centro de salud",
-      description: ["Aplicación de interfaz sencilla pensada para poder gestionar datos en un centro de salud.", 
+      description: [
+        "Primer lanzamiento: Noviembre 2024",
+        "Aplicación de interfaz sencilla pensada para poder gestionar datos en un centro de salud.", 
         "Cuenta con una base de datos relacional en donde  se registran los turnos, pacientes, profesionales de salud, " +
         "áreas de servicio, e incluso consultorios. Todas estas entidades se pueden crear, modificar o eliminar a traves de una interfaz simple y accesible. ",
         "Las acciones que se pueden realizar dependen del usuario que haya iniciado sesión y los permisos que éste tenga.","", 
-        "Actualmente el proyecto se encuentra en actualización, por lo que la información mostrada en la página de este proyecto puede variar con la que se muestra en el repositorio."],
+        "Actualmente el proyecto se encuentra en actualización, por lo que la información mostrada en la página de este proyecto puede variar con la que se muestra en el repositorio."
+      ],
       features: ["Base de datos SQL", "Arquitectura cliente-servidor", "Desarrollo de API REST", "Seguridad web", "Sesiones de usuario y roles", "Búsquedas dinámicas"],
       videoTitle: "Demostración general del proyecto",
     },
     english: {
       name: "Health Center Administrator",
-      description: ["This is an application with a simple interface designed to help managing data in a health center.",
+      description: [
+        "First release: November 2024",
+        "This is an application with a simple interface designed to help managing data in a health center.",
         "It has a relational database to store information about turns, patients, health professionals, service areas, and even assigned rooms. " +
         "All of these entities can be created, modified or deleted through an easy-to-use interface.",
         "The available actions depends on the permissions of the logged user.", "",
@@ -176,10 +183,11 @@ const MassagistPage = new ProjectElement({
   translationObject: {
     spanish: {
       name: "Sitio web para masajista",
-      description: ["El sitio fue diseñado para un amigo que se formó como masajista profesional.",
+      description: [
+        "Primer lanzamiento: Enero 2025",
+        "El sitio fue diseñado para un amigo que se formó como masajista profesional.",
         "Es una landing page sencilla en cuánto a aspectos técnicos, pero que le permite dar visibilidad al servicio que ofrece y permitir el contacto con clientes.",
-        "La web se adapta tanto a pantallas grandes como a pequeñas.",
-        "Lanzamiento en enero 2025"
+        "La web se adapta tanto a pantallas grandes como a pequeñas."
       ],
       features: ["Componentes reutilizables", "Diseño responsivo"],
       videoTitle: "Recorrido por la web"
@@ -187,10 +195,10 @@ const MassagistPage = new ProjectElement({
     english: {
       name: "Website for a Massage Therapist",
       description: [
+        "First release: January 2025",
         "The website was designed for a friend who trained as a professional massage therapist.",
         "It is a simple landing page in terms of technical aspects, but it allows him to showcase the services he offers and facilitate contact with clients.",
-        "The website adapts to both large and small screens.",
-        "First upload on January 2025"
+        "The website adapts to both large and small screens."
       ],
       features: ["Reusable components", "Responsive design"],
       videoTitle: "Website Tour"
@@ -207,13 +215,13 @@ const Portfolio_project = new ProjectElement({
   translationObject: {
     spanish: {
       name: "Acerca de esta página",
-      description: `Debido a que es una página estática, decidí hacer mi portafolio usando solamente los 3 pilares para el desarrollo web front-end.
+      description: `A modo de desafío y para mantener simpleza decidí hacer mi portafolio usando solamente los 3 pilares para el desarrollo web front-end.
         ¡Todo lo que ves en esta página está hecho solamente con HTML, CSS y JavaScript!`,
       features: []
     },
     english: {
       name: "About this portfolio",
-      description: `Because this is a static website, I decided to do my portfolio using only the 3 core technologies for frontend development.
+      description: `Because I wanted to keep it simple, and also as a challenge, I decided to do my portfolio using only the 3 core technologies for frontend development.
         Everything you see here is done only with HTML, CSS and JavaScript!`,
       features: []
     }
