@@ -180,7 +180,7 @@ const HealthCenterTurnAdministrator = new ProjectElement({
   link: "https://administracionturnosclinica.onrender.com",
   repositoryLink: "https://github.com/GGNahuel/08-AdministracionTurnosClinica",
   expand_link: "HealthCenterManager.html",
-  skillsList: ["Java", "Maven", "Spring boot", "Spring Security", "Rest API", "MySQL", "TypeScript", "React", "React Router", "CSS", "HTML"],
+  skillsList: ["Java", "Maven", "Spring boot", "Spring Security", "Rest API", "MySQL", "TypeScript", "React", "React Router", "CSS", "HTML", "Docker"],
   videoSrc: "demos/HealthCenter/demoGeneral.webm",
 })
 
