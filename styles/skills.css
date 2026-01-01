@@ -84,6 +84,10 @@
   background-image: url("../skillsSvg/mysql.svg");
 }
 
+.postgresql::before {
+  background-image: url("../skillsSvg/postgresql.svg");
+}
+
 .mongodb::before {
   background-image: url("../skillsSvg/mongo.svg");
 }
@@ -112,6 +116,10 @@
 
 .jwt::before {
   background-image: url("../skillsSvg/jwt.svg");
+}
+
+.firebase::before {
+  background-image: url("../skillsSvg/firebase.svg");
 }
 
 /* Apis */

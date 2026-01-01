@@ -13,7 +13,7 @@ const translation = {
     },
     presentationSection: {
       profileCard: {
-        role: "Desarrollador web Backend",
+        role: "Desarrollador de software",
         text: "Dispuesto a dar el 101% de mis capacidades en lo que hago. Siempre atento a ese extra que pueda aportar a hacer un trabajo de muy buena calidad."
       },
       features: [
@@ -60,6 +60,10 @@ const translation = {
     studiesSection: {
       title: "Formación",
       // innerHTML de los div.text que hay en cada article del html en esta sección
+      tech: `
+        <h4>Ingeniería de software</h4>
+        <p>2025 - 2028(estimado). <a href="https://www.techtitute.com/" target="_blank">Universidad Tech</a></p>
+      `,
       microservicesBootcamp: `
         <h4>Bootcamp sobre Arquitectura de microservicios con práctica en Java</h4>
         <p>Marzo - junio 2025. <a href="https://codigofacilito.com/">Código facilito</a></p>
@@ -348,6 +352,7 @@ const setProjectSectionTexts = () => {
 const setStudiesSectionTexts = () => {
   const studiesSection = document.getElementById("expAndFormation_section")
   studiesSection.querySelector("& > h2").innerHTML = selectedTranslation.studiesSection.title
+  studiesSection.querySelector(".tech > div.text").innerHTML = selectedTranslation.studiesSection.tech
   studiesSection.querySelector(".microservices > div.text").innerHTML = selectedTranslation.studiesSection.microservicesBootcamp
   studiesSection.querySelector(".courses > div.text").innerHTML = selectedTranslation.studiesSection.codigoFacilitoCourses
   studiesSection.querySelector(".bootcamp > div.text").innerHTML = selectedTranslation.studiesSection.fullStackBootcamp

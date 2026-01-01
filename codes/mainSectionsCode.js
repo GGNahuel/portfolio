@@ -4,7 +4,7 @@ class ProjectElement {
   constructor({ translationObject = {
       spanish: {name: "", description: "", features: [], videoTitle: "", note: ""},
       english: {name: "", description: "", features: [], videoTitle: "", note: ""},
-    }, repositoryLink, link, skillsList = [], videoSrc, isPortfolioCard = false, expand_link=""
+    }, repositoryLink, link, skillsList = [], videoSrc, gifSrc = null, isPortfolioCard = false, expand_link=""
   }) {
     this.translationObject = translationObject
     this.link = link
@@ -13,6 +13,7 @@ class ProjectElement {
     this.videoSrc = videoSrc
     this.isPortfolioCard = isPortfolioCard
     this.expand_link = expand_link
+    this.gifSrc = gifSrc
   }
 
   generateInnerHTML() {
@@ -47,12 +48,15 @@ class ProjectElement {
           ${lang == "spanish" ? "Enlace al repositorio" : "Link to repository"}
         </a>`
       : "",
-      demo_zone: this.videoSrc && `<div class="projectCard_demo">
+      demo_zone: (this.videoSrc || this.gifSrc) ? `<div class="projectCard_demo ${this.gifSrc ? "mobile" : ""}">
         <div>
           <div class="background"></div>
-          <video src=${this.videoSrc} autoplay preload="metadata" muted loop title="${selectedTranslationObj.videoTitle}"></video>
+          ${this.gifSrc != null ?
+            `<img src=${this.gifSrc} alt="Demonstration gif">` :
+            `<video src=${this.videoSrc} autoplay preload="metadata" muted loop title="${selectedTranslationObj.videoTitle}"></video>`
+          }
         </div>
-      </div>`,
+      </div>` : "",
       note: this.translationObject[lang].note && this.translationObject[lang].note != "" ? `<blockquote><p>${this.translationObject[lang].note}</p></blockquote>` : ""
     }
 
@@ -212,7 +216,27 @@ const MassagistPage = new ProjectElement({
   videoSrc: "demos/MassagistPage/demo.webm"
 })
 
-const projects = [InventoryAPI, HealthCenterTurnAdministrator, MassagistPage]
+const ImposterGame = new ProjectElement({
+  translationObject: {
+    spanish: {
+      name: "Juego online del impostor",
+      description: [
+        "Primer Lanzamiento: Noviembre 2025",
+        "La aplicación fue desarrollada inicialmente para su uso en un curso de inglés en 2025 y luego escalada al detectar interés por parte de la docente y los alumnos.",
+        "Mediante Firebase se implementa una base de datos que al recibir cambios ésta manda una señal a la página, la cual al interceptarla refleja automáticamente aquellos cambios permitiendo así " +
+        "la sincronización entre los dispositivos. También se implementa el uso de autenticaciones, anónimas para los jugadores de las salas, y mediante google para la creación y guardado de datos de " +
+        "partidas.",
+        "El sistema permite al anfitrión configurar las palabras utilizadas, habilitando la práctica de vocabulario de forma dinámica e interactiva."
+      ],
+      features: ["Sincronización a tiempo real entre dispositivos", "Backend as a Service (BaaS) con Firebase", "Autenticación con Google", "Componentes reutilizables", "Diseño multiplataforma"]
+    }
+  },
+  link: "https://whoaretheimposters.netlify.app/",
+  skillsList:["Firebase", "React", "TypeScript", "Material UI"],
+  gifSrc: "demos/ImposterGame/demo.gif"
+})
+
+const projects = [InventoryAPI, HealthCenterTurnAdministrator, MassagistPage, ImposterGame]
 
 const Portfolio_project = new ProjectElement({
   translationObject: {
