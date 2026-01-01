@@ -107,7 +107,6 @@
 
     > div {
       display: flex;
-      width: 100%;
       min-width: 300px;
       perspective: 1px;
       rotate: y -1.5deg;
@@ -124,6 +123,13 @@
       min-width: 300px;
       aspect-ratio: 16/9;
       object-fit: cover;
+    }
+
+    &.mobile {
+      img, div.background {
+        max-width: 300px;
+        aspect-ratio: 9/16;
+      }
     }
   }
 }
