@@ -52,6 +52,7 @@
     border-radius: 100%;
     clip-path: inset(50% 0);
     transition: clip-path 200ms ease-out;
+    filter: drop-shadow(var(--neon-shadows1-secondary) var(--third-color));
     
     &.active {
         clip-path: inset(0);

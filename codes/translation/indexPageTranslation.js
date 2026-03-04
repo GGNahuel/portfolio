@@ -13,7 +13,7 @@ const translation = {
     },
     presentationSection: {
       profileCard: {
-        role: "Desarrollador de software",
+        role: "Desarrollador de software - foco en backend",
         text: "Dispuesto a dar el 101% de mis capacidades en lo que hago. Siempre atento a ese extra que pueda aportar a hacer un trabajo de muy buena calidad."
       },
       features: [
@@ -155,7 +155,7 @@ const translation = {
     },
     presentationSection: {
       profileCard: {
-        role: "Backend Developer",
+        role: "Software engineer - Backend focus",
         text: "Ready to give 101% to my work. Always looking for that 1% extra to help projects achieve the best quality."
       },
       features: [
