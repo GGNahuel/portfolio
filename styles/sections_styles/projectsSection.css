@@ -79,9 +79,9 @@
 
     .pC_skillsList {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(9ch, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(12ch, 1fr));
       align-items: start;
-      gap: 8px;
+      gap: 4px;
       width: 100%;
     }
 

@@ -5,7 +5,7 @@
 const translation = {
   spanish: {
     navbar: ["Presentación", "Tecnologías", "Proyectos", "Estudios", "Contacto"],
-    title: "Perfeccionando mis habilidades <span class='important'>para cumplir con los objetivos</span>",
+    title: "Construyendo sistemas, <span class='important'>haciendo realidad objetivos</span>",
     buttons: {
       resume: "Curriculum",
       toContact: "Hablemos de lo que necesita",
@@ -14,7 +14,7 @@ const translation = {
     presentationSection: {
       profileCard: {
         role: "Desarrollador de software - foco en backend",
-        text: "Dispuesto a dar el 101% de mis capacidades en lo que hago. Siempre atento a ese extra que pueda aportar a hacer un trabajo de muy buena calidad."
+        text: "Comprometido con la construcción de soluciones software robustas, priorizando calidad, claridad y mejora continua."
       },
       features: [
         "Cooperación", "Prolijidad", "Principios SOLID",
@@ -29,8 +29,8 @@ const translation = {
         "Diseño para múltiples dispositivos"
       ],
       aboutMe: {
-        title: "¡Hola!. Aquí podrás conocer más de mí.",
-        formattedText: `Actualmente tengo 26 años y vivo en Argentina, más específicamente en la provincia de Santa Fe, lugar donde nací.</p>
+        title: "¡Hola!. Aquí hay algunos datos más sobre mí.",
+        formattedText: `<p>Soy de Argentina y actualmente resido allí, más específicamente en la provincia de Santa Fe, lugar donde nací.</p>
           <br><p>Disfruto de actividades como leer, disfrutar del aire libre y salidas con amigos. Mis hobbies son el tiro con arco y la fotografía.
             Actividades a las que me gusta ponerle esfuerzo e ir mejorando con el tiempo.
           </p>
@@ -47,15 +47,17 @@ const translation = {
       categories: [
         "Lenguajes de programación",
         "Frameworks y librerías",
-        "Bases de datos",
+        "Bases de datos y conexiones",
         "Desarrollo de APIs",
         "Seguridad web",
-        "Herramientas de marcado,estilos y plantillas",
+        "Herramientas de marcado, estilos y plantillas",
+        "Despliegue de aplicaciones",
+        "Testing y documentación",
         "Otras herramientas de desarrollo"
       ]
     },
     projectsSection: {
-      title: "Proyectos"
+      title: "Experiencia"
     },
     studiesSection: {
       title: "Formación",
@@ -145,9 +147,11 @@ const translation = {
     }
   },
 
+  // ========================================================
+
   english: {
     navbar: ["About Me", "Skills", "Projects", "Studies", "Contact me"],
-    title: "Improving my skills <span class='important'>to complete objectives</span>",
+    title: "Developing systems, <span class='important'>bringing objectives to reality</span>",
     buttons: {
       resume: "Resume",
       toContact: "Let's talk about what you need",
@@ -156,7 +160,7 @@ const translation = {
     presentationSection: {
       profileCard: {
         role: "Software engineer - Backend focus",
-        text: "Ready to give 101% to my work. Always looking for that 1% extra to help projects achieve the best quality."
+        text: "Committed to building robust software solutions, prioritizing quality, clarity, and continuous improvement."
       },
       features: [
         "Cooperative", "Attention to detail", "SOLID principles",
@@ -172,7 +176,7 @@ const translation = {
       ],
       aboutMe: {
         title: "Hello!. Here you can know more about me.",
-        formattedText: `I'm 26 years old and right now I'm living in Argentina, to be more specific in Santa Fe, place where I was born.</p>
+        formattedText: `I'm from Argentina, to be more specific in Santa Fe, place where I was born.</p>
           <br><p>I enjoy activities like reading books, spending time outdoors and hanging out with my friends. My hobbies are archery and photography.
             Activities I like to dedicate time and improve over time.
           </p>
@@ -194,6 +198,8 @@ const translation = {
         "API development",
         "Web security",
         "Markup, styles and templating tools",
+        "Application deploy",
+        "Testing and documentation",
         "Other development tools"
       ]
     },
@@ -329,7 +335,7 @@ const setPresentationSectionTexts = () => {
   })
 
   presentationSection.querySelector(".aboutMe h3").innerHTML = selectedTranslation.presentationSection.aboutMe.title
-  presentationSection.querySelector(".aboutMe p").innerHTML = selectedTranslation.presentationSection.aboutMe.formattedText
+  presentationSection.querySelector(".aboutMe article div").innerHTML = selectedTranslation.presentationSection.aboutMe.formattedText
 }
 
 //// Skills section
