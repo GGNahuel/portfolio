@@ -46,6 +46,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  gap: 1rem;
 }
   
 .profileObjects_container {  
@@ -162,6 +163,20 @@
       translate: 0 -5px;
       transition: 400ms, outline 0ms 300ms;
     }
+  }
+}
+
+.professionalAboutMe {
+  padding: 1rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  background-color: rgba(0, 0, 0, 0.6);
+
+  > p {
+    font-size: 1.3rem;
+    font-weight: 660;
   }
 }
 

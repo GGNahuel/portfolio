@@ -21,6 +21,10 @@
   }
 }
 
+.check::before {
+  background-image: url("../skillsSvg/check-sheet.svg");
+}
+
 /* Lenguajes de programación */
 .java::before {
   background-image: url("../skillsSvg/java.svg");
@@ -38,6 +42,14 @@
 
 .spring::before {
   background-image: url("../skillsSvg/spring.svg");
+}
+
+.express::before {
+  background-image: url("../skillsSvg/express.svg");
+}
+
+.nest::before {
+  background-image: url("../skillsSvg/nestjs.svg");
 }
 
 .react::before {
@@ -92,6 +104,14 @@
   background-image: url("../skillsSvg/mongo.svg");
 }
 
+.hibernate::before {
+  background-image: url("../skillsSvg/hibernate.svg");
+}
+
+.typeorm::before {
+  background-image: url("../skillsSvg/typeorm.svg");
+}
+
 /* Herramientas de desarrollo */
 
 .git::before {
@@ -102,10 +122,6 @@
   background-image: url("../skillsSvg/github.svg");
 }
 
-.docker::before {
-  background-image: url("../skillsSvg/docker.svg");
-}
-
 .postman::before {
   background-image: url("../skillsSvg/postman.svg");
 }
@@ -114,12 +130,44 @@
   background-image: url("../skillsSvg/maven.svg");
 }
 
+.node::before {
+  background-image: url("../skillsSvg/node.svg");
+}
+
+.swagger::before {
+  background-image: url("../skillsSvg/swagger.svg");
+}
+
 .jwt::before {
   background-image: url("../skillsSvg/jwt.svg");
 }
 
+/* Deploy */
+
+.docker::before {
+  background-image: url("../skillsSvg/docker.svg");
+}
+
 .firebase::before {
   background-image: url("../skillsSvg/firebase.svg");
+}
+
+.render::before {
+  background-image: url("../skillsSvg/render.svg");
+}
+
+/* Testing & documentation */
+
+.junit::before {
+  background-image: url("../skillsSvg/junit.svg");
+}
+
+.jest::before {
+  background-image: url("../skillsSvg/jest.svg");
+}
+
+.testcontainer::before {
+  background-image: url("../skillsSvg/testcontainer.svg");
 }
 
 /* Apis */
@@ -129,8 +177,4 @@
 
 .rest::before {
   background-image: url("../skillsSvg/apiRest.svg");
-}
-
-.gateway::before {
-  background-image: url("../skillsSvg/gateway.svg");
 }

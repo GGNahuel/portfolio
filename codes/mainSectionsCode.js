@@ -23,8 +23,15 @@ class ProjectElement {
     const featuresList = selectedTranslationObj.features.map(feature => {
       return `<li>${feature}</li>`
     }).join("")
+
+    const skillsWithoutLogo = ["jpa", "gateway", "mock"]
     const skills = this.skillsList.map(skill => {
-      return `<li class="skillLogo ${skill.toLowerCase()}">${skill}</li>`
+      const lowerSkill = skill.toLowerCase();
+      const firstWordSkill = lowerSkill.split(/[.\s]/)[0];
+      console.log(firstWordSkill)
+      const formattedSkill = skillsWithoutLogo.includes(firstWordSkill) ? "check" : firstWordSkill;
+
+      return `<li class="skillLogo ${formattedSkill}">${skill}</li>`;
     }).join("")
 
     const mainProjectsElements = {
@@ -105,6 +112,46 @@ class ProjectElement {
 }
 
 // instanciando la clase según los proyectos realizados
+const InternshipSwaplyAr = new ProjectElement({
+  translationObject: {
+    spanish: {
+      name: "Desarrollador backend en SwaplyAr - medio tiempo",
+      description: [
+        "Enero 2026 - Abril 2026",
+        "SwaplyAr es una empresa fintech en expansión. Que ofrece una solución que permite realizar transacciones entre distintas divisas y plataformas, " +
+        "ya sean monedas nacionales o crypto-monedas, de manera sencilla.",
+        "En esta experiencia me encargué de mejorar y/o adaptar la estructura, el funcionamiento y la mantenibilidad de módulos clave para el servicio que ellos ofrecen, " +
+        "así como de implementar desde cero nuevas funcionalidades y utilidades para su funcionamiento y desarrollo."
+      ],
+      features: [
+        "Trabajo colaborativo en equipo multidisciplinario. Tanto con los demás integrantes del equipo backend, como en conjunto con el equipo del frontend y líderes técnicos.",
+        "Presentación de ideas técnicas y participación en diálogos para la búsqueda de soluciones.",
+        "Identificación proactiva de mejoras técnicas y necesidades dentro del sistema."
+      ],
+      videoTitle: "Demostración del sitio web de SwaplyAr"
+    },
+    english: {
+      name: "Backend developer - SwaplyAr - part-time",
+      description: [
+        "January 2026 - April 2026",
+        "SwaplyAr is an expanding fintech company. It brings a solution that allows transactions between different currencies and platforms, " +
+        "whether national currencies or cryptocurrencies, in a simple way.",
+        "In this experience I was responsible for improving and/or adapting the structure, functionality, and maintainability of key modules for the service they offer, " +
+        "as well as implementing new features and utilities from scratch for its operation and development."
+      ],
+      features: [
+        "Collaborative work in a multidisciplinary team. Both with other members of the backend team, as well as together with the frontend team and technical leaders.",
+        "Presentation of technical ideas and participation in discussions in the search for solutions.",
+        "Proactive identification of technical improvements and needs within the system."
+      ],
+      videoTitle: "SwaplyAr Website Demonstration"
+    }
+  },
+  link: "https://www.swaplyar.com/",
+  videoSrc: "demos/SwaplyArPartTime/swaplydemo.webm",
+  skillsList: ["TypeScript", "Node.js", "Nest.js", "TypeORM", "PostgreSQL", "Jest", "Mock", "JWT", "Swagger", "Docker"]
+})
+
 const InventoryAPI = new ProjectElement({
   translationObject: {
     spanish: {
@@ -119,7 +166,7 @@ const InventoryAPI = new ProjectElement({
         "Base de datos SQL", "Arquitectura de Micro-servicios", 
         "Desarrollo de API REST y GraphQL", "Redirección a traves de una API Gateway",
         "Seguridad web", "Autenticación y autorización a traves de JWT", 
-        "Sesiones de usuario y permisos", "Doble inicio de sesión",
+        "Sesiones de usuario y permisos", "Manejo de sub-sesiones de usuario",
         "Pruebas unitarias, de integración y EndToEnd",
         "Containerización y administración de los mismos con Docker"
       ],
@@ -137,7 +184,7 @@ const InventoryAPI = new ProjectElement({
         "SQL database", "Microservices architecture",
         "REST and GraphQL APIs development", "Redirection through a Gateway API",
         "Web security", "Authentication and authorization by JWT",
-        "User sessions and authorities", "Double login",
+        "User sessions and authorities", "Management of sub-users sessions",
         "Unit, integration, and EndToEnd testing",
         "Containerization and management of them with Docker"
       ],
@@ -146,7 +193,7 @@ const InventoryAPI = new ProjectElement({
   },
   repositoryLink: "https://github.com/GGNahuel/InventoryApp_API-with-microservices",
   expand_link: "InventoryManagementSystem.html",
-  skillsList: ["Java", "Maven", "Spring boot", "Spring security", "Gateway API", "Rest API", "GraphQL API", "JWT", "MySQL", "Docker", "Postman"],
+  skillsList: ["Java", "Maven", "Spring boot", "Spring security", "Gateway API", "Rest API", "GraphQL API", "JWT", "MySQL", "JPA", "Hibernate", "JUnit", "Mock", "TestContainer", "Docker", "Postman"],
   videoSrc: "demos/InventoryManager/demo.webm"
 })
 
@@ -182,7 +229,7 @@ const HealthCenterTurnAdministrator = new ProjectElement({
   link: "https://administracionturnosclinica.onrender.com",
   repositoryLink: "https://github.com/GGNahuel/08-AdministracionTurnosClinica",
   expand_link: "HealthCenterManager.html",
-  skillsList: ["Java", "Maven", "Spring boot", "Spring Security", "Rest API", "MySQL", "TypeScript", "React", "React Router", "CSS", "HTML", "Docker"],
+  skillsList: ["Java", "Maven", "Spring boot", "Spring Security", "Rest API", "MySQL", "JPA", "Hibernate", "JUnit", "Mock", "TypeScript", "React", "React Router", "CSS", "HTML", "Docker", "Render"],
   videoSrc: "demos/HealthCenter/demoGeneral.webm",
 })
 
@@ -236,7 +283,7 @@ const ImposterGame = new ProjectElement({
   gifSrc: "demos/ImposterGame/demo.gif"
 })
 
-const projects = [InventoryAPI, HealthCenterTurnAdministrator, MassagistPage, ImposterGame]
+const projects = [InternshipSwaplyAr, InventoryAPI, HealthCenterTurnAdministrator, MassagistPage, ImposterGame]
 
 const Portfolio_project = new ProjectElement({
   translationObject: {
