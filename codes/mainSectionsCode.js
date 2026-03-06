@@ -115,7 +115,7 @@ class ProjectElement {
 const InternshipSwaplyAr = new ProjectElement({
   translationObject: {
     spanish: {
-      name: "Desarrollador backend en SwaplyAr - medio tiempo",
+      name: "Trabajo como desarrollador backend en SwaplyAr - medio tiempo",
       description: [
         "Enero 2026 - Abril 2026",
         "SwaplyAr es una empresa fintech en expansión. Que ofrece una solución que permite realizar transacciones entre distintas divisas y plataformas, " +
@@ -131,7 +131,7 @@ const InternshipSwaplyAr = new ProjectElement({
       videoTitle: "Demostración del sitio web de SwaplyAr"
     },
     english: {
-      name: "Backend developer - SwaplyAr - part-time",
+      name: "Work as a backend developer - SwaplyAr - part-time",
       description: [
         "January 2026 - April 2026",
         "SwaplyAr is an expanding fintech company. It brings a solution that allows transactions between different currencies and platforms, " +
